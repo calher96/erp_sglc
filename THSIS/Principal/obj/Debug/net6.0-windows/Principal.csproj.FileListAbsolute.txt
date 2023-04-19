@@ -1,0 +1,17 @@
+D:\THSIS\THSIS\Principal\obj\Debug\net6.0-windows\Principal.csproj.AssemblyReference.cache
+D:\THSIS\THSIS\Principal\obj\Debug\net6.0-windows\Principal.Seguridad.Login.resources
+D:\THSIS\THSIS\Principal\obj\Debug\net6.0-windows\Principal.csproj.GenerateResource.cache
+D:\THSIS\THSIS\Principal\obj\Debug\net6.0-windows\Principal.GeneratedMSBuildEditorConfig.editorconfig
+D:\THSIS\THSIS\Principal\obj\Debug\net6.0-windows\Principal.AssemblyInfoInputs.cache
+D:\THSIS\THSIS\Principal\obj\Debug\net6.0-windows\Principal.AssemblyInfo.cs
+D:\THSIS\THSIS\Principal\obj\Debug\net6.0-windows\Principal.csproj.CoreCompileInputs.cache
+D:\THSIS\THSIS\Principal\bin\Debug\net6.0-windows\Principal.exe
+D:\THSIS\THSIS\Principal\bin\Debug\net6.0-windows\Principal.deps.json
+D:\THSIS\THSIS\Principal\bin\Debug\net6.0-windows\Principal.runtimeconfig.json
+D:\THSIS\THSIS\Principal\bin\Debug\net6.0-windows\Principal.dll
+D:\THSIS\THSIS\Principal\bin\Debug\net6.0-windows\Principal.pdb
+D:\THSIS\THSIS\Principal\obj\Debug\net6.0-windows\Principal.dll
+D:\THSIS\THSIS\Principal\obj\Debug\net6.0-windows\refint\Principal.dll
+D:\THSIS\THSIS\Principal\obj\Debug\net6.0-windows\Principal.pdb
+D:\THSIS\THSIS\Principal\obj\Debug\net6.0-windows\Principal.genruntimeconfig.cache
+D:\THSIS\THSIS\Principal\obj\Debug\net6.0-windows\ref\Principal.dll
