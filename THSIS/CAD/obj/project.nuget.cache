@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zO3jFTZZ6Y0f1pYEurqVdKVcrJW4Spd6AXsugiIygQnNralY+4nCWDKqZdvl+Syv989O9Fx/m8+twJ7zzek3fA==",
+  "dgSpecHash": "eZbhKa/Ij29+xMGmQQxiJTBPjsXkH/EqdzdBQisDQto9vX4ZK1AI0Ckz7AMeL5gkAUq8tYbZYPNDpom8EtzN4A==",
   "success": true,
-  "projectFilePath": "D:\\THSIS\\THSIS\\CAD\\CAD.csproj",
+  "projectFilePath": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\CAD\\CAD.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\usuario\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\usuario\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

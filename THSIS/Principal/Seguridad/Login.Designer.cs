@@ -28,63 +28,76 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            label1 = new Label();
-            label2 = new Label();
+            txtUser = new TextBox();
+            txtPassword = new TextBox();
+            button1 = new Button();
+            panel1 = new Panel();
             SuspendLayout();
             // 
-            // textBox1
+            // txtUser
             // 
-            textBox1.CharacterCasing = CharacterCasing.Upper;
-            textBox1.Location = new Point(206, 75);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Usuario";
-            textBox1.Size = new Size(221, 27);
-            textBox1.TabIndex = 0;
-            textBox1.Tag = "";
+            txtUser.BackColor = Color.FromArgb(15, 15, 15);
+            txtUser.CharacterCasing = CharacterCasing.Upper;
+            txtUser.ForeColor = Color.DimGray;
+            txtUser.Location = new Point(348, 71);
+            txtUser.Name = "txtUser";
+            txtUser.PlaceholderText = "USUARIO";
+            txtUser.Size = new Size(369, 27);
+            txtUser.TabIndex = 0;
+            txtUser.Tag = "";
             // 
-            // textBox2
+            // txtPassword
             // 
-            textBox2.CharacterCasing = CharacterCasing.Upper;
-            textBox2.Location = new Point(206, 125);
-            textBox2.Name = "textBox2";
-            textBox2.PasswordChar = '*';
-            textBox2.PlaceholderText = "Contraseña";
-            textBox2.Size = new Size(221, 27);
-            textBox2.TabIndex = 1;
+            txtPassword.BackColor = Color.FromArgb(15, 15, 15);
+            txtPassword.CharacterCasing = CharacterCasing.Upper;
+            txtPassword.ForeColor = Color.DimGray;
+            txtPassword.Location = new Point(348, 144);
+            txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
+            txtPassword.PlaceholderText = "CONTRASEÑA";
+            txtPassword.Size = new Size(369, 27);
+            txtPassword.TabIndex = 1;
+            txtPassword.KeyDown += txtPassword_KeyDown;
             // 
-            // label1
+            // button1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(135, 78);
-            label1.Name = "label1";
-            label1.Size = new Size(63, 20);
-            label1.TabIndex = 2;
-            label1.Text = "Usuario";
+            button1.BackColor = Color.FromArgb(40, 40, 40);
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatAppearance.MouseDownBackColor = Color.FromArgb(28, 28, 28);
+            button1.FlatAppearance.MouseOverBackColor = Color.FromArgb(64, 64, 64);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = Color.Gainsboro;
+            button1.Location = new Point(348, 217);
+            button1.Name = "button1";
+            button1.Size = new Size(369, 41);
+            button1.TabIndex = 4;
+            button1.Text = "Iniciar Sesión";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
-            // label2
+            // panel1
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(112, 128);
-            label2.Name = "label2";
-            label2.Size = new Size(88, 20);
-            label2.TabIndex = 3;
-            label2.Text = "Contraseña";
+            panel1.BackColor = Color.FromArgb(0, 122, 204);
+            panel1.Dock = DockStyle.Left;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(250, 330);
+            panel1.TabIndex = 5;
             // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(530, 217);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            BackColor = Color.FromArgb(15, 15, 15);
+            ClientSize = new Size(780, 330);
+            Controls.Add(panel1);
+            Controls.Add(txtUser);
+            Controls.Add(button1);
+            Controls.Add(txtPassword);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "Login";
+            Opacity = 0.9D;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
             ResumeLayout(false);
@@ -93,9 +106,9 @@
 
         #endregion
 
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private Label label1;
-        private Label label2;
+        private TextBox txtUser;
+        private TextBox txtPassword;
+        private Button button1;
+        private Panel panel1;
     }
 }

@@ -1,0 +1,11 @@
+C:\Users\usuario\Documents\Instalador TH\CAD.dll
+C:\Users\usuario\Documents\Instalador TH\CAD.deps.json
+C:\Users\usuario\Documents\Instalador TH\CAD.pdb
+C:\Users\usuario\Documents\Instalador TH\System.Data.SqlClient.dll
+C:\Users\usuario\Documents\Instalador TH\runtimes\win-arm64\native\sni.dll
+C:\Users\usuario\Documents\Instalador TH\runtimes\win-x64\native\sni.dll
+C:\Users\usuario\Documents\Instalador TH\runtimes\win-x86\native\sni.dll
+C:\Users\usuario\Documents\Instalador TH\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\usuario\Documents\Instalador TH\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\usuario\Documents\Instalador TH\CEN.dll
+C:\Users\usuario\Documents\Instalador TH\CEN.pdb

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\THSIS\\THSIS\\CEN\\CEN.csproj",
+      "projectUniqueName": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\CEN\\CEN.csproj",
       "projectName": "CEN",
-      "projectPath": "D:\\THSIS\\THSIS\\CEN\\CEN.csproj",
+      "projectPath": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\CEN\\CEN.csproj",
       "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-      "outputPath": "D:\\THSIS\\THSIS\\CEN\\obj\\",
+      "outputPath": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\CEN\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,6 +28,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\Public\\Documents\\Infragistics\\NuGet\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -61,7 +62,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

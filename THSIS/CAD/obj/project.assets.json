@@ -491,11 +491,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\THSIS\\THSIS\\CAD\\CAD.csproj",
+      "projectUniqueName": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\CAD\\CAD.csproj",
       "projectName": "CAD",
-      "projectPath": "D:\\THSIS\\THSIS\\CAD\\CAD.csproj",
+      "projectPath": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\CAD\\CAD.csproj",
       "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-      "outputPath": "D:\\THSIS\\THSIS\\CAD\\obj\\",
+      "outputPath": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\CAD\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -506,14 +506,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\Public\\Documents\\Infragistics\\NuGet\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\THSIS\\THSIS\\CEN\\CEN.csproj": {
-              "projectPath": "D:\\THSIS\\THSIS\\CEN\\CEN.csproj"
+            "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\CEN\\CEN.csproj": {
+              "projectPath": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\CEN\\CEN.csproj"
             }
           }
         }
@@ -549,7 +550,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }
