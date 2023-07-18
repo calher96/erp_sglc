@@ -46,7 +46,7 @@ namespace Principal
             try
             {
                 TabPage tp = tbc_Principal.TabPages[titulo];
-                if (tp== null)
+                if (tp == null)
                 {
                     TabPage tabpage = new TabPage();
                     Form fh = form as Form;
@@ -73,10 +73,10 @@ namespace Principal
             }
             catch
             {
-                
+
             }
-            
-            
+
+
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -116,6 +116,14 @@ namespace Principal
             //frm.index = childFormNumber;
 
             abrirFormHijo(frm, "Cliente");
+        }
+
+        private void permisosYPerfilesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_Permisos frm = new frm_Permisos();
+            //frm.index = childFormNumber;
+
+            abrirFormHijo(frm, "Permisos");
         }
     }
 }

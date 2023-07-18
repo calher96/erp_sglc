@@ -80,3 +80,6 @@ D:\THSIS\Repositorios\erp_sglc\THSIS\Principal\bin\Debug\net6.0-windows\zh-Hant\
 D:\THSIS\Repositorios\erp_sglc\THSIS\Principal\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
 D:\THSIS\Repositorios\erp_sglc\THSIS\Principal\obj\Debug\net6.0-windows\Principal.Operaciones.frm_Facturacion.resources
 D:\THSIS\Repositorios\erp_sglc\THSIS\Principal\obj\Debug\net6.0-windows\Principal.Recursos_Humanos.frm_Correo.resources
+D:\THSIS\Repositorios\erp_sglc\THSIS\Principal\obj\Debug\net6.0-windows\Principal.Recursos_Humanos.frm_Telefono.resources
+D:\THSIS\Repositorios\erp_sglc\THSIS\Principal\obj\Debug\net6.0-windows\Principal.Operaciones.frm_RecepcionCarga.resources
+D:\THSIS\Repositorios\erp_sglc\THSIS\Principal\obj\Debug\net6.0-windows\Principal.Seguridad.frm_Permisos.resources

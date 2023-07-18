@@ -224,7 +224,7 @@
             tabControl1.Margin = new Padding(3, 4, 3, 4);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1610, 918);
+            tabControl1.Size = new Size(1557, 884);
             tabControl1.TabIndex = 0;
             // 
             // tp_Lista
@@ -238,7 +238,7 @@
             tp_Lista.Margin = new Padding(3, 4, 3, 4);
             tp_Lista.Name = "tp_Lista";
             tp_Lista.Padding = new Padding(3, 4, 3, 4);
-            tp_Lista.Size = new Size(1602, 882);
+            tp_Lista.Size = new Size(1549, 848);
             tp_Lista.TabIndex = 0;
             tp_Lista.Text = "Lista";
             tp_Lista.UseVisualStyleBackColor = true;
@@ -247,12 +247,12 @@
             // 
             dgb_Lista.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgb_Lista.Dock = DockStyle.Fill;
-            dgb_Lista.Location = new Point(3, 121);
+            dgb_Lista.Location = new Point(3, 122);
             dgb_Lista.Name = "dgb_Lista";
             dgb_Lista.RowHeadersWidth = 51;
             dgb_Lista.RowTemplate.Height = 29;
             dgb_Lista.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgb_Lista.Size = new Size(1596, 757);
+            dgb_Lista.Size = new Size(1543, 722);
             dgb_Lista.StandardTab = true;
             dgb_Lista.TabIndex = 2;
             dgb_Lista.CellValueChanged += dgb_Lista_CellValueChanged;
@@ -268,14 +268,14 @@
             panel2.Controls.Add(button7);
             panel2.Controls.Add(btn_Nuevo);
             panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(3, 74);
+            panel2.Location = new Point(3, 75);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1596, 47);
+            panel2.Size = new Size(1543, 47);
             panel2.TabIndex = 1;
             // 
             // txt_Filtro
             // 
-            txt_Filtro.Location = new Point(489, 10);
+            txt_Filtro.Location = new Point(489, 11);
             txt_Filtro.Name = "txt_Filtro";
             txt_Filtro.Size = new Size(295, 27);
             txt_Filtro.TabIndex = 4;
@@ -289,7 +289,7 @@
             btn_Actualizar.FlatAppearance.MouseOverBackColor = Color.Silver;
             btn_Actualizar.Image = Properties.Resources.new_file;
             btn_Actualizar.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Actualizar.Location = new Point(297, 0);
+            btn_Actualizar.Location = new Point(296, 0);
             btn_Actualizar.Name = "btn_Actualizar";
             btn_Actualizar.Size = new Size(118, 43);
             btn_Actualizar.TabIndex = 3;
@@ -305,7 +305,7 @@
             button8.FlatAppearance.MouseOverBackColor = Color.Silver;
             button8.Image = Properties.Resources.cerrar2;
             button8.ImageAlign = ContentAlignment.MiddleLeft;
-            button8.Location = new Point(202, 0);
+            button8.Location = new Point(201, 0);
             button8.Name = "button8";
             button8.Size = new Size(95, 43);
             button8.TabIndex = 2;
@@ -323,7 +323,7 @@
             button7.ImageAlign = ContentAlignment.MiddleLeft;
             button7.Location = new Point(94, 0);
             button7.Name = "button7";
-            button7.Size = new Size(108, 43);
+            button7.Size = new Size(107, 43);
             button7.TabIndex = 1;
             button7.Text = "Exportar";
             button7.TextAlign = ContentAlignment.MiddleRight;
@@ -358,7 +358,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1596, 70);
+            panel1.Size = new Size(1543, 71);
             panel1.TabIndex = 0;
             panel1.Tag = "";
             // 
@@ -381,15 +381,15 @@
             panel3.Controls.Add(cbo_Color_Actividad);
             panel3.Controls.Add(cbo_Color_Baja);
             panel3.Dock = DockStyle.Right;
-            panel3.Location = new Point(873, 0);
+            panel3.Location = new Point(820, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(719, 66);
+            panel3.Size = new Size(719, 67);
             panel3.TabIndex = 5;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(356, 18);
+            label5.Location = new Point(357, 19);
             label5.Name = "label5";
             label5.Size = new Size(94, 20);
             label5.TabIndex = 9;
@@ -451,7 +451,7 @@
             // 
             cbo_Categoria.DropDownStyle = ComboBoxStyle.DropDownList;
             cbo_Categoria.FormattingEnabled = true;
-            cbo_Categoria.Location = new Point(602, 18);
+            cbo_Categoria.Location = new Point(602, 19);
             cbo_Categoria.Name = "cbo_Categoria";
             cbo_Categoria.Size = new Size(249, 28);
             cbo_Categoria.TabIndex = 2;
@@ -460,7 +460,7 @@
             // 
             cbo_Situacion.DropDownStyle = ComboBoxStyle.DropDownList;
             cbo_Situacion.FormattingEnabled = true;
-            cbo_Situacion.Location = new Point(236, 17);
+            cbo_Situacion.Location = new Point(235, 17);
             cbo_Situacion.Name = "cbo_Situacion";
             cbo_Situacion.Size = new Size(249, 28);
             cbo_Situacion.TabIndex = 1;
@@ -484,7 +484,7 @@
             tp_Mantenimiento.Margin = new Padding(3, 4, 3, 4);
             tp_Mantenimiento.Name = "tp_Mantenimiento";
             tp_Mantenimiento.Padding = new Padding(3, 4, 3, 4);
-            tp_Mantenimiento.Size = new Size(1602, 882);
+            tp_Mantenimiento.Size = new Size(1549, 848);
             tp_Mantenimiento.TabIndex = 1;
             tp_Mantenimiento.Text = "Mantenimiento";
             tp_Mantenimiento.UseVisualStyleBackColor = true;
@@ -501,7 +501,7 @@
             tabControl2.Name = "tabControl2";
             tabControl2.SelectedIndex = 0;
             tabControl2.ShowToolTips = true;
-            tabControl2.Size = new Size(1596, 874);
+            tabControl2.Size = new Size(1543, 840);
             tabControl2.TabIndex = 0;
             // 
             // tabPage1
@@ -512,8 +512,8 @@
             tabPage1.Controls.Add(groupBox1);
             tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1588, 841);
+            tabPage1.Padding = new Padding(3, 3, 3, 3);
+            tabPage1.Size = new Size(1535, 807);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Datos Personales";
             tabPage1.UseVisualStyleBackColor = true;
@@ -525,7 +525,7 @@
             button9.FlatAppearance.MouseOverBackColor = Color.Silver;
             button9.Image = Properties.Resources.diskette;
             button9.ImageAlign = ContentAlignment.MiddleLeft;
-            button9.Location = new Point(1425, 783);
+            button9.Location = new Point(1372, 783);
             button9.Name = "button9";
             button9.Size = new Size(106, 43);
             button9.TabIndex = 4;
@@ -541,7 +541,7 @@
             button6.FlatAppearance.MouseOverBackColor = Color.Silver;
             button6.Image = Properties.Resources.cerrar2;
             button6.ImageAlign = ContentAlignment.MiddleLeft;
-            button6.Location = new Point(1292, 783);
+            button6.Location = new Point(1239, 783);
             button6.Name = "button6";
             button6.Size = new Size(111, 43);
             button6.TabIndex = 3;
@@ -559,7 +559,7 @@
             tabControl3.Location = new Point(3, 316);
             tabControl3.Name = "tabControl3";
             tabControl3.SelectedIndex = 0;
-            tabControl3.Size = new Size(1582, 461);
+            tabControl3.Size = new Size(1529, 461);
             tabControl3.TabIndex = 2;
             // 
             // tabPage3
@@ -569,8 +569,8 @@
             tabPage3.Controls.Add(groupBox4);
             tabPage3.Location = new Point(4, 29);
             tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(1574, 428);
+            tabPage3.Padding = new Padding(3, 3, 3, 3);
+            tabPage3.Size = new Size(1521, 428);
             tabPage3.TabIndex = 0;
             tabPage3.Text = "Datos Laborales";
             tabPage3.UseVisualStyleBackColor = true;
@@ -592,14 +592,14 @@
             groupBox5.FlatStyle = FlatStyle.Popup;
             groupBox5.Location = new Point(10, 339);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(1568, 86);
+            groupBox5.Size = new Size(1568, 85);
             groupBox5.TabIndex = 3;
             groupBox5.TabStop = false;
             groupBox5.Text = "Remuneración";
             // 
             // button13
             // 
-            button13.Location = new Point(1038, 38);
+            button13.Location = new Point(1038, 37);
             button13.Name = "button13";
             button13.Size = new Size(94, 29);
             button13.TabIndex = 42;
@@ -609,7 +609,7 @@
             // label34
             // 
             label34.AutoSize = true;
-            label34.Location = new Point(742, 42);
+            label34.Location = new Point(742, 43);
             label34.Name = "label34";
             label34.Size = new Size(117, 20);
             label34.TabIndex = 41;
@@ -628,7 +628,7 @@
             // 
             dateTimePicker3.CustomFormat = "dd/MM/yyyy";
             dateTimePicker3.Format = DateTimePickerFormat.Short;
-            dateTimePicker3.Location = new Point(595, 42);
+            dateTimePicker3.Location = new Point(595, 43);
             dateTimePicker3.Name = "dateTimePicker3";
             dateTimePicker3.Size = new Size(134, 27);
             dateTimePicker3.TabIndex = 38;
@@ -663,7 +663,7 @@
             // comboBox7
             // 
             comboBox7.FormattingEnabled = true;
-            comboBox7.Location = new Point(281, 42);
+            comboBox7.Location = new Point(281, 43);
             comboBox7.Name = "comboBox7";
             comboBox7.Size = new Size(151, 28);
             comboBox7.TabIndex = 2;
@@ -671,7 +671,7 @@
             // label30
             // 
             label30.AutoSize = true;
-            label30.Location = new Point(7, 46);
+            label30.Location = new Point(7, 45);
             label30.Name = "label30";
             label30.Size = new Size(105, 20);
             label30.TabIndex = 1;
@@ -684,7 +684,7 @@
             groupBox3.Dock = DockStyle.Top;
             groupBox3.Location = new Point(3, 114);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(1568, 219);
+            groupBox3.Size = new Size(1515, 219);
             groupBox3.TabIndex = 2;
             groupBox3.TabStop = false;
             groupBox3.Text = "Información de Ocupaciones del Trabajador";
@@ -697,7 +697,7 @@
             tabControl4.Location = new Point(3, 23);
             tabControl4.Name = "tabControl4";
             tabControl4.SelectedIndex = 0;
-            tabControl4.Size = new Size(1562, 185);
+            tabControl4.Size = new Size(1509, 185);
             tabControl4.TabIndex = 0;
             // 
             // tabPage6
@@ -705,8 +705,8 @@
             tabPage6.Controls.Add(dgb_ListaOcupacion);
             tabPage6.Location = new Point(4, 29);
             tabPage6.Name = "tabPage6";
-            tabPage6.Padding = new Padding(3);
-            tabPage6.Size = new Size(1554, 152);
+            tabPage6.Padding = new Padding(3, 3, 3, 3);
+            tabPage6.Size = new Size(1501, 152);
             tabPage6.TabIndex = 0;
             tabPage6.Text = "Listado";
             tabPage6.UseVisualStyleBackColor = true;
@@ -720,7 +720,7 @@
             dgb_ListaOcupacion.RowHeadersWidth = 51;
             dgb_ListaOcupacion.RowTemplate.Height = 29;
             dgb_ListaOcupacion.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgb_ListaOcupacion.Size = new Size(1548, 146);
+            dgb_ListaOcupacion.Size = new Size(1495, 146);
             dgb_ListaOcupacion.TabIndex = 2;
             dgb_ListaOcupacion.CellMouseClick += dgb_ListaOcupacion_CellMouseClick;
             dgb_ListaOcupacion.MouseDown += dataGridView1_MouseDown;
@@ -752,15 +752,15 @@
             tabPage7.Controls.Add(button10);
             tabPage7.Location = new Point(4, 29);
             tabPage7.Name = "tabPage7";
-            tabPage7.Padding = new Padding(3);
-            tabPage7.Size = new Size(1554, 152);
+            tabPage7.Padding = new Padding(3, 3, 3, 3);
+            tabPage7.Size = new Size(1494, 152);
             tabPage7.TabIndex = 1;
             tabPage7.Text = "Mantenimiento";
             tabPage7.UseVisualStyleBackColor = true;
             // 
             // button12
             // 
-            button12.Location = new Point(834, 110);
+            button12.Location = new Point(834, 109);
             button12.Name = "button12";
             button12.Size = new Size(94, 29);
             button12.TabIndex = 37;
@@ -769,7 +769,7 @@
             // 
             // button11
             // 
-            button11.Location = new Point(734, 110);
+            button11.Location = new Point(734, 109);
             button11.Name = "button11";
             button11.Size = new Size(94, 29);
             button11.TabIndex = 36;
@@ -779,7 +779,7 @@
             // checkBox2
             // 
             checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(545, 114);
+            checkBox2.Location = new Point(545, 115);
             checkBox2.Name = "checkBox2";
             checkBox2.Size = new Size(173, 24);
             checkBox2.TabIndex = 35;
@@ -808,7 +808,7 @@
             // comboBox6
             // 
             comboBox6.FormattingEnabled = true;
-            comboBox6.Location = new Point(55, 110);
+            comboBox6.Location = new Point(55, 109);
             comboBox6.Name = "comboBox6";
             comboBox6.Size = new Size(301, 28);
             comboBox6.TabIndex = 33;
@@ -817,7 +817,7 @@
             // 
             dateTimePicker2.CustomFormat = "dd/MM/yyyy";
             dateTimePicker2.Format = DateTimePickerFormat.Short;
-            dateTimePicker2.Location = new Point(828, 75);
+            dateTimePicker2.Location = new Point(827, 75);
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new Size(134, 27);
             dateTimePicker2.TabIndex = 31;
@@ -845,7 +845,7 @@
             // label21
             // 
             label21.AutoSize = true;
-            label21.Location = new Point(484, 77);
+            label21.Location = new Point(485, 77);
             label21.Name = "label21";
             label21.Size = new Size(106, 20);
             label21.TabIndex = 28;
@@ -854,7 +854,7 @@
             // comboBox5
             // 
             comboBox5.FormattingEnabled = true;
-            comboBox5.Location = new Point(172, 74);
+            comboBox5.Location = new Point(171, 75);
             comboBox5.Name = "comboBox5";
             comboBox5.Size = new Size(301, 28);
             comboBox5.TabIndex = 11;
@@ -879,7 +879,7 @@
             // label19
             // 
             label19.AutoSize = true;
-            label19.Location = new Point(734, 10);
+            label19.Location = new Point(734, 11);
             label19.Name = "label19";
             label19.Size = new Size(82, 20);
             label19.TabIndex = 8;
@@ -896,7 +896,7 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(514, 10);
+            label18.Location = new Point(514, 11);
             label18.Name = "label18";
             label18.Size = new Size(54, 20);
             label18.TabIndex = 6;
@@ -930,7 +930,7 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(137, 10);
+            label16.Location = new Point(137, 11);
             label16.Name = "label16";
             label16.Size = new Size(67, 20);
             label16.TabIndex = 2;
@@ -945,7 +945,7 @@
             // 
             // button10
             // 
-            button10.Location = new Point(6, 6);
+            button10.Location = new Point(6, 5);
             button10.Name = "button10";
             button10.Size = new Size(125, 29);
             button10.TabIndex = 0;
@@ -969,7 +969,7 @@
             groupBox4.Dock = DockStyle.Top;
             groupBox4.Location = new Point(3, 3);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(1568, 111);
+            groupBox4.Size = new Size(1515, 111);
             groupBox4.TabIndex = 1;
             groupBox4.TabStop = false;
             groupBox4.Text = "Información Sobre Aspectos Laborales";
@@ -1004,7 +1004,7 @@
             // label23
             // 
             label23.AutoSize = true;
-            label23.Location = new Point(4, 76);
+            label23.Location = new Point(5, 76);
             label23.Name = "label23";
             label23.Size = new Size(155, 20);
             label23.TabIndex = 33;
@@ -1042,7 +1042,7 @@
             // 
             cbo_EstadoTrabajador.DropDownStyle = ComboBoxStyle.DropDownList;
             cbo_EstadoTrabajador.FormattingEnabled = true;
-            cbo_EstadoTrabajador.Location = new Point(314, 38);
+            cbo_EstadoTrabajador.Location = new Point(314, 37);
             cbo_EstadoTrabajador.Name = "cbo_EstadoTrabajador";
             cbo_EstadoTrabajador.Size = new Size(346, 28);
             cbo_EstadoTrabajador.TabIndex = 29;
@@ -1050,7 +1050,7 @@
             // label26
             // 
             label26.AutoSize = true;
-            label26.Location = new Point(242, 42);
+            label26.Location = new Point(242, 43);
             label26.Name = "label26";
             label26.Size = new Size(56, 20);
             label26.TabIndex = 28;
@@ -1066,7 +1066,7 @@
             // label27
             // 
             label27.AutoSize = true;
-            label27.Location = new Point(11, 42);
+            label27.Location = new Point(11, 43);
             label27.Name = "label27";
             label27.Size = new Size(58, 20);
             label27.TabIndex = 28;
@@ -1077,8 +1077,8 @@
             tabPage4.Controls.Add(groupBox6);
             tabPage4.Location = new Point(4, 29);
             tabPage4.Name = "tabPage4";
-            tabPage4.Padding = new Padding(3);
-            tabPage4.Size = new Size(1574, 428);
+            tabPage4.Padding = new Padding(3, 3, 3, 3);
+            tabPage4.Size = new Size(1517, 428);
             tabPage4.TabIndex = 1;
             tabPage4.Text = "Datos de Seguridad Social";
             tabPage4.UseVisualStyleBackColor = true;
@@ -1101,7 +1101,7 @@
             groupBox6.Dock = DockStyle.Top;
             groupBox6.Location = new Point(3, 3);
             groupBox6.Name = "groupBox6";
-            groupBox6.Size = new Size(1568, 125);
+            groupBox6.Size = new Size(1511, 125);
             groupBox6.TabIndex = 0;
             groupBox6.TabStop = false;
             groupBox6.Text = "Régimen de Salud";
@@ -1166,7 +1166,7 @@
             // comboBox11
             // 
             comboBox11.FormattingEnabled = true;
-            comboBox11.Location = new Point(578, 74);
+            comboBox11.Location = new Point(578, 75);
             comboBox11.Name = "comboBox11";
             comboBox11.Size = new Size(122, 28);
             comboBox11.TabIndex = 5;
@@ -1183,7 +1183,7 @@
             // comboBox10
             // 
             comboBox10.FormattingEnabled = true;
-            comboBox10.Location = new Point(217, 74);
+            comboBox10.Location = new Point(217, 75);
             comboBox10.Name = "comboBox10";
             comboBox10.Size = new Size(298, 28);
             comboBox10.TabIndex = 3;
@@ -1218,8 +1218,8 @@
             // 
             tabPage5.Location = new Point(4, 29);
             tabPage5.Name = "tabPage5";
-            tabPage5.Padding = new Padding(3);
-            tabPage5.Size = new Size(1574, 428);
+            tabPage5.Padding = new Padding(3, 3, 3, 3);
+            tabPage5.Size = new Size(1517, 428);
             tabPage5.TabIndex = 2;
             tabPage5.Text = "Datos Tributarios";
             tabPage5.UseVisualStyleBackColor = true;
@@ -1258,7 +1258,7 @@
             groupBox1.FlatStyle = FlatStyle.Flat;
             groupBox1.Location = new Point(3, 3);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1582, 313);
+            groupBox1.Size = new Size(1529, 313);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Datos Básicos";
@@ -1266,7 +1266,7 @@
             // button5
             // 
             button5.Enabled = false;
-            button5.Location = new Point(4, 280);
+            button5.Location = new Point(5, 280);
             button5.Name = "button5";
             button5.Size = new Size(94, 29);
             button5.TabIndex = 27;
@@ -1306,7 +1306,7 @@
             // txt_Correo
             // 
             txt_Correo.CharacterCasing = CharacterCasing.Lower;
-            txt_Correo.Location = new Point(673, 162);
+            txt_Correo.Location = new Point(673, 163);
             txt_Correo.Name = "txt_Correo";
             txt_Correo.Size = new Size(341, 27);
             txt_Correo.TabIndex = 21;
@@ -1319,6 +1319,7 @@
             button3.TabIndex = 20;
             button3.Text = "Celular";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button2
             // 
@@ -1331,7 +1332,7 @@
             // 
             // btn_Correo
             // 
-            btn_Correo.Location = new Point(572, 159);
+            btn_Correo.Location = new Point(571, 159);
             btn_Correo.Name = "btn_Correo";
             btn_Correo.Size = new Size(94, 29);
             btn_Correo.TabIndex = 18;
@@ -1369,7 +1370,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(66, 106);
+            label15.Location = new Point(66, 107);
             label15.Name = "label15";
             label15.Size = new Size(62, 20);
             label15.TabIndex = 22;
@@ -1407,7 +1408,7 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(17, 38);
+            label13.Location = new Point(17, 37);
             label13.Name = "label13";
             label13.Size = new Size(111, 20);
             label13.TabIndex = 18;
@@ -1416,7 +1417,7 @@
             // chk_Hijos
             // 
             chk_Hijos.AutoSize = true;
-            chk_Hijos.Location = new Point(894, 90);
+            chk_Hijos.Location = new Point(894, 91);
             chk_Hijos.Name = "chk_Hijos";
             chk_Hijos.Size = new Size(120, 24);
             chk_Hijos.TabIndex = 16;
@@ -1427,7 +1428,7 @@
             // 
             cbo_EstadoCivil.DropDownStyle = ComboBoxStyle.DropDownList;
             cbo_EstadoCivil.FormattingEnabled = true;
-            cbo_EstadoCivil.Location = new Point(668, 86);
+            cbo_EstadoCivil.Location = new Point(667, 85);
             cbo_EstadoCivil.Name = "cbo_EstadoCivil";
             cbo_EstadoCivil.Size = new Size(201, 28);
             cbo_EstadoCivil.TabIndex = 15;
@@ -1446,7 +1447,7 @@
             rbt_Femenino.AutoSize = true;
             rbt_Femenino.FlatAppearance.BorderSize = 0;
             rbt_Femenino.FlatAppearance.CheckedBackColor = Color.FromArgb(128, 255, 128);
-            rbt_Femenino.Location = new Point(424, 86);
+            rbt_Femenino.Location = new Point(424, 85);
             rbt_Femenino.Name = "rbt_Femenino";
             rbt_Femenino.Size = new Size(98, 26);
             rbt_Femenino.TabIndex = 13;
@@ -1481,7 +1482,7 @@
             // 
             dtp_FechaNacimiento.CustomFormat = "dd/MM/yyyy";
             dtp_FechaNacimiento.Format = DateTimePickerFormat.Short;
-            dtp_FechaNacimiento.Location = new Point(108, 85);
+            dtp_FechaNacimiento.Location = new Point(107, 85);
             dtp_FechaNacimiento.Name = "dtp_FechaNacimiento";
             dtp_FechaNacimiento.Size = new Size(134, 27);
             dtp_FechaNacimiento.TabIndex = 10;
@@ -1500,7 +1501,7 @@
             // 
             pictureBox1.BackColor = Color.SlateGray;
             pictureBox1.BorderStyle = BorderStyle.FixedSingle;
-            pictureBox1.Location = new Point(1120, 26);
+            pictureBox1.Location = new Point(1120, 27);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(195, 185);
             pictureBox1.TabIndex = 8;
@@ -1582,8 +1583,8 @@
             // 
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1588, 841);
+            tabPage2.Padding = new Padding(3, 3, 3, 3);
+            tabPage2.Size = new Size(1533, 802);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Datos Complementarios";
             tabPage2.UseVisualStyleBackColor = true;
@@ -1637,7 +1638,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(1610, 918);
+            ClientSize = new Size(1557, 884);
             Controls.Add(tabControl1);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(3, 4, 3, 4);

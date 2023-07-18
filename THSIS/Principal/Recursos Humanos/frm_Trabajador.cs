@@ -19,6 +19,8 @@ namespace Principal.Recursos_Humanos
 {
     public partial class frm_Trabajador : Form
     {
+        public static List<ent_Correo> lista_Correo = new List<ent_Correo>();
+        public static List<ent_Telefono> lista_Telefono = new List<ent_Telefono>();
         List<ent_Trabajador> lista;
         public int index;
         public frm_Trabajador()
@@ -27,6 +29,7 @@ namespace Principal.Recursos_Humanos
 
             inicializarFormulario();
             this.txt_Documento.KeyPress += txt_Documento_KeyPress;
+            btn_Correo.Enabled = true;
 
         }
         private void txt_Documento_KeyPress(object sender, KeyPressEventArgs e)
@@ -674,8 +677,25 @@ namespace Principal.Recursos_Humanos
 
         private void button1_Click(object sender, EventArgs e)
         {
-            frm_Correo frm_Correo = new frm_Correo();
-            frm_Correo.ShowDialog();
+            frm_Correo.lista_Correo = lista_Correo;
+            frm_Correo Correo = new frm_Correo();
+            Correo.ShowDialog();
+            if (lista_Correo.Count > 0)
+            {
+                txt_Correo.Text = lista_Correo[0].corr_Correo;
+            }
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            frm_Telefono.lista_Telefono = lista_Telefono;
+            frm_Telefono Telefono = new frm_Telefono();
+            Telefono.ShowDialog();
+            if (lista_Telefono.Count > 0)
+            {
+                txt_Telefono.Text = lista_Telefono[0].telf_Numero;
+            }
         }
     }
 }

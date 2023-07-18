@@ -16,13 +16,22 @@
     <Compile Update="Operaciones\frm_Prueba.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Operaciones\frm_RecepcionCarga.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Operaciones\frm_Vehiculo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Recursos Humanos\frm_Correo.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Recursos Humanos\frm_Telefono.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Recursos Humanos\frm_Trabajador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Seguridad\frm_Permisos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Seguridad\Login.cs">
