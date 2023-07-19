@@ -15,5 +15,6 @@ namespace CEN.Entidad
         public int empr_Id { get;set; }
         public int perf_Marcabaja { get;set; }
         public String perf_Usuario { get;set; }
+        public List<ent_Permiso> lista_Permiso = new List<ent_Permiso>();
     }
 }

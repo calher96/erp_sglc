@@ -31,6 +31,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Permisos));
             tpg_Lista = new TabControl();
             tpg_Mantenimiento = new TabPage();
+            dataGridView1 = new DataGridView();
+            panel4 = new Panel();
+            groupBox1 = new GroupBox();
+            cbo_Trabajador = new ComboBox();
+            label6 = new Label();
+            textBox1 = new TextBox();
+            cbo_Perfil = new ComboBox();
+            textBox2 = new TextBox();
+            label5 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            panel3 = new Panel();
+            button1 = new Button();
             panel2 = new Panel();
             cbo_Estado = new ComboBox();
             label2 = new Label();
@@ -49,6 +62,10 @@
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             tpg_Lista.SuspendLayout();
             tpg_Mantenimiento.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            panel4.SuspendLayout();
+            groupBox1.SuspendLayout();
+            panel3.SuspendLayout();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgb_Perfiles).BeginInit();
@@ -68,6 +85,8 @@
             // 
             // tpg_Mantenimiento
             // 
+            tpg_Mantenimiento.Controls.Add(dataGridView1);
+            tpg_Mantenimiento.Controls.Add(panel4);
             tpg_Mantenimiento.Controls.Add(panel2);
             tpg_Mantenimiento.Controls.Add(panel1);
             tpg_Mantenimiento.Controls.Add(dgb_Perfiles);
@@ -79,6 +98,135 @@
             tpg_Mantenimiento.TabIndex = 1;
             tpg_Mantenimiento.Text = "Permisos";
             tpg_Mantenimiento.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Dock = DockStyle.Bottom;
+            dataGridView1.Location = new Point(3, 560);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.RowTemplate.Height = 29;
+            dataGridView1.Size = new Size(642, 243);
+            dataGridView1.TabIndex = 6;
+            // 
+            // panel4
+            // 
+            panel4.Controls.Add(groupBox1);
+            panel4.Controls.Add(panel3);
+            panel4.Location = new Point(0, 301);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(645, 253);
+            panel4.TabIndex = 5;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(cbo_Trabajador);
+            groupBox1.Controls.Add(label6);
+            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(cbo_Perfil);
+            groupBox1.Controls.Add(textBox2);
+            groupBox1.Controls.Add(label5);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(label4);
+            groupBox1.Dock = DockStyle.Fill;
+            groupBox1.Location = new Point(0, 0);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(645, 214);
+            groupBox1.TabIndex = 8;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Usuarios";
+            // 
+            // cbo_Trabajador
+            // 
+            cbo_Trabajador.FormattingEnabled = true;
+            cbo_Trabajador.Location = new Point(115, 48);
+            cbo_Trabajador.Name = "cbo_Trabajador";
+            cbo_Trabajador.Size = new Size(357, 28);
+            cbo_Trabajador.TabIndex = 0;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(60, 177);
+            label6.Name = "label6";
+            label6.Size = new Size(45, 20);
+            label6.TabIndex = 7;
+            label6.Text = "Perfil:";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(115, 90);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(232, 27);
+            textBox1.TabIndex = 1;
+            // 
+            // cbo_Perfil
+            // 
+            cbo_Perfil.FormattingEnabled = true;
+            cbo_Perfil.Location = new Point(115, 173);
+            cbo_Perfil.Name = "cbo_Perfil";
+            cbo_Perfil.Size = new Size(303, 28);
+            cbo_Perfil.TabIndex = 6;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(116, 131);
+            textBox2.Name = "textBox2";
+            textBox2.PasswordChar = '*';
+            textBox2.Size = new Size(231, 27);
+            textBox2.TabIndex = 2;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(22, 134);
+            label5.Name = "label5";
+            label5.Size = new Size(86, 20);
+            label5.TabIndex = 5;
+            label5.Text = "Contraseña:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(22, 51);
+            label3.Name = "label3";
+            label3.Size = new Size(84, 20);
+            label3.TabIndex = 3;
+            label3.Text = "Trabajador:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(44, 93);
+            label4.Name = "label4";
+            label4.Size = new Size(62, 20);
+            label4.TabIndex = 4;
+            label4.Text = "Usuario:";
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(button1);
+            panel3.Dock = DockStyle.Bottom;
+            panel3.Location = new Point(0, 214);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(645, 39);
+            panel3.TabIndex = 4;
+            // 
+            // button1
+            // 
+            button1.Dock = DockStyle.Left;
+            button1.Enabled = false;
+            button1.Image = Properties.Resources.diskette;
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(0, 0);
+            button1.Name = "button1";
+            button1.Size = new Size(106, 39);
+            button1.TabIndex = 2;
+            button1.Text = "Guardar";
+            button1.TextAlign = ContentAlignment.MiddleRight;
+            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button1.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -120,6 +268,7 @@
             // 
             // txt_Nombre
             // 
+            txt_Nombre.CharacterCasing = CharacterCasing.Upper;
             txt_Nombre.Location = new Point(75, 15);
             txt_Nombre.Name = "txt_Nombre";
             txt_Nombre.Size = new Size(239, 27);
@@ -218,14 +367,17 @@
             // 
             // dgb_Perfiles
             // 
+            dgb_Perfiles.AllowUserToAddRows = false;
+            dgb_Perfiles.AllowUserToDeleteRows = false;
+            dgb_Perfiles.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
             dgb_Perfiles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgb_Perfiles.Dock = DockStyle.Bottom;
+            dgb_Perfiles.GridColor = SystemColors.ButtonHighlight;
             dgb_Perfiles.Location = new Point(3, 110);
             dgb_Perfiles.Name = "dgb_Perfiles";
             dgb_Perfiles.RowHeadersWidth = 51;
             dgb_Perfiles.RowTemplate.Height = 29;
             dgb_Perfiles.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgb_Perfiles.Size = new Size(642, 693);
+            dgb_Perfiles.Size = new Size(642, 185);
             dgb_Perfiles.TabIndex = 1;
             dgb_Perfiles.DoubleClick += dgb_Perfiles_DoubleClick;
             dgb_Perfiles.MouseClick += dgb_Perfiles_MouseClick;
@@ -270,6 +422,11 @@
             Text = "frm_Permisos";
             tpg_Lista.ResumeLayout(false);
             tpg_Mantenimiento.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            panel4.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            panel3.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel1.ResumeLayout(false);
@@ -297,5 +454,18 @@
         private Button btn_Editar;
         private Button btn_Eliminar;
         private Button btn_Cerrar;
+        private Panel panel4;
+        private Panel panel3;
+        private Button button1;
+        private Label label6;
+        private ComboBox cbo_Perfil;
+        private Label label5;
+        private Label label4;
+        private Label label3;
+        private TextBox textBox2;
+        private TextBox textBox1;
+        private ComboBox cbo_Trabajador;
+        private GroupBox groupBox1;
+        private DataGridView dataGridView1;
     }
 }

@@ -20,5 +20,6 @@ namespace CEN.Entidad
         public DateOnly Usua_FechaModifica { get; set; }
         public String? Usua_UsuarioModifica { get; set; }
         public int Sucu_Id { get; set; }
+        public int Perf_Id { get; set; }
     }
 }

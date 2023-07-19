@@ -23,7 +23,7 @@ namespace CLN
                 sqlTransaction = sqlConnection.BeginTransaction();
 
                 cad_Permiso cad = new cad_Permiso();
-                response = cad.ListarPermiso(tipoConsulta, sqlConnection, sqlTransaction);
+                response = cad.ListarPermiso(tipoConsulta, 0, sqlConnection, sqlTransaction);
                 sqlTransaction.Commit();
                 return response;
             }

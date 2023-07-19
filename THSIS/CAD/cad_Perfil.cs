@@ -41,7 +41,7 @@ namespace CAD
             }
             return response;
         }
-        public ResponseHelper ListarPerfil(String tipoConsulta, SqlConnection conn, SqlTransaction sqlTransaction)
+        public ResponseHelper ListarPerfil(String tipoConsulta, int perf_Id, SqlConnection conn, SqlTransaction sqlTransaction)
         {
             ResponseHelper response = null;
             List<ent_Perfil> lista = new List<ent_Perfil>();
@@ -49,6 +49,7 @@ namespace CAD
             SqlCommand cmd = new SqlCommand("DEV.pa_Perfil_LISTAR", conn);
             cmd.Transaction = sqlTransaction;
             cmd.Parameters.Add(new SqlParameter("tipo", tipoConsulta));
+            cmd.Parameters.Add(new SqlParameter("perf_Id", perf_Id));
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             using (var reader = cmd.ExecuteReader())
             {
