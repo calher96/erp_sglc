@@ -1,4 +1,6 @@
-﻿using Principal.Operaciones;
+﻿using CEN.Entidad;
+using CEN.Helpers;
+using Principal.Operaciones;
 using Principal.Recursos_Humanos;
 using Principal.Seguridad;
 using System;
@@ -28,6 +30,10 @@ namespace Principal
             {
                 this.Dispose();
             }
+            else
+            {
+                cargarPermisos();
+            }
 
         }
 
@@ -40,6 +46,61 @@ namespace Principal
 
             abrirFormHijo(frm, "Trabajador");
 
+        }
+        private void cargarPermisos()
+        {
+            foreach (ent_Permiso permiso in StaticVariable.obj_Perfil.lista_Permiso)
+            {
+                Control[] Controls = this.Controls.Find("menuStrip1", true);
+                foreach (Control control in Controls)
+                {
+
+                    foreach (ToolStripDropDownItem item in ((MenuStrip)control).Items)
+                    {
+                        if (item.Name == permiso.perm_Control)
+                        {
+                            item.Visible = true;
+                            break;
+                        }
+                        else
+                        {
+                            ToolStripItemCollection itemsPadre = item.DropDownItems;
+                            foreach (ToolStripMenuItem itemPadre in itemsPadre)
+                            {
+                                if (itemPadre.Name == permiso.perm_Control)
+                                {
+                                    itemPadre.Visible = true;
+                                    break;
+                                }
+                                else
+                                {
+                                    ToolStripItemCollection itemsHijo = itemPadre.DropDownItems;
+                                    foreach (ToolStripMenuItem itemHijo in itemsHijo)
+                                    {
+                                        if (itemHijo.Name == permiso.perm_Control)
+                                        {
+                                            itemHijo.Visible = true;
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            ToolStripItemCollection itemsSubHijo = itemHijo.DropDownItems;
+                                            foreach (ToolStripMenuItem itemSubHijo in itemsSubHijo)
+                                            {
+                                                if (itemSubHijo.Name == permiso.perm_Control)
+                                                {
+                                                    itemSubHijo.Visible = true;
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
         private void abrirFormHijo(Object form, String titulo)
         {

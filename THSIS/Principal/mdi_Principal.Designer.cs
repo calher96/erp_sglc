@@ -48,8 +48,8 @@
             tsm_Trabajador = new ToolStripMenuItem();
             tsm_Seguridad = new ToolStripMenuItem();
             tsm_Configuracion = new ToolStripMenuItem();
-            tsm_CerrarSesion = new ToolStripMenuItem();
             tsm_PermisosPerfiles = new ToolStripMenuItem();
+            tsm_CerrarSesion = new ToolStripMenuItem();
             tsm_Reportes = new ToolStripMenuItem();
             tsm_Ayuda = new ToolStripMenuItem();
             tsm_Grifo = new ToolStripMenuItem();
@@ -87,12 +87,14 @@
             // 
             // menuStrip1
             // 
+            menuStrip1.GripStyle = ToolStripGripStyle.Visible;
             menuStrip1.ImageScalingSize = new Size(20, 20);
             menuStrip1.Items.AddRange(new ToolStripItem[] { tsm_Operaciones, tsm_Planeamiento, tsm_Administracion, tsm_Finanzas, tsm_Contabilidad, tsm_Mantenimiento, tsm_Neumaticos, tsm_Logistica, tsm_Personal, tsm_Seguridad, tsm_Configuracion, tsm_Reportes, tsm_Ayuda, tsm_Grifo });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(7, 3, 0, 3);
-            menuStrip1.Size = new Size(1758, 42);
+            menuStrip1.RenderMode = ToolStripRenderMode.Professional;
+            menuStrip1.Size = new Size(1541, 42);
             menuStrip1.TabIndex = 8;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -104,6 +106,7 @@
             tsm_Operaciones.Name = "tsm_Operaciones";
             tsm_Operaciones.Size = new Size(138, 36);
             tsm_Operaciones.Text = "Operaciones";
+            tsm_Operaciones.Visible = false;
             // 
             // tsm_GestionClientes
             // 
@@ -113,6 +116,7 @@
             tsm_GestionClientes.Name = "tsm_GestionClientes";
             tsm_GestionClientes.Size = new Size(236, 38);
             tsm_GestionClientes.Text = "Gestión de Clientes";
+            tsm_GestionClientes.Visible = false;
             // 
             // tsm_Clientes
             // 
@@ -121,6 +125,7 @@
             tsm_Clientes.Name = "tsm_Clientes";
             tsm_Clientes.Size = new Size(156, 38);
             tsm_Clientes.Text = "Clientes";
+            tsm_Clientes.Visible = false;
             tsm_Clientes.Click += clientesToolStripMenuItem_Click;
             // 
             // tsm_Planeamiento
@@ -130,6 +135,7 @@
             tsm_Planeamiento.Name = "tsm_Planeamiento";
             tsm_Planeamiento.Size = new Size(146, 36);
             tsm_Planeamiento.Text = "Planeamiento";
+            tsm_Planeamiento.Visible = false;
             // 
             // tsm_Administracion
             // 
@@ -138,6 +144,7 @@
             tsm_Administracion.Name = "tsm_Administracion";
             tsm_Administracion.Size = new Size(155, 36);
             tsm_Administracion.Text = "Administración";
+            tsm_Administracion.Visible = false;
             // 
             // tsm_Finanzas
             // 
@@ -146,6 +153,7 @@
             tsm_Finanzas.Name = "tsm_Finanzas";
             tsm_Finanzas.Size = new Size(111, 36);
             tsm_Finanzas.Text = "Finanzas";
+            tsm_Finanzas.Visible = false;
             // 
             // tsm_Contabilidad
             // 
@@ -154,6 +162,7 @@
             tsm_Contabilidad.Name = "tsm_Contabilidad";
             tsm_Contabilidad.Size = new Size(141, 36);
             tsm_Contabilidad.Text = "Contabilidad";
+            tsm_Contabilidad.Visible = false;
             // 
             // tsm_Mantenimiento
             // 
@@ -162,6 +171,7 @@
             tsm_Mantenimiento.Name = "tsm_Mantenimiento";
             tsm_Mantenimiento.Size = new Size(156, 36);
             tsm_Mantenimiento.Text = "Mantenimiento";
+            tsm_Mantenimiento.Visible = false;
             // 
             // tsm_Neumaticos
             // 
@@ -170,6 +180,7 @@
             tsm_Neumaticos.Name = "tsm_Neumaticos";
             tsm_Neumaticos.Size = new Size(134, 36);
             tsm_Neumaticos.Text = "Neumáticos";
+            tsm_Neumaticos.Visible = false;
             // 
             // tsm_Logistica
             // 
@@ -178,6 +189,7 @@
             tsm_Logistica.Name = "tsm_Logistica";
             tsm_Logistica.Size = new Size(114, 36);
             tsm_Logistica.Text = "Logística";
+            tsm_Logistica.Visible = false;
             // 
             // tsm_Personal
             // 
@@ -187,6 +199,7 @@
             tsm_Personal.Name = "tsm_Personal";
             tsm_Personal.Size = new Size(110, 36);
             tsm_Personal.Text = "Personal";
+            tsm_Personal.Visible = false;
             // 
             // tsm_Trabajador
             // 
@@ -204,6 +217,7 @@
             tsm_Seguridad.Name = "tsm_Seguridad";
             tsm_Seguridad.Size = new Size(123, 36);
             tsm_Seguridad.Text = "Seguridad";
+            tsm_Seguridad.Visible = false;
             // 
             // tsm_Configuracion
             // 
@@ -213,14 +227,7 @@
             tsm_Configuracion.Name = "tsm_Configuracion";
             tsm_Configuracion.Size = new Size(148, 36);
             tsm_Configuracion.Text = "Configuración";
-            // 
-            // tsm_CerrarSesion
-            // 
-            tsm_CerrarSesion.Image = (Image)resources.GetObject("tsm_CerrarSesion.Image");
-            tsm_CerrarSesion.ImageScaling = ToolStripItemImageScaling.None;
-            tsm_CerrarSesion.Name = "tsm_CerrarSesion";
-            tsm_CerrarSesion.Size = new Size(224, 38);
-            tsm_CerrarSesion.Text = "Cerrar Sesión";
+            tsm_Configuracion.Visible = false;
             // 
             // tsm_PermisosPerfiles
             // 
@@ -229,7 +236,17 @@
             tsm_PermisosPerfiles.Name = "tsm_PermisosPerfiles";
             tsm_PermisosPerfiles.Size = new Size(224, 38);
             tsm_PermisosPerfiles.Text = "Permisos y Perfiles";
+            tsm_PermisosPerfiles.Visible = false;
             tsm_PermisosPerfiles.Click += permisosYPerfilesToolStripMenuItem_Click;
+            // 
+            // tsm_CerrarSesion
+            // 
+            tsm_CerrarSesion.Image = (Image)resources.GetObject("tsm_CerrarSesion.Image");
+            tsm_CerrarSesion.ImageScaling = ToolStripItemImageScaling.None;
+            tsm_CerrarSesion.Name = "tsm_CerrarSesion";
+            tsm_CerrarSesion.Size = new Size(224, 38);
+            tsm_CerrarSesion.Text = "Cerrar Sesión";
+            tsm_CerrarSesion.Visible = false;
             // 
             // tsm_Reportes
             // 
@@ -238,6 +255,7 @@
             tsm_Reportes.Name = "tsm_Reportes";
             tsm_Reportes.Size = new Size(114, 36);
             tsm_Reportes.Text = "Reportes";
+            tsm_Reportes.Visible = false;
             // 
             // tsm_Ayuda
             // 
@@ -246,6 +264,7 @@
             tsm_Ayuda.Name = "tsm_Ayuda";
             tsm_Ayuda.Size = new Size(97, 36);
             tsm_Ayuda.Text = "Ayuda";
+            tsm_Ayuda.Visible = false;
             // 
             // tsm_Grifo
             // 
@@ -253,6 +272,7 @@
             tsm_Grifo.Name = "tsm_Grifo";
             tsm_Grifo.Size = new Size(76, 36);
             tsm_Grifo.Text = "Grifo";
+            tsm_Grifo.Visible = false;
             // 
             // panel1
             // 
@@ -263,14 +283,14 @@
             panel1.Dock = DockStyle.Bottom;
             panel1.Location = new Point(0, 661);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1758, 36);
+            panel1.Size = new Size(1541, 36);
             panel1.TabIndex = 11;
             // 
             // lbl_Hora
             // 
             lbl_Hora.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lbl_Hora.AutoSize = true;
-            lbl_Hora.Location = new Point(1701, 9);
+            lbl_Hora.Location = new Point(1483, 9);
             lbl_Hora.Name = "lbl_Hora";
             lbl_Hora.Size = new Size(50, 20);
             lbl_Hora.TabIndex = 3;
@@ -288,7 +308,7 @@
             // lbl_Usuario
             // 
             lbl_Usuario.AutoSize = true;
-            lbl_Usuario.Location = new Point(72, 10);
+            lbl_Usuario.Location = new Point(72, 11);
             lbl_Usuario.Name = "lbl_Usuario";
             lbl_Usuario.Size = new Size(50, 20);
             lbl_Usuario.TabIndex = 1;
@@ -315,7 +335,7 @@
             tbc_Principal.Location = new Point(0, 42);
             tbc_Principal.Name = "tbc_Principal";
             tbc_Principal.SelectedIndex = 0;
-            tbc_Principal.Size = new Size(1758, 619);
+            tbc_Principal.Size = new Size(1541, 619);
             tbc_Principal.TabIndex = 12;
             // 
             // tabPage1
@@ -324,7 +344,7 @@
             tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1750, 586);
+            tabPage1.Size = new Size(1533, 586);
             tabPage1.TabIndex = 3;
             tabPage1.Text = "Principal";
             tabPage1.UseVisualStyleBackColor = true;
@@ -337,7 +357,7 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(3, 3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1744, 580);
+            pictureBox1.Size = new Size(1527, 580);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -347,7 +367,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(1758, 697);
+            ClientSize = new Size(1541, 697);
             Controls.Add(tbc_Principal);
             Controls.Add(panel1);
             Controls.Add(menuStrip1);
@@ -401,7 +421,7 @@
         private ToolStripMenuItem tsm_PermisosPerfiles;
         private TabPage tabPage1;
         private PictureBox pictureBox1;
-        public static TabControl tbc_Principal;
+        public TabControl tbc_Principal;
     }
 }
 

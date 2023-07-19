@@ -15,5 +15,6 @@ namespace CEN.Entidad
         public int perm_OrdenPadre { get; set; }
         public int perm_OrdenHijo { get; set; }
         public int perm_OrdenSubHijo { get; set; }
+        public String perm_Control { get; set; }
     }
 }

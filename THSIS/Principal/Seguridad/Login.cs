@@ -37,10 +37,16 @@ namespace Principal.Seguridad
                 User.Usua_Usuario = txtUser.Text;
                 User.Usua_Password = txtPassword.Text;
                 cln_Login cln = new cln_Login();
+                cln_Perfil clnPerfil = new cln_Perfil();
                 ResponseHelper response = cln.iniciarSesion(User);
                 if (response.codError == 0)
                 {
                     MessageBox.Show(response.mensajeError + " " + StaticVariable.obj_Usuario.Usua_Usuario, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    List<ent_Perfil> listaPerfil = (List<ent_Perfil>)clnPerfil.ListarPerfil("DET", StaticVariable.obj_Usuario.Perf_Id).response;
+                    foreach (var perfil in listaPerfil)
+                    {
+                        StaticVariable.obj_Perfil = perfil;
+                    }
                     mdi_Principal.status_login = 1;
                     this.Dispose();
                 }

@@ -32,6 +32,7 @@ namespace CAD
                         permiso.perm_OrdenPadre = (int)reader["perm_OrdenPadre"];
                         permiso.perm_OrdenHijo = (int)reader["perm_OrdenHijo"];
                         permiso.perm_OrdenSubHijo = (int)reader["perm_OrdenSubHijo"];
+                        permiso.perm_Control = (String)reader["perm_Control"];
                         lista.Add(permiso);
                         
                     }

@@ -32,11 +32,16 @@ namespace CAD
                             usuario.Usua_Usuario = (String)reader["usua_Usuario"];
                             usuario.Usua_Estado = (int)reader["usua_Estado"];
                             usuario.Trab_Id = (int)reader["trab_Id"];
+                            usuario.Perf_Id = (int)reader["perf_Id"];
                             StaticVariable.obj_Usuario = usuario;
                         }
                     }
 
                 }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
             finally
             {

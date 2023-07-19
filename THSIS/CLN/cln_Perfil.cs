@@ -62,9 +62,10 @@ namespace CLN
                 {
                     tipoConsulta = "I";
                 }
+                cadPermiso.RegistrarPerfilPermiso("D", ((ent_Perfil)response.response).perf_Id, 0, perfil.perf_Usuario, 0, sqlConnection, sqlTransaction);
+                    
                 foreach (var permiso in perfil.lista_Permiso)
                 {
-                    cadPermiso.RegistrarPerfilPermiso("D", ((ent_Perfil)response.response).perf_Id, permiso.perm_Id, perfil.perf_Usuario, 0, sqlConnection, sqlTransaction);
                     cadPermiso.RegistrarPerfilPermiso(tipoConsulta, ((ent_Perfil)response.response).perf_Id, permiso.perm_Id, perfil.perf_Usuario,0, sqlConnection, sqlTransaction);
                 }
                 sqlTransaction.Commit();
