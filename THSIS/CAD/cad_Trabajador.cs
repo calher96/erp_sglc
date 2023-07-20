@@ -82,6 +82,7 @@ namespace CAD
                     response.Area_Nombre = (String)reader["area_Nombre"];
                     response.Trab_RelacionLaboralDescripcion = (String)reader["trab_RelacionLaboral"];
                     response.Trab_Estado = (int)reader["trab_Estado"];
+                    response.Trab_NombresCompletos = response.Trab_Nombres + " " + response.Trab_ApellidoPaterno + " " + response.Trab_ApellidoMaterno;
                     lista.Add(response);
                 }
 

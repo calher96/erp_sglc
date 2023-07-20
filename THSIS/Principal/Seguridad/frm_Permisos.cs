@@ -11,6 +11,7 @@ namespace Principal.Seguridad
         #region "Variables"
         public static ent_Perfil perfil = new ent_Perfil();
         public static Boolean editMode = false;
+        public static ent_Usuario usuario = new ent_Usuario();
         #endregion
         #region "Consturctor"
         public frm_Permisos()
@@ -111,7 +112,7 @@ namespace Principal.Seguridad
                 trabajador.Trab_Categoria = 0;
                 cbo_Trabajador.DataSource = cln.ListarTrabajador(trabajador);
                 cbo_Trabajador.ValueMember = "Trab_Id";
-                cbo_Trabajador.DisplayMember = "Trab_Nombres";
+                cbo_Trabajador.DisplayMember = "Trab_NombresCompletos";
             }
             catch (Exception ex)
             {
@@ -257,6 +258,21 @@ namespace Principal.Seguridad
         }
         #endregion
         #region "Eventos"
+        private void cbo_Trabajador_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                ent_Trabajador trabajador = (ent_Trabajador)cbo_Trabajador.SelectedItem;
+
+                txt_Usuario.Text = trabajador.Trab_Nombres[0] + "";
+                txt_Usuario.Text = txt_Usuario.Text + trabajador.Trab_ApellidoPaterno.Substring(0, 6);
+                txt_Usuario.Text = txt_Usuario.Text + trabajador.Trab_ApellidoMaterno[0];
+            }
+            catch
+            {
+
+            }
+        }
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
             try
@@ -473,5 +489,78 @@ namespace Principal.Seguridad
             mdi_Principal.tbc_Principal.TabPages.Remove(tp);
         }
         #endregion
+
+
+        private void construirUsuario()
+        {
+            usuario.Usua_Estado = 0;
+            usuario.Usua_Marcabaja = 0;
+            usuario.Usua_Password = txt_Password.Text;
+            usuario.Usua_Usuario = txt_Usuario.Text;
+            usuario.Trab_Id = ((ent_Trabajador)cbo_Trabajador.SelectedItem).Trab_Id;
+            usuario.Perf_Id = ((ent_Perfil)cbo_Perfil.SelectedItem).perf_Id;
+        }
+        private Boolean validarUsuario()
+        {
+            String mensaje = "";
+            Boolean response = false;
+            if(cbo_Trabajador.SelectedIndex > -1)
+            {
+                
+                response = true;
+            }
+            else
+            {
+                mensaje = "Por favor, seleccione un trabajador";
+                response = false;
+            }
+            if(cbo_Perfil.SelectedIndex > -1)
+            {
+                response = true;
+            }
+            else
+            {
+                mensaje = "Por favor, seleccione un perfil";
+                response = false;
+            }
+            if(txt_Usuario.Text.Length > 0)
+            {
+                response = true;
+            }
+            else
+            {
+                mensaje = "Por favor, ingrese un usuario";
+                response = false;
+            }
+            if(txt_Password.Text.Length > 0)
+            {
+                mensaje = "Por favor, ingrese una contraseña";
+                response = true;
+            }
+            else
+            {
+                mensaje = "Por favor, ingrese una contraseña";
+                response = false;
+            }
+            if(mensaje.Length > 0)
+            {
+                MessageBox.Show(mensaje, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return response;
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(validarUsuario())
+                {
+                    construirUsuario();
+                }
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

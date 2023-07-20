@@ -14,6 +14,7 @@ namespace CEN.Entidad
         public String? Trab_Nombres { get; set; }
         public String? Trab_ApellidoPaterno { get; set; }
         public String? Trab_ApellidoMaterno { get; set; }
+        public String? Trab_NombresCompletos { get; set; }
         public int Trab_EstadoCivil { get; set; }
         public int Trab_Estado { get; set; }
         public int Trab_Marcabaja { get; set; }

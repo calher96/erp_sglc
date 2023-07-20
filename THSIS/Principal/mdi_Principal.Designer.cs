@@ -37,6 +37,7 @@
             tsm_Operaciones = new ToolStripMenuItem();
             tsm_GestionClientes = new ToolStripMenuItem();
             tsm_Clientes = new ToolStripMenuItem();
+            tsm_Carga = new ToolStripMenuItem();
             tsm_Planeamiento = new ToolStripMenuItem();
             tsm_Administracion = new ToolStripMenuItem();
             tsm_Finanzas = new ToolStripMenuItem();
@@ -100,7 +101,7 @@
             // 
             // tsm_Operaciones
             // 
-            tsm_Operaciones.DropDownItems.AddRange(new ToolStripItem[] { tsm_GestionClientes });
+            tsm_Operaciones.DropDownItems.AddRange(new ToolStripItem[] { tsm_GestionClientes, tsm_Carga });
             tsm_Operaciones.Image = (Image)resources.GetObject("tsm_Operaciones.Image");
             tsm_Operaciones.ImageScaling = ToolStripItemImageScaling.None;
             tsm_Operaciones.Name = "tsm_Operaciones";
@@ -114,7 +115,7 @@
             tsm_GestionClientes.Image = (Image)resources.GetObject("tsm_GestionClientes.Image");
             tsm_GestionClientes.ImageScaling = ToolStripItemImageScaling.None;
             tsm_GestionClientes.Name = "tsm_GestionClientes";
-            tsm_GestionClientes.Size = new Size(236, 38);
+            tsm_GestionClientes.Size = new Size(231, 38);
             tsm_GestionClientes.Text = "Gestión de Clientes";
             tsm_GestionClientes.Visible = false;
             // 
@@ -127,6 +128,15 @@
             tsm_Clientes.Text = "Clientes";
             tsm_Clientes.Visible = false;
             tsm_Clientes.Click += clientesToolStripMenuItem_Click;
+            // 
+            // tsm_Carga
+            // 
+            tsm_Carga.Image = (Image)resources.GetObject("tsm_Carga.Image");
+            tsm_Carga.ImageScaling = ToolStripItemImageScaling.None;
+            tsm_Carga.Name = "tsm_Carga";
+            tsm_Carga.Size = new Size(231, 38);
+            tsm_Carga.Text = "Carga";
+            tsm_Carga.Visible = false;
             // 
             // tsm_Planeamiento
             // 
@@ -421,6 +431,7 @@
         private ToolStripMenuItem tsm_PermisosPerfiles;
         private TabPage tabPage1;
         private PictureBox pictureBox1;
+        private ToolStripMenuItem tsm_Carga;
         public TabControl tbc_Principal;
     }
 }

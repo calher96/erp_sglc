@@ -60,6 +60,7 @@ namespace Principal
                         if (item.Name == permiso.perm_Control)
                         {
                             item.Visible = true;
+                            item.Tag = permiso;
                             break;
                         }
                         else
@@ -70,6 +71,7 @@ namespace Principal
                                 if (itemPadre.Name == permiso.perm_Control)
                                 {
                                     itemPadre.Visible = true;
+                                    itemPadre.Tag = permiso;
                                     break;
                                 }
                                 else
@@ -80,6 +82,7 @@ namespace Principal
                                         if (itemHijo.Name == permiso.perm_Control)
                                         {
                                             itemHijo.Visible = true;
+                                            itemHijo.Tag = permiso;
                                             break;
                                         }
                                         else
@@ -90,6 +93,7 @@ namespace Principal
                                                 if (itemSubHijo.Name == permiso.perm_Control)
                                                 {
                                                     itemSubHijo.Visible = true;
+                                                    itemSubHijo.Tag = permiso;
                                                     break;
                                                 }
                                             }

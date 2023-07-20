@@ -36,9 +36,9 @@
             groupBox1 = new GroupBox();
             cbo_Trabajador = new ComboBox();
             label6 = new Label();
-            textBox1 = new TextBox();
+            txt_Usuario = new TextBox();
             cbo_Perfil = new ComboBox();
-            textBox2 = new TextBox();
+            txt_Password = new TextBox();
             label5 = new Label();
             label3 = new Label();
             label4 = new Label();
@@ -123,9 +123,9 @@
             // 
             groupBox1.Controls.Add(cbo_Trabajador);
             groupBox1.Controls.Add(label6);
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(txt_Usuario);
             groupBox1.Controls.Add(cbo_Perfil);
-            groupBox1.Controls.Add(textBox2);
+            groupBox1.Controls.Add(txt_Password);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label4);
@@ -144,6 +144,7 @@
             cbo_Trabajador.Name = "cbo_Trabajador";
             cbo_Trabajador.Size = new Size(357, 28);
             cbo_Trabajador.TabIndex = 0;
+            cbo_Trabajador.SelectedIndexChanged += cbo_Trabajador_SelectedIndexChanged;
             // 
             // label6
             // 
@@ -154,12 +155,12 @@
             label6.TabIndex = 7;
             label6.Text = "Perfil:";
             // 
-            // textBox1
+            // txt_Usuario
             // 
-            textBox1.Location = new Point(115, 90);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(232, 27);
-            textBox1.TabIndex = 1;
+            txt_Usuario.Location = new Point(115, 90);
+            txt_Usuario.Name = "txt_Usuario";
+            txt_Usuario.Size = new Size(232, 27);
+            txt_Usuario.TabIndex = 1;
             // 
             // cbo_Perfil
             // 
@@ -169,13 +170,13 @@
             cbo_Perfil.Size = new Size(303, 28);
             cbo_Perfil.TabIndex = 6;
             // 
-            // textBox2
+            // txt_Password
             // 
-            textBox2.Location = new Point(116, 131);
-            textBox2.Name = "textBox2";
-            textBox2.PasswordChar = '*';
-            textBox2.Size = new Size(231, 27);
-            textBox2.TabIndex = 2;
+            txt_Password.Location = new Point(116, 131);
+            txt_Password.Name = "txt_Password";
+            txt_Password.PasswordChar = '*';
+            txt_Password.Size = new Size(231, 27);
+            txt_Password.TabIndex = 2;
             // 
             // label5
             // 
@@ -227,6 +228,7 @@
             button1.TextAlign = ContentAlignment.MiddleRight;
             button1.TextImageRelation = TextImageRelation.ImageBeforeText;
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // panel2
             // 
@@ -462,8 +464,8 @@
         private Label label5;
         private Label label4;
         private Label label3;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox txt_Password;
+        private TextBox txt_Usuario;
         private ComboBox cbo_Trabajador;
         private GroupBox groupBox1;
         private DataGridView dataGridView1;
