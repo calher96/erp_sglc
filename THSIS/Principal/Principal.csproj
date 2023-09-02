@@ -8,6 +8,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <StartupObject>Principal.Program</StartupObject>
     <AssemblyName>ERP-SGLC</AssemblyName>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>

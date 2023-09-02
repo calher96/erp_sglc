@@ -1,0 +1,15 @@
+D:\THSIS\Repositorios\erp_sglc\THSIS\CAD\bin\Release\net6.0\CAD.deps.json
+D:\THSIS\Repositorios\erp_sglc\THSIS\CAD\bin\Release\net6.0\CAD.dll
+D:\THSIS\Repositorios\erp_sglc\THSIS\CAD\bin\Release\net6.0\CAD.pdb
+D:\THSIS\Repositorios\erp_sglc\THSIS\CAD\bin\Release\net6.0\CEN.dll
+D:\THSIS\Repositorios\erp_sglc\THSIS\CAD\bin\Release\net6.0\CEN.pdb
+D:\THSIS\Repositorios\erp_sglc\THSIS\CAD\obj\Release\net6.0\CAD.csproj.AssemblyReference.cache
+D:\THSIS\Repositorios\erp_sglc\THSIS\CAD\obj\Release\net6.0\CAD.GeneratedMSBuildEditorConfig.editorconfig
+D:\THSIS\Repositorios\erp_sglc\THSIS\CAD\obj\Release\net6.0\CAD.AssemblyInfoInputs.cache
+D:\THSIS\Repositorios\erp_sglc\THSIS\CAD\obj\Release\net6.0\CAD.AssemblyInfo.cs
+D:\THSIS\Repositorios\erp_sglc\THSIS\CAD\obj\Release\net6.0\CAD.csproj.CoreCompileInputs.cache
+D:\THSIS\Repositorios\erp_sglc\THSIS\CAD\obj\Release\net6.0\CAD.csproj.CopyComplete
+D:\THSIS\Repositorios\erp_sglc\THSIS\CAD\obj\Release\net6.0\CAD.dll
+D:\THSIS\Repositorios\erp_sglc\THSIS\CAD\obj\Release\net6.0\refint\CAD.dll
+D:\THSIS\Repositorios\erp_sglc\THSIS\CAD\obj\Release\net6.0\CAD.pdb
+D:\THSIS\Repositorios\erp_sglc\THSIS\CAD\obj\Release\net6.0\ref\CAD.dll

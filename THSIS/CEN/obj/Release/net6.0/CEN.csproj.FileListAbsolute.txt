@@ -1,0 +1,11 @@
+D:\THSIS\Repositorios\erp_sglc\THSIS\CEN\bin\Release\net6.0\CEN.deps.json
+D:\THSIS\Repositorios\erp_sglc\THSIS\CEN\bin\Release\net6.0\CEN.dll
+D:\THSIS\Repositorios\erp_sglc\THSIS\CEN\bin\Release\net6.0\CEN.pdb
+D:\THSIS\Repositorios\erp_sglc\THSIS\CEN\obj\Release\net6.0\CEN.GeneratedMSBuildEditorConfig.editorconfig
+D:\THSIS\Repositorios\erp_sglc\THSIS\CEN\obj\Release\net6.0\CEN.AssemblyInfoInputs.cache
+D:\THSIS\Repositorios\erp_sglc\THSIS\CEN\obj\Release\net6.0\CEN.AssemblyInfo.cs
+D:\THSIS\Repositorios\erp_sglc\THSIS\CEN\obj\Release\net6.0\CEN.csproj.CoreCompileInputs.cache
+D:\THSIS\Repositorios\erp_sglc\THSIS\CEN\obj\Release\net6.0\CEN.dll
+D:\THSIS\Repositorios\erp_sglc\THSIS\CEN\obj\Release\net6.0\refint\CEN.dll
+D:\THSIS\Repositorios\erp_sglc\THSIS\CEN\obj\Release\net6.0\CEN.pdb
+D:\THSIS\Repositorios\erp_sglc\THSIS\CEN\obj\Release\net6.0\ref\CEN.dll

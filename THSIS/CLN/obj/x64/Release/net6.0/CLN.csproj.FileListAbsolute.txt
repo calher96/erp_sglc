@@ -1,0 +1,17 @@
+D:\THSIS\Repositorios\erp_sglc\THSIS\CLN\bin\x64\Release\net6.0\CLN.deps.json
+D:\THSIS\Repositorios\erp_sglc\THSIS\CLN\bin\x64\Release\net6.0\CLN.dll
+D:\THSIS\Repositorios\erp_sglc\THSIS\CLN\bin\x64\Release\net6.0\CLN.pdb
+D:\THSIS\Repositorios\erp_sglc\THSIS\CLN\bin\x64\Release\net6.0\CAD.dll
+D:\THSIS\Repositorios\erp_sglc\THSIS\CLN\bin\x64\Release\net6.0\CEN.dll
+D:\THSIS\Repositorios\erp_sglc\THSIS\CLN\bin\x64\Release\net6.0\CAD.pdb
+D:\THSIS\Repositorios\erp_sglc\THSIS\CLN\bin\x64\Release\net6.0\CEN.pdb
+D:\THSIS\Repositorios\erp_sglc\THSIS\CLN\obj\x64\Release\net6.0\CLN.csproj.AssemblyReference.cache
+D:\THSIS\Repositorios\erp_sglc\THSIS\CLN\obj\x64\Release\net6.0\CLN.GeneratedMSBuildEditorConfig.editorconfig
+D:\THSIS\Repositorios\erp_sglc\THSIS\CLN\obj\x64\Release\net6.0\CLN.AssemblyInfoInputs.cache
+D:\THSIS\Repositorios\erp_sglc\THSIS\CLN\obj\x64\Release\net6.0\CLN.AssemblyInfo.cs
+D:\THSIS\Repositorios\erp_sglc\THSIS\CLN\obj\x64\Release\net6.0\CLN.csproj.CoreCompileInputs.cache
+D:\THSIS\Repositorios\erp_sglc\THSIS\CLN\obj\x64\Release\net6.0\CLN.csproj.CopyComplete
+D:\THSIS\Repositorios\erp_sglc\THSIS\CLN\obj\x64\Release\net6.0\CLN.dll
+D:\THSIS\Repositorios\erp_sglc\THSIS\CLN\obj\x64\Release\net6.0\refint\CLN.dll
+D:\THSIS\Repositorios\erp_sglc\THSIS\CLN\obj\x64\Release\net6.0\CLN.pdb
+D:\THSIS\Repositorios\erp_sglc\THSIS\CLN\obj\x64\Release\net6.0\ref\CLN.dll

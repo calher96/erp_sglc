@@ -28,20 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tpg_Lista = new TabControl();
+            tpc_RecepcionCarga = new TabControl();
+            tpg_Lista = new TabPage();
             tpg_Mantenimiento = new TabPage();
-            tpg_Lista.SuspendLayout();
+            tpc_RecepcionCarga.SuspendLayout();
             SuspendLayout();
+            // 
+            // tpc_RecepcionCarga
+            // 
+            tpc_RecepcionCarga.Controls.Add(tpg_Lista);
+            tpc_RecepcionCarga.Controls.Add(tpg_Mantenimiento);
+            tpc_RecepcionCarga.Dock = DockStyle.Fill;
+            tpc_RecepcionCarga.Location = new Point(0, 0);
+            tpc_RecepcionCarga.Name = "tpc_RecepcionCarga";
+            tpc_RecepcionCarga.SelectedIndex = 0;
+            tpc_RecepcionCarga.Size = new Size(1684, 834);
+            tpc_RecepcionCarga.TabIndex = 0;
             // 
             // tpg_Lista
             // 
-            tpg_Lista.Controls.Add(tpg_Mantenimiento);
-            tpg_Lista.Dock = DockStyle.Fill;
-            tpg_Lista.Location = new Point(0, 0);
+            tpg_Lista.Location = new Point(4, 29);
             tpg_Lista.Name = "tpg_Lista";
-            tpg_Lista.SelectedIndex = 0;
-            tpg_Lista.Size = new Size(1684, 834);
+            tpg_Lista.Padding = new Padding(3);
+            tpg_Lista.Size = new Size(1676, 801);
             tpg_Lista.TabIndex = 0;
+            tpg_Lista.Text = "Lista";
+            tpg_Lista.UseVisualStyleBackColor = true;
             // 
             // tpg_Mantenimiento
             // 
@@ -58,16 +70,17 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1684, 834);
-            Controls.Add(tpg_Lista);
+            Controls.Add(tpc_RecepcionCarga);
             Name = "frm_RecepcionCarga";
             Text = "frm_RecepcionCarga";
-            tpg_Lista.ResumeLayout(false);
+            tpc_RecepcionCarga.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private TabControl tpg_Lista;
+        private TabControl tpc_RecepcionCarga;
+        private TabPage tpg_Lista;
         private TabPage tpg_Mantenimiento;
     }
 }

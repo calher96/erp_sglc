@@ -432,7 +432,7 @@
         private TabPage tabPage1;
         private PictureBox pictureBox1;
         private ToolStripMenuItem tsm_Carga;
-        public TabControl tbc_Principal;
+        public static TabControl tbc_Principal;
     }
 }
 

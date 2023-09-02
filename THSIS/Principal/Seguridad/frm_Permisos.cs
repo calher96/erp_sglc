@@ -21,6 +21,64 @@ namespace Principal.Seguridad
         }
         #endregion
         #region "Métodos"
+        private void construirUsuario()
+        {
+            usuario.Usua_Estado = 1;
+            usuario.Usua_Marcabaja = 0;
+            usuario.Usua_Password = txt_Password.Text;
+            usuario.Usua_Usuario = txt_Usuario.Text;
+            usuario.Trab_Id = ((ent_Trabajador)cbo_Trabajador.SelectedItem).Trab_Id;
+            usuario.Perf_Id = ((ent_Perfil)cbo_Perfil.SelectedItem).perf_Id;
+            usuario.Usua_UsuarioRegistro = StaticVariable.obj_Usuario.Usua_Usuario;
+            usuario.Sucu_Id = 2;
+        }
+        private Boolean validarUsuario()
+        {
+            String mensaje = "";
+            Boolean response = false;
+            if (cbo_Trabajador.SelectedIndex > -1)
+            {
+
+                response = true;
+            }
+            else
+            {
+                mensaje = "Por favor, seleccione un trabajador";
+                response = false;
+            }
+            if (cbo_Perfil.SelectedIndex > -1)
+            {
+                response = true;
+            }
+            else
+            {
+                mensaje = "Por favor, seleccione un perfil";
+                response = false;
+            }
+            if (txt_Usuario.Text.Length > 0)
+            {
+                response = true;
+            }
+            else
+            {
+                mensaje = "Por favor, ingrese un usuario";
+                response = false;
+            }
+            if (txt_Password.Text.Length > 0)
+            {
+                response = true;
+            }
+            else
+            {
+                mensaje = "Por favor, ingrese una contraseña";
+                response = false;
+            }
+            if (mensaje.Length > 0)
+            {
+                MessageBox.Show(mensaje, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return response;
+        }
         public void cargarPermisoPerfil(List<ent_Permiso> lista_Permiso)
         {
             foreach (var ent_Permiso in lista_Permiso)
@@ -258,6 +316,31 @@ namespace Principal.Seguridad
         }
         #endregion
         #region "Eventos"
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (validarUsuario())
+                {
+                    ResponseHelper response;
+                    construirUsuario();
+                    cln_Usuario cln = new cln_Usuario();
+                    response = cln.guardarUsuario(usuario, "I");
+                    if (response.codError == 0)
+                    {
+                        MessageBox.Show(response.mensajeError, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show(response.mensajeError, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         private void cbo_Trabajador_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -489,78 +572,7 @@ namespace Principal.Seguridad
             mdi_Principal.tbc_Principal.TabPages.Remove(tp);
         }
         #endregion
-
-
-        private void construirUsuario()
-        {
-            usuario.Usua_Estado = 0;
-            usuario.Usua_Marcabaja = 0;
-            usuario.Usua_Password = txt_Password.Text;
-            usuario.Usua_Usuario = txt_Usuario.Text;
-            usuario.Trab_Id = ((ent_Trabajador)cbo_Trabajador.SelectedItem).Trab_Id;
-            usuario.Perf_Id = ((ent_Perfil)cbo_Perfil.SelectedItem).perf_Id;
-        }
-        private Boolean validarUsuario()
-        {
-            String mensaje = "";
-            Boolean response = false;
-            if(cbo_Trabajador.SelectedIndex > -1)
-            {
-                
-                response = true;
-            }
-            else
-            {
-                mensaje = "Por favor, seleccione un trabajador";
-                response = false;
-            }
-            if(cbo_Perfil.SelectedIndex > -1)
-            {
-                response = true;
-            }
-            else
-            {
-                mensaje = "Por favor, seleccione un perfil";
-                response = false;
-            }
-            if(txt_Usuario.Text.Length > 0)
-            {
-                response = true;
-            }
-            else
-            {
-                mensaje = "Por favor, ingrese un usuario";
-                response = false;
-            }
-            if(txt_Password.Text.Length > 0)
-            {
-                mensaje = "Por favor, ingrese una contraseña";
-                response = true;
-            }
-            else
-            {
-                mensaje = "Por favor, ingrese una contraseña";
-                response = false;
-            }
-            if(mensaje.Length > 0)
-            {
-                MessageBox.Show(mensaje, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return response;
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if(validarUsuario())
-                {
-                    construirUsuario();
-                }
-            }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
-        }
+        
+        
     }
 }
