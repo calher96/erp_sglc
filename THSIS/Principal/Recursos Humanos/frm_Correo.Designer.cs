@@ -109,6 +109,7 @@
             btn_Quitar.Text = "Quitar";
             btn_Quitar.TextAlign = ContentAlignment.MiddleRight;
             btn_Quitar.UseVisualStyleBackColor = true;
+            btn_Quitar.Click += btn_Quitar_Click;
             // 
             // btn_Cancelar
             // 

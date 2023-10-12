@@ -108,7 +108,7 @@
             label25 = new Label();
             cbo_EstadoTrabajador = new ComboBox();
             label26 = new Label();
-            textBox10 = new TextBox();
+            txt_Codigo = new TextBox();
             label27 = new Label();
             tabPage4 = new TabPage();
             groupBox6 = new GroupBox();
@@ -132,8 +132,8 @@
             txt_Celular = new TextBox();
             txt_Telefono = new TextBox();
             txt_Correo = new TextBox();
-            button3 = new Button();
-            button2 = new Button();
+            btn_Celular = new Button();
+            btn_Telefono = new Button();
             btn_Correo = new Button();
             groupBox2 = new GroupBox();
             cbo_Distrito = new ComboBox();
@@ -202,7 +202,6 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(147, 27);
             textBox2.TabIndex = 0;
-            textBox2.Leave += textBox2_Leave;
             // 
             // textBox3
             // 
@@ -255,6 +254,7 @@
             dgb_Lista.Size = new Size(1543, 722);
             dgb_Lista.StandardTab = true;
             dgb_Lista.TabIndex = 2;
+            dgb_Lista.CellDoubleClick += dgb_Lista_CellDoubleClick;
             dgb_Lista.CellValueChanged += dgb_Lista_CellValueChanged;
             dgb_Lista.DefaultValuesNeeded += dgb_Lista_DefaultValuesNeeded;
             // 
@@ -347,7 +347,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.LightBlue;
+            panel1.BackColor = Color.Azure;
             panel1.BorderStyle = BorderStyle.Fixed3D;
             panel1.Controls.Add(label2);
             panel1.Controls.Add(panel3);
@@ -381,9 +381,9 @@
             panel3.Controls.Add(cbo_Color_Actividad);
             panel3.Controls.Add(cbo_Color_Baja);
             panel3.Dock = DockStyle.Right;
-            panel3.Location = new Point(820, 0);
+            panel3.Location = new Point(875, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(719, 67);
+            panel3.Size = new Size(664, 67);
             panel3.TabIndex = 5;
             // 
             // label5
@@ -512,7 +512,7 @@
             tabPage1.Controls.Add(groupBox1);
             tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3, 3, 3, 3);
+            tabPage1.Padding = new Padding(3);
             tabPage1.Size = new Size(1535, 807);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Datos Personales";
@@ -569,7 +569,7 @@
             tabPage3.Controls.Add(groupBox4);
             tabPage3.Location = new Point(4, 29);
             tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3, 3, 3, 3);
+            tabPage3.Padding = new Padding(3);
             tabPage3.Size = new Size(1521, 428);
             tabPage3.TabIndex = 0;
             tabPage3.Text = "Datos Laborales";
@@ -577,7 +577,7 @@
             // 
             // groupBox5
             // 
-            groupBox5.BackColor = Color.LightBlue;
+            groupBox5.BackColor = Color.Azure;
             groupBox5.Controls.Add(button13);
             groupBox5.Controls.Add(label34);
             groupBox5.Controls.Add(textBox3);
@@ -679,7 +679,7 @@
             // 
             // groupBox3
             // 
-            groupBox3.BackColor = Color.LightBlue;
+            groupBox3.BackColor = Color.Azure;
             groupBox3.Controls.Add(tabControl4);
             groupBox3.Dock = DockStyle.Top;
             groupBox3.Location = new Point(3, 114);
@@ -705,7 +705,7 @@
             tabPage6.Controls.Add(dgb_ListaOcupacion);
             tabPage6.Location = new Point(4, 29);
             tabPage6.Name = "tabPage6";
-            tabPage6.Padding = new Padding(3, 3, 3, 3);
+            tabPage6.Padding = new Padding(3);
             tabPage6.Size = new Size(1501, 152);
             tabPage6.TabIndex = 0;
             tabPage6.Text = "Listado";
@@ -752,8 +752,8 @@
             tabPage7.Controls.Add(button10);
             tabPage7.Location = new Point(4, 29);
             tabPage7.Name = "tabPage7";
-            tabPage7.Padding = new Padding(3, 3, 3, 3);
-            tabPage7.Size = new Size(1494, 152);
+            tabPage7.Padding = new Padding(3);
+            tabPage7.Size = new Size(1501, 152);
             tabPage7.TabIndex = 1;
             tabPage7.Text = "Mantenimiento";
             tabPage7.UseVisualStyleBackColor = true;
@@ -954,7 +954,7 @@
             // 
             // groupBox4
             // 
-            groupBox4.BackColor = Color.LightBlue;
+            groupBox4.BackColor = Color.Azure;
             groupBox4.Controls.Add(cbo_PuestoPiloto);
             groupBox4.Controls.Add(label22);
             groupBox4.Controls.Add(cbo_GradoInstruccion);
@@ -964,7 +964,7 @@
             groupBox4.Controls.Add(label25);
             groupBox4.Controls.Add(cbo_EstadoTrabajador);
             groupBox4.Controls.Add(label26);
-            groupBox4.Controls.Add(textBox10);
+            groupBox4.Controls.Add(txt_Codigo);
             groupBox4.Controls.Add(label27);
             groupBox4.Dock = DockStyle.Top;
             groupBox4.Location = new Point(3, 3);
@@ -1056,12 +1056,12 @@
             label26.TabIndex = 28;
             label26.Text = "Estado";
             // 
-            // textBox10
+            // txt_Codigo
             // 
-            textBox10.Location = new Point(75, 39);
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(137, 27);
-            textBox10.TabIndex = 29;
+            txt_Codigo.Location = new Point(75, 39);
+            txt_Codigo.Name = "txt_Codigo";
+            txt_Codigo.Size = new Size(137, 27);
+            txt_Codigo.TabIndex = 29;
             // 
             // label27
             // 
@@ -1077,8 +1077,8 @@
             tabPage4.Controls.Add(groupBox6);
             tabPage4.Location = new Point(4, 29);
             tabPage4.Name = "tabPage4";
-            tabPage4.Padding = new Padding(3, 3, 3, 3);
-            tabPage4.Size = new Size(1517, 428);
+            tabPage4.Padding = new Padding(3);
+            tabPage4.Size = new Size(1521, 428);
             tabPage4.TabIndex = 1;
             tabPage4.Text = "Datos de Seguridad Social";
             tabPage4.UseVisualStyleBackColor = true;
@@ -1101,7 +1101,7 @@
             groupBox6.Dock = DockStyle.Top;
             groupBox6.Location = new Point(3, 3);
             groupBox6.Name = "groupBox6";
-            groupBox6.Size = new Size(1511, 125);
+            groupBox6.Size = new Size(1515, 125);
             groupBox6.TabIndex = 0;
             groupBox6.TabStop = false;
             groupBox6.Text = "Régimen de Salud";
@@ -1218,23 +1218,23 @@
             // 
             tabPage5.Location = new Point(4, 29);
             tabPage5.Name = "tabPage5";
-            tabPage5.Padding = new Padding(3, 3, 3, 3);
-            tabPage5.Size = new Size(1517, 428);
+            tabPage5.Padding = new Padding(3);
+            tabPage5.Size = new Size(1521, 428);
             tabPage5.TabIndex = 2;
             tabPage5.Text = "Datos Tributarios";
             tabPage5.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
-            groupBox1.BackColor = Color.LightBlue;
+            groupBox1.BackColor = Color.Azure;
             groupBox1.Controls.Add(button5);
             groupBox1.Controls.Add(txt_Direccion);
             groupBox1.Controls.Add(button4);
             groupBox1.Controls.Add(txt_Celular);
             groupBox1.Controls.Add(txt_Telefono);
             groupBox1.Controls.Add(txt_Correo);
-            groupBox1.Controls.Add(button3);
-            groupBox1.Controls.Add(button2);
+            groupBox1.Controls.Add(btn_Celular);
+            groupBox1.Controls.Add(btn_Telefono);
             groupBox1.Controls.Add(btn_Correo);
             groupBox1.Controls.Add(groupBox2);
             groupBox1.Controls.Add(chk_Hijos);
@@ -1311,24 +1311,25 @@
             txt_Correo.Size = new Size(341, 27);
             txt_Correo.TabIndex = 21;
             // 
-            // button3
+            // btn_Celular
             // 
-            button3.Location = new Point(573, 191);
-            button3.Name = "button3";
-            button3.Size = new Size(94, 29);
-            button3.TabIndex = 20;
-            button3.Text = "Celular";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            btn_Celular.Location = new Point(573, 191);
+            btn_Celular.Name = "btn_Celular";
+            btn_Celular.Size = new Size(94, 29);
+            btn_Celular.TabIndex = 20;
+            btn_Celular.Text = "Celular";
+            btn_Celular.UseVisualStyleBackColor = true;
+            btn_Celular.Click += btn_Celular_Click;
             // 
-            // button2
+            // btn_Telefono
             // 
-            button2.Location = new Point(573, 225);
-            button2.Name = "button2";
-            button2.Size = new Size(94, 29);
-            button2.TabIndex = 19;
-            button2.Text = "Teléfono";
-            button2.UseVisualStyleBackColor = true;
+            btn_Telefono.Location = new Point(573, 225);
+            btn_Telefono.Name = "btn_Telefono";
+            btn_Telefono.Size = new Size(94, 29);
+            btn_Telefono.TabIndex = 19;
+            btn_Telefono.Text = "Teléfono";
+            btn_Telefono.UseVisualStyleBackColor = true;
+            btn_Telefono.Click += btn_Telefono_Click;
             // 
             // btn_Correo
             // 
@@ -1338,11 +1339,11 @@
             btn_Correo.TabIndex = 18;
             btn_Correo.Text = "E-mail";
             btn_Correo.UseVisualStyleBackColor = true;
-            btn_Correo.Click += button1_Click;
+            btn_Correo.Click += btn_Correo_Click;
             // 
             // groupBox2
             // 
-            groupBox2.BackColor = Color.LightBlue;
+            groupBox2.BackColor = Color.Azure;
             groupBox2.BackgroundImageLayout = ImageLayout.None;
             groupBox2.Controls.Add(cbo_Distrito);
             groupBox2.Controls.Add(label15);
@@ -1583,8 +1584,8 @@
             // 
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3, 3, 3, 3);
-            tabPage2.Size = new Size(1533, 802);
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(1535, 807);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Datos Complementarios";
             tabPage2.UseVisualStyleBackColor = true;
@@ -1723,8 +1724,8 @@
         private TextBox txt_Celular;
         private TextBox txt_Telefono;
         private TextBox txt_Correo;
-        private Button button3;
-        private Button button2;
+        private Button btn_Celular;
+        private Button btn_Telefono;
         private Button btn_Correo;
         private GroupBox groupBox2;
         private ComboBox cbo_Distrito;
@@ -1753,7 +1754,7 @@
         private Label label25;
         private ComboBox cbo_EstadoTrabajador;
         private Label label26;
-        private TextBox textBox10;
+        private TextBox txt_Codigo;
         private Label label27;
         private GroupBox groupBox3;
         private GroupBox groupBox5;

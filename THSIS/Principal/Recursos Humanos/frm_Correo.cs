@@ -1,4 +1,5 @@
 ﻿using CEN.Entidad;
+using CEN.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,13 +28,19 @@ namespace Principal.Recursos_Humanos
                 ent_Correo correo = new ent_Correo();
                 if (lista_Correo.Count == 0)
                 {
-                    correo.corr_Principal = true;
+                    correo.Principal = true;
                 }
                 else
                 {
-                    correo.corr_Principal = false;
+                    correo.Principal = false;
                 }
-                correo.corr_Correo = txt_Correo.Text;
+                correo.Correo = txt_Correo.Text;
+                correo.Marcabaja = 1;
+                correo.Usuario = StaticVariable.obj_Usuario.Usua_Usuario;
+                correo.Ip = BasicVariable.Ip;
+                correo.Mac = BasicVariable.Mac;
+                correo.HostName = BasicVariable.HostName;
+                correo.HostUser = BasicVariable.HostUser;
                 lista_Correo.Add(correo);
             }
             construirTabla();
@@ -47,7 +54,7 @@ namespace Principal.Recursos_Humanos
             dgv_Correo.Rows.Clear();
             foreach (ent_Correo correo in lista_Correo)
             {
-                dgv_Correo.Rows.Add(correo.corr_Principal, correo.corr_Correo);
+                dgv_Correo.Rows.Add(correo.Principal, correo.Correo);
             }
         }
 
@@ -88,6 +95,11 @@ namespace Principal.Recursos_Humanos
                 btn_Quitar.Enabled = false;
                 btn_Modificar.Enabled = false;
             }
+        }
+
+        private void btn_Quitar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

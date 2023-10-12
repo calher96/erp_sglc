@@ -8,11 +8,11 @@ namespace CEN.Entidad
 {
     public class ent_Sucursal
     {
-        public int Sucu_Id { get; set; }
-        public int Empr_Id { get; set; }
-        public String? Sucu_Nombre { get; set; }
-        public String? Sucu_Descripcion { get; set; }
-        public String? Sucu_Direccion { get; set; }
-        public String? Sucu_CodSunat { get; set; }
+        public int Id { get; set; }
+        public int Id_Empresa { get; set; }
+        public String Nombre { get; set; }
+        public String Descripcion { get; set; }
+        public String Direccion { get; set; }
+        public String CodSunat { get; set; }
     }
 }

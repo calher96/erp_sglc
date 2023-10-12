@@ -14,6 +14,9 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using DataGridViewAutoFilter;
+using CEN.DGV_View;
+using CEN;
 
 namespace Principal.Recursos_Humanos
 {
@@ -21,6 +24,10 @@ namespace Principal.Recursos_Humanos
     {
         public static List<ent_Correo> lista_Correo = new List<ent_Correo>();
         public static List<ent_Telefono> lista_Telefono = new List<ent_Telefono>();
+        public static List<ent_Telefono> lista_Celular = new List<ent_Telefono>();
+        public static List<ent_Direccion> lista_Direccion = new List<ent_Direccion>();
+        public static ent_Trabajador Trabajador;
+        public static Boolean EditMode = false;
         List<ent_Trabajador> lista;
         public int index;
         public frm_Trabajador()
@@ -66,37 +73,49 @@ namespace Principal.Recursos_Humanos
 
                 if (chk_Filtrar.Checked)
                 {
-                    obj.Trab_Estado = ((ent_Concepto)cbo_Situacion.SelectedItem).conc_Correlativo;
-                    obj.Trab_Categoria = ((ent_Concepto)cbo_Categoria.SelectedItem).conc_Correlativo;
+                    obj.Estado.Correlativo = ((ent_Concepto)cbo_Situacion.SelectedItem).Correlativo;
+                    obj.Categoria.Correlativo = ((ent_Concepto)cbo_Categoria.SelectedItem).Correlativo;
                 }
                 else
                 {
-                    obj.Trab_Estado = 0;
-                    obj.Trab_Categoria = 0;
+                    obj.Estado.Correlativo = 0;
+                    obj.Categoria.Correlativo = 0;
                 }
-                obj.empr_Id = 2;
+                obj.Empresa.Id = StaticVariable.obj_Empresa.Id;
                 lista = cln.ListarTrabajador(obj);
+                //List<TrabajadorView> ListaView = new List<TrabajadorView>();
                 foreach (ent_Trabajador trab in lista)
                 {
-                    Boolean estado = (trab.Trab_Estado == 2 ? true : false);
+                    Boolean estado = (trab.Estado.Correlativo == 2 ? true : false);
                     Color color = Color.Green;
-                    if (trab.Trab_Estado == 1)
+                    if (trab.Estado.Correlativo == 1)
                     {
                         color = BasicMetod.obtenerColorComboBox(cbo_Color_Baja);
                     }
-                    if (trab.Trab_Estado == 2)
+                    if (trab.Estado.Correlativo == 2)
                     {
                         color = BasicMetod.obtenerColorComboBox(cbo_Color_Actividad);
                     }
-                    if (trab.Trab_Estado == 3 || trab.Trab_Estado == 4)
+                    if (trab.Estado.Correlativo == 3 || trab.Estado.Correlativo == 4)
                     {
                         color = BasicMetod.obtenerColorComboBox(cbo_Color_Liquidar);
                     }
-                    dgb_Lista.Rows.Add(trab.Trab_Documento, trab.Trab_Nombres + ' ' + trab.Trab_ApellidoPaterno + ' ' + trab.Trab_ApellidoMaterno,
-                        trab.Trab_SexoDescripcion, trab.Trab_FechaNacimiento, trab.Trab_codigo, trab.Trab_FechaRegistro, trab.Area_Nombre, "", trab.Trab_RelacionLaboralDescripcion, estado);
+                    //TrabajadorView trabajadorView = new TrabajadorView();
+                    //trabajadorView.Id = trab.Id;
+                    //trabajadorView.Dni = trab.Persona.DocIdentidad;
+                    //trabajadorView.Nombres = trab.Persona.Nombres + ' ' + trab.Persona.ApellidoPaterno + ' ' + trab.Persona.ApellidoMaterno;
+                    //trabajadorView.Sexo = trab.Persona.Sexo.Descripcion;
+                    //trabajadorView.FechaNacimiento = trab.Persona.FechaNacimiento;
+                    //trabajadorView.Codigo = trab.Codigo;
+                    //trabajadorView.Disponible = estado;
+                    //ListaView.Add(trabajadorView);
+                    dgb_Lista.Rows.Add(trab.Id, trab.Persona.DocIdentidad, trab.Persona.Nombres + ' ' + trab.Persona.ApellidoPaterno + ' ' + trab.Persona.ApellidoMaterno,
+                        trab.Persona.Sexo.Descripcion, trab.Persona.FechaNacimiento, trab.Codigo, trab.Persona.FechaNacimiento, estado);
                     dgb_Lista.Rows[dgb_Lista.RowCount - 1].DefaultCellStyle.BackColor = color;
 
                 }
+                //dgb_Lista.DataSource = ListaView;
+
             }
             catch (Exception ex)
             {
@@ -118,8 +137,8 @@ namespace Principal.Recursos_Humanos
             cln_Concepto cln = new cln_Concepto();
             lista = cln.listarConcepto(4);
             cbo_Situacion.DataSource = lista;
-            cbo_Situacion.ValueMember = "conc_Descripcion";
-            cbo_Situacion.DisplayMember = "conc_Descripcion";
+            cbo_Situacion.ValueMember = "Descripcion";
+            cbo_Situacion.DisplayMember = "Descripcion";
         }
         private void cargarCategoriaFiltro()
         {
@@ -127,8 +146,8 @@ namespace Principal.Recursos_Humanos
             cln_Concepto cln = new cln_Concepto();
             lista = cln.listarConcepto(3);
             cbo_Categoria.DataSource = lista;
-            cbo_Categoria.ValueMember = "conc_Descripcion";
-            cbo_Categoria.DisplayMember = "conc_Descripcion";
+            cbo_Categoria.ValueMember = "Descripcion";
+            cbo_Categoria.DisplayMember = "Descripcion";
         }
         private void cargarEstadoTrabajadoro()
         {
@@ -136,8 +155,8 @@ namespace Principal.Recursos_Humanos
             cln_Concepto cln = new cln_Concepto();
             lista = cln.listarConcepto(4);
             cbo_EstadoTrabajador.DataSource = lista;
-            cbo_EstadoTrabajador.ValueMember = "conc_Descripcion";
-            cbo_EstadoTrabajador.DisplayMember = "conc_Descripcion";
+            cbo_EstadoTrabajador.ValueMember = "Descripcion";
+            cbo_EstadoTrabajador.DisplayMember = "Descripcion";
             cbo_EstadoTrabajador.SelectedIndex = 1;
         }
         private void cargarCategoriaTrabajador()
@@ -146,8 +165,8 @@ namespace Principal.Recursos_Humanos
             cln_Concepto cln = new cln_Concepto();
             lista = cln.listarConcepto(3);
             cbo_CategoriaTrabajador.DataSource = lista;
-            cbo_CategoriaTrabajador.ValueMember = "conc_Descripcion";
-            cbo_CategoriaTrabajador.DisplayMember = "conc_Descripcion";
+            cbo_CategoriaTrabajador.ValueMember = "Descripcion";
+            cbo_CategoriaTrabajador.DisplayMember = "Descripcion";
         }
 
         private void cargarEstadoCivil()
@@ -156,8 +175,8 @@ namespace Principal.Recursos_Humanos
             cln_Concepto cln = new cln_Concepto();
             lista = cln.listarConcepto(2);
             cbo_EstadoCivil.DataSource = lista;
-            cbo_EstadoCivil.ValueMember = "conc_Descripcion";
-            cbo_EstadoCivil.DisplayMember = "conc_Descripcion";
+            cbo_EstadoCivil.ValueMember = "Descripcion";
+            cbo_EstadoCivil.DisplayMember = "Descripcion";
         }
         private void cargarGradoInstruccion()
         {
@@ -165,8 +184,8 @@ namespace Principal.Recursos_Humanos
             cln_Concepto cln = new cln_Concepto();
             lista = cln.listarConcepto(6);
             cbo_GradoInstruccion.DataSource = lista;
-            cbo_GradoInstruccion.ValueMember = "conc_Descripcion";
-            cbo_GradoInstruccion.DisplayMember = "conc_Descripcion";
+            cbo_GradoInstruccion.ValueMember = "Descripcion";
+            cbo_GradoInstruccion.DisplayMember = "Descripcion";
         }
 
         private void cargarPiloto()
@@ -175,8 +194,8 @@ namespace Principal.Recursos_Humanos
             cln_Concepto cln = new cln_Concepto();
             lista = cln.listarConcepto(5);
             cbo_PuestoPiloto.DataSource = lista;
-            cbo_PuestoPiloto.ValueMember = "conc_Descripcion";
-            cbo_PuestoPiloto.DisplayMember = "conc_Descripcion";
+            cbo_PuestoPiloto.ValueMember = "Descripcion";
+            cbo_PuestoPiloto.DisplayMember = "Descripcion";
         }
         private void cargarComboBox()
         {
@@ -303,39 +322,39 @@ namespace Principal.Recursos_Humanos
         private void construirDataGridView()
         {
             // Create an unbound DataGridView by declaring a column count.
-            dgb_Lista.ColumnCount = 9;
+            dgb_Lista.ColumnCount = 7;
             dgb_Lista.ColumnHeadersVisible = true;
 
             // Set the column header style.
             DataGridViewCellStyle columnHeaderStyle = new DataGridViewCellStyle();
 
             columnHeaderStyle.BackColor = Color.BlueViolet;
-            columnHeaderStyle.Font = new Font("Verdana", 10, FontStyle.Bold);
+            columnHeaderStyle.Font = new Font("Verdana", 10, FontStyle.Regular);
             dgb_Lista.ColumnHeadersDefaultCellStyle = columnHeaderStyle;
             DataGridViewColumn columnas = new DataGridViewColumn(new DataGridViewCheckBoxCell());
             columnas.Name = "DISPONIBLE";
             // Set the column header names.
-            dgb_Lista.Columns[0].Name = "DNI";
+            dgb_Lista.Columns[0].Name = "ID";
+            dgb_Lista.Columns[1].Name = "DNI";
 
-            dgb_Lista.Columns[1].Name = "NOMBRE COMPLETO";
-            dgb_Lista.Columns[2].Name = "SEXO";
-            dgb_Lista.Columns[3].Name = "FECHA DE NACIMIENTO";
-            dgb_Lista.Columns[4].Name = "CÓDIGO";
-            dgb_Lista.Columns[5].Name = "FECHA DE INGRESO";
-            dgb_Lista.Columns[6].Name = "ÁREA";
-            dgb_Lista.Columns[7].Name = "OCUPACIÓN";
-            dgb_Lista.Columns[8].Name = "RELACIÓN LABORAL";
+            dgb_Lista.Columns[2].Name = "NOMBRE COMPLETO";
+            dgb_Lista.Columns[3].Name = "SEXO";
+            dgb_Lista.Columns[4].Name = "FECHA DE NACIMIENTO";
+            dgb_Lista.Columns[5].Name = "CÓDIGO";
+            dgb_Lista.Columns[6].Name = "FECHA DE INGRESO";
+            //dgb_Lista.Columns[6].Name = "ÁREA";
+            //dgb_Lista.Columns[7].Name = "OCUPACIÓN";
+            //dgb_Lista.Columns[8].Name = "RELACIÓN LABORAL";
             dgb_Lista.Columns.Add(columnas);
-
             dgb_Lista.Columns[0].Resizable = DataGridViewTriState.False;
             dgb_Lista.Columns[1].Resizable = DataGridViewTriState.False;
             dgb_Lista.Columns[2].Resizable = DataGridViewTriState.False;
             dgb_Lista.Columns[3].Resizable = DataGridViewTriState.False;
             dgb_Lista.Columns[4].Resizable = DataGridViewTriState.False;
             dgb_Lista.Columns[5].Resizable = DataGridViewTriState.False;
-            dgb_Lista.Columns[6].Resizable = DataGridViewTriState.False;
-            dgb_Lista.Columns[7].Resizable = DataGridViewTriState.False;
-            dgb_Lista.Columns[8].Resizable = DataGridViewTriState.False;
+            //dgb_Lista.Columns[6].Resizable = DataGridViewTriState.False;
+            //dgb_Lista.Columns[7].Resizable = DataGridViewTriState.False;
+            //dgb_Lista.Columns[8].Resizable = DataGridViewTriState.False;
 
             dgb_Lista.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgb_Lista.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -343,9 +362,9 @@ namespace Principal.Recursos_Humanos
             dgb_Lista.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgb_Lista.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgb_Lista.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgb_Lista.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgb_Lista.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgb_Lista.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            //dgb_Lista.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            //dgb_Lista.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            //dgb_Lista.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
             dgb_Lista.AllowUserToAddRows = false;
             dgb_Lista.AllowUserToDeleteRows = false;
@@ -419,6 +438,7 @@ namespace Principal.Recursos_Humanos
         {
             tabControl1.SelectedIndex = 1;
             tabControl1.Controls[1].Enabled = true;
+            EditMode = false;
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -446,38 +466,107 @@ namespace Principal.Recursos_Humanos
             {
                 if (!validarCampos())
                 {
-                    ent_Trabajador obj = new ent_Trabajador();
+
                     cln_Trabajador cln = new cln_Trabajador();
                     ResponseHelper response;
-                    obj.Trab_TipoDocumento = 1;
-                    obj.Trab_Documento = txt_Documento.Text;
-                    obj.Trab_Nombres = txt_Nombres.Text;
-                    obj.Trab_ApellidoPaterno = txt_ApellidoPaterno.Text;
-                    obj.Trab_ApellidoMaterno = txt_ApellidoMaterno.Text;
-                    obj.Trab_EstadoCivil = ((ent_Concepto)cbo_EstadoCivil.SelectedItem).conc_Correlativo;
-                    obj.Trab_Estado = ((ent_Concepto)cbo_EstadoTrabajador.SelectedItem).conc_Correlativo;
-                    obj.Trab_Categoria = ((ent_Concepto)cbo_CategoriaTrabajador.SelectedItem).conc_Correlativo;
-                    obj.Trab_Marcabaja = 1;
-                    obj.Trab_FechaNacimiento = DateOnly.Parse(dtp_FechaNacimiento.Value.Date.ToShortDateString());
-                    obj.Trab_Sexo = (rbt_Femenino.Checked ? 2 : 1);
-                    obj.Trab_LugarNacimiento = ((ent_Ubigeo)cbo_Distrito.SelectedItem).Ubigeo;
-                    obj.Trab_usuarioRegistro = StaticVariable.obj_Usuario.Usua_Usuario;
-                    obj.empr_Id = 2;
-                    obj.Trab_codigo = "";
-                    obj.corr_Correo = txt_Correo.Text;
-                    obj.celu_Celular = txt_Celular.Text;
-                    obj.telf_Telefono = txt_Telefono.Text;
-                    obj.dire_Direccion = txt_Direccion.Text;
-                    response = cln.guardarTrabajador(obj);
-                    if (response.codError == -1)
+                    if (!EditMode)
                     {
-                        MessageBox.Show(response.mensajeError, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Trabajador = new ent_Trabajador();
+                        Trabajador.Sucursal = StaticVariable.obj_Sucursal;
+                        Trabajador.Persona.TipoDocIdentidad.Correlativo = 1;
+                        Trabajador.Persona.DocIdentidad = txt_Documento.Text;
+                        Trabajador.Persona.Id_Empresa = StaticVariable.obj_Empresa.Id;
+                        Trabajador.Persona.Nombres = txt_Nombres.Text;
+                        Trabajador.Persona.ApellidoPaterno = txt_ApellidoPaterno.Text;
+                        Trabajador.Persona.ApellidoMaterno = txt_ApellidoMaterno.Text;
+                        Trabajador.Persona.EstadoCivil = ((ent_Concepto)cbo_EstadoCivil.SelectedItem);
+                        Trabajador.Estado = ((ent_Concepto)cbo_EstadoTrabajador.SelectedItem);
+                        Trabajador.Categoria = ((ent_Concepto)cbo_CategoriaTrabajador.SelectedItem);
+                        Trabajador.Marcabaja = 1;
+                        Trabajador.Persona.FechaNacimiento = DateOnly.Parse(dtp_FechaNacimiento.Value.Date.ToShortDateString());
+                        Trabajador.Persona.Sexo.Correlativo = (rbt_Femenino.Checked ? 2 : 1);
+                        Trabajador.Persona.UbigeoNacimiento = ((ent_Ubigeo)cbo_Distrito.SelectedItem).Ubigeo;
+                        Trabajador.Empresa = StaticVariable.obj_Empresa;
+                        Trabajador.Codigo = txt_Codigo.Text;
+                        Trabajador.Lista_Correo = lista_Correo;
+                        Trabajador.Lista_Celular = lista_Celular;
+                        Trabajador.Lista_Telefono = lista_Telefono;
+                        Trabajador.Lista_Direccion = lista_Direccion;
+                        Trabajador.Piloto = ((ent_Concepto)cbo_PuestoPiloto.SelectedItem);
+                        Trabajador.GradoInstruccion = ((ent_Concepto)cbo_GradoInstruccion.SelectedItem);
+                        Trabajador.Usuario = StaticVariable.obj_Usuario.Usua_Usuario;
+                        Trabajador.Ip = BasicVariable.Ip;
+                        Trabajador.Mac = BasicVariable.Mac;
+                        Trabajador.HostName = BasicVariable.HostName;
+                        Trabajador.HostUser = BasicVariable.HostUser;
+                        Trabajador.Persona.Usuario = StaticVariable.obj_Usuario.Usua_Usuario;
+                        Trabajador.Persona.Ip = BasicVariable.Ip;
+                        Trabajador.Persona.Mac = BasicVariable.Mac;
+                        Trabajador.Persona.HostName = BasicVariable.HostName;
+                        Trabajador.Persona.HostUser = BasicVariable.HostUser;
+                        Trabajador.Marcabaja = 1;
+                        Trabajador.Persona.Marcabaja = 1;
+                        Trabajador.Persona.UbigeoNacimiento = ((ent_Ubigeo)cbo_Distrito.SelectedItem).Ubigeo;
+                        response = cln.guardarTrabajador(Trabajador);
+                        if (response.codError == -1)
+                        {
+                            MessageBox.Show(response.mensajeError, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            MessageBox.Show(response.mensajeError, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        limpiarCampos();
                     }
                     else
                     {
-                        MessageBox.Show(response.mensajeError, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Trabajador.Sucursal = StaticVariable.obj_Sucursal;
+                        Trabajador.Persona.TipoDocIdentidad.Correlativo = 1;
+                        Trabajador.Persona.DocIdentidad = txt_Documento.Text;
+                        Trabajador.Persona.Id_Empresa = StaticVariable.obj_Empresa.Id;
+                        Trabajador.Persona.Nombres = txt_Nombres.Text;
+                        Trabajador.Persona.ApellidoPaterno = txt_ApellidoPaterno.Text;
+                        Trabajador.Persona.ApellidoMaterno = txt_ApellidoMaterno.Text;
+                        Trabajador.Persona.EstadoCivil = ((ent_Concepto)cbo_EstadoCivil.SelectedItem);
+                        Trabajador.Estado = ((ent_Concepto)cbo_EstadoTrabajador.SelectedItem);
+                        Trabajador.Categoria = ((ent_Concepto)cbo_CategoriaTrabajador.SelectedItem);
+                        Trabajador.Marcabaja = 1;
+                        Trabajador.Persona.FechaNacimiento = DateOnly.Parse(dtp_FechaNacimiento.Value.Date.ToShortDateString());
+                        Trabajador.Persona.Sexo.Correlativo = (rbt_Femenino.Checked ? 2 : 1);
+                        Trabajador.Persona.UbigeoNacimiento = ((ent_Ubigeo)cbo_Distrito.SelectedItem).Ubigeo;
+                        Trabajador.Empresa = StaticVariable.obj_Empresa;
+                        Trabajador.Codigo = txt_Codigo.Text;
+                        Trabajador.Lista_Correo = lista_Correo;
+                        Trabajador.Lista_Celular = lista_Celular;
+                        Trabajador.Lista_Telefono = lista_Telefono;
+                        Trabajador.Lista_Direccion = lista_Direccion;
+                        Trabajador.Piloto = ((ent_Concepto)cbo_PuestoPiloto.SelectedItem);
+                        Trabajador.GradoInstruccion = ((ent_Concepto)cbo_GradoInstruccion.SelectedItem);
+                        Trabajador.Usuario = StaticVariable.obj_Usuario.Usua_Usuario;
+                        Trabajador.Ip = BasicVariable.Ip;
+                        Trabajador.Mac = BasicVariable.Mac;
+                        Trabajador.HostName = BasicVariable.HostName;
+                        Trabajador.HostUser = BasicVariable.HostUser;
+                        Trabajador.Persona.Usuario = StaticVariable.obj_Usuario.Usua_Usuario;
+                        Trabajador.Persona.Ip = BasicVariable.Ip;
+                        Trabajador.Persona.Mac = BasicVariable.Mac;
+                        Trabajador.Persona.HostName = BasicVariable.HostName;
+                        Trabajador.Persona.HostUser = BasicVariable.HostUser;
+                        Trabajador.Marcabaja = 1;
+                        Trabajador.Persona.Marcabaja = 1;
+                        Trabajador.Persona.UbigeoNacimiento = ((ent_Ubigeo)cbo_Distrito.SelectedItem).Ubigeo;
+                        response = cln.guardarTrabajador(Trabajador);
+                        if (response.codError == -1)
+                        {
+                            MessageBox.Show(response.mensajeError, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            MessageBox.Show(response.mensajeError, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        limpiarCampos();
                     }
-                    limpiarCampos();
+
                 }
 
             }
@@ -538,14 +627,14 @@ namespace Principal.Recursos_Humanos
             }
         }
 
-        private void textBox2_Leave(object sender, EventArgs e)
-        {
-            Double value;
-            if (Double.TryParse(textBox2.Text, out value))
-                textBox2.Text = String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:C2}", value);
-            else
-                textBox2.Text = String.Empty;
-        }
+        //private void textBox2_Leave(object sender, EventArgs e)
+        //{
+        //    Double value;
+        //    if (Double.TryParse(textBox2.Text, out value))
+        //        textBox2.Text = String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:C2}", value);
+        //    else
+        //        textBox2.Text = String.Empty;
+        //}
 
         private void txt_Documento_KeyDown(object sender, KeyEventArgs e)
         {
@@ -613,89 +702,175 @@ namespace Principal.Recursos_Humanos
 
         private void txt_Filtro_KeyUp(object sender, KeyEventArgs e)
         {
-            dgb_Lista.Rows.Clear();
-            if (txt_Filtro.Text.Length > 0)
-            {
-                List<ent_Trabajador> listaFiltro = lista.Where(o =>
-                o.Trab_Documento.Contains(txt_Filtro.Text, StringComparison.OrdinalIgnoreCase)
-                || o.Trab_Nombres.Contains(txt_Filtro.Text, StringComparison.OrdinalIgnoreCase)
-                || o.Trab_ApellidoPaterno.Contains(txt_Filtro.Text, StringComparison.OrdinalIgnoreCase)
-                || o.Trab_ApellidoMaterno.Contains(txt_Filtro.Text, StringComparison.OrdinalIgnoreCase)
-                || o.Trab_FechaNacimiento.ToShortDateString().Contains(txt_Filtro.Text, StringComparison.OrdinalIgnoreCase)
-                || o.Trab_SexoDescripcion.Contains(txt_Filtro.Text, StringComparison.OrdinalIgnoreCase)
-                || o.Area_Nombre.Contains(txt_Filtro.Text, StringComparison.OrdinalIgnoreCase)
-                || o.Trab_RelacionLaboralDescripcion.Contains(txt_Filtro.Text, StringComparison.OrdinalIgnoreCase)).ToList();
-                foreach (ent_Trabajador trab in listaFiltro)
-                {
-                    Boolean estado = (trab.Trab_Estado == 2 ? true : false);
-                    Color color = Color.Green;
-                    if (trab.Trab_Estado == 1)
-                    {
-                        color = BasicMetod.obtenerColorComboBox(cbo_Color_Baja);
-                    }
-                    if (trab.Trab_Estado == 2)
-                    {
-                        color = BasicMetod.obtenerColorComboBox(cbo_Color_Actividad);
-                    }
-                    if (trab.Trab_Estado == 3 || trab.Trab_Estado == 4)
-                    {
-                        color = BasicMetod.obtenerColorComboBox(cbo_Color_Liquidar);
-                    }
-                    dgb_Lista.Rows.Add(trab.Trab_Documento, trab.Trab_Nombres + ' ' + trab.Trab_ApellidoPaterno + ' ' + trab.Trab_ApellidoMaterno,
-                        trab.Trab_SexoDescripcion, trab.Trab_FechaNacimiento, trab.Trab_codigo, trab.Trab_FechaRegistro, trab.Area_Nombre, "", trab.Trab_RelacionLaboralDescripcion, estado);
-                    dgb_Lista.Rows[dgb_Lista.RowCount - 1].DefaultCellStyle.BackColor = color;
+            //dgb_Lista.Rows.Clear();
+            //if (txt_Filtro.Text.Length > 0)
+            //{
+            //    List<ent_Trabajador> listaFiltro = lista.Where(o =>
+            //    o.Trab_Documento.Contains(txt_Filtro.Text, StringComparison.OrdinalIgnoreCase)
+            //    || o.Trab_Nombres.Contains(txt_Filtro.Text, StringComparison.OrdinalIgnoreCase)
+            //    || o.Trab_ApellidoPaterno.Contains(txt_Filtro.Text, StringComparison.OrdinalIgnoreCase)
+            //    || o.Trab_ApellidoMaterno.Contains(txt_Filtro.Text, StringComparison.OrdinalIgnoreCase)
+            //    || o.Trab_FechaNacimiento.ToShortDateString().Contains(txt_Filtro.Text, StringComparison.OrdinalIgnoreCase)
+            //    || o.Trab_SexoDescripcion.Contains(txt_Filtro.Text, StringComparison.OrdinalIgnoreCase)
+            //    || o.Area_Nombre.Contains(txt_Filtro.Text, StringComparison.OrdinalIgnoreCase)
+            //    || o.Trab_RelacionLaboralDescripcion.Contains(txt_Filtro.Text, StringComparison.OrdinalIgnoreCase)).ToList();
+            //    foreach (ent_Trabajador trab in listaFiltro)
+            //    {
+            //        Boolean estado = (trab.Trab_Estado == 2 ? true : false);
+            //        Color color = Color.Green;
+            //        if (trab.Trab_Estado == 1)
+            //        {
+            //            color = BasicMetod.obtenerColorComboBox(cbo_Color_Baja);
+            //        }
+            //        if (trab.Trab_Estado == 2)
+            //        {
+            //            color = BasicMetod.obtenerColorComboBox(cbo_Color_Actividad);
+            //        }
+            //        if (trab.Trab_Estado == 3 || trab.Trab_Estado == 4)
+            //        {
+            //            color = BasicMetod.obtenerColorComboBox(cbo_Color_Liquidar);
+            //        }
+            //        dgb_Lista.Rows.Add(trab.Trab_Documento, trab.Trab_Nombres + ' ' + trab.Trab_ApellidoPaterno + ' ' + trab.Trab_ApellidoMaterno,
+            //            trab.Trab_SexoDescripcion, trab.Trab_FechaNacimiento, trab.Trab_codigo, trab.Trab_FechaRegistro, trab.Area_Nombre, "", trab.Trab_RelacionLaboralDescripcion, estado);
+            //        dgb_Lista.Rows[dgb_Lista.RowCount - 1].DefaultCellStyle.BackColor = color;
 
-                }
-            }
-            else
-            {
-                foreach (ent_Trabajador trab in lista)
-                {
-                    Boolean estado = (trab.Trab_Estado == 2 ? true : false);
-                    Color color = Color.Green;
-                    if (trab.Trab_Estado == 1)
-                    {
-                        color = BasicMetod.obtenerColorComboBox(cbo_Color_Baja);
-                    }
-                    if (trab.Trab_Estado == 2)
-                    {
-                        color = BasicMetod.obtenerColorComboBox(cbo_Color_Actividad);
-                    }
-                    if (trab.Trab_Estado == 3 || trab.Trab_Estado == 4)
-                    {
-                        color = BasicMetod.obtenerColorComboBox(cbo_Color_Liquidar);
-                    }
-                    dgb_Lista.Rows.Add(trab.Trab_Documento, trab.Trab_Nombres + ' ' + trab.Trab_ApellidoPaterno + ' ' + trab.Trab_ApellidoMaterno,
-                        trab.Trab_SexoDescripcion, trab.Trab_FechaNacimiento, trab.Trab_codigo, trab.Trab_FechaRegistro, trab.Area_Nombre, "", trab.Trab_RelacionLaboralDescripcion, estado);
-                    dgb_Lista.Rows[dgb_Lista.RowCount - 1].DefaultCellStyle.BackColor = color;
+            //    }
+            //}
+            //else
+            //{
+            //    foreach (ent_Trabajador trab in lista)
+            //    {
+            //        Boolean estado = (trab.Trab_Estado == 2 ? true : false);
+            //        Color color = Color.Green;
+            //        if (trab.Trab_Estado == 1)
+            //        {
+            //            color = BasicMetod.obtenerColorComboBox(cbo_Color_Baja);
+            //        }
+            //        if (trab.Trab_Estado == 2)
+            //        {
+            //            color = BasicMetod.obtenerColorComboBox(cbo_Color_Actividad);
+            //        }
+            //        if (trab.Trab_Estado == 3 || trab.Trab_Estado == 4)
+            //        {
+            //            color = BasicMetod.obtenerColorComboBox(cbo_Color_Liquidar);
+            //        }
+            //        dgb_Lista.Rows.Add(trab.Trab_Documento, trab.Trab_Nombres + ' ' + trab.Trab_ApellidoPaterno + ' ' + trab.Trab_ApellidoMaterno,
+            //            trab.Trab_SexoDescripcion, trab.Trab_FechaNacimiento, trab.Trab_codigo, trab.Trab_FechaRegistro, trab.Area_Nombre, "", trab.Trab_RelacionLaboralDescripcion, estado);
+            //        dgb_Lista.Rows[dgb_Lista.RowCount - 1].DefaultCellStyle.BackColor = color;
 
-                }
-            }
+            //    }
+            //}
 
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_Correo_Click(object sender, EventArgs e)
         {
             frm_Correo.lista_Correo = lista_Correo;
             frm_Correo Correo = new frm_Correo();
             Correo.ShowDialog();
             if (lista_Correo.Count > 0)
             {
-                txt_Correo.Text = lista_Correo[0].corr_Correo;
+                txt_Correo.Text = lista_Correo[0].Correo;
             }
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btn_Celular_Click(object sender, EventArgs e)
         {
             frm_Telefono.lista_Telefono = lista_Telefono;
             frm_Telefono Telefono = new frm_Telefono();
             Telefono.ShowDialog();
             if (lista_Telefono.Count > 0)
             {
-                txt_Telefono.Text = lista_Telefono[0].telf_Numero;
+                txt_Telefono.Text = lista_Telefono[0].Numero;
             }
+        }
+        public void BuscarTrabajador(int Id)
+        {
+
+            foreach (ent_Trabajador obj in lista)
+            {
+                if (obj.Id == Id)
+                {
+                    Trabajador = obj;
+                }
+            }
+        }
+        private void ConstruirEdicionTrabajador()
+        {
+            EditMode = true;
+            tabControl1.SelectedIndex = 1;
+            tabControl1.Controls[1].Enabled = true;
+            lista_Correo.Clear();
+            lista_Celular.Clear();
+            lista_Telefono.Clear();
+            lista_Direccion.Clear();
+            if (dgb_Lista.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dgb_Lista.SelectedRows[0]; // Obtiene la primera fila seleccionada
+
+                // Verifica si la columna "ID" existe en el DataGridView
+                if (dgb_Lista.Columns.Contains("ID"))
+                {
+                    BuscarTrabajador(Convert.ToInt32(selectedRow.Cells["ID"].Value));
+                    txt_Documento.Text = Trabajador.Persona.DocIdentidad;
+                    txt_Nombres.Text = Trabajador.Persona.Nombres;
+                    txt_ApellidoPaterno.Text = Trabajador.Persona.ApellidoPaterno;
+                    txt_ApellidoMaterno.Text = Trabajador.Persona.ApellidoMaterno;
+                    dtp_FechaNacimiento.Value = Trabajador.Persona.FechaNacimiento.ToDateTime(new TimeOnly(0, 0, 0));
+                    BasicMetod.seleccionarItemComboBoxConcepto(cbo_EstadoCivil, Trabajador.Persona.EstadoCivil);
+                    BasicMetod.seleccionarUbigeo(cbo_Departamento, Trabajador.Persona.UbigeoNacimiento, "DEPARTAMENTO");
+                    BasicMetod.seleccionarUbigeo(cbo_Provincia, Trabajador.Persona.UbigeoNacimiento, "PROVINCIA");
+                    BasicMetod.seleccionarUbigeo(cbo_Distrito, Trabajador.Persona.UbigeoNacimiento, "DISTRITO");
+                    txt_Codigo.Text = Trabajador.Codigo;
+                    BasicMetod.seleccionarItemComboBoxConcepto(cbo_EstadoTrabajador, Trabajador.Estado);
+                    BasicMetod.seleccionarItemComboBoxConcepto(cbo_CategoriaTrabajador, Trabajador.Categoria);
+                    BasicMetod.seleccionarItemComboBoxConcepto(cbo_GradoInstruccion, Trabajador.GradoInstruccion);
+                    BasicMetod.seleccionarItemComboBoxConcepto(cbo_PuestoPiloto, Trabajador.Piloto);
+                    lista_Correo = Trabajador.Lista_Correo;
+                    if (lista_Correo.Count > 0)
+                    {
+                        txt_Correo.Text = lista_Correo[0].Correo;
+                    }
+                    lista_Telefono = Trabajador.Lista_Telefono;
+                    if (lista_Telefono.Count > 0)
+                    {
+                        txt_Telefono.Text = lista_Telefono[0].Numero;
+                    }
+                    lista_Celular = Trabajador.Lista_Celular;
+                    if (lista_Celular.Count > 0)
+                    {
+                        txt_Celular.Text = lista_Celular[0].Numero;
+                    }
+                    chk_Hijos.Checked = Trabajador.Hijos;
+                }
+                else
+                {
+                    MessageBox.Show("La columna 'ID' no existe en el DataGridView.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se ha seleccionado ninguna fila.");
+            }
+        }
+
+        private void dgb_Lista_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                ConstruirEdicionTrabajador();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void btn_Telefono_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

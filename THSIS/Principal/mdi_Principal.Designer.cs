@@ -55,6 +55,7 @@
             tsm_Ayuda = new ToolStripMenuItem();
             tsm_Grifo = new ToolStripMenuItem();
             panel1 = new Panel();
+            lbl_Desde = new Label();
             lbl_Hora = new Label();
             label2 = new Label();
             lbl_Usuario = new Label();
@@ -95,7 +96,7 @@
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(7, 3, 0, 3);
             menuStrip1.RenderMode = ToolStripRenderMode.Professional;
-            menuStrip1.Size = new Size(1541, 42);
+            menuStrip1.Size = new Size(1541, 24);
             menuStrip1.TabIndex = 8;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -115,7 +116,7 @@
             tsm_GestionClientes.Image = (Image)resources.GetObject("tsm_GestionClientes.Image");
             tsm_GestionClientes.ImageScaling = ToolStripItemImageScaling.None;
             tsm_GestionClientes.Name = "tsm_GestionClientes";
-            tsm_GestionClientes.Size = new Size(231, 38);
+            tsm_GestionClientes.Size = new Size(236, 38);
             tsm_GestionClientes.Text = "Gestión de Clientes";
             tsm_GestionClientes.Visible = false;
             // 
@@ -134,9 +135,10 @@
             tsm_Carga.Image = (Image)resources.GetObject("tsm_Carga.Image");
             tsm_Carga.ImageScaling = ToolStripItemImageScaling.None;
             tsm_Carga.Name = "tsm_Carga";
-            tsm_Carga.Size = new Size(231, 38);
+            tsm_Carga.Size = new Size(236, 38);
             tsm_Carga.Text = "Carga";
             tsm_Carga.Visible = false;
+            tsm_Carga.Click += tsm_Carga_Click;
             // 
             // tsm_Planeamiento
             // 
@@ -257,6 +259,7 @@
             tsm_CerrarSesion.Size = new Size(224, 38);
             tsm_CerrarSesion.Text = "Cerrar Sesión";
             tsm_CerrarSesion.Visible = false;
+            tsm_CerrarSesion.Click += tsm_CerrarSesion_Click;
             // 
             // tsm_Reportes
             // 
@@ -280,12 +283,13 @@
             // 
             tsm_Grifo.Image = (Image)resources.GetObject("tsm_Grifo.Image");
             tsm_Grifo.Name = "tsm_Grifo";
-            tsm_Grifo.Size = new Size(76, 36);
+            tsm_Grifo.Size = new Size(76, 24);
             tsm_Grifo.Text = "Grifo";
             tsm_Grifo.Visible = false;
             // 
             // panel1
             // 
+            panel1.Controls.Add(lbl_Desde);
             panel1.Controls.Add(lbl_Hora);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(lbl_Usuario);
@@ -295,6 +299,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1541, 36);
             panel1.TabIndex = 11;
+            // 
+            // lbl_Desde
+            // 
+            lbl_Desde.AutoSize = true;
+            lbl_Desde.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_Desde.Location = new Point(523, 9);
+            lbl_Desde.Name = "lbl_Desde";
+            lbl_Desde.Size = new Size(51, 20);
+            lbl_Desde.TabIndex = 4;
+            lbl_Desde.Text = "label2";
             // 
             // lbl_Hora
             // 
@@ -309,27 +323,30 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(128, 9);
+            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(465, 9);
             label2.Name = "label2";
-            label2.Size = new Size(51, 20);
+            label2.Size = new Size(52, 20);
             label2.TabIndex = 2;
             label2.Text = "Desde";
             // 
             // lbl_Usuario
             // 
             lbl_Usuario.AutoSize = true;
-            lbl_Usuario.Location = new Point(72, 11);
+            lbl_Usuario.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_Usuario.Location = new Point(72, 9);
             lbl_Usuario.Name = "lbl_Usuario";
-            lbl_Usuario.Size = new Size(50, 20);
+            lbl_Usuario.Size = new Size(51, 20);
             lbl_Usuario.TabIndex = 1;
             lbl_Usuario.Text = "label2";
             // 
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(7, 9);
             label1.Name = "label1";
-            label1.Size = new Size(59, 20);
+            label1.Size = new Size(63, 20);
             label1.TabIndex = 0;
             label1.Text = "Usuario";
             // 
@@ -342,10 +359,10 @@
             // 
             tbc_Principal.Controls.Add(tabPage1);
             tbc_Principal.Dock = DockStyle.Fill;
-            tbc_Principal.Location = new Point(0, 42);
+            tbc_Principal.Location = new Point(0, 24);
             tbc_Principal.Name = "tbc_Principal";
             tbc_Principal.SelectedIndex = 0;
-            tbc_Principal.Size = new Size(1541, 619);
+            tbc_Principal.Size = new Size(1541, 637);
             tbc_Principal.TabIndex = 12;
             // 
             // tabPage1
@@ -354,7 +371,7 @@
             tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1533, 586);
+            tabPage1.Size = new Size(1533, 604);
             tabPage1.TabIndex = 3;
             tabPage1.Text = "Principal";
             tabPage1.UseVisualStyleBackColor = true;
@@ -367,7 +384,7 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(3, 3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1527, 580);
+            pictureBox1.Size = new Size(1527, 598);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -400,7 +417,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.ToolTip toolTip;
+        private ToolTip toolTip;
         private ContextMenuStrip contextMenuStrip1;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem tsm_Configuracion;
@@ -432,6 +449,7 @@
         private TabPage tabPage1;
         private PictureBox pictureBox1;
         private ToolStripMenuItem tsm_Carga;
+        private Label lbl_Desde;
         public static TabControl tbc_Principal;
     }
 }

@@ -33,11 +33,18 @@ namespace Principal
             else
             {
                 cargarPermisos();
+                cargarPiePrincipal();
             }
 
         }
 
-
+        private void cargarPiePrincipal()
+        {
+            lbl_Usuario.Text = StaticVariable.obj_Trabajador.Persona.ApellidoPaterno + " " + StaticVariable.obj_Trabajador.Persona.ApellidoMaterno + " " + StaticVariable.obj_Trabajador.Persona.Nombres;
+            lbl_Desde.Text = BasicVariable.HostUser + "(" + BasicVariable.Ip + ")";
+            //lbl_Desde.Text = BasicVariable.Ip;
+            //MessageBox.Show(BasicVariable.Ip, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
         private void registrarTrabajadorToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -189,6 +196,24 @@ namespace Principal
             //frm.index = childFormNumber;
 
             abrirFormHijo(frm, "Permisos");
+        }
+
+        private void tsm_Carga_Click(object sender, EventArgs e)
+        {
+            frm_RecepcionCarga frm = new frm_RecepcionCarga();
+            //frm.index = childFormNumber;
+
+            abrirFormHijo(frm, "Recepción Carga");
+        }
+
+        private void tsm_CerrarSesion_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            StaticVariable.obj_Usuario = null;
+            StaticVariable.obj_Empresa = null;
+            StaticVariable.obj_Perfil = null;
+            this.Close();
+            login.ShowDialog();
         }
     }
 }

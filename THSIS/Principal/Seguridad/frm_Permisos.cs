@@ -27,7 +27,7 @@ namespace Principal.Seguridad
             usuario.Usua_Marcabaja = 0;
             usuario.Usua_Password = txt_Password.Text;
             usuario.Usua_Usuario = txt_Usuario.Text;
-            usuario.Trab_Id = ((ent_Trabajador)cbo_Trabajador.SelectedItem).Trab_Id;
+            usuario.Trab_Id = ((ent_Trabajador)cbo_Trabajador.SelectedItem).Id;
             usuario.Perf_Id = ((ent_Perfil)cbo_Perfil.SelectedItem).perf_Id;
             usuario.Usua_UsuarioRegistro = StaticVariable.obj_Usuario.Usua_Usuario;
             usuario.Sucu_Id = 2;
@@ -165,9 +165,9 @@ namespace Principal.Seguridad
             {
                 cln_Trabajador cln = new cln_Trabajador();
                 ent_Trabajador trabajador = new ent_Trabajador();
-                trabajador.empr_Id = 2;
-                trabajador.Trab_Estado = 0;
-                trabajador.Trab_Categoria = 0;
+                //trabajador.empr_Id = 2;
+                //trabajador.Trab_Estado = 0;
+                //trabajador.Trab_Categoria = 0;
                 cbo_Trabajador.DataSource = cln.ListarTrabajador(trabajador);
                 cbo_Trabajador.ValueMember = "Trab_Id";
                 cbo_Trabajador.DisplayMember = "Trab_NombresCompletos";
@@ -210,8 +210,8 @@ namespace Principal.Seguridad
             cln_Concepto cln = new cln_Concepto();
             lista = cln.listarConcepto(13);
             cbo_Estado.DataSource = lista;
-            cbo_Estado.ValueMember = "conc_Correlativo";
-            cbo_Estado.DisplayMember = "conc_Descripcion";
+            cbo_Estado.ValueMember = "Correlativo";
+            cbo_Estado.DisplayMember = "Descripcion";
         }
         private void cargarPerfiles()
         {
@@ -303,7 +303,7 @@ namespace Principal.Seguridad
             perfil.perf_Marcabaja = 0;
             perfil.perf_Nombre = txt_Nombre.Text;
             perfil.perf_Usuario = "CHERNANDEZ";
-            perfil.perf_Estado = ((ent_Concepto)cbo_Estado.SelectedItem).conc_Correlativo;
+            perfil.perf_Estado = ((ent_Concepto)cbo_Estado.SelectedItem).Correlativo;
         }
 
         private void UpdateParentNodes(TreeNode node, bool isChecked)
@@ -347,9 +347,9 @@ namespace Principal.Seguridad
             {
                 ent_Trabajador trabajador = (ent_Trabajador)cbo_Trabajador.SelectedItem;
 
-                txt_Usuario.Text = trabajador.Trab_Nombres[0] + "";
-                txt_Usuario.Text = txt_Usuario.Text + trabajador.Trab_ApellidoPaterno.Substring(0, 6);
-                txt_Usuario.Text = txt_Usuario.Text + trabajador.Trab_ApellidoMaterno[0];
+                //txt_Usuario.Text = trabajador.Trab_Nombres[0] + "";
+                //txt_Usuario.Text = txt_Usuario.Text + trabajador.Trab_ApellidoPaterno.Substring(0, 6);
+                //txt_Usuario.Text = txt_Usuario.Text + trabajador.Trab_ApellidoMaterno[0];
             }
             catch
             {
@@ -537,7 +537,7 @@ namespace Principal.Seguridad
                         ResponseHelper response;
                         cln_Perfil cln = new cln_Perfil();
                         perfil.perf_Nombre = txt_Nombre.Text;
-                        perfil.perf_Estado = ((ent_Concepto)cbo_Estado.SelectedItem).conc_Correlativo;
+                        perfil.perf_Estado = ((ent_Concepto)cbo_Estado.SelectedItem).Correlativo;
                         perfil.perf_Usuario = "CHERNANDEZ";
                         response = cln.RegistrarPerfil("U", perfil);
                         if (response.codError == 0)

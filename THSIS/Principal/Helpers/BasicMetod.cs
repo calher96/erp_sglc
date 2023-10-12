@@ -3,6 +3,7 @@ using CLN;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,8 +26,65 @@ namespace Principal.Helpers
             cln_Concepto cln = new cln_Concepto();
             lista = cln.listarConcepto(PrefijoConcepto);
             cmb.DataSource = lista;
-            cmb.ValueMember = "conc_Descripcion";
-            cmb.DisplayMember = "conc_Descripcion";
+            cmb.ValueMember = "Descripcion";
+            cmb.DisplayMember = "Descripcion";
+        }
+
+        public static void seleccionarItemComboBoxConcepto(ComboBox cmb, ent_Concepto Concepto)
+        {
+            for (int i = 0; i < cmb.Items.Count; i++)
+            {
+                ent_Concepto conceptoEnComboBox = cmb.Items[i] as ent_Concepto;
+
+                if (conceptoEnComboBox.Correlativo == Concepto.Correlativo)
+                {
+                    cmb.SelectedIndex = i;
+                }
+            }
+        }
+
+        public static void seleccionarUbigeo(ComboBox cmb, String Ubigeo, string tipo)
+        {
+            switch(tipo)
+            {
+                case "DEPARTAMENTO":
+                    for (int i = 0; i < cmb.Items.Count; i++)
+                    {
+                        ent_Ubigeo conceptoEnComboBox = cmb.Items[i] as ent_Ubigeo;
+
+                        if (conceptoEnComboBox.Ubigeo == Ubigeo.Substring(0,2))
+                        {
+                            cmb.SelectedIndex = i;
+                            break;
+                        }
+                    }
+                    break;
+                case "PROVINCIA":
+                    for (int i = 0; i < cmb.Items.Count; i++)
+                    {
+                        ent_Ubigeo conceptoEnComboBox = cmb.Items[i] as ent_Ubigeo;
+
+                        if (conceptoEnComboBox.Ubigeo == Ubigeo.Substring(0, 4))
+                        {
+                            cmb.SelectedIndex = i;
+                            break;
+                        }
+                    }
+                    break;
+                case "DISTRITO":
+                    for (int i = 0; i < cmb.Items.Count; i++)
+                    {
+                        ent_Ubigeo conceptoEnComboBox = cmb.Items[i] as ent_Ubigeo;
+
+                        if (conceptoEnComboBox.Ubigeo == Ubigeo)
+                        {
+                            cmb.SelectedIndex = i;
+                            break;
+                        }
+                    }
+                    break;
+            }
+            
         }
     }
 }

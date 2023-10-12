@@ -8,7 +8,29 @@ namespace CEN.Entidad
 {
     public class ent_Correo
     {
-        public Boolean corr_Principal { get; set; }
-        public String? corr_Correo { get; set; }
+        public int Id { get; set; }
+        public int Id_Trabajador { get; set; }
+        public String Correo { get; set; }
+        public int Estado { get; set; }
+        public bool Principal { get; set; }
+        public int Marcabaja { get; set; }
+        public String Usuario { get; set; }
+        public String Ip { get; set; }
+        public String Mac { get; set; }
+        public String HostUser { get; set; }
+        public String HostName { get; set; }
+        public ent_Correo()
+        {
+            Id = 0;
+            Id_Trabajador = 0;
+            Correo = String.Empty;
+            Estado = 0;
+            Principal = false;
+            Usuario = String.Empty;
+            Ip = String.Empty;
+            Mac = String.Empty;
+            HostUser = String.Empty;
+            HostName = String.Empty;
+        }
     }
 }

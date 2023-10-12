@@ -12,6 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DataGridViewAutoFilter" Version="1.0.0" />
     <PackageReference Include="Stitcher.Infragistics4.Win.UltraWinEditors" Version="1.2.0" />
     <PackageReference Include="System.ServiceModel.Duplex" Version="4.10.*" />
     <PackageReference Include="System.ServiceModel.Federation" Version="4.10.*" />
@@ -42,7 +43,6 @@
 
   <ItemGroup>
     <Folder Include="Connected Services\" />
-    <Folder Include="NewFolder\" />
   </ItemGroup>
 
 </Project>

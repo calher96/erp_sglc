@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "OZGlcHwPBWdu6tDco0KaJU4gIeWzT8WX97ZMDmVIvOoV5Td+XHOvP6bleM+94izmykopoTX5Ms9fhh5GYzLb1A==",
+  "dgSpecHash": "GlI9DECxcf9qrPhH3rXhnr9SXHcZCcZn1ef7MEo6zAsQqI991vNjo9C2NVvKwIlQYSI+jTgiU8qZIx9b3BJynQ==",
   "success": true,
   "projectFilePath": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\CAD\\CAD.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\usuario\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\usuario\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "C:\\Users\\usuario\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\usuario\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Users\\usuario\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\usuario\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

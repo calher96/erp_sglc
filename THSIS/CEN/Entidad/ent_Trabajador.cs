@@ -8,34 +8,50 @@ namespace CEN.Entidad
 {
     public class ent_Trabajador
     {
-        public int Trab_Id { get; set; }
-        public Int16 Trab_TipoDocumento { get; set; }
-        public String? Trab_Documento { get; set; }
-        public String? Trab_Nombres { get; set; }
-        public String? Trab_ApellidoPaterno { get; set; }
-        public String? Trab_ApellidoMaterno { get; set; }
-        public String? Trab_NombresCompletos { get; set; }
-        public int Trab_EstadoCivil { get; set; }
-        public int Trab_Estado { get; set; }
-        public int Trab_Marcabaja { get; set; }
-        public DateOnly Trab_FechaNacimiento { get; set; }
-        public int Trab_Sexo { get; set; }
-        public String? Trab_SexoDescripcion { get; set; }
-        public String? Trab_LugarNacimiento { get; set; }
-        public String? Trab_usuarioRegistro { get; set; }
-        public int empr_Id { get; set; }
-        public int Trab_Categoria { get; set; }
-        public Boolean Trab_Hijos { get; set; }
-        public int Trab_GradoInstruccion { get; set; }
-        public int Trab_Piloto { get; set; }
-        public String? Trab_codigo { get; set; }
-        public DateOnly? Trab_FechaRegistro { get; set; }
-        public int Area_Id { get; set; }
-        public String? Area_Nombre { get; set; }
-        public String? Trab_RelacionLaboralDescripcion { get; set; }
-        public String? corr_Correo { get; set; }
-        public String? celu_Celular { get; set; }
-        public String? telf_Telefono { get; set; }
-        public String? dire_Direccion { get; set; }
+        public int Id { get; set; }
+        public ent_Empresa Empresa { get; set; }
+        public ent_Sucursal Sucursal { get; set; }
+        public ent_Persona Persona { get; set; }
+        public String Codigo { get; set; }
+        public ent_Concepto Estado { get; set; }
+        public ent_Concepto Categoria { get; set; }
+        public ent_Concepto GradoInstruccion { get; set; }
+        public ent_Concepto Piloto { get; set; }
+        public List<ent_Ocupacion> Lista_Ocupacion { get; set; }
+        public bool Hijos { get; set; }
+        public int Marcabaja { get; set; }
+        public List<ent_Telefono> Lista_Telefono { get; set; }
+        public List<ent_Telefono> Lista_Celular { get; set; }
+        public List<ent_Correo> Lista_Correo { get; set; }
+        public List<ent_Direccion> Lista_Direccion { get; set; }
+        public String Usuario { get; set; }
+        public String Ip { get; set; }
+        public String Mac { get; set; }
+        public String HostUser { get; set; }
+        public String HostName { get; set; }
+        public ent_Trabajador()
+        {
+            Id = 0;
+            Empresa = new ent_Empresa();
+            Sucursal = new ent_Sucursal();
+            Persona = new ent_Persona();
+            Codigo = String.Empty;
+            Estado = new ent_Concepto();
+            Categoria = new ent_Concepto();
+            GradoInstruccion = new ent_Concepto();
+            Piloto = new ent_Concepto();
+            Lista_Ocupacion = new List<ent_Ocupacion>();
+            Hijos = false;
+            Marcabaja = 1;
+            Lista_Telefono = new List<ent_Telefono>();
+            Lista_Celular = new List<ent_Telefono>();
+            Lista_Correo = new List<ent_Correo>();
+            Lista_Direccion = new List<ent_Direccion>();
+            Usuario = String.Empty;
+            Ip = String.Empty;
+            Mac = String.Empty;
+            HostUser = String.Empty;
+            HostName = String.Empty;
+        }
     }
 }

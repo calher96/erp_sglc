@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using DataGridViewAutoFilter;
 
 namespace Principal.Operaciones
 {
@@ -69,8 +70,8 @@ namespace Principal.Operaciones
             cln_Concepto cln = new cln_Concepto();
             lista = cln.listarConcepto(1);
             cbo_TipoDocumento.DataSource = lista;
-            cbo_TipoDocumento.ValueMember = "conc_Descripcion";
-            cbo_TipoDocumento.DisplayMember = "conc_Descripcion";
+            cbo_TipoDocumento.ValueMember = "Descripcion";
+            cbo_TipoDocumento.DisplayMember = "Descripcion";
         }
 
         private void cargarTipoPersona()
@@ -79,8 +80,8 @@ namespace Principal.Operaciones
             cln_Concepto cln = new cln_Concepto();
             lista = cln.listarConcepto(10);
             cbo_TipoPersona.DataSource = lista;
-            cbo_TipoPersona.ValueMember = "conc_Descripcion";
-            cbo_TipoPersona.DisplayMember = "conc_Descripcion";
+            cbo_TipoPersona.ValueMember = "Descripcion";
+            cbo_TipoPersona.DisplayMember = "Descripcion";
         }
 
         private void btn_Nuevo_Click(object sender, EventArgs e)
@@ -91,20 +92,20 @@ namespace Principal.Operaciones
 
         private void cbo_TipoPersona_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (((ent_Concepto)cbo_TipoPersona.SelectedItem).conc_Correlativo == 1)
+            if (((ent_Concepto)cbo_TipoPersona.SelectedItem).Correlativo == 1)
             {
                 gpb_PersonaNatural.Enabled = true;
                 gpb_PersonaJuridica.Enabled = false;
                 cbo_TipoDocumento.Enabled = true;
                 limpiarPersonaJuridica();
             }
-            if (((ent_Concepto)cbo_TipoPersona.SelectedItem).conc_Correlativo == 2)
+            if (((ent_Concepto)cbo_TipoPersona.SelectedItem).Correlativo == 2)
             {
                 gpb_PersonaNatural.Enabled = false;
                 gpb_PersonaJuridica.Enabled = true;
                 for (int i = 0; i < cbo_TipoDocumento.Items.Count; i++)
                 {
-                    int conc_Codigo = ((ent_Concepto)cbo_TipoDocumento.Items[i]).conc_Correlativo;
+                    int conc_Codigo = ((ent_Concepto)cbo_TipoDocumento.Items[i]).Correlativo;
                     if (conc_Codigo == 2)
                     {
                         cbo_TipoDocumento.SelectedIndex = i;
@@ -135,7 +136,7 @@ namespace Principal.Operaciones
         private void btn_Guardar_Click(object sender, EventArgs e)
         {
             Boolean resp = true;
-            Int16 tipoPersona = Convert.ToInt16(((ent_Concepto)cbo_TipoPersona.SelectedItem).conc_Correlativo);
+            Int16 tipoPersona = Convert.ToInt16(((ent_Concepto)cbo_TipoPersona.SelectedItem).Correlativo);
             resp = validarDatosGenerales();
             if (tipoPersona == 1)
             {
@@ -152,10 +153,10 @@ namespace Principal.Operaciones
                 cln_Cliente cln = new cln_Cliente();
                 ent_Cliente obj = new ent_Cliente();
                 ResponseHelper response;
-                obj.Clie_TipoDocumento = ((ent_Concepto)cbo_TipoDocumento.SelectedItem).conc_Correlativo;
+                obj.Clie_TipoDocumento = ((ent_Concepto)cbo_TipoDocumento.SelectedItem).Correlativo;
                 obj.Clie_Documento = txt_Documento.Text;
                 obj.Clie_Codigo = txt_Codigo.Text;
-                obj.Clie_TipoPersona = Convert.ToInt16(((ent_Concepto)cbo_TipoPersona.SelectedItem).conc_Correlativo);
+                obj.Clie_TipoPersona = Convert.ToInt16(((ent_Concepto)cbo_TipoPersona.SelectedItem).Correlativo);
                 obj.Clie_Nombres = txt_Nombres.Text;
                 obj.Clie_ApellidoPaterno = txt_ApellidoPaterno.Text;
                 obj.Clie_ApellidoMaterno = txt_ApellidoMaterno.Text;
@@ -270,6 +271,7 @@ namespace Principal.Operaciones
                         dgb_Lista.Rows[dgb_Lista.RowCount - 1].DefaultCellStyle.BackColor = color;
                     }
                 }
+                
             }
             catch(Exception ex)
             {

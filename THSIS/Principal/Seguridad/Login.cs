@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using CEN.Helpers;
 using System.Text.Json.Serialization;
 using System.Text.Json;
+using CEN.Response;
 
 namespace Principal.Seguridad
 {
@@ -41,12 +42,12 @@ namespace Principal.Seguridad
                 ResponseHelper response = cln.iniciarSesion(User);
                 if (response.codError == 0)
                 {
-                    MessageBox.Show(response.mensajeError + " " + StaticVariable.obj_Usuario.Usua_Usuario, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    List<ent_Perfil> listaPerfil = (List<ent_Perfil>)clnPerfil.ListarPerfil("DET", StaticVariable.obj_Usuario.Perf_Id).response;
-                    foreach (var perfil in listaPerfil)
-                    {
-                        StaticVariable.obj_Perfil = perfil;
-                    }
+                    //MessageBox.Show(response.mensajeError + " " + StaticVariable.obj_Usuario.Usua_Usuario, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    StaticVariable.obj_Perfil = ((LoginResponse)response.response).Perfil;
+                    StaticVariable.obj_Empresa = ((LoginResponse)response.response).Trabajador.Empresa;
+                    StaticVariable.token = ((LoginResponse)response.response).Token;
+                    StaticVariable.obj_Usuario.Usua_Usuario = ((LoginResponse)response.response).Usuario;
+                    StaticVariable.obj_Trabajador = ((LoginResponse)response.response).Trabajador;
                     mdi_Principal.status_login = 1;
                     this.Dispose();
                 }
