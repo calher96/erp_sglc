@@ -25,8 +25,8 @@ namespace Principal.Recursos_Humanos
         private void cargarCombos()
         {
 
-            BasicMetod.cargarComboBox(cmb_Tipo, 11, "conc_Descripcion", "conc_Descripcion");
-            BasicMetod.cargarComboBox(cmb_Operador, 12, "conc_Descripcion", "conc_Descripcion");
+            BasicMetod.cargarComboBox(cmb_Tipo, 11, "Descripcion", "Descripcion");
+            BasicMetod.cargarComboBox(cmb_Operador, 12, "Descripcion", "Descripcion");
         }
         
 

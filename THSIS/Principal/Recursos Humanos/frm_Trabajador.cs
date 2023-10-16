@@ -813,7 +813,13 @@ namespace Principal.Recursos_Humanos
                 // Verifica si la columna "ID" existe en el DataGridView
                 if (dgb_Lista.Columns.Contains("ID"))
                 {
-                    BuscarTrabajador(Convert.ToInt32(selectedRow.Cells["ID"].Value));
+                    //BuscarTrabajador(Convert.ToInt32(selectedRow.Cells["ID"].Value));
+                    cln_Trabajador cln_Trabajador = new cln_Trabajador();
+                    ent_Trabajador ent_Trabajador = new ent_Trabajador();
+                    ent_Trabajador.Id = Convert.ToInt32(selectedRow.Cells["ID"].Value);
+                    ent_Trabajador.Empresa = StaticVariable.obj_Empresa;
+                    Trabajador = cln_Trabajador.ListarTrabajador(ent_Trabajador)[0];
+
                     txt_Documento.Text = Trabajador.Persona.DocIdentidad;
                     txt_Nombres.Text = Trabajador.Persona.Nombres;
                     txt_ApellidoPaterno.Text = Trabajador.Persona.ApellidoPaterno;
@@ -833,15 +839,36 @@ namespace Principal.Recursos_Humanos
                     {
                         txt_Correo.Text = lista_Correo[0].Correo;
                     }
+                    else
+                    {
+                        txt_Correo.Text = "";
+                    }
                     lista_Telefono = Trabajador.Lista_Telefono;
                     if (lista_Telefono.Count > 0)
                     {
                         txt_Telefono.Text = lista_Telefono[0].Numero;
                     }
+                    else
+                    {
+                        txt_Telefono.Text = "";
+                    }
                     lista_Celular = Trabajador.Lista_Celular;
                     if (lista_Celular.Count > 0)
                     {
                         txt_Celular.Text = lista_Celular[0].Numero;
+                    }
+                    else
+                    {
+                        txt_Celular.Text = "";
+                    }
+                    lista_Direccion = Trabajador.Lista_Direccion;
+                    if (lista_Direccion.Count > 0)
+                    {
+                        txt_Direccion.Text = lista_Direccion[0].DireccionCompleta;
+                    }
+                    else
+                    {
+                        txt_Direccion.Text = "";
                     }
                     chk_Hijos.Checked = Trabajador.Hijos;
                 }
@@ -871,6 +898,18 @@ namespace Principal.Recursos_Humanos
         private void btn_Telefono_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            frm_Direccion.ListaDireccion = lista_Direccion;
+            frm_Direccion Direccion = new frm_Direccion();
+            Direccion.ShowDialog();
+            lista_Direccion = frm_Direccion.ListaDireccion;
+            if (lista_Direccion.Count > 0)
+            {
+                txt_Direccion.Text = lista_Direccion[0].DireccionCompleta;
+            }
         }
     }
 }

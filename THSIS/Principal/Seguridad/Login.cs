@@ -14,6 +14,7 @@ using CEN.Helpers;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 using CEN.Response;
+using Principal.Helpers;
 
 namespace Principal.Seguridad
 {
@@ -34,6 +35,7 @@ namespace Principal.Seguridad
             ent_Usuario User = null;
             try
             {
+                BasicMetod.MostrarCarga(ptb_Carga);
                 User = new ent_Usuario();
                 User.Usua_Usuario = txtUser.Text;
                 User.Usua_Password = txtPassword.Text;
@@ -49,10 +51,12 @@ namespace Principal.Seguridad
                     StaticVariable.obj_Usuario.Usua_Usuario = ((LoginResponse)response.response).Usuario;
                     StaticVariable.obj_Trabajador = ((LoginResponse)response.response).Trabajador;
                     mdi_Principal.status_login = 1;
+                    BasicMetod.OcultarCarga(ptb_Carga);
                     this.Dispose();
                 }
                 else
                 {
+                    BasicMetod.OcultarCarga(ptb_Carga);
                     limpiarCampos();
                     MessageBox.Show(response.mensajeError, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

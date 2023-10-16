@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             txtUser = new TextBox();
             txtPassword = new TextBox();
             button1 = new Button();
             panel1 = new Panel();
+            ptb_Carga = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)ptb_Carga).BeginInit();
             SuspendLayout();
             // 
             // txtUser
@@ -84,6 +87,18 @@
             panel1.Size = new Size(250, 330);
             panel1.TabIndex = 5;
             // 
+            // ptb_Carga
+            // 
+            ptb_Carga.BackColor = Color.Transparent;
+            ptb_Carga.Image = (Image)resources.GetObject("ptb_Carga.Image");
+            ptb_Carga.Location = new Point(292, 30);
+            ptb_Carga.Name = "ptb_Carga";
+            ptb_Carga.Size = new Size(256, 256);
+            ptb_Carga.SizeMode = PictureBoxSizeMode.AutoSize;
+            ptb_Carga.TabIndex = 6;
+            ptb_Carga.TabStop = false;
+            ptb_Carga.Visible = false;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -91,6 +106,7 @@
             AutoSize = true;
             BackColor = Color.FromArgb(15, 15, 15);
             ClientSize = new Size(780, 330);
+            Controls.Add(ptb_Carga);
             Controls.Add(panel1);
             Controls.Add(txtUser);
             Controls.Add(button1);
@@ -100,6 +116,7 @@
             Opacity = 0.9D;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
+            ((System.ComponentModel.ISupportInitialize)ptb_Carga).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -110,5 +127,6 @@
         private TextBox txtPassword;
         private Button button1;
         private Panel panel1;
+        private PictureBox ptb_Carga;
     }
 }

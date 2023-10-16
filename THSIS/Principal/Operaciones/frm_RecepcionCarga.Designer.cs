@@ -28,14 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             TextBox textBox3;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_RecepcionCarga));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             tpc_RecepcionCarga = new TabControl();
             tpg_Lista = new TabPage();
-            dataGridView1 = new DataGridView();
+            dgb_Carga = new DataGridView();
+            cms_ListaCarga = new ContextMenuStrip(components);
+            guíaDeRemisiónTransportistaToolStripMenuItem = new ToolStripMenuItem();
+            tsm_IngresarGRT = new ToolStripMenuItem();
             panel2 = new Panel();
             btn_Actualizar = new Button();
             button8 = new Button();
@@ -64,7 +68,7 @@
             dateTimePicker1 = new DateTimePicker();
             dateTimePicker2 = new DateTimePicker();
             tpg_Mantenimiento = new TabPage();
-            tbc_Carga = new TabControl();
+            tpc_Carga = new TabControl();
             tpb_DetalleCarga = new TabPage();
             dataGridView2 = new DataGridView();
             groupBox3 = new GroupBox();
@@ -184,8 +188,8 @@
             label54 = new Label();
             comboBox24 = new ComboBox();
             groupBox2 = new GroupBox();
-            checkBox2 = new CheckBox();
-            comboBox9 = new ComboBox();
+            chk_RecojoDomicilioLugar = new CheckBox();
+            cbo_DomicilioLugar = new ComboBox();
             textBox4 = new TextBox();
             cbo_TipoVehiculo = new ComboBox();
             label21 = new Label();
@@ -193,7 +197,7 @@
             label20 = new Label();
             comboBox7 = new ComboBox();
             label19 = new Label();
-            chk_Tercero = new CheckBox();
+            chk_Tercerizado = new CheckBox();
             label18 = new Label();
             cbo_TipoEntrega = new ComboBox();
             label17 = new Label();
@@ -223,12 +227,13 @@
             textBox3 = new TextBox();
             tpc_RecepcionCarga.SuspendLayout();
             tpg_Lista.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgb_Carga).BeginInit();
+            cms_ListaCarga.SuspendLayout();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             tpg_Mantenimiento.SuspendLayout();
-            tbc_Carga.SuspendLayout();
+            tpc_Carga.SuspendLayout();
             tpb_DetalleCarga.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             groupBox3.SuspendLayout();
@@ -265,7 +270,7 @@
             // 
             // tpg_Lista
             // 
-            tpg_Lista.Controls.Add(dataGridView1);
+            tpg_Lista.Controls.Add(dgb_Carga);
             tpg_Lista.Controls.Add(panel2);
             tpg_Lista.Controls.Add(panel1);
             tpg_Lista.Location = new Point(4, 29);
@@ -276,16 +281,40 @@
             tpg_Lista.Text = "Lista";
             tpg_Lista.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgb_Carga
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 160);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(1670, 638);
-            dataGridView1.TabIndex = 3;
+            dgb_Carga.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgb_Carga.ContextMenuStrip = cms_ListaCarga;
+            dgb_Carga.Dock = DockStyle.Fill;
+            dgb_Carga.Location = new Point(3, 160);
+            dgb_Carga.Name = "dgb_Carga";
+            dgb_Carga.RowHeadersWidth = 51;
+            dgb_Carga.RowTemplate.Height = 29;
+            dgb_Carga.Size = new Size(1670, 638);
+            dgb_Carga.TabIndex = 3;
+            dgb_Carga.CellClick += dgb_Carga_CellClick;
+            // 
+            // cms_ListaCarga
+            // 
+            cms_ListaCarga.ImageScalingSize = new Size(20, 20);
+            cms_ListaCarga.Items.AddRange(new ToolStripItem[] { guíaDeRemisiónTransportistaToolStripMenuItem });
+            cms_ListaCarga.Name = "cms_ListaCarga";
+            cms_ListaCarga.Size = new Size(284, 56);
+            // 
+            // guíaDeRemisiónTransportistaToolStripMenuItem
+            // 
+            guíaDeRemisiónTransportistaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tsm_IngresarGRT });
+            guíaDeRemisiónTransportistaToolStripMenuItem.Name = "guíaDeRemisiónTransportistaToolStripMenuItem";
+            guíaDeRemisiónTransportistaToolStripMenuItem.Size = new Size(283, 24);
+            guíaDeRemisiónTransportistaToolStripMenuItem.Text = "Guía de Remisión Transportista";
+            // 
+            // tsm_IngresarGRT
+            // 
+            tsm_IngresarGRT.Enabled = false;
+            tsm_IngresarGRT.Name = "tsm_IngresarGRT";
+            tsm_IngresarGRT.Size = new Size(224, 26);
+            tsm_IngresarGRT.Text = "Ingresar";
+            tsm_IngresarGRT.Click += inToolStripMenuItem_Click;
             // 
             // panel2
             // 
@@ -576,7 +605,7 @@
             // 
             // tpg_Mantenimiento
             // 
-            tpg_Mantenimiento.Controls.Add(tbc_Carga);
+            tpg_Mantenimiento.Controls.Add(tpc_Carga);
             tpg_Mantenimiento.Controls.Add(groupBox2);
             tpg_Mantenimiento.Controls.Add(panel4);
             tpg_Mantenimiento.Location = new Point(4, 29);
@@ -587,17 +616,17 @@
             tpg_Mantenimiento.Text = "Mantenimiento";
             tpg_Mantenimiento.UseVisualStyleBackColor = true;
             // 
-            // tbc_Carga
+            // tpc_Carga
             // 
-            tbc_Carga.Controls.Add(tpb_DetalleCarga);
-            tbc_Carga.Controls.Add(tpg_ContratoTercero);
-            tbc_Carga.Controls.Add(tpg_DatosEnvio);
-            tbc_Carga.Dock = DockStyle.Fill;
-            tbc_Carga.Location = new Point(3, 250);
-            tbc_Carga.Name = "tbc_Carga";
-            tbc_Carga.SelectedIndex = 0;
-            tbc_Carga.Size = new Size(1670, 548);
-            tbc_Carga.TabIndex = 19;
+            tpc_Carga.Controls.Add(tpb_DetalleCarga);
+            tpc_Carga.Controls.Add(tpg_ContratoTercero);
+            tpc_Carga.Controls.Add(tpg_DatosEnvio);
+            tpc_Carga.Dock = DockStyle.Fill;
+            tpc_Carga.Location = new Point(3, 250);
+            tpc_Carga.Name = "tpc_Carga";
+            tpc_Carga.SelectedIndex = 0;
+            tpc_Carga.Size = new Size(1670, 548);
+            tpc_Carga.TabIndex = 19;
             // 
             // tpb_DetalleCarga
             // 
@@ -615,34 +644,34 @@
             // 
             // dataGridView2
             // 
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridView2.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Window;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            dataGridView2.DefaultCellStyle = dataGridViewCellStyle5;
             dataGridView2.Dock = DockStyle.Fill;
             dataGridView2.Location = new Point(3, 361);
             dataGridView2.Name = "dataGridView2";
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.Control;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dataGridView2.RowHeadersWidth = 51;
             dataGridView2.RowTemplate.Height = 29;
             dataGridView2.Size = new Size(1656, 151);
@@ -1077,6 +1106,7 @@
             // 
             // textBox9
             // 
+            textBox9.Enabled = false;
             textBox9.Location = new Point(574, 60);
             textBox9.Name = "textBox9";
             textBox9.Size = new Size(156, 27);
@@ -1094,6 +1124,7 @@
             // 
             // textBox8
             // 
+            textBox8.Enabled = false;
             textBox8.Location = new Point(574, 94);
             textBox8.Name = "textBox8";
             textBox8.Size = new Size(156, 27);
@@ -1111,6 +1142,7 @@
             // 
             // textBox7
             // 
+            textBox7.Enabled = false;
             textBox7.Location = new Point(574, 26);
             textBox7.Name = "textBox7";
             textBox7.Size = new Size(156, 27);
@@ -1811,8 +1843,8 @@
             // 
             groupBox2.BackColor = Color.Azure;
             groupBox2.BackgroundImageLayout = ImageLayout.None;
-            groupBox2.Controls.Add(checkBox2);
-            groupBox2.Controls.Add(comboBox9);
+            groupBox2.Controls.Add(chk_RecojoDomicilioLugar);
+            groupBox2.Controls.Add(cbo_DomicilioLugar);
             groupBox2.Controls.Add(textBox4);
             groupBox2.Controls.Add(cbo_TipoVehiculo);
             groupBox2.Controls.Add(label21);
@@ -1821,7 +1853,7 @@
             groupBox2.Controls.Add(comboBox7);
             groupBox2.Controls.Add(label19);
             groupBox2.Controls.Add(textBox3);
-            groupBox2.Controls.Add(chk_Tercero);
+            groupBox2.Controls.Add(chk_Tercerizado);
             groupBox2.Controls.Add(label18);
             groupBox2.Controls.Add(cbo_TipoEntrega);
             groupBox2.Controls.Add(label17);
@@ -1854,24 +1886,26 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Datos Generales";
             // 
-            // checkBox2
+            // chk_RecojoDomicilioLugar
             // 
-            checkBox2.AutoSize = true;
-            checkBox2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            checkBox2.Location = new Point(1094, 31);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(225, 24);
-            checkBox2.TabIndex = 50;
-            checkBox2.Text = "RECOJO DOMICILIO LUGAR";
-            checkBox2.UseVisualStyleBackColor = true;
+            chk_RecojoDomicilioLugar.AutoSize = true;
+            chk_RecojoDomicilioLugar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            chk_RecojoDomicilioLugar.Location = new Point(1094, 31);
+            chk_RecojoDomicilioLugar.Name = "chk_RecojoDomicilioLugar";
+            chk_RecojoDomicilioLugar.Size = new Size(225, 24);
+            chk_RecojoDomicilioLugar.TabIndex = 50;
+            chk_RecojoDomicilioLugar.Text = "RECOJO DOMICILIO LUGAR";
+            chk_RecojoDomicilioLugar.UseVisualStyleBackColor = true;
+            chk_RecojoDomicilioLugar.CheckedChanged += chk_RecojoDomicilioLugar_CheckedChanged;
             // 
-            // comboBox9
+            // cbo_DomicilioLugar
             // 
-            comboBox9.FormattingEnabled = true;
-            comboBox9.Location = new Point(1094, 63);
-            comboBox9.Name = "comboBox9";
-            comboBox9.Size = new Size(204, 28);
-            comboBox9.TabIndex = 49;
+            cbo_DomicilioLugar.Enabled = false;
+            cbo_DomicilioLugar.FormattingEnabled = true;
+            cbo_DomicilioLugar.Location = new Point(1094, 63);
+            cbo_DomicilioLugar.Name = "cbo_DomicilioLugar";
+            cbo_DomicilioLugar.Size = new Size(204, 28);
+            cbo_DomicilioLugar.TabIndex = 49;
             // 
             // textBox4
             // 
@@ -1935,16 +1969,17 @@
             label19.TabIndex = 42;
             label19.Text = "FLETE Total:";
             // 
-            // chk_Tercero
+            // chk_Tercerizado
             // 
-            chk_Tercero.AutoSize = true;
-            chk_Tercero.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            chk_Tercero.Location = new Point(581, 134);
-            chk_Tercero.Name = "chk_Tercero";
-            chk_Tercero.Size = new Size(79, 24);
-            chk_Tercero.TabIndex = 23;
-            chk_Tercero.Text = "TERCE.";
-            chk_Tercero.UseVisualStyleBackColor = true;
+            chk_Tercerizado.AutoSize = true;
+            chk_Tercerizado.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            chk_Tercerizado.Location = new Point(581, 134);
+            chk_Tercerizado.Name = "chk_Tercerizado";
+            chk_Tercerizado.Size = new Size(79, 24);
+            chk_Tercerizado.TabIndex = 23;
+            chk_Tercerizado.Text = "TERCE.";
+            chk_Tercerizado.UseVisualStyleBackColor = true;
+            chk_Tercerizado.CheckedChanged += chk_Tercerizado_CheckedChanged;
             // 
             // label18
             // 
@@ -2196,14 +2231,15 @@
             Text = "frm_RecepcionCarga";
             tpc_RecepcionCarga.ResumeLayout(false);
             tpg_Lista.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgb_Carga).EndInit();
+            cms_ListaCarga.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             tpg_Mantenimiento.ResumeLayout(false);
-            tbc_Carga.ResumeLayout(false);
+            tpc_Carga.ResumeLayout(false);
             tpb_DetalleCarga.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             groupBox3.ResumeLayout(false);
@@ -2239,127 +2275,26 @@
         private Button button7;
         private Button btn_Nuevo;
         private Panel panel1;
-        private DataGridView dataGridView1;
+        private DataGridView dgb_Carga;
         private Label label2;
         private Label label1;
         private DateTimePicker dateTimePicker1;
         private DateTimePicker dateTimePicker2;
-        private Label label3;
-        private ComboBox cbo_UsuarioFilter;
         private Panel panel3;
         private Label label7;
-        private Label label8;
         private ComboBox cbo_Color_Aprobada;
-        private ComboBox cbo_Color_Cancelada;
         private Label label5;
         private ComboBox cbo_Color_Actualizado;
-        private CheckBox chk_Asignada;
         private Label label4;
-        private Label label6;
-        private ComboBox cbo_Color_Asignada;
         private ComboBox cbo_Color_Parcial;
-        private ComboBox cbo_Color_Generada;
-        private CheckBox chk_Excluir_Asignada;
-        private CheckBox chk_Tercerizados;
         private Panel panel4;
         private Button btn_Cancelar;
         private Button btn_Guardar;
-        private GroupBox groupBox2;
-        private DateTimePicker dateTimePicker7;
-        private DateTimePicker dateTimePicker8;
-        private Label label13;
-        private DateTimePicker dateTimePicker5;
-        private DateTimePicker dateTimePicker6;
-        private Label label12;
-        private DateTimePicker dateTimePicker4;
-        private DateTimePicker dateTimePicker3;
-        private Label label11;
-        private ComboBox cbo_EstadoCarga;
-        private Label label10;
-        private TextBox textBox1;
-        private Label label9;
-        private Label label17;
-        private ComboBox cbo_CondicionPago;
-        private Label label16;
-        private ComboBox cbo_TipoServicio;
-        private Label label15;
-        private ComboBox comboBox3;
-        private Label label14;
-        private ComboBox comboBox2;
-        private CheckBox chk_Tercero;
-        private Label label18;
-        private ComboBox cbo_TipoEntrega;
-        private Label label20;
-        private ComboBox comboBox7;
-        private Label label19;
-        private ComboBox cbo_TipoVehiculo;
-        private Label label21;
-        private TextBox textBox2;
-        private TabControl tbc_Carga;
+        private TabControl tpc_Carga;
         private TabPage tpb_DetalleCarga;
         private TabPage tpg_ContratoTercero;
-        private CheckBox checkBox2;
-        private ComboBox comboBox9;
-        private TextBox textBox4;
         private TabPage tpg_DatosEnvio;
         private ComboBox comboBox12;
-        private Label label24;
-        private Label label22;
-        private ComboBox comboBox10;
-        private Label label23;
-        private ComboBox comboBox11;
-        private Label label26;
-        private TextBox textBox6;
-        private ComboBox comboBox13;
-        private Label label25;
-        private TextBox textBox5;
-        private Label label29;
-        private ComboBox comboBox16;
-        private Label label28;
-        private ComboBox comboBox15;
-        private Label label27;
-        private ComboBox comboBox14;
-        private Label label30;
-        private TextBox textBox10;
-        private TextBox textBox9;
-        private TextBox textBox8;
-        private TextBox textBox7;
-        private Label label31;
-        private GroupBox groupBox1;
-        private DataGridView dataGridView2;
-        private GroupBox groupBox3;
-        private Panel panel6;
-        private Panel panel5;
-        private TextBox textBox11;
-        private Label label34;
-        private ComboBox cbo_MonedaDetalleCarga;
-        private ComboBox comboBox18;
-        private ComboBox comboBox17;
-        private Label label33;
-        private Label label32;
-        private TextBox textBox13;
-        private CheckBox checkBox3;
-        private TextBox textBox12;
-        private Label label35;
-        private CheckBox checkBox6;
-        private CheckBox checkBox5;
-        private CheckBox checkBox4;
-        private TextBox textBox14;
-        private Label label36;
-        private TextBox textBox17;
-        private CheckBox checkBox10;
-        private TextBox textBox16;
-        private CheckBox checkBox9;
-        private CheckBox checkBox8;
-        private TextBox textBox15;
-        private CheckBox checkBox7;
-        private Panel panel7;
-        private RadioButton radioButton3;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
-        private CheckBox checkBox13;
-        private CheckBox checkBox12;
-        private CheckBox checkBox11;
         private GroupBox groupBox4;
         private TextBox textBox19;
         private TextBox textBox21;
@@ -2417,6 +2352,110 @@
         private TextBox textBox36;
         private Label label49;
         private ComboBox comboBox30;
+        private ContextMenuStrip cms_ListaCarga;
+        private ToolStripMenuItem guíaDeRemisiónTransportistaToolStripMenuItem;
+        private CheckBox chk_Excluir_Asignada;
+        private CheckBox chk_Tercerizados;
+        private Label label8;
+        private ComboBox cbo_Color_Cancelada;
+        private CheckBox chk_Asignada;
+        private Label label6;
+        private ComboBox cbo_Color_Asignada;
+        private ComboBox cbo_Color_Generada;
+        private Label label3;
+        private ComboBox cbo_UsuarioFilter;
+        private DataGridView dataGridView2;
+        private GroupBox groupBox3;
+        private Panel panel7;
+        private RadioButton radioButton3;
+        private RadioButton radioButton2;
+        private RadioButton radioButton1;
+        private CheckBox checkBox13;
+        private CheckBox checkBox12;
+        private CheckBox checkBox11;
+        private Panel panel6;
+        private TextBox textBox17;
+        private CheckBox checkBox10;
+        private TextBox textBox16;
+        private CheckBox checkBox9;
+        private CheckBox checkBox8;
+        private TextBox textBox15;
+        private CheckBox checkBox7;
+        private Panel panel5;
+        private CheckBox checkBox6;
+        private CheckBox checkBox5;
+        private CheckBox checkBox4;
+        private TextBox textBox14;
+        private Label label36;
+        private TextBox textBox13;
+        private CheckBox checkBox3;
+        private TextBox textBox12;
+        private Label label35;
+        private TextBox textBox11;
+        private Label label34;
+        private ComboBox cbo_MonedaDetalleCarga;
+        private ComboBox comboBox18;
+        private ComboBox comboBox17;
+        private Label label33;
+        private Label label32;
+        private GroupBox groupBox1;
+        private TextBox textBox10;
+        private Label label31;
+        private ComboBox comboBox11;
+        private Label label30;
+        private Label label23;
+        private ComboBox comboBox10;
+        private TextBox textBox9;
+        private Label label22;
+        private TextBox textBox8;
+        private Label label24;
+        private TextBox textBox7;
         private ComboBox cbo_TipoCarga;
+        private Label label29;
+        private TextBox textBox5;
+        private ComboBox comboBox16;
+        private Label label25;
+        private Label label28;
+        private ComboBox comboBox13;
+        private ComboBox comboBox15;
+        private TextBox textBox6;
+        private Label label27;
+        private Label label26;
+        private ComboBox comboBox14;
+        private GroupBox groupBox2;
+        private CheckBox chk_RecojoDomicilioLugar;
+        private ComboBox cbo_DomicilioLugar;
+        private TextBox textBox4;
+        private ComboBox cbo_TipoVehiculo;
+        private Label label21;
+        private TextBox textBox2;
+        private Label label20;
+        private ComboBox comboBox7;
+        private Label label19;
+        private CheckBox chk_Tercerizado;
+        private Label label18;
+        private ComboBox cbo_TipoEntrega;
+        private Label label17;
+        private ComboBox cbo_CondicionPago;
+        private Label label16;
+        private ComboBox cbo_TipoServicio;
+        private Label label15;
+        private ComboBox comboBox3;
+        private Label label14;
+        private ComboBox comboBox2;
+        private DateTimePicker dateTimePicker7;
+        private DateTimePicker dateTimePicker8;
+        private Label label13;
+        private DateTimePicker dateTimePicker5;
+        private DateTimePicker dateTimePicker6;
+        private Label label12;
+        private DateTimePicker dateTimePicker4;
+        private DateTimePicker dateTimePicker3;
+        private Label label11;
+        private ComboBox cbo_EstadoCarga;
+        private Label label10;
+        private TextBox textBox1;
+        private Label label9;
+        private ToolStripMenuItem tsm_IngresarGRT;
     }
 }

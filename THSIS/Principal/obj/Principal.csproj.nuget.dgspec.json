@@ -247,6 +247,10 @@
               "target": "Package",
               "version": "[1.0.0, )"
             },
+            "Microsoft.Office.Interop.Excel": {
+              "target": "Package",
+              "version": "[15.0.4795.1001, )"
+            },
             "Stitcher.Infragistics4.Win.UltraWinEditors": {
               "target": "Package",
               "version": "[1.2.0, )"

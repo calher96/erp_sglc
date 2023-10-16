@@ -1,6 +1,7 @@
 ﻿using CEN.Entidad;
 using CEN.Helpers;
 using CLN;
+using Principal.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,15 +16,20 @@ namespace Principal.Operaciones
 {
     public partial class frm_RecepcionCarga : Form
     {
+
+        #region "Constructor"
         public frm_RecepcionCarga()
         {
             InitializeComponent();
             InicializarForulario();
         }
+        #endregion
 
+        #region "Métodos"
         public void InicializarForulario()
         {
             tpc_RecepcionCarga.TabPages[1].Enabled = false;
+            tpc_Carga.TabPages[1].Enabled = false;
             llenarColoresComboBox();
             cargarComboBox();
         }
@@ -213,6 +219,10 @@ namespace Principal.Operaciones
             cbo_Color_Aprobada.DrawItem += cbo_Color_Aprobada_DrawItem;
         }
 
+
+        #endregion
+
+        #region "Eventos"
         private void cbo_Color_Aprobada_DrawItem(object sender, DrawItemEventArgs e)
         {
             e.DrawBackground();
@@ -326,6 +336,7 @@ namespace Principal.Operaciones
                     cbo_Color_Generada.ForeColor, TextFormatFlags.Left | TextFormatFlags.VerticalCenter);
             }
         }
+
         private void cbo_Color_Actividad_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -349,6 +360,56 @@ namespace Principal.Operaciones
             tpc_RecepcionCarga.SelectedIndex = 0;
             tpc_RecepcionCarga.Controls[1].Enabled = false;
         }
+
+        private void chk_RecojoDomicilioLugar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_RecojoDomicilioLugar.Checked)
+            {
+                cbo_DomicilioLugar.Enabled = true;
+            }
+            else
+            {
+                cbo_DomicilioLugar.Enabled = false;
+            }
+        }
+
+        private void chk_Tercerizado_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_Tercerizado.Checked)
+            {
+                tpc_Carga.SelectedIndex = 1;
+                tpc_Carga.Controls[1].Enabled = true;
+            }
+            else
+            {
+                tpc_Carga.SelectedIndex = 0;
+                tpc_Carga.Controls[1].Enabled = false;
+                tpg_ContratoTercero.Enabled = false;
+            }
+        }
+
+
+
+        private void dgb_Carga_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgb_Carga.SelectedRows.Count > 0)
+            {
+                tsm_IngresarGRT.Enabled = true;
+            }
+            else
+            {
+                tsm_IngresarGRT.Enabled = false;
+            }
+        }
+        private void inToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dgb_Carga.SelectedRows.Count > 0)
+            {
+                frm_GuiaRemisionTransportista form = new frm_GuiaRemisionTransportista();
+                BasicMetod.abrirFormHijo(form, "Guia Remisión");
+            }
+        }
+        #endregion
 
 
     }

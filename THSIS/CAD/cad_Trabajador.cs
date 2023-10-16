@@ -71,7 +71,7 @@ namespace CAD
             return response1;
         }
 
-        public List<ent_Trabajador> listarTrabajador(ent_Trabajador obj, SqlConnection conn, SqlTransaction sqlTransaction)
+        public List<ent_Trabajador> listarTrabajador(ent_Trabajador obj)
         {
 
             List<ent_Trabajador> lista = new List<ent_Trabajador>();
@@ -119,6 +119,12 @@ namespace CAD
                     {
                         response1 = new ResponseHelper();
                         response1.codError = 401;
+                        response1.mensajeError = "Por favor, vuelva a iniciar sesión";
+                    }
+                    else if(response.StatusCode == HttpStatusCode.BadRequest)
+                    {
+                        response1 = new ResponseHelper();
+                        response1.codError = 400;
                         response1.mensajeError = "Por favor, vuelva a iniciar sesión";
                     }
                 }

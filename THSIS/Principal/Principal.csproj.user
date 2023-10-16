@@ -4,6 +4,12 @@
     <_LastSelectedProfileId>D:\THSIS\Repositorios\erp_sglc\THSIS\Principal\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="frm_Empresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Helpers\frm_Direccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="mdi_Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -11,6 +17,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Operaciones\frm_Facturacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Operaciones\frm_GuiaRemisionTransportista.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Operaciones\frm_Prueba.cs">

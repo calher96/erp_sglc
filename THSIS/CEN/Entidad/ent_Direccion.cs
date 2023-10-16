@@ -11,8 +11,9 @@ namespace CEN
     {
         public int Id { get; set; }
         public int Id_Trabajador { get; set; }
-        public String Direccion { get; set; }
+        public int Id_Cliente { get; set; }
         public ent_Concepto TipoVia { get; set; }
+        public Boolean Principal { get; set; }
         public String NombreVia { get; set; }
         public String Numero { get; set; }
         public String Departamento { get; set; }
@@ -26,6 +27,15 @@ namespace CEN
         public String NombreZona { get; set; }
         public String Referencia { get; set; }
         public bool CentroAsistenciaEssalud { get; set; }
+        public string DireccionCompleta
+        {
+            get
+            {
+                return ObtenerDireccion();
+            }
+        }
+        public String Ubigeo { get; set; }
+        public int Marcabaja { get; set; }
         public String Usuario { get; set; }
         public String Ip { get; set; }
         public String Mac { get; set; }
@@ -36,7 +46,7 @@ namespace CEN
         {
             Id = 0;
             Id_Trabajador = 0;
-            Direccion = String.Empty;
+            Id_Cliente = 0;
             TipoVia = new ent_Concepto();
             NombreVia = String.Empty;
             Numero = String.Empty;
@@ -51,11 +61,72 @@ namespace CEN
             NombreZona = String.Empty;
             Referencia = String.Empty;
             CentroAsistenciaEssalud = false;
+            Ubigeo = String.Empty;
+            Marcabaja = 0;
             Usuario = String.Empty;
             Ip = String.Empty;
             Mac = String.Empty;
             HostUser = String.Empty;
             HostName = String.Empty;
+        }
+
+        public String ObtenerDireccion()
+        {
+            List<string> elementos = new List<string>();
+
+            if (!string.IsNullOrEmpty(TipoVia.Descripcion))
+            {
+                elementos.Add(TipoVia.Descripcion);
+            }
+            if (!string.IsNullOrEmpty(NombreVia))
+            {
+                elementos.Add(NombreVia);
+            }
+            if (!string.IsNullOrEmpty(Numero))
+            {
+                elementos.Add("# " + Numero);
+            }
+            if (!string.IsNullOrEmpty(Departamento))
+            {
+                elementos.Add("Dept. " + Departamento);
+            }
+            if (!string.IsNullOrEmpty(Interior))
+            {
+                elementos.Add("Int. " + Interior);
+            }
+            if (!string.IsNullOrEmpty(Manzana))
+            {
+                elementos.Add("Mz. " + Manzana);
+            }
+
+            if (!string.IsNullOrEmpty(Lote))
+            {
+                elementos.Add("Lt. " + Lote);
+            }
+            if (!string.IsNullOrEmpty(Kilometro))
+            {
+                elementos.Add("Km. " + Kilometro);
+            }
+
+            if (!string.IsNullOrEmpty(Bloque))
+            {
+                elementos.Add("Bloque " + Bloque);
+            }
+            if (!string.IsNullOrEmpty(Etapa))
+            {
+                elementos.Add("Etapa " + Etapa);
+            }
+            if (!string.IsNullOrEmpty(TipoZona.Descripcion))
+            {
+                elementos.Add(TipoZona.Descripcion);
+            }
+            if (!string.IsNullOrEmpty(NombreZona))
+            {
+                elementos.Add(NombreZona);
+            }
+            string direccionCompleta = string.Join(" ", elementos);
+
+            return direccionCompleta;
         }
     }
 }

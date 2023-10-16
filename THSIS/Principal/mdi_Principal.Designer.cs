@@ -96,7 +96,7 @@
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(7, 3, 0, 3);
             menuStrip1.RenderMode = ToolStripRenderMode.Professional;
-            menuStrip1.Size = new Size(1541, 24);
+            menuStrip1.Size = new Size(1541, 42);
             menuStrip1.TabIndex = 8;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -283,7 +283,7 @@
             // 
             tsm_Grifo.Image = (Image)resources.GetObject("tsm_Grifo.Image");
             tsm_Grifo.Name = "tsm_Grifo";
-            tsm_Grifo.Size = new Size(76, 24);
+            tsm_Grifo.Size = new Size(76, 36);
             tsm_Grifo.Text = "Grifo";
             tsm_Grifo.Visible = false;
             // 
@@ -359,10 +359,10 @@
             // 
             tbc_Principal.Controls.Add(tabPage1);
             tbc_Principal.Dock = DockStyle.Fill;
-            tbc_Principal.Location = new Point(0, 24);
+            tbc_Principal.Location = new Point(0, 42);
             tbc_Principal.Name = "tbc_Principal";
             tbc_Principal.SelectedIndex = 0;
-            tbc_Principal.Size = new Size(1541, 637);
+            tbc_Principal.Size = new Size(1541, 619);
             tbc_Principal.TabIndex = 12;
             // 
             // tabPage1
@@ -371,7 +371,7 @@
             tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1533, 604);
+            tabPage1.Size = new Size(1533, 586);
             tabPage1.TabIndex = 3;
             tabPage1.Text = "Principal";
             tabPage1.UseVisualStyleBackColor = true;
@@ -384,7 +384,7 @@
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(3, 3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1527, 598);
+            pictureBox1.Size = new Size(1527, 580);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;

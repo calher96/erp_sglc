@@ -24,30 +24,17 @@ namespace CLN
         }
         public List<ent_Trabajador> ListarTrabajador(ent_Trabajador obj)
         {
-            SqlTransaction sqlTransaction = null;
-            SqlConnection sqlConnection = new SqlConnection(BasicVariable.cadena_conexion);
             List<ent_Trabajador> response = null;
             try
             {
-                sqlConnection.Open();
-                sqlTransaction = sqlConnection.BeginTransaction();
                 cad_Trabajador cad = new cad_Trabajador();
-                response = cad.listarTrabajador(obj, sqlConnection, sqlTransaction);
+                response = cad.listarTrabajador(obj);
 
-                sqlTransaction.Commit();
                 return response;
             }
             catch (Exception)
             {
-                if (sqlTransaction != null)
-                {
-                    sqlTransaction.Rollback();
-                }
                 throw;
-            }
-            finally
-            {
-                if (sqlConnection != null) { sqlConnection.Close(); }
             }
 
         }

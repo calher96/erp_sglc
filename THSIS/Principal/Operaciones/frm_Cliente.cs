@@ -13,11 +13,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using DataGridViewAutoFilter;
+using CEN;
 
 namespace Principal.Operaciones
 {
     public partial class frm_Cliente : Form
     {
+        #region "Constructor"
         public frm_Cliente()
         {
             InitializeComponent();
@@ -27,6 +29,8 @@ namespace Principal.Operaciones
             construirDataGridView();
             tbc_Principal.Controls[1].Enabled = false;
         }
+        #endregion
+        #region "Métodos"
         private void llenarColoresComboBox()
         {
             //CBO_COLOR_Comisionista
@@ -40,30 +44,7 @@ namespace Principal.Operaciones
             cbo_Color_Comisionista.SelectedIndex = 16;
             cbo_Color_Comisionista.DrawItem += cbo_Color_Comisionista_DrawItem;
         }
-        private void cbo_Color_Comisionista_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            e.DrawBackground();
-            if (e.Index >= 0)
-            {
-                var txt = cbo_Color_Comisionista.GetItemText(cbo_Color_Comisionista.Items[e.Index]);
-                var color = (Color)cbo_Color_Comisionista.Items[e.Index];
-                var r1 = new Rectangle(e.Bounds.Left + 1, e.Bounds.Top + 1,
-                    2 * (e.Bounds.Height - 2), e.Bounds.Height - 2);
-                var r2 = Rectangle.FromLTRB(r1.Right + 2, e.Bounds.Top,
-                    e.Bounds.Right, e.Bounds.Bottom);
-                using (var b = new SolidBrush(color))
-                    e.Graphics.FillRectangle(b, r1);
-                e.Graphics.DrawRectangle(Pens.Black, r1);
-                TextRenderer.DrawText(e.Graphics, txt, cbo_Color_Comisionista.Font, r2,
-                    cbo_Color_Comisionista.ForeColor, TextFormatFlags.Left | TextFormatFlags.VerticalCenter);
-            }
-        }
 
-        private void button8_Click(object sender, EventArgs e)
-        {
-            TabPage tp = mdi_Principal.tbc_Principal.TabPages["Cliente"];
-            mdi_Principal.tbc_Principal.TabPages.Remove(tp);
-        }
         private void cargarTipoDocumento()
         {
             List<ent_Concepto> lista;
@@ -84,37 +65,6 @@ namespace Principal.Operaciones
             cbo_TipoPersona.DisplayMember = "Descripcion";
         }
 
-        private void btn_Nuevo_Click(object sender, EventArgs e)
-        {
-            tbc_Principal.Controls[1].Enabled = true;
-            tbc_Principal.SelectedIndex = 1;
-        }
-
-        private void cbo_TipoPersona_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (((ent_Concepto)cbo_TipoPersona.SelectedItem).Correlativo == 1)
-            {
-                gpb_PersonaNatural.Enabled = true;
-                gpb_PersonaJuridica.Enabled = false;
-                cbo_TipoDocumento.Enabled = true;
-                limpiarPersonaJuridica();
-            }
-            if (((ent_Concepto)cbo_TipoPersona.SelectedItem).Correlativo == 2)
-            {
-                gpb_PersonaNatural.Enabled = false;
-                gpb_PersonaJuridica.Enabled = true;
-                for (int i = 0; i < cbo_TipoDocumento.Items.Count; i++)
-                {
-                    int conc_Codigo = ((ent_Concepto)cbo_TipoDocumento.Items[i]).Correlativo;
-                    if (conc_Codigo == 2)
-                    {
-                        cbo_TipoDocumento.SelectedIndex = i;
-                    }
-                }
-                cbo_TipoDocumento.Enabled = false;
-                limpiarPersonaNatural();
-            }
-        }
         private void limpiarDatosGenerales()
         {
             txt_Documento.Text = "";
@@ -133,75 +83,7 @@ namespace Principal.Operaciones
             txt_ApellidoPaterno.Text = "";
             chk_Comisionista.Checked = false;
         }
-        private void btn_Guardar_Click(object sender, EventArgs e)
-        {
-            Boolean resp = true;
-            Int16 tipoPersona = Convert.ToInt16(((ent_Concepto)cbo_TipoPersona.SelectedItem).Correlativo);
-            resp = validarDatosGenerales();
-            if (tipoPersona == 1)
-            {
 
-                resp = validarPersonaNatural();
-            }
-            else
-            {
-
-                resp = validarPersonaJuridica();
-            }
-            if (!resp)
-            {
-                cln_Cliente cln = new cln_Cliente();
-                ent_Cliente obj = new ent_Cliente();
-                ResponseHelper response;
-                obj.Clie_TipoDocumento = ((ent_Concepto)cbo_TipoDocumento.SelectedItem).Correlativo;
-                obj.Clie_Documento = txt_Documento.Text;
-                obj.Clie_Codigo = txt_Codigo.Text;
-                obj.Clie_TipoPersona = Convert.ToInt16(((ent_Concepto)cbo_TipoPersona.SelectedItem).Correlativo);
-                obj.Clie_Nombres = txt_Nombres.Text;
-                obj.Clie_ApellidoPaterno = txt_ApellidoPaterno.Text;
-                obj.Clie_ApellidoMaterno = txt_ApellidoMaterno.Text;
-                obj.Clie_Sexo = (rbt_Masculino.Checked ? 1 : 2);
-                obj.Clie_FechaNacimiento = DateOnly.Parse(dtp_FechaNacimiento.Value.Date.ToShortDateString());
-                obj.Clie_Comisionista = Convert.ToInt16(chk_Comisionista.Checked ? 1 : 2);
-                obj.Clie_RazonSocial = txt_RazonSocial.Text;
-                obj.Clie_Abreviatura = txt_Abreviatura.Text;
-                obj.Clie_DomicilioFiscal = txt_DireccionFiscal.Text;
-                obj.empr_Id = 2;
-                response = cln.guardarTrabajador(obj);
-                if (response.codError == -1)
-                {
-                    MessageBox.Show(response.mensajeError, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    MessageBox.Show(response.mensajeError, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else
-            {
-
-            }
-        }
-        public Boolean validarPersonaNatural()
-        {
-            Boolean resp = false;
-            if (txt_Nombres.Text.Length == 0)
-            {
-                resp = true;
-                txt_Nombres.Focus();
-            }
-            if (txt_ApellidoPaterno.Text.Length == 0)
-            {
-                resp = true;
-                txt_ApellidoPaterno.Focus();
-            }
-            if (txt_ApellidoMaterno.Text.Length == 0)
-            {
-                resp = true;
-                txt_ApellidoMaterno.Focus();
-            }
-            return resp;
-        }
         private Boolean validarPersonaJuridica()
         {
             Boolean resp = false;
@@ -240,15 +122,25 @@ namespace Principal.Operaciones
             return resp;
         }
 
-        private void btn_Cancelar_Click(object sender, EventArgs e)
+        public Boolean validarPersonaNatural()
         {
-            tbc_Principal.Controls[1].Enabled = false;
-            tbc_Principal.SelectedIndex = 0;
-        }
-
-        private void btn_Actualizar_Click(object sender, EventArgs e)
-        {
-            listarCliente();
+            Boolean resp = false;
+            if (txt_Nombres.Text.Length == 0)
+            {
+                resp = true;
+                txt_Nombres.Focus();
+            }
+            if (txt_ApellidoPaterno.Text.Length == 0)
+            {
+                resp = true;
+                txt_ApellidoPaterno.Focus();
+            }
+            if (txt_ApellidoMaterno.Text.Length == 0)
+            {
+                resp = true;
+                txt_ApellidoMaterno.Focus();
+            }
+            return resp;
         }
 
         private void listarCliente()
@@ -258,22 +150,22 @@ namespace Principal.Operaciones
                 cln_Cliente cln = new cln_Cliente();
                 ent_Cliente ent = new ent_Cliente();
                 List<ent_Cliente> lista;
-                ent.empr_Id = 2;
-                lista = cln.ListarCliente(ent);
+                ent.Empresa = StaticVariable.obj_Empresa;
+                lista = cln.ListarCliente(ent, "GEN");
                 foreach (ent_Cliente obj in lista)
                 {
-                    Boolean estado = (obj.Clie_Estado == 1 ? true : false);
-                    dgb_Lista.Rows.Add(obj.Clie_TipoDocumentoDescripcion, obj.Clie_Documento, obj.Clie_TipoPersonaDescripcion, obj.Clie_RazonSocial, obj.Clie_Codigo, obj.Clie_DomicilioFiscal, estado);
-                    if (obj.Clie_Comisionista == 1)
+                    Boolean estado = (obj.Estado.Correlativo == 1 ? true : false);
+                    dgb_Lista.Rows.Add(obj.Persona.TipoDocIdentidad.Descripcion, obj.Persona.DocIdentidad, obj.TipoPersona.Descripcion, obj.RazonSocial, obj.Codigo, obj.DomicilioFiscal, estado);
+                    if (obj.Comisionista)
                     {
                         Color color;
                         color = BasicMetod.obtenerColorComboBox(cbo_Color_Comisionista);
                         dgb_Lista.Rows[dgb_Lista.RowCount - 1].DefaultCellStyle.BackColor = color;
                     }
                 }
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -318,8 +210,140 @@ namespace Principal.Operaciones
 
             dgb_Lista.AllowUserToAddRows = false;
             dgb_Lista.AllowUserToDeleteRows = false;
-            
+
             dgb_Lista.ReadOnly = true;
         }
+        #endregion
+        #region "Eventos"
+        private void cbo_Color_Comisionista_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            e.DrawBackground();
+            if (e.Index >= 0)
+            {
+                var txt = cbo_Color_Comisionista.GetItemText(cbo_Color_Comisionista.Items[e.Index]);
+                var color = (Color)cbo_Color_Comisionista.Items[e.Index];
+                var r1 = new Rectangle(e.Bounds.Left + 1, e.Bounds.Top + 1,
+                    2 * (e.Bounds.Height - 2), e.Bounds.Height - 2);
+                var r2 = Rectangle.FromLTRB(r1.Right + 2, e.Bounds.Top,
+                    e.Bounds.Right, e.Bounds.Bottom);
+                using (var b = new SolidBrush(color))
+                    e.Graphics.FillRectangle(b, r1);
+                e.Graphics.DrawRectangle(Pens.Black, r1);
+                TextRenderer.DrawText(e.Graphics, txt, cbo_Color_Comisionista.Font, r2,
+                    cbo_Color_Comisionista.ForeColor, TextFormatFlags.Left | TextFormatFlags.VerticalCenter);
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            TabPage tp = mdi_Principal.tbc_Principal.TabPages["Cliente"];
+            mdi_Principal.tbc_Principal.TabPages.Remove(tp);
+        }
+
+
+        private void btn_Nuevo_Click(object sender, EventArgs e)
+        {
+            tbc_Principal.Controls[1].Enabled = true;
+            tbc_Principal.SelectedIndex = 1;
+        }
+
+        private void cbo_TipoPersona_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (((ent_Concepto)cbo_TipoPersona.SelectedItem).Correlativo == 1)
+            {
+                gpb_PersonaNatural.Enabled = true;
+                gpb_PersonaJuridica.Enabled = false;
+                cbo_TipoDocumento.Enabled = true;
+                limpiarPersonaJuridica();
+            }
+            if (((ent_Concepto)cbo_TipoPersona.SelectedItem).Correlativo == 2)
+            {
+                gpb_PersonaNatural.Enabled = false;
+                gpb_PersonaJuridica.Enabled = true;
+                for (int i = 0; i < cbo_TipoDocumento.Items.Count; i++)
+                {
+                    int conc_Codigo = ((ent_Concepto)cbo_TipoDocumento.Items[i]).Correlativo;
+                    if (conc_Codigo == 2)
+                    {
+                        cbo_TipoDocumento.SelectedIndex = i;
+                    }
+                }
+                cbo_TipoDocumento.Enabled = false;
+                limpiarPersonaNatural();
+            }
+        }
+
+        private void btn_Guardar_Click(object sender, EventArgs e)
+        {
+            Boolean resp = true;
+            Int16 tipoPersona = Convert.ToInt16(((ent_Concepto)cbo_TipoPersona.SelectedItem).Correlativo);
+            resp = validarDatosGenerales();
+            if (tipoPersona == 1)
+            {
+
+                resp = validarPersonaNatural();
+            }
+            else
+            {
+
+                resp = validarPersonaJuridica();
+            }
+            if (!resp)
+            {
+                cln_Cliente cln = new cln_Cliente();
+                ent_Cliente obj = new ent_Cliente();
+                ResponseHelper response;
+                obj.Persona.TipoDocIdentidad.Correlativo = ((ent_Concepto)cbo_TipoDocumento.SelectedItem).Correlativo;
+                obj.Persona.DocIdentidad = txt_Documento.Text;
+                obj.Codigo = txt_Codigo.Text;
+                obj.TipoPersona.Correlativo = Convert.ToInt16(((ent_Concepto)cbo_TipoPersona.SelectedItem).Correlativo);
+                obj.Persona.Nombres = txt_Nombres.Text;
+                obj.Persona.ApellidoPaterno = txt_ApellidoPaterno.Text;
+                obj.Persona.ApellidoMaterno = txt_ApellidoMaterno.Text;
+                obj.Persona.Sexo.Correlativo = (rbt_Masculino.Checked ? 1 : 2);
+                obj.Persona.FechaNacimiento = DateOnly.Parse(dtp_FechaNacimiento.Value.Date.ToShortDateString());
+                obj.Comisionista = (chk_Comisionista.Checked ? true : false);
+                obj.RazonSocial = txt_RazonSocial.Text;
+                obj.Abreviatura = txt_Abreviatura.Text;
+                obj.DomicilioFiscal = txt_DireccionFiscal.Text;
+                obj.Empresa = StaticVariable.obj_Empresa;
+                obj.Persona.Id_Empresa = StaticVariable.obj_Empresa.Id;
+                response = cln.guardarTrabajador(obj, "I");
+                if (response.codError == -1)
+                {
+                    MessageBox.Show(response.mensajeError, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show(response.mensajeError, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Complete todos los campos", BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+
+
+        private void btn_Cancelar_Click(object sender, EventArgs e)
+        {
+            tbc_Principal.Controls[1].Enabled = false;
+            tbc_Principal.SelectedIndex = 0;
+        }
+
+        private void btn_Actualizar_Click(object sender, EventArgs e)
+        {
+            listarCliente();
+        }
+
+
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            BasicMetod.ExportToExcel(dgb_Lista, "Clientes" + DateTime.Now.ToString("dd-mm-yyyy HHmmss"));
+        }
+        #endregion
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using CEN.Entidad;
 using CEN.Helpers;
+using Principal.Helpers;
 using Principal.Operaciones;
 using Principal.Recursos_Humanos;
 using Principal.Seguridad;
@@ -17,9 +18,10 @@ namespace Principal
 {
     public partial class mdi_Principal : Form
     {
-
-        private int childFormNumber = 0;
+        #region "Variables"
         public static int status_login = 0;
+        #endregion
+        #region "Constructor"
         public mdi_Principal()
         {
             InitializeComponent();
@@ -37,7 +39,8 @@ namespace Principal
             }
 
         }
-
+        #endregion
+        #region "Métodos"
         private void cargarPiePrincipal()
         {
             lbl_Usuario.Text = StaticVariable.obj_Trabajador.Persona.ApellidoPaterno + " " + StaticVariable.obj_Trabajador.Persona.ApellidoMaterno + " " + StaticVariable.obj_Trabajador.Persona.Nombres;
@@ -46,14 +49,6 @@ namespace Principal
             //MessageBox.Show(BasicVariable.Ip, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void registrarTrabajadorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frm_Trabajador frm = new frm_Trabajador();
-            frm.index = childFormNumber;
-
-            abrirFormHijo(frm, "Trabajador");
-
-        }
         private void cargarPermisos()
         {
             foreach (ent_Permiso permiso in StaticVariable.obj_Perfil.lista_Permiso)
@@ -113,43 +108,17 @@ namespace Principal
                 }
             }
         }
-        private void abrirFormHijo(Object form, String titulo)
+
+        #endregion
+        #region "Eventos"
+
+        private void registrarTrabajadorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                TabPage tp = tbc_Principal.TabPages[titulo];
-                if (tp == null)
-                {
-                    TabPage tabpage = new TabPage();
-                    Form fh = form as Form;
-                    fh.AutoScroll = true;
-                    fh.TopLevel = false;
-                    fh.Dock = DockStyle.Fill;
-                    fh.Parent = tabpage;
-                    childFormNumber++;
-                    tabpage.Name = titulo;
-                    tabpage.Controls.Add(fh);
-                    tabpage.Text = titulo;
-                    tabpage.BackColor = Color.Blue;
-                    tabpage.AutoScroll = true;
-                    tbc_Principal.TabPages.Add(tabpage);
-                    tbc_Principal.SelectedIndex = tbc_Principal.Controls.Count - 1;
-                    tbc_Principal.Show();
-                    tabpage.Show();
-                    fh.Show();
-                }
-                else
-                {
-                    tbc_Principal.SelectedTab = tp;
-                }
-            }
-            catch
-            {
-
-            }
-
+            frm_Trabajador frm = new frm_Trabajador();
+            BasicMetod.abrirFormHijo(frm, "Trabajador");
 
         }
+
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -176,34 +145,23 @@ namespace Principal
         {
             lbl_Hora.Text = DateTime.Now.ToShortTimeString();
         }
-        /*public static void cerrarPestania(int index)
-        {
-            TabPage tp_Eliminar = tbc_Principal.TabPages[index];
-            tbc_Principal.TabPages.Remove(tp_Eliminar);
-        }*/
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm_Cliente frm = new frm_Cliente();
-            //frm.index = childFormNumber;
-
-            abrirFormHijo(frm, "Cliente");
+            BasicMetod.abrirFormHijo(frm, "Cliente");
         }
 
         private void permisosYPerfilesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frm_Permisos frm = new frm_Permisos();
-            //frm.index = childFormNumber;
-
-            abrirFormHijo(frm, "Permisos");
+            BasicMetod.abrirFormHijo(frm, "Permisos");
         }
 
         private void tsm_Carga_Click(object sender, EventArgs e)
         {
             frm_RecepcionCarga frm = new frm_RecepcionCarga();
-            //frm.index = childFormNumber;
-
-            abrirFormHijo(frm, "Recepción Carga");
+            BasicMetod.abrirFormHijo(frm, "Recepción Carga");
         }
 
         private void tsm_CerrarSesion_Click(object sender, EventArgs e)
@@ -215,5 +173,6 @@ namespace Principal
             this.Close();
             login.ShowDialog();
         }
+        #endregion
     }
 }

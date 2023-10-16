@@ -185,6 +185,7 @@
             button7.Text = "Exportar";
             button7.TextAlign = ContentAlignment.MiddleRight;
             button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
             // 
             // btn_Nuevo
             // 

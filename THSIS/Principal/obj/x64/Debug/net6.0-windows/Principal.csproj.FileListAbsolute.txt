@@ -85,3 +85,8 @@ D:\THSIS\Repositorios\erp_sglc\THSIS\Principal\obj\x64\Debug\net6.0-windows\Prin
 D:\THSIS\Repositorios\erp_sglc\THSIS\Principal\obj\x64\Debug\net6.0-windows\ref\ERP-SGLC.dll
 D:\THSIS\Repositorios\erp_sglc\THSIS\Principal\bin\x64\Debug\net6.0-windows\DataGridViewAutoFilter.dll
 D:\THSIS\Repositorios\erp_sglc\THSIS\Principal\bin\x64\Debug\net6.0-windows\Newtonsoft.Json.dll
+D:\THSIS\Repositorios\erp_sglc\THSIS\Principal\obj\x64\Debug\net6.0-windows\Principal.Operaciones.frm_GuiaRemisionTransportista.resources
+D:\THSIS\Repositorios\erp_sglc\THSIS\Principal\bin\x64\Debug\net6.0-windows\Microsoft.Office.Interop.Excel.dll
+D:\THSIS\Repositorios\erp_sglc\THSIS\Principal\bin\x64\Debug\net6.0-windows\OFFICE.DLL
+D:\THSIS\Repositorios\erp_sglc\THSIS\Principal\obj\x64\Debug\net6.0-windows\Principal.frm_Empresa.resources
+D:\THSIS\Repositorios\erp_sglc\THSIS\Principal\obj\x64\Debug\net6.0-windows\Principal.Helpers.frm_Direccion.resources
