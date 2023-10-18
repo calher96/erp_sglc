@@ -1,4 +1,5 @@
 ﻿using CEN.Entidad;
+using CEN.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,12 +63,12 @@ namespace CEN
             Referencia = String.Empty;
             CentroAsistenciaEssalud = false;
             Ubigeo = String.Empty;
-            Marcabaja = 0;
-            Usuario = String.Empty;
-            Ip = String.Empty;
-            Mac = String.Empty;
-            HostUser = String.Empty;
-            HostName = String.Empty;
+            Marcabaja = 1;
+            Usuario = StaticVariable.obj_Usuario.Usua_Usuario;
+            Ip = BasicVariable.Ip;
+            Mac = BasicVariable.Mac;
+            HostUser = BasicVariable.HostUser;
+            HostName = BasicVariable.HostName;
         }
 
         public String ObtenerDireccion()

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CEN.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,11 +48,11 @@ namespace CEN.Entidad
             Lista_Celular = new List<ent_Telefono>();
             Lista_Correo = new List<ent_Correo>();
             Lista_Direccion = new List<ent_Direccion>();
-            Usuario = String.Empty;
-            Ip = String.Empty;
-            Mac = String.Empty;
-            HostUser = String.Empty;
-            HostName = String.Empty;
+            Usuario = StaticVariable.obj_Usuario.Usua_Usuario;
+            Ip = BasicVariable.Ip;
+            Mac = BasicVariable.Mac;
+            HostUser = BasicVariable.HostUser;
+            HostName = BasicVariable.HostName;
         }
     }
 }

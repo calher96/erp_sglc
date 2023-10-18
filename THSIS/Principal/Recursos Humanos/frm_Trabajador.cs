@@ -83,7 +83,6 @@ namespace Principal.Recursos_Humanos
                 }
                 obj.Empresa.Id = StaticVariable.obj_Empresa.Id;
                 lista = cln.ListarTrabajador(obj);
-                //List<TrabajadorView> ListaView = new List<TrabajadorView>();
                 foreach (ent_Trabajador trab in lista)
                 {
                     Boolean estado = (trab.Estado.Correlativo == 2 ? true : false);
@@ -100,21 +99,11 @@ namespace Principal.Recursos_Humanos
                     {
                         color = BasicMetod.obtenerColorComboBox(cbo_Color_Liquidar);
                     }
-                    //TrabajadorView trabajadorView = new TrabajadorView();
-                    //trabajadorView.Id = trab.Id;
-                    //trabajadorView.Dni = trab.Persona.DocIdentidad;
-                    //trabajadorView.Nombres = trab.Persona.Nombres + ' ' + trab.Persona.ApellidoPaterno + ' ' + trab.Persona.ApellidoMaterno;
-                    //trabajadorView.Sexo = trab.Persona.Sexo.Descripcion;
-                    //trabajadorView.FechaNacimiento = trab.Persona.FechaNacimiento;
-                    //trabajadorView.Codigo = trab.Codigo;
-                    //trabajadorView.Disponible = estado;
-                    //ListaView.Add(trabajadorView);
                     dgb_Lista.Rows.Add(trab.Id, trab.Persona.DocIdentidad, trab.Persona.Nombres + ' ' + trab.Persona.ApellidoPaterno + ' ' + trab.Persona.ApellidoMaterno,
                         trab.Persona.Sexo.Descripcion, trab.Persona.FechaNacimiento, trab.Codigo, trab.Persona.FechaNacimiento, estado);
                     dgb_Lista.Rows[dgb_Lista.RowCount - 1].DefaultCellStyle.BackColor = color;
 
                 }
-                //dgb_Lista.DataSource = ListaView;
 
             }
             catch (Exception ex)
@@ -131,84 +120,27 @@ namespace Principal.Recursos_Humanos
             cbo_Departamento.ValueMember = "Descripcion";
             cbo_Departamento.DisplayMember = "Descripcion";
         }
-        private void cargarSituacionFiltro()
-        {
-            List<ent_Concepto> lista;
-            cln_Concepto cln = new cln_Concepto();
-            lista = cln.listarConcepto(4);
-            cbo_Situacion.DataSource = lista;
-            cbo_Situacion.ValueMember = "Descripcion";
-            cbo_Situacion.DisplayMember = "Descripcion";
-        }
-        private void cargarCategoriaFiltro()
-        {
-            List<ent_Concepto> lista;
-            cln_Concepto cln = new cln_Concepto();
-            lista = cln.listarConcepto(3);
-            cbo_Categoria.DataSource = lista;
-            cbo_Categoria.ValueMember = "Descripcion";
-            cbo_Categoria.DisplayMember = "Descripcion";
-        }
-        private void cargarEstadoTrabajadoro()
-        {
-            List<ent_Concepto> lista;
-            cln_Concepto cln = new cln_Concepto();
-            lista = cln.listarConcepto(4);
-            cbo_EstadoTrabajador.DataSource = lista;
-            cbo_EstadoTrabajador.ValueMember = "Descripcion";
-            cbo_EstadoTrabajador.DisplayMember = "Descripcion";
-            cbo_EstadoTrabajador.SelectedIndex = 1;
-        }
-        private void cargarCategoriaTrabajador()
-        {
-            List<ent_Concepto> lista;
-            cln_Concepto cln = new cln_Concepto();
-            lista = cln.listarConcepto(3);
-            cbo_CategoriaTrabajador.DataSource = lista;
-            cbo_CategoriaTrabajador.ValueMember = "Descripcion";
-            cbo_CategoriaTrabajador.DisplayMember = "Descripcion";
-        }
 
-        private void cargarEstadoCivil()
-        {
-            List<ent_Concepto> lista;
-            cln_Concepto cln = new cln_Concepto();
-            lista = cln.listarConcepto(2);
-            cbo_EstadoCivil.DataSource = lista;
-            cbo_EstadoCivil.ValueMember = "Descripcion";
-            cbo_EstadoCivil.DisplayMember = "Descripcion";
-        }
-        private void cargarGradoInstruccion()
-        {
-            List<ent_Concepto> lista;
-            cln_Concepto cln = new cln_Concepto();
-            lista = cln.listarConcepto(6);
-            cbo_GradoInstruccion.DataSource = lista;
-            cbo_GradoInstruccion.ValueMember = "Descripcion";
-            cbo_GradoInstruccion.DisplayMember = "Descripcion";
-        }
 
-        private void cargarPiloto()
-        {
-            List<ent_Concepto> lista;
-            cln_Concepto cln = new cln_Concepto();
-            lista = cln.listarConcepto(5);
-            cbo_PuestoPiloto.DataSource = lista;
-            cbo_PuestoPiloto.ValueMember = "Descripcion";
-            cbo_PuestoPiloto.DisplayMember = "Descripcion";
-        }
         private void cargarComboBox()
         {
             try
             {
-                cargarSituacionFiltro();
-                cargarCategoriaFiltro();
-                cargarEstadoCivil();
                 cargarDepartamento();
-                cargarEstadoTrabajadoro();
-                cargarCategoriaTrabajador();
-                cargarGradoInstruccion();
-                cargarPiloto();
+
+                BasicMetod.cargarComboBox(cbo_Ruta, 15, "Descripcion", "Descripcion");
+                BasicMetod.cargarComboBox(cbo_PuestoPiloto, 5, "Descripcion", "Descripcion");
+                BasicMetod.cargarComboBox(cbo_GradoInstruccion, 6, "Descripcion", "Descripcion");
+                BasicMetod.cargarComboBox(cbo_CategoriaTrabajador, 3, "Descripcion", "Descripcion");
+                BasicMetod.cargarComboBox(cbo_EstadoTrabajador, 4, "Descripcion", "Descripcion");
+                BasicMetod.cargarComboBox(cbo_EstadoCivil, 2, "Descripcion", "Descripcion");
+                BasicMetod.cargarComboBox(cbo_Categoria, 3, "Descripcion", "Descripcion");
+                BasicMetod.cargarComboBox(cbo_Situacion, 4, "Descripcion", "Descripcion");
+                BasicMetod.cargarComboBox(cbo_Ocupacion, 27, "Descripcion", "Descripcion");
+                BasicMetod.cargarComboBox(cbo_Cargo, 28, "Descripcion", "Descripcion");
+                BasicMetod.cargarComboBox(cbo_TipoRelacionLaboral, 29, "Descripcion", "Descripcion");
+                BasicMetod.cargarComboBox(cbo_Unidad, 30, "Descripcion", "Descripcion");
+                BasicMetod.cargarComboBox(cbo_Centro, 31, "Descripcion", "Descripcion");
             }
             catch (Exception ex)
             {

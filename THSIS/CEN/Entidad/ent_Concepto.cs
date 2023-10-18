@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CEN.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,9 @@ namespace CEN.Entidad
         public Double Valor4 { get; set; }
         public Double Valor5 { get; set; }
         public Double Valor6 { get; set; }
+        public String Valor7 { get; set; }
+        public String Valor8 { get; set; }
+        public String Valor9 { get; set; }
         public int Marcabaja { get; set; }
         public String Usuario { get; set; }
         public String Ip { get; set; }
@@ -37,12 +41,15 @@ namespace CEN.Entidad
             Valor4 = 0;
             Valor5 = 0;
             Valor6 = 0;
+            Valor7 = String.Empty;
+            Valor8 = String.Empty;
+            Valor9 = String.Empty;
             Marcabaja = 0;
-            Usuario = String.Empty;
-            Ip = String.Empty;
-            Mac = String.Empty;
-            HostUser = String.Empty;
-            HostName = String.Empty;
+            Usuario = StaticVariable.obj_Usuario.Usua_Usuario;
+            Ip = BasicVariable.Ip;
+            Mac = BasicVariable.Mac;
+            HostUser = BasicVariable.HostUser;
+            HostName = BasicVariable.HostName;
         }
     }
 }

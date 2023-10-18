@@ -81,20 +81,20 @@
             checkBox2 = new CheckBox();
             checkBox1 = new CheckBox();
             label29 = new Label();
-            comboBox6 = new ComboBox();
+            cbo_Ruta = new ComboBox();
             dateTimePicker2 = new DateTimePicker();
             label28 = new Label();
             dateTimePicker1 = new DateTimePicker();
             label21 = new Label();
-            comboBox5 = new ComboBox();
+            cbo_TipoRelacionLaboral = new ComboBox();
             label20 = new Label();
-            comboBox4 = new ComboBox();
+            cbo_Ocupacion = new ComboBox();
             label19 = new Label();
-            comboBox3 = new ComboBox();
+            cbo_Cargo = new ComboBox();
             label18 = new Label();
-            comboBox2 = new ComboBox();
-            label17 = new Label();
-            comboBox1 = new ComboBox();
+            cbo_Unidad = new ComboBox();
+            Unidad = new Label();
+            cbo_Centro = new ComboBox();
             label16 = new Label();
             textBox1 = new TextBox();
             button10 = new Button();
@@ -381,9 +381,9 @@
             panel3.Controls.Add(cbo_Color_Actividad);
             panel3.Controls.Add(cbo_Color_Baja);
             panel3.Dock = DockStyle.Right;
-            panel3.Location = new Point(875, 0);
+            panel3.Location = new Point(874, 0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(664, 67);
+            panel3.Size = new Size(665, 67);
             panel3.TabIndex = 5;
             // 
             // label5
@@ -512,7 +512,7 @@
             tabPage1.Controls.Add(groupBox1);
             tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
+            tabPage1.Padding = new Padding(3, 3, 3, 3);
             tabPage1.Size = new Size(1535, 807);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Datos Personales";
@@ -525,7 +525,7 @@
             button9.FlatAppearance.MouseOverBackColor = Color.Silver;
             button9.Image = Properties.Resources.diskette;
             button9.ImageAlign = ContentAlignment.MiddleLeft;
-            button9.Location = new Point(1372, 783);
+            button9.Location = new Point(1371, 783);
             button9.Name = "button9";
             button9.Size = new Size(106, 43);
             button9.TabIndex = 4;
@@ -569,7 +569,7 @@
             tabPage3.Controls.Add(groupBox4);
             tabPage3.Location = new Point(4, 29);
             tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3);
+            tabPage3.Padding = new Padding(3, 3, 3, 3);
             tabPage3.Size = new Size(1521, 428);
             tabPage3.TabIndex = 0;
             tabPage3.Text = "Datos Laborales";
@@ -645,6 +645,8 @@
             // 
             // comboBox8
             // 
+            comboBox8.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            comboBox8.AutoCompleteSource = AutoCompleteSource.ListItems;
             comboBox8.FormattingEnabled = true;
             comboBox8.Location = new Point(438, 43);
             comboBox8.Name = "comboBox8";
@@ -662,6 +664,8 @@
             // 
             // comboBox7
             // 
+            comboBox7.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            comboBox7.AutoCompleteSource = AutoCompleteSource.ListItems;
             comboBox7.FormattingEnabled = true;
             comboBox7.Location = new Point(281, 43);
             comboBox7.Name = "comboBox7";
@@ -705,7 +709,7 @@
             tabPage6.Controls.Add(dgb_ListaOcupacion);
             tabPage6.Location = new Point(4, 29);
             tabPage6.Name = "tabPage6";
-            tabPage6.Padding = new Padding(3);
+            tabPage6.Padding = new Padding(3, 3, 3, 3);
             tabPage6.Size = new Size(1501, 152);
             tabPage6.TabIndex = 0;
             tabPage6.Text = "Listado";
@@ -733,26 +737,26 @@
             tabPage7.Controls.Add(checkBox2);
             tabPage7.Controls.Add(checkBox1);
             tabPage7.Controls.Add(label29);
-            tabPage7.Controls.Add(comboBox6);
+            tabPage7.Controls.Add(cbo_Ruta);
             tabPage7.Controls.Add(dateTimePicker2);
             tabPage7.Controls.Add(label28);
             tabPage7.Controls.Add(dateTimePicker1);
             tabPage7.Controls.Add(label21);
-            tabPage7.Controls.Add(comboBox5);
+            tabPage7.Controls.Add(cbo_TipoRelacionLaboral);
             tabPage7.Controls.Add(label20);
-            tabPage7.Controls.Add(comboBox4);
+            tabPage7.Controls.Add(cbo_Ocupacion);
             tabPage7.Controls.Add(label19);
-            tabPage7.Controls.Add(comboBox3);
+            tabPage7.Controls.Add(cbo_Cargo);
             tabPage7.Controls.Add(label18);
-            tabPage7.Controls.Add(comboBox2);
-            tabPage7.Controls.Add(label17);
-            tabPage7.Controls.Add(comboBox1);
+            tabPage7.Controls.Add(cbo_Unidad);
+            tabPage7.Controls.Add(Unidad);
+            tabPage7.Controls.Add(cbo_Centro);
             tabPage7.Controls.Add(label16);
             tabPage7.Controls.Add(textBox1);
             tabPage7.Controls.Add(button10);
             tabPage7.Location = new Point(4, 29);
             tabPage7.Name = "tabPage7";
-            tabPage7.Padding = new Padding(3);
+            tabPage7.Padding = new Padding(3, 3, 3, 3);
             tabPage7.Size = new Size(1501, 152);
             tabPage7.TabIndex = 1;
             tabPage7.Text = "Mantenimiento";
@@ -805,13 +809,15 @@
             label29.TabIndex = 32;
             label29.Text = "Ruta";
             // 
-            // comboBox6
+            // cbo_Ruta
             // 
-            comboBox6.FormattingEnabled = true;
-            comboBox6.Location = new Point(55, 109);
-            comboBox6.Name = "comboBox6";
-            comboBox6.Size = new Size(301, 28);
-            comboBox6.TabIndex = 33;
+            cbo_Ruta.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_Ruta.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbo_Ruta.FormattingEnabled = true;
+            cbo_Ruta.Location = new Point(55, 109);
+            cbo_Ruta.Name = "cbo_Ruta";
+            cbo_Ruta.Size = new Size(301, 28);
+            cbo_Ruta.TabIndex = 33;
             // 
             // dateTimePicker2
             // 
@@ -851,13 +857,15 @@
             label21.TabIndex = 28;
             label21.Text = "Fecha Ingreso";
             // 
-            // comboBox5
+            // cbo_TipoRelacionLaboral
             // 
-            comboBox5.FormattingEnabled = true;
-            comboBox5.Location = new Point(171, 75);
-            comboBox5.Name = "comboBox5";
-            comboBox5.Size = new Size(301, 28);
-            comboBox5.TabIndex = 11;
+            cbo_TipoRelacionLaboral.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_TipoRelacionLaboral.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbo_TipoRelacionLaboral.FormattingEnabled = true;
+            cbo_TipoRelacionLaboral.Location = new Point(171, 75);
+            cbo_TipoRelacionLaboral.Name = "cbo_TipoRelacionLaboral";
+            cbo_TipoRelacionLaboral.Size = new Size(301, 28);
+            cbo_TipoRelacionLaboral.TabIndex = 11;
             // 
             // label20
             // 
@@ -868,13 +876,15 @@
             label20.TabIndex = 10;
             label20.Text = "Tipo Relación Laboral";
             // 
-            // comboBox4
+            // cbo_Ocupacion
             // 
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Location = new Point(734, 39);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(301, 28);
-            comboBox4.TabIndex = 9;
+            cbo_Ocupacion.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_Ocupacion.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbo_Ocupacion.FormattingEnabled = true;
+            cbo_Ocupacion.Location = new Point(734, 39);
+            cbo_Ocupacion.Name = "cbo_Ocupacion";
+            cbo_Ocupacion.Size = new Size(301, 28);
+            cbo_Ocupacion.TabIndex = 9;
             // 
             // label19
             // 
@@ -885,13 +895,15 @@
             label19.TabIndex = 8;
             label19.Text = "Ocupación";
             // 
-            // comboBox3
+            // cbo_Cargo
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(514, 39);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(214, 28);
-            comboBox3.TabIndex = 7;
+            cbo_Cargo.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_Cargo.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbo_Cargo.FormattingEnabled = true;
+            cbo_Cargo.Location = new Point(514, 39);
+            cbo_Cargo.Name = "cbo_Cargo";
+            cbo_Cargo.Size = new Size(214, 28);
+            cbo_Cargo.TabIndex = 7;
             // 
             // label18
             // 
@@ -902,39 +914,43 @@
             label18.TabIndex = 6;
             label18.Text = "Cargo:";
             // 
-            // comboBox2
+            // cbo_Unidad
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(294, 40);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(214, 28);
-            comboBox2.TabIndex = 5;
+            cbo_Unidad.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_Unidad.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbo_Unidad.FormattingEnabled = true;
+            cbo_Unidad.Location = new Point(294, 40);
+            cbo_Unidad.Name = "cbo_Unidad";
+            cbo_Unidad.Size = new Size(214, 28);
+            cbo_Unidad.TabIndex = 5;
             // 
-            // label17
+            // Unidad
             // 
-            label17.AutoSize = true;
-            label17.Location = new Point(294, 11);
-            label17.Name = "label17";
-            label17.Size = new Size(42, 20);
-            label17.TabIndex = 4;
-            label17.Text = "Área";
+            Unidad.AutoSize = true;
+            Unidad.Location = new Point(294, 11);
+            Unidad.Name = "Unidad";
+            Unidad.Size = new Size(59, 20);
+            Unidad.TabIndex = 4;
+            Unidad.Text = "Unidad";
             // 
-            // comboBox1
+            // cbo_Centro
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(137, 39);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(151, 28);
-            comboBox1.TabIndex = 3;
+            cbo_Centro.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_Centro.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbo_Centro.FormattingEnabled = true;
+            cbo_Centro.Location = new Point(137, 39);
+            cbo_Centro.Name = "cbo_Centro";
+            cbo_Centro.Size = new Size(151, 28);
+            cbo_Centro.TabIndex = 3;
             // 
             // label16
             // 
             label16.AutoSize = true;
             label16.Location = new Point(137, 11);
             label16.Name = "label16";
-            label16.Size = new Size(67, 20);
+            label16.Size = new Size(56, 20);
             label16.TabIndex = 2;
-            label16.Text = "Sucursal";
+            label16.Text = "Centro";
             // 
             // textBox1
             // 
@@ -976,6 +992,8 @@
             // 
             // cbo_PuestoPiloto
             // 
+            cbo_PuestoPiloto.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_PuestoPiloto.AutoCompleteSource = AutoCompleteSource.ListItems;
             cbo_PuestoPiloto.DropDownStyle = ComboBoxStyle.DropDownList;
             cbo_PuestoPiloto.FormattingEnabled = true;
             cbo_PuestoPiloto.Location = new Point(763, 73);
@@ -994,6 +1012,8 @@
             // 
             // cbo_GradoInstruccion
             // 
+            cbo_GradoInstruccion.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_GradoInstruccion.AutoCompleteSource = AutoCompleteSource.ListItems;
             cbo_GradoInstruccion.DropDownStyle = ComboBoxStyle.DropDownList;
             cbo_GradoInstruccion.FormattingEnabled = true;
             cbo_GradoInstruccion.Location = new Point(165, 72);
@@ -1022,6 +1042,8 @@
             // 
             // cbo_CategoriaTrabajador
             // 
+            cbo_CategoriaTrabajador.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_CategoriaTrabajador.AutoCompleteSource = AutoCompleteSource.ListItems;
             cbo_CategoriaTrabajador.DropDownStyle = ComboBoxStyle.DropDownList;
             cbo_CategoriaTrabajador.FormattingEnabled = true;
             cbo_CategoriaTrabajador.Location = new Point(763, 37);
@@ -1040,6 +1062,8 @@
             // 
             // cbo_EstadoTrabajador
             // 
+            cbo_EstadoTrabajador.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_EstadoTrabajador.AutoCompleteSource = AutoCompleteSource.ListItems;
             cbo_EstadoTrabajador.DropDownStyle = ComboBoxStyle.DropDownList;
             cbo_EstadoTrabajador.FormattingEnabled = true;
             cbo_EstadoTrabajador.Location = new Point(314, 37);
@@ -1077,8 +1101,8 @@
             tabPage4.Controls.Add(groupBox6);
             tabPage4.Location = new Point(4, 29);
             tabPage4.Name = "tabPage4";
-            tabPage4.Padding = new Padding(3);
-            tabPage4.Size = new Size(1521, 428);
+            tabPage4.Padding = new Padding(3, 3, 3, 3);
+            tabPage4.Size = new Size(1517, 428);
             tabPage4.TabIndex = 1;
             tabPage4.Text = "Datos de Seguridad Social";
             tabPage4.UseVisualStyleBackColor = true;
@@ -1101,7 +1125,7 @@
             groupBox6.Dock = DockStyle.Top;
             groupBox6.Location = new Point(3, 3);
             groupBox6.Name = "groupBox6";
-            groupBox6.Size = new Size(1515, 125);
+            groupBox6.Size = new Size(1511, 125);
             groupBox6.TabIndex = 0;
             groupBox6.TabStop = false;
             groupBox6.Text = "Régimen de Salud";
@@ -1218,8 +1242,8 @@
             // 
             tabPage5.Location = new Point(4, 29);
             tabPage5.Name = "tabPage5";
-            tabPage5.Padding = new Padding(3);
-            tabPage5.Size = new Size(1521, 428);
+            tabPage5.Padding = new Padding(3, 3, 3, 3);
+            tabPage5.Size = new Size(1517, 428);
             tabPage5.TabIndex = 2;
             tabPage5.Text = "Datos Tributarios";
             tabPage5.UseVisualStyleBackColor = true;
@@ -1361,6 +1385,8 @@
             // 
             // cbo_Distrito
             // 
+            cbo_Distrito.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_Distrito.AutoCompleteSource = AutoCompleteSource.ListItems;
             cbo_Distrito.DropDownStyle = ComboBoxStyle.DropDownList;
             cbo_Distrito.FormattingEnabled = true;
             cbo_Distrito.Location = new Point(134, 103);
@@ -1379,6 +1405,8 @@
             // 
             // cbo_Provincia
             // 
+            cbo_Provincia.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_Provincia.AutoCompleteSource = AutoCompleteSource.ListItems;
             cbo_Provincia.DropDownStyle = ComboBoxStyle.DropDownList;
             cbo_Provincia.FormattingEnabled = true;
             cbo_Provincia.Location = new Point(134, 69);
@@ -1398,6 +1426,8 @@
             // 
             // cbo_Departamento
             // 
+            cbo_Departamento.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_Departamento.AutoCompleteSource = AutoCompleteSource.ListItems;
             cbo_Departamento.DropDownStyle = ComboBoxStyle.DropDownList;
             cbo_Departamento.FormattingEnabled = true;
             cbo_Departamento.Location = new Point(134, 35);
@@ -1427,6 +1457,8 @@
             // 
             // cbo_EstadoCivil
             // 
+            cbo_EstadoCivil.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_EstadoCivil.AutoCompleteSource = AutoCompleteSource.ListItems;
             cbo_EstadoCivil.DropDownStyle = ComboBoxStyle.DropDownList;
             cbo_EstadoCivil.FormattingEnabled = true;
             cbo_EstadoCivil.Location = new Point(667, 85);
@@ -1584,8 +1616,8 @@
             // 
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1535, 807);
+            tabPage2.Padding = new Padding(3, 3, 3, 3);
+            tabPage2.Size = new Size(1533, 802);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Datos Complementarios";
             tabPage2.UseVisualStyleBackColor = true;
@@ -1774,19 +1806,19 @@
         private CheckBox checkBox2;
         private CheckBox checkBox1;
         private Label label29;
-        private ComboBox comboBox6;
+        private ComboBox cbo_Ruta;
         private DateTimePicker dateTimePicker2;
         private Label label28;
         private DateTimePicker dateTimePicker1;
         private Label label21;
-        private ComboBox comboBox5;
+        private ComboBox cbo_TipoRelacionLaboral;
         private Label label20;
-        private ComboBox comboBox4;
+        private ComboBox cbo_Ocupacion;
         private Label label19;
         private ComboBox comboBox3;
         private Label label18;
         private ComboBox comboBox2;
-        private Label label17;
+        private Label Unidad;
         private ComboBox comboBox1;
         private Label label16;
         private TextBox textBox1;
@@ -1820,5 +1852,8 @@
         private Label label39;
         private DateTimePicker dateTimePicker4;
         private Label label38;
+        private ComboBox cbo_Cargo;
+        private ComboBox cbo_Unidad;
+        private ComboBox cbo_Centro;
     }
 }
