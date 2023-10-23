@@ -128,7 +128,7 @@
             groupBox1 = new GroupBox();
             button5 = new Button();
             txt_Direccion = new TextBox();
-            button4 = new Button();
+            btn_CargarImagen = new Button();
             txt_Celular = new TextBox();
             txt_Telefono = new TextBox();
             txt_Correo = new TextBox();
@@ -150,7 +150,7 @@
             rbt_Masculino = new RadioButton();
             dtp_FechaNacimiento = new DateTimePicker();
             label10 = new Label();
-            pictureBox1 = new PictureBox();
+            ptb_Perfil = new PictureBox();
             txt_Nombres = new TextBox();
             label9 = new Label();
             txt_ApellidoMaterno = new TextBox();
@@ -191,7 +191,7 @@
             groupBox6.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ptb_Perfil).BeginInit();
             cms_Principal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
@@ -512,7 +512,7 @@
             tabPage1.Controls.Add(groupBox1);
             tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3, 3, 3, 3);
+            tabPage1.Padding = new Padding(3);
             tabPage1.Size = new Size(1535, 807);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Datos Personales";
@@ -569,7 +569,7 @@
             tabPage3.Controls.Add(groupBox4);
             tabPage3.Location = new Point(4, 29);
             tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3, 3, 3, 3);
+            tabPage3.Padding = new Padding(3);
             tabPage3.Size = new Size(1521, 428);
             tabPage3.TabIndex = 0;
             tabPage3.Text = "Datos Laborales";
@@ -709,7 +709,7 @@
             tabPage6.Controls.Add(dgb_ListaOcupacion);
             tabPage6.Location = new Point(4, 29);
             tabPage6.Name = "tabPage6";
-            tabPage6.Padding = new Padding(3, 3, 3, 3);
+            tabPage6.Padding = new Padding(3);
             tabPage6.Size = new Size(1501, 152);
             tabPage6.TabIndex = 0;
             tabPage6.Text = "Listado";
@@ -756,7 +756,7 @@
             tabPage7.Controls.Add(button10);
             tabPage7.Location = new Point(4, 29);
             tabPage7.Name = "tabPage7";
-            tabPage7.Padding = new Padding(3, 3, 3, 3);
+            tabPage7.Padding = new Padding(3);
             tabPage7.Size = new Size(1501, 152);
             tabPage7.TabIndex = 1;
             tabPage7.Text = "Mantenimiento";
@@ -1101,8 +1101,8 @@
             tabPage4.Controls.Add(groupBox6);
             tabPage4.Location = new Point(4, 29);
             tabPage4.Name = "tabPage4";
-            tabPage4.Padding = new Padding(3, 3, 3, 3);
-            tabPage4.Size = new Size(1517, 428);
+            tabPage4.Padding = new Padding(3);
+            tabPage4.Size = new Size(1521, 428);
             tabPage4.TabIndex = 1;
             tabPage4.Text = "Datos de Seguridad Social";
             tabPage4.UseVisualStyleBackColor = true;
@@ -1125,7 +1125,7 @@
             groupBox6.Dock = DockStyle.Top;
             groupBox6.Location = new Point(3, 3);
             groupBox6.Name = "groupBox6";
-            groupBox6.Size = new Size(1511, 125);
+            groupBox6.Size = new Size(1515, 125);
             groupBox6.TabIndex = 0;
             groupBox6.TabStop = false;
             groupBox6.Text = "Régimen de Salud";
@@ -1242,8 +1242,8 @@
             // 
             tabPage5.Location = new Point(4, 29);
             tabPage5.Name = "tabPage5";
-            tabPage5.Padding = new Padding(3, 3, 3, 3);
-            tabPage5.Size = new Size(1517, 428);
+            tabPage5.Padding = new Padding(3);
+            tabPage5.Size = new Size(1521, 428);
             tabPage5.TabIndex = 2;
             tabPage5.Text = "Datos Tributarios";
             tabPage5.UseVisualStyleBackColor = true;
@@ -1253,7 +1253,7 @@
             groupBox1.BackColor = Color.Azure;
             groupBox1.Controls.Add(button5);
             groupBox1.Controls.Add(txt_Direccion);
-            groupBox1.Controls.Add(button4);
+            groupBox1.Controls.Add(btn_CargarImagen);
             groupBox1.Controls.Add(txt_Celular);
             groupBox1.Controls.Add(txt_Telefono);
             groupBox1.Controls.Add(txt_Correo);
@@ -1269,7 +1269,7 @@
             groupBox1.Controls.Add(rbt_Masculino);
             groupBox1.Controls.Add(dtp_FechaNacimiento);
             groupBox1.Controls.Add(label10);
-            groupBox1.Controls.Add(pictureBox1);
+            groupBox1.Controls.Add(ptb_Perfil);
             groupBox1.Controls.Add(txt_Nombres);
             groupBox1.Controls.Add(label9);
             groupBox1.Controls.Add(txt_ApellidoMaterno);
@@ -1304,14 +1304,15 @@
             txt_Direccion.Size = new Size(909, 27);
             txt_Direccion.TabIndex = 26;
             // 
-            // button4
+            // btn_CargarImagen
             // 
-            button4.Location = new Point(1120, 225);
-            button4.Name = "button4";
-            button4.Size = new Size(94, 29);
-            button4.TabIndex = 24;
-            button4.Text = "button4";
-            button4.UseVisualStyleBackColor = true;
+            btn_CargarImagen.Location = new Point(1120, 225);
+            btn_CargarImagen.Name = "btn_CargarImagen";
+            btn_CargarImagen.Size = new Size(94, 29);
+            btn_CargarImagen.TabIndex = 24;
+            btn_CargarImagen.Text = "Cargar";
+            btn_CargarImagen.UseVisualStyleBackColor = true;
+            btn_CargarImagen.Click += btn_CargarImagen_Click;
             // 
             // txt_Celular
             // 
@@ -1530,16 +1531,16 @@
             label10.TabIndex = 9;
             label10.Text = "Fecha Nac.";
             // 
-            // pictureBox1
+            // ptb_Perfil
             // 
-            pictureBox1.BackColor = Color.SlateGray;
-            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
-            pictureBox1.Location = new Point(1120, 27);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(195, 185);
-            pictureBox1.TabIndex = 8;
-            pictureBox1.TabStop = false;
-            pictureBox1.WaitOnLoad = true;
+            ptb_Perfil.BackColor = Color.SlateGray;
+            ptb_Perfil.BorderStyle = BorderStyle.FixedSingle;
+            ptb_Perfil.Location = new Point(1120, 27);
+            ptb_Perfil.Name = "ptb_Perfil";
+            ptb_Perfil.Size = new Size(195, 185);
+            ptb_Perfil.TabIndex = 8;
+            ptb_Perfil.TabStop = false;
+            ptb_Perfil.WaitOnLoad = true;
             // 
             // txt_Nombres
             // 
@@ -1616,8 +1617,8 @@
             // 
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3, 3, 3, 3);
-            tabPage2.Size = new Size(1533, 802);
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(1535, 807);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Datos Complementarios";
             tabPage2.UseVisualStyleBackColor = true;
@@ -1708,7 +1709,7 @@
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ptb_Perfil).EndInit();
             cms_Principal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
@@ -1738,7 +1739,7 @@
         private TabControl tabControl2;
         private TabPage tabPage1;
         private GroupBox groupBox1;
-        private PictureBox pictureBox1;
+        private PictureBox ptb_Perfil;
         private TextBox txt_Nombres;
         private Label label9;
         private TextBox txt_ApellidoMaterno;
@@ -1773,7 +1774,7 @@
         private TabPage tabPage3;
         private TabPage tabPage4;
         private TabPage tabPage5;
-        private Button button4;
+        private Button btn_CargarImagen;
         private Button button5;
         private TextBox txt_Direccion;
         private GroupBox groupBox4;

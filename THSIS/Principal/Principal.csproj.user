@@ -16,6 +16,9 @@
     <Compile Update="Operaciones\frm_Cliente.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Operaciones\frm_ClienteEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Operaciones\frm_Facturacion.cs">
       <SubType>Form</SubType>
     </Compile>

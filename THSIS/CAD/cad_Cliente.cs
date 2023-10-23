@@ -19,7 +19,7 @@ namespace CAD
         public ResponseHelper guardarCliente(ent_Cliente obj, String tipo)
         {
             ResponseHelper response1 = null;
-            string apiUrl = BasicVariable.webapi + "Cliente/iud?=tipo="+tipo;
+            string apiUrl = BasicVariable.webapi + "Cliente/iud?tipo="+tipo;
 
             // Crear una instancia de HttpClient
             using (HttpClient httpClient = new HttpClient())
@@ -35,7 +35,7 @@ namespace CAD
                     string jsonRequestBody = Newtonsoft.Json.JsonConvert.SerializeObject(obj);
 
                     // Crear el contenido de la solicitud POST
-                    var content = new StringContent(jsonRequestBody, Encoding.UTF8, "application/json");
+                        var content = new StringContent(jsonRequestBody, Encoding.UTF8, "application/json");
 
                     // Realizar una solicitud POST al Web API de forma sincrónica
                     HttpResponseMessage response = httpClient.PostAsync(apiUrl, content).Result;
@@ -63,6 +63,18 @@ namespace CAD
                         response1 = new ResponseHelper();
                         response1.codError = 401;
                         response1.mensajeError = "Por favor, vuelva a iniciar sesión";
+                    }
+                    else if (response.StatusCode == HttpStatusCode.BadRequest)
+                    {
+                        response1 = new ResponseHelper();
+                        response1.codError = -1;
+                        response1.mensajeError = "Ocurrió un error, comuníquese con el área de sistemas";
+                    }
+                    else if (response.StatusCode == HttpStatusCode.BadGateway)
+                    {
+                        response1 = new ResponseHelper();
+                        response1.codError = -1;
+                        response1.mensajeError = "Ocurrió un error, comuníquese con el área de sistemas";
                     }
                 }
                 catch (Exception ex)

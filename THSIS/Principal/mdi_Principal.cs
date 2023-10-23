@@ -173,6 +173,13 @@ namespace Principal
             this.Close();
             login.ShowDialog();
         }
+        private void tsm_Empresa_Click(object sender, EventArgs e)
+        {
+            frm_ClienteEmpresa frm = new frm_ClienteEmpresa();
+            BasicMetod.abrirFormHijo(frm, "Empresa");
+        }
         #endregion
+
+
     }
 }

@@ -25,6 +25,8 @@ namespace CEN.Entidad
         public List<ent_Telefono> Lista_Celular { get; set; }
         public List<ent_Correo> Lista_Correo { get; set; }
         public List<ent_Direccion> Lista_Direccion { get; set; }
+        public List<ent_Ocupacion> ListaOcupacion { get; set; }
+        public String FotoPerfil { get; set; }
         public String Usuario { get; set; }
         public String Ip { get; set; }
         public String Mac { get; set; }
@@ -48,6 +50,8 @@ namespace CEN.Entidad
             Lista_Celular = new List<ent_Telefono>();
             Lista_Correo = new List<ent_Correo>();
             Lista_Direccion = new List<ent_Direccion>();
+            ListaOcupacion = new List<ent_Ocupacion>();
+            FotoPerfil = String.Empty;
             Usuario = StaticVariable.obj_Usuario.Usua_Usuario;
             Ip = BasicVariable.Ip;
             Mac = BasicVariable.Mac;

@@ -439,6 +439,7 @@ namespace Principal.Recursos_Humanos
                         Trabajador.Marcabaja = 1;
                         Trabajador.Persona.Marcabaja = 1;
                         Trabajador.Persona.UbigeoNacimiento = ((ent_Ubigeo)cbo_Distrito.SelectedItem).Ubigeo;
+                        Trabajador.FotoPerfil = convertirImagenBase64();
                         response = cln.guardarTrabajador(Trabajador);
                         if (response.codError == -1)
                         {
@@ -487,6 +488,7 @@ namespace Principal.Recursos_Humanos
                         Trabajador.Marcabaja = 1;
                         Trabajador.Persona.Marcabaja = 1;
                         Trabajador.Persona.UbigeoNacimiento = ((ent_Ubigeo)cbo_Distrito.SelectedItem).Ubigeo;
+                        Trabajador.FotoPerfil = convertirImagenBase64();
                         response = cln.guardarTrabajador(Trabajador);
                         if (response.codError == -1)
                         {
@@ -506,6 +508,24 @@ namespace Principal.Recursos_Humanos
             {
                 MessageBox.Show(ex.Message, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private String convertirImagenBase64()
+        {
+            String Base64 = "";
+            if (ptb_Perfil.Image != null)
+            {
+                // Convierte la imagen del PictureBox a base64
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    ptb_Perfil.Image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
+                    byte[] bytes = memoryStream.ToArray();
+                    string base64String = Convert.ToBase64String(bytes);
+                    // Haz algo con la cadena en base64 (por ejemplo, mostrarla en un TextBox)
+                    Base64 = base64String;
+                }
+            }
+            return Base64;
         }
         private void limpiarCampos()
         {
@@ -834,13 +854,36 @@ namespace Principal.Recursos_Humanos
 
         private void button5_Click(object sender, EventArgs e)
         {
-            frm_Direccion.ListaDireccion = lista_Direccion;
+            frm_Direccion.ListaDireccionCliente.Clear();
+            //frm_Direccion.ListaDireccionTrabajador.Clear();
+            frm_Direccion.ListaDireccionTrabajador = lista_Direccion;
             frm_Direccion Direccion = new frm_Direccion();
             Direccion.ShowDialog();
-            lista_Direccion = frm_Direccion.ListaDireccion;
+            lista_Direccion = frm_Direccion.ListaDireccionTrabajador;
             if (lista_Direccion.Count > 0)
             {
                 txt_Direccion.Text = lista_Direccion[0].DireccionCompleta;
+            }
+        }
+
+        private void btn_CargarImagen_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png;*.bmp|Todos los archivos|*.*";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        // Carga la imagen seleccionada en el PictureBox
+                        ptb_Perfil.Image = new System.Drawing.Bitmap(openFileDialog.FileName);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("No se pudo cargar la imagen: " + ex.Message);
+                    }
+                }
             }
         }
     }

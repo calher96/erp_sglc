@@ -90,3 +90,4 @@ D:\THSIS\Repositorios\erp_sglc\THSIS\Principal\bin\Debug\net6.0-windows\OFFICE.D
 D:\THSIS\Repositorios\erp_sglc\THSIS\Principal\obj\Debug\net6.0-windows\Principal.frm_Empresa.resources
 D:\THSIS\Repositorios\erp_sglc\THSIS\Principal\obj\Debug\net6.0-windows\Principal.Helpers.frm_Direccion.resources
 D:\THSIS\Repositorios\erp_sglc\THSIS\Principal\obj\Debug\net6.0-windows\Principal.Operaciones.frm_GuiaRemisionTransportista.resources
+D:\THSIS\Repositorios\erp_sglc\THSIS\Principal\obj\Debug\net6.0-windows\Principal.Operaciones.frm_ClienteEmpresa.resources

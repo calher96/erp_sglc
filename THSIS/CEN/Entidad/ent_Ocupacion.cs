@@ -6,6 +6,7 @@ namespace CEN
     public class ent_Ocupacion
     {
         public int Id { get; set; }
+	public int Id_Trabajador { get; set; }
         public ent_Concepto Ocupacion { get; set; }
         public ent_Concepto Centro { get; set; }
         public ent_Concepto Unidad { get; set; }
@@ -16,6 +17,7 @@ namespace CEN
         public ent_Concepto Ruta { get; set; }
         public Boolean OcupacionPrincipal { get; set; }
         public Boolean NoLaboraEMP { get; set; }
+	    public int Marcabaja { get; set; }
         public String Usuario { get; set; }
         public String Ip { get; set; }
         public String Mac { get; set; }
@@ -25,6 +27,7 @@ namespace CEN
         public ent_Ocupacion()
         {
             Id = 0;
+	        Id_Trabajador = 0;
             Ocupacion = new ent_Concepto();
             Centro = new ent_Concepto();
             Unidad = new ent_Concepto();
@@ -35,6 +38,7 @@ namespace CEN
             Ruta = new ent_Concepto();
             OcupacionPrincipal = false;
             NoLaboraEMP = false;
+	        Marcabaja = 1;
             Usuario = StaticVariable.obj_Usuario.Usua_Usuario;
             Ip = BasicVariable.Ip;
             Mac = BasicVariable.Mac;

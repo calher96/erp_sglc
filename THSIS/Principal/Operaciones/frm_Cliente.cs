@@ -152,6 +152,8 @@ namespace Principal.Operaciones
                 List<ent_Cliente> lista;
                 ent.Empresa = StaticVariable.obj_Empresa;
                 lista = cln.ListarCliente(ent, "GEN");
+                dgb_Lista.Rows.Clear();
+                //dgb_Lista.DataSource = lista;
                 foreach (ent_Cliente obj in lista)
                 {
                     Boolean estado = (obj.Estado.Correlativo == 1 ? true : false);
@@ -308,7 +310,8 @@ namespace Principal.Operaciones
                 obj.DomicilioFiscal = txt_DireccionFiscal.Text;
                 obj.Empresa = StaticVariable.obj_Empresa;
                 obj.Persona.Id_Empresa = StaticVariable.obj_Empresa.Id;
-                response = cln.guardarTrabajador(obj, "I");
+                obj.Estado.Correlativo = 1;
+                response = cln.guardarCliente(obj, "I");
                 if (response.codError == -1)
                 {
                     MessageBox.Show(response.mensajeError, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Error);

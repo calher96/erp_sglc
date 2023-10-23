@@ -13,7 +13,7 @@ namespace CLN
 {
     public class cln_Cliente
     {
-        public ResponseHelper guardarTrabajador(ent_Cliente obj, String tipo)
+        public ResponseHelper guardarCliente(ent_Cliente obj, String tipo)
         {
             ResponseHelper response = null;
             try
