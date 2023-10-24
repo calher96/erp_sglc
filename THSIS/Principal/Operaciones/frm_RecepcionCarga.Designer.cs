@@ -101,7 +101,6 @@
             label34 = new Label();
             cbo_MonedaDetalleCarga = new ComboBox();
             comboBox18 = new ComboBox();
-            comboBox17 = new ComboBox();
             label33 = new Label();
             label32 = new Label();
             groupBox1 = new GroupBox();
@@ -119,7 +118,7 @@
             cbo_TipoCarga = new ComboBox();
             label29 = new Label();
             textBox5 = new TextBox();
-            comboBox16 = new ComboBox();
+            cbo_ClienteRecepcion = new ComboBox();
             label25 = new Label();
             label28 = new Label();
             comboBox13 = new ComboBox();
@@ -224,6 +223,7 @@
             panel4 = new Panel();
             btn_Cancelar = new Button();
             btn_Guardar = new Button();
+            txt_FleteSinIGV = new TextBox();
             textBox3 = new TextBox();
             tpc_RecepcionCarga.SuspendLayout();
             tpg_Lista.SuspendLayout();
@@ -299,7 +299,7 @@
             cms_ListaCarga.ImageScalingSize = new Size(20, 20);
             cms_ListaCarga.Items.AddRange(new ToolStripItem[] { guíaDeRemisiónTransportistaToolStripMenuItem });
             cms_ListaCarga.Name = "cms_ListaCarga";
-            cms_ListaCarga.Size = new Size(284, 56);
+            cms_ListaCarga.Size = new Size(284, 28);
             // 
             // guíaDeRemisiónTransportistaToolStripMenuItem
             // 
@@ -312,7 +312,7 @@
             // 
             tsm_IngresarGRT.Enabled = false;
             tsm_IngresarGRT.Name = "tsm_IngresarGRT";
-            tsm_IngresarGRT.Size = new Size(224, 26);
+            tsm_IngresarGRT.Size = new Size(145, 26);
             tsm_IngresarGRT.Text = "Ingresar";
             tsm_IngresarGRT.Click += inToolStripMenuItem_Click;
             // 
@@ -848,6 +848,7 @@
             // panel5
             // 
             panel5.BorderStyle = BorderStyle.FixedSingle;
+            panel5.Controls.Add(txt_FleteSinIGV);
             panel5.Controls.Add(checkBox6);
             panel5.Controls.Add(checkBox5);
             panel5.Controls.Add(checkBox4);
@@ -861,7 +862,6 @@
             panel5.Controls.Add(label34);
             panel5.Controls.Add(cbo_MonedaDetalleCarga);
             panel5.Controls.Add(comboBox18);
-            panel5.Controls.Add(comboBox17);
             panel5.Controls.Add(label33);
             panel5.Controls.Add(label32);
             panel5.Dock = DockStyle.Left;
@@ -984,14 +984,6 @@
             comboBox18.Size = new Size(138, 28);
             comboBox18.TabIndex = 25;
             // 
-            // comboBox17
-            // 
-            comboBox17.FormattingEnabled = true;
-            comboBox17.Location = new Point(155, 10);
-            comboBox17.Name = "comboBox17";
-            comboBox17.Size = new Size(138, 28);
-            comboBox17.TabIndex = 24;
-            // 
             // label33
             // 
             label33.AutoSize = true;
@@ -1030,7 +1022,7 @@
             groupBox1.Controls.Add(cbo_TipoCarga);
             groupBox1.Controls.Add(label29);
             groupBox1.Controls.Add(textBox5);
-            groupBox1.Controls.Add(comboBox16);
+            groupBox1.Controls.Add(cbo_ClienteRecepcion);
             groupBox1.Controls.Add(label25);
             groupBox1.Controls.Add(label28);
             groupBox1.Controls.Add(comboBox13);
@@ -1175,13 +1167,13 @@
             textBox5.Size = new Size(60, 27);
             textBox5.TabIndex = 23;
             // 
-            // comboBox16
+            // cbo_ClienteRecepcion
             // 
-            comboBox16.FormattingEnabled = true;
-            comboBox16.Location = new Point(736, 25);
-            comboBox16.Name = "comboBox16";
-            comboBox16.Size = new Size(461, 28);
-            comboBox16.TabIndex = 32;
+            cbo_ClienteRecepcion.FormattingEnabled = true;
+            cbo_ClienteRecepcion.Location = new Point(736, 25);
+            cbo_ClienteRecepcion.Name = "cbo_ClienteRecepcion";
+            cbo_ClienteRecepcion.Size = new Size(461, 28);
+            cbo_ClienteRecepcion.TabIndex = 32;
             // 
             // label25
             // 
@@ -2220,6 +2212,15 @@
             btn_Guardar.TextAlign = ContentAlignment.MiddleRight;
             btn_Guardar.UseVisualStyleBackColor = true;
             // 
+            // txt_FleteSinIGV
+            // 
+            txt_FleteSinIGV.Location = new Point(154, 9);
+            txt_FleteSinIGV.Name = "txt_FleteSinIGV";
+            txt_FleteSinIGV.Size = new Size(138, 27);
+            txt_FleteSinIGV.TabIndex = 45;
+            txt_FleteSinIGV.TextChanged += txt_FleteSinIGV_TextChanged;
+            txt_FleteSinIGV.KeyPress += txt_FleteSinIGV_KeyPress;
+            // 
             // frm_RecepcionCarga
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -2395,7 +2396,6 @@
         private Label label34;
         private ComboBox cbo_MonedaDetalleCarga;
         private ComboBox comboBox18;
-        private ComboBox comboBox17;
         private Label label33;
         private Label label32;
         private GroupBox groupBox1;
@@ -2413,7 +2413,7 @@
         private ComboBox cbo_TipoCarga;
         private Label label29;
         private TextBox textBox5;
-        private ComboBox comboBox16;
+        private ComboBox cbo_ClienteRecepcion;
         private Label label25;
         private Label label28;
         private ComboBox comboBox13;
@@ -2457,5 +2457,6 @@
         private TextBox textBox1;
         private Label label9;
         private ToolStripMenuItem tsm_IngresarGRT;
+        private TextBox txt_FleteSinIGV;
     }
 }

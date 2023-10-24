@@ -183,8 +183,11 @@ namespace Principal.Helpers
         private void button1_Click(object sender, EventArgs e)
         {
             ListaDireccionTrabajador.AddRange(ListaDireccionEliminada);
+            if (ListaDireccionTrabajador.Count > 0)
+            {
+                this.Dispose();
+            }
             
-            this.Dispose();
         }
 
         private void button2_Click(object sender, EventArgs e)

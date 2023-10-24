@@ -168,7 +168,7 @@ namespace Principal.Operaciones
 
         private void button2_Click(object sender, EventArgs e)
         {
-            pnl_AgregarTipoPago.Visible = true;
+            pnl_AgregarTipoPago.Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -215,14 +215,35 @@ namespace Principal.Operaciones
             ListaCliente = cln_Cliente.ListarCliente(ent_Cliente, "GEN");
             dgb_Cliente.DataSource = null;
             dgb_Cliente.DataSource = ListaCliente;
-            DataGridViewTextBoxColumn ColumnaNumeroDoc = new DataGridViewTextBoxColumn();
-            ColumnaNumeroDoc.Name = "NumeroDoc";
-            ColumnaNumeroDoc.HeaderText = "N° Doc.";
-            dgb_Cliente.Columns.Insert(1, ColumnaNumeroDoc);
-            DataGridViewTextBoxColumn ColumnaNombre = new DataGridViewTextBoxColumn();
-            ColumnaNombre.Name = "Nombre";
-            ColumnaNombre.HeaderText = "Nombre";
-            dgb_Cliente.Columns.Insert(2, ColumnaNombre);
+            var columnaNumeroDoc = false;
+            var columnaNombre = false;
+            foreach (DataGridViewColumn columna in dgb_Cliente.Columns)
+            {
+                if (columna.Name == "NumeroDoc")
+                {
+                    columnaNumeroDoc = true;
+                }
+                if (columna.Name == "Nombre")
+                {
+                    columnaNombre = true;
+                }
+            }
+            if (!columnaNumeroDoc)
+            {
+                DataGridViewTextBoxColumn ColumnaNumeroDoc = new DataGridViewTextBoxColumn();
+                ColumnaNumeroDoc.Name = "NumeroDoc";
+                ColumnaNumeroDoc.HeaderText = "N° Doc.";
+                dgb_Cliente.Columns.Insert(1, ColumnaNumeroDoc);
+            }
+            if (!columnaNombre)
+            {
+                DataGridViewTextBoxColumn ColumnaNombre = new DataGridViewTextBoxColumn();
+                ColumnaNombre.Name = "Nombre";
+                ColumnaNombre.HeaderText = "Nombre";
+                dgb_Cliente.Columns.Insert(2, ColumnaNombre);
+            }
+            
+            
 
             dgb_Cliente.CellFormatting += dgb_Cliente_CellFormatting;
             dgb_Cliente.Columns["Nombre"].SortMode = DataGridViewColumnSortMode.Programmatic;
@@ -298,6 +319,14 @@ namespace Principal.Operaciones
                 cln_Cliente cln_Cliente = new cln_Cliente();
                 Cliente.Lista_Direccion = frm_Direccion.ListaDireccionCliente;
                 Cliente.Lista_TipoPago = (List<ent_TipoPago>)dgb_TipoPago.DataSource;
+                foreach (ent_TipoPago TipoPago in Cliente.Lista_TipoPago)
+                {
+                    TipoPago.Ip = BasicVariable.Ip;
+                    TipoPago.Mac = BasicVariable.Mac;
+                    TipoPago.Usuario = StaticVariable.obj_Usuario.Usua_Usuario;
+                    TipoPago.HostName = BasicVariable.HostName;
+                    TipoPago.HostUser = BasicVariable.HostUser;
+                }
                 Cliente.RazonSocial = txt_RazonSocial.Text;
                 Cliente.Estado.Correlativo = 1;
                 Cliente.Persona.TipoDocIdentidad = (ent_Concepto)cbo_TipoDocumento.SelectedItem;
@@ -323,7 +352,14 @@ namespace Principal.Operaciones
                 Cliente.LineaCredito = Convert.ToDouble(txt_LineaCredito.Text);
                 Cliente.TipoNivelComercial = (ent_Concepto)cbo_TipoNivelComercial.SelectedItem;
                 Cliente.ClasificacionTipo = (ent_Concepto)cbo_clasificacionCliente.SelectedItem;
-                ResponseHelper response = cln_Cliente.guardarCliente(Cliente, (EditMode ? "I" : "U"));
+                Cliente.Empresa.Id = StaticVariable.obj_Empresa.Id;
+                Cliente.Persona.Id_Empresa = StaticVariable.obj_Empresa.Id;
+                Cliente.Ip = BasicVariable.Ip;
+                Cliente.Mac = BasicVariable.Mac;
+                Cliente.Usuario = StaticVariable.obj_Usuario.Usua_Usuario;
+                Cliente.HostName = BasicVariable.HostName;
+                Cliente.HostUser = BasicVariable.HostUser;
+                ResponseHelper response = cln_Cliente.guardarCliente(Cliente, (EditMode ? "U" : "I"));
                 if (response.codError == -1)
                 {
                     MessageBox.Show(response.mensajeError, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -339,5 +375,98 @@ namespace Principal.Operaciones
             }
         }
 
+        private void dgb_Cliente_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                // Obtiene la fila seleccionada.
+                DataGridViewRow filaSeleccionada = dgb_Cliente.Rows[e.RowIndex];
+
+                // Accede a la propiedad DataBoundItem de la fila para obtener el cliente seleccionado.
+                if (filaSeleccionada.DataBoundItem is ent_Cliente clienteSeleccionado)
+                {
+                    Cliente = clienteSeleccionado;
+                    llenarCliente();
+                }
+            }
+        }
+        private void llenarCliente()
+        {
+            try
+            {
+                BasicMetod.seleccionarItemComboBoxConcepto(cbo_clasificacionCliente, Cliente.ClasificacionTipo);
+                BasicMetod.seleccionarItemComboBoxConcepto(cbo_TipoDocumento, Cliente.Persona.TipoDocIdentidad);
+                BasicMetod.seleccionarItemComboBoxConcepto(cbo_TipoEmpresa, Cliente.TipoEmpresa);
+                BasicMetod.seleccionarItemComboBoxConcepto(cbo_Moneda, Cliente.Moneda);
+                BasicMetod.seleccionarItemComboBoxConcepto(cbo_ClasificacionEMP, Cliente.ClasificacionEMP);
+                BasicMetod.seleccionarItemComboBoxConcepto(cbo_clasificacionCliente, Cliente.ClasificacionTipo);
+                txt_NumeroDoc.Text = Cliente.Persona.DocIdentidad;
+                txt_RazonSocial.Text = Cliente.RazonSocial;
+                txt_Abreviatura.Text = Cliente.Abreviatura;
+                txt_DireccionFiscal.Text = Cliente.DomicilioFiscal;
+                dgb_TipoPago.DataSource = null;
+                ListaTipoPago = Cliente.Lista_TipoPago;
+                if (Cliente.Cliente)
+                {
+                    rbt_ClienteSi.Select();
+                }
+                else
+                {
+                    rbt_ClienteNo.Select();
+                }
+                if (Cliente.Proveedor)
+                {
+                    rbt_ProveedorSi.Select();
+                }
+                else
+                {
+                    rbt_ProveedorNo.Select();
+                }
+                if (Cliente.Comisionista)
+                {
+                    rbt_ComisionistaSi.Select();
+                }
+                else
+                {
+                    rbt_ComisionistaNo.Select();
+                }
+                chk_EmpresaRelacionada.Checked = Cliente.EmpresaRelacionada;
+                chk_Percepcion.Checked = Cliente.Percepcion;
+                chk_Retencion.Checked = Cliente.Retencion;
+                chk_BuenContribuyente.Checked = Cliente.BuenContribuyente;
+                chk_CanjeDocumento.Checked = Cliente.CanjeDocumento;
+                chk_Letras.Checked = Cliente.Letras;
+                chk_Cheque.Checked = Cliente.Cheque;
+                txt_Telefono.Text = Cliente.Telefono;
+                txt_Correo.Text = Cliente.Correo;
+                txt_Morosidad.Text = Cliente.Morosidad.ToString();
+                txt_LineaCredito.Text = Cliente.LineaCredito.ToString();
+                tbc_EmpresaCliente.SelectedIndex = 1;
+                tbc_EmpresaCliente.Controls[1].Enabled = true;
+                EditMode = true;
+                InicializarDireccion();
+                InicializarTablaTipoPago();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void btn_Editar_Click(object sender, EventArgs e)
+        {
+            if (dgb_Cliente.SelectedRows.Count > 0)
+            {
+                // Obtiene la fila seleccionada.
+                DataGridViewRow filaSeleccionada = dgb_Cliente.SelectedRows[0];
+
+                // Obtiene la entidad del cliente de la fila seleccionada.
+                if (filaSeleccionada.DataBoundItem is ent_Cliente clienteSeleccionado)
+                {
+                    Cliente = clienteSeleccionado;
+                    llenarCliente();
+                }
+            }
+        }
     }
 }

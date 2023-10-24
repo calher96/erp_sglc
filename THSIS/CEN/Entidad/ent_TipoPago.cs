@@ -31,6 +31,7 @@ namespace CEN.Entidad
             Marcabaja = 1;
             Usuario = StaticVariable.obj_Usuario.Usua_Usuario;
             Ip = BasicVariable.Ip;
+            Mac = BasicVariable.Mac;
             HostName = BasicVariable.HostName;
             HostUser = BasicVariable.HostUser;
         }

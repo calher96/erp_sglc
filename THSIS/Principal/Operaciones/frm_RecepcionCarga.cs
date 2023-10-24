@@ -1,4 +1,5 @@
-﻿using CEN.Entidad;
+﻿using CEN;
+using CEN.Entidad;
 using CEN.Helpers;
 using CLN;
 using Principal.Helpers;
@@ -16,7 +17,7 @@ namespace Principal.Operaciones
 {
     public partial class frm_RecepcionCarga : Form
     {
-
+        private string currentInput = "";
         #region "Constructor"
         public frm_RecepcionCarga()
         {
@@ -46,6 +47,7 @@ namespace Principal.Operaciones
                 cargarEstadoCarga();
                 cargarUsuarioFilter();
                 cargarTipoCarga();
+                cargarClienteRecepcion();
             }
             catch (Exception ex)
             {
@@ -59,6 +61,24 @@ namespace Principal.Operaciones
                 cln_ControlError cln = new cln_ControlError();
                 cln.registrarError(obj);
                 MessageBox.Show("Ocurrió un error interno, por favor vuelve a intentar", BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void cargarClienteRecepcion()
+        {
+            try
+            {
+                cln_Cliente cln_Cliente = new cln_Cliente();
+                ent_Cliente ent_Cliente = new ent_Cliente();
+                ent_Cliente.Empresa = StaticVariable.obj_Empresa;
+
+                List<ent_Cliente> ListaCliente = cln_Cliente.ListarCliente(ent_Cliente, "CLI");
+                cbo_ClienteRecepcion.DataSource = ListaCliente;
+                cbo_ClienteRecepcion.DisplayMember = "RazonSocial";
+            }
+            catch (Exception ex)
+            {
+
             }
         }
 
@@ -412,5 +432,57 @@ namespace Principal.Operaciones
         #endregion
 
 
+        private void txt_FleteSinIGV_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_FleteSinIGV_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verifica si la tecla presionada es la tecla de retroceso
+            if (e.KeyChar == '\b')
+            {
+                // Aquí puedes realizar la lógica deseada al presionar la tecla de retroceso.
+                // Por ejemplo, eliminar el último carácter del texto actual.
+                if (txt_FleteSinIGV.Text.Length > 0)
+                {
+                    currentInput = txt_FleteSinIGV.Text.Substring(0, txt_FleteSinIGV.Text.Length - 1);
+                    // Formatea el texto con los dos últimos dígitos en la parte decimal
+                    if (currentInput.Length >= 2 && !currentInput.Contains("."))
+                    {
+                        int length = currentInput.Length;
+                        txt_FleteSinIGV.Text = currentInput.Substring(0, length - 2) + "." + currentInput.Substring(length - 2);
+                    }
+                    else
+                    {
+                        txt_FleteSinIGV.Text = currentInput;
+                    }
+                }
+            }
+            else
+            {
+                // Verifica si la tecla presionada es un número
+                if (char.IsDigit(e.KeyChar))
+                {
+                    // Agrega el dígito a la cadena de entrada actual
+                    currentInput += e.KeyChar;
+
+                    // Formatea el texto con los dos últimos dígitos en la parte decimal
+                    if (currentInput.Length >= 2 && !currentInput.Contains("."))
+                    {
+                        int length = currentInput.Length;
+                        txt_FleteSinIGV.Text = currentInput.Substring(0, length - 2) + "." + currentInput.Substring(length - 2);
+                    }
+                    else
+                    {
+                        txt_FleteSinIGV.Text = currentInput;
+                    }
+                }
+            }
+            
+
+            e.Handled = true; // Evita que el evento KeyPress procese la tecla nuevamente
+
+        }
     }
 }
