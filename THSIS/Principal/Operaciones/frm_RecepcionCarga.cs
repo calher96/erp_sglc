@@ -1,9 +1,11 @@
 ﻿using CEN;
 using CEN.Entidad;
 using CEN.Helpers;
+using CEN.Response;
 using CLN;
 using Principal.Helpers;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,14 +33,17 @@ namespace Principal.Operaciones
         {
             tpc_RecepcionCarga.TabPages[1].Enabled = false;
             tpc_Carga.TabPages[1].Enabled = false;
+            txt_Cantidad.Text = "1.0";
             llenarColoresComboBox();
             cargarComboBox();
         }
+
 
         public void cargarComboBox()
         {
             try
             {
+                cargarRutaOrigen();
                 cargarMoneda();
                 cargarTipoServicio();
                 cargarCondicionPago();
@@ -48,6 +53,37 @@ namespace Principal.Operaciones
                 cargarUsuarioFilter();
                 cargarTipoCarga();
                 cargarClienteRecepcion();
+            }
+            catch (Exception ex)
+            {
+                ent_ControlError obj = new ent_ControlError();
+                obj.Cerr_MensajeError = ex.Message;
+                obj.Cerr_Traza = ex.StackTrace;
+                obj.Cerr_Usuario = StaticVariable.obj_Usuario.Usua_Usuario;
+                obj.Cerr_Trama = "4";
+                obj.Cerr_Formulario = "Login";
+                obj.Cerr_FechaError = DateOnly.Parse(DateTime.Now.ToShortDateString());
+                cln_ControlError cln = new cln_ControlError();
+                cln.registrarError(obj);
+                MessageBox.Show("Ocurrió un error interno, por favor vuelve a intentar", BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+        public void cargarRutaOrigen()
+        {
+            try
+            {
+                cln_Ubigeo cln = new cln_Ubigeo();
+                List<ent_Ubigeo> lista = cln.listarUbigeo(3, "", "", "");
+                cbo_OrigenCabecera.DataSource = lista;
+                cbo_OrigenCabecera.ValueMember = "Ubigeo";
+                cbo_OrigenCabecera.DisplayMember = "Descripcion";
+
+                cbo_OrigenDetalle.DataSource = lista;
+                cbo_OrigenDetalle.ValueMember = "Ubigeo";
+                cbo_OrigenDetalle.DisplayMember = "Descripcion";
             }
             catch (Exception ex)
             {
@@ -429,8 +465,6 @@ namespace Principal.Operaciones
                 BasicMetod.abrirFormHijo(form, "Guia Remisión");
             }
         }
-        #endregion
-
 
         private void txt_FleteSinIGV_TextChanged(object sender, EventArgs e)
         {
@@ -479,10 +513,151 @@ namespace Principal.Operaciones
                     }
                 }
             }
-            
+
 
             e.Handled = true; // Evita que el evento KeyPress procese la tecla nuevamente
 
+        }
+        #endregion
+
+        private void txt_Subtotal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verifica si la tecla presionada es la tecla de retroceso
+            if (e.KeyChar == '\b')
+            {
+                // Aquí puedes realizar la lógica deseada al presionar la tecla de retroceso.
+                // Por ejemplo, eliminar el último carácter del texto actual.
+                if (txt_Subtotal.Text.Length > 0)
+                {
+                    currentInput = txt_Subtotal.Text.Substring(0, txt_Subtotal.Text.Length - 1);
+                    // Formatea el texto con los dos últimos dígitos en la parte decimal
+                    if (currentInput.Length >= 2 && !currentInput.Contains("."))
+                    {
+                        int length = currentInput.Length;
+                        txt_Subtotal.Text = currentInput.Substring(0, length - 2) + "." + currentInput.Substring(length - 2);
+                    }
+                    else
+                    {
+                        txt_Subtotal.Text = currentInput;
+                    }
+                }
+            }
+            else
+            {
+                // Verifica si la tecla presionada es un número
+                if (char.IsDigit(e.KeyChar))
+                {
+                    // Agrega el dígito a la cadena de entrada actual
+                    currentInput += e.KeyChar;
+
+                    // Formatea el texto con los dos últimos dígitos en la parte decimal
+                    if (currentInput.Length >= 2 && !currentInput.Contains("."))
+                    {
+                        int length = currentInput.Length;
+                        txt_Subtotal.Text = currentInput.Substring(0, length - 2) + "." + currentInput.Substring(length - 2);
+                    }
+                    else
+                    {
+                        txt_Subtotal.Text = currentInput;
+                    }
+                }
+            }
+
+
+            e.Handled = true; // Evita que el evento KeyPress procese la tecla nuevamente
+        }
+
+        private void txt_Subtotal_KeyUp(object sender, KeyEventArgs e)
+        {
+            Double Subtotal;
+            Double Igv;
+            Double Gravada;
+            Double TotalFlete;
+            Double Cantidad;
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                Subtotal = Convert.ToDouble(txt_Subtotal.Text);
+                Cantidad = Convert.ToDouble(txt_Cantidad.Text);
+                if (chk_IncluyeIGVFlete.Checked)
+                {
+                    Gravada = Subtotal / 1.18;
+                    Igv = Subtotal - Gravada;
+                }
+                else
+                {
+                    Gravada = Subtotal;
+                    Subtotal = Gravada + Subtotal * 0.18;
+                    Igv = Subtotal - Gravada;
+                }
+                TotalFlete = Subtotal * Cantidad;
+
+                Gravada = Math.Round(Gravada, 2);
+                Igv = Math.Round(Igv, 2);
+                Subtotal = Math.Round(Subtotal, 2);
+                TotalFlete = Math.Round(Subtotal, 2);
+
+                txt_FleteSinIGV.Text = Gravada.ToString("0.00");
+                txt_Subtotal.Text = Subtotal.ToString("0.00");
+                txt_IGV.Text = Igv.ToString("0.00");
+                txt_FleteTotal.Text = TotalFlete.ToString("0.00");
+            }
+        }
+
+        private void cbo_ClienteRecepcion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                ent_Cliente Cliente = (ent_Cliente)cbo_ClienteRecepcion.SelectedItem;
+                txt_DocClienteRecepcion.Text = Cliente.Persona.DocIdentidad;
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void txt_DocClienteRecepcion_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    String Documento = txt_DocClienteRecepcion.Text;
+                    List<ent_Cliente> ListaClientes = (List<ent_Cliente>)cbo_ClienteRecepcion.DataSource;
+                    foreach (ent_Cliente Cliente in ListaClientes)
+                    {
+                        if (Cliente.Persona.DocIdentidad == Documento)
+                        {
+                            cbo_ClienteRecepcion.SelectedItem = Cliente;
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void cbo_OrigenCabecera_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                cln_Ruta cln = new cln_Ruta();
+                ent_Ruta Ruta = new ent_Ruta();
+                Ruta.DistritoOrigen.Ubigeo = ((ent_Ubigeo)cbo_OrigenCabecera.SelectedItem).Ubigeo;
+                List<ent_Ruta> Lista = cln.ListarRuta(Ruta, "GEN");
+
+                cbo_DestinoCabecera.DataSource = Lista;
+                cbo_DestinoCabecera.ValueMember = "DistritoDestino.Ubigeo";
+                cbo_DestinoCabecera.DisplayMember = "DistritoDestino.Descripcion";
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

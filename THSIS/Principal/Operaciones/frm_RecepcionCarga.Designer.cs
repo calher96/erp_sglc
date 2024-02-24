@@ -31,9 +31,9 @@
             components = new System.ComponentModel.Container();
             TextBox textBox3;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_RecepcionCarga));
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             tpc_RecepcionCarga = new TabControl();
             tpg_Lista = new TabPage();
             dgb_Carga = new DataGridView();
@@ -88,36 +88,37 @@
             textBox15 = new TextBox();
             checkBox7 = new CheckBox();
             panel5 = new Panel();
+            txt_IGV = new TextBox();
+            txt_FleteSinIGV = new TextBox();
             checkBox6 = new CheckBox();
             checkBox5 = new CheckBox();
-            checkBox4 = new CheckBox();
+            chk_IncluyeIGVFlete = new CheckBox();
             textBox14 = new TextBox();
             label36 = new Label();
             textBox13 = new TextBox();
             checkBox3 = new CheckBox();
-            textBox12 = new TextBox();
+            txt_FleteTotal = new TextBox();
             label35 = new Label();
-            textBox11 = new TextBox();
+            txt_Subtotal = new TextBox();
             label34 = new Label();
             cbo_MonedaDetalleCarga = new ComboBox();
-            comboBox18 = new ComboBox();
             label33 = new Label();
             label32 = new Label();
             groupBox1 = new GroupBox();
             textBox10 = new TextBox();
             label31 = new Label();
-            comboBox11 = new ComboBox();
+            cbo_OrigenDetalle = new ComboBox();
             label30 = new Label();
             label23 = new Label();
-            comboBox10 = new ComboBox();
-            textBox9 = new TextBox();
+            cbo_DestinoDetalle = new ComboBox();
+            txt_DocClienteFinal = new TextBox();
             label22 = new Label();
-            textBox8 = new TextBox();
+            txt_ClienteComisionista = new TextBox();
             label24 = new Label();
-            textBox7 = new TextBox();
+            txt_DocClienteRecepcion = new TextBox();
             cbo_TipoCarga = new ComboBox();
             label29 = new Label();
-            textBox5 = new TextBox();
+            txt_Cantidad = new TextBox();
             cbo_ClienteRecepcion = new ComboBox();
             label25 = new Label();
             label28 = new Label();
@@ -187,6 +188,10 @@
             label54 = new Label();
             comboBox24 = new ComboBox();
             groupBox2 = new GroupBox();
+            cbo_OrigenCabecera = new ComboBox();
+            label14 = new Label();
+            cbo_DestinoCabecera = new ComboBox();
+            label15 = new Label();
             chk_RecojoDomicilioLugar = new CheckBox();
             cbo_DomicilioLugar = new ComboBox();
             textBox4 = new TextBox();
@@ -203,10 +208,6 @@
             cbo_CondicionPago = new ComboBox();
             label16 = new Label();
             cbo_TipoServicio = new ComboBox();
-            label15 = new Label();
-            comboBox3 = new ComboBox();
-            label14 = new Label();
-            comboBox2 = new ComboBox();
             dateTimePicker7 = new DateTimePicker();
             dateTimePicker8 = new DateTimePicker();
             label13 = new Label();
@@ -223,7 +224,6 @@
             panel4 = new Panel();
             btn_Cancelar = new Button();
             btn_Guardar = new Button();
-            txt_FleteSinIGV = new TextBox();
             textBox3 = new TextBox();
             tpc_RecepcionCarga.SuspendLayout();
             tpg_Lista.SuspendLayout();
@@ -252,9 +252,9 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(785, 130);
+            textBox3.Location = new Point(1303, 169);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(96, 27);
+            textBox3.Size = new Size(95, 27);
             textBox3.TabIndex = 41;
             // 
             // tpc_RecepcionCarga
@@ -265,7 +265,7 @@
             tpc_RecepcionCarga.Location = new Point(0, 0);
             tpc_RecepcionCarga.Name = "tpc_RecepcionCarga";
             tpc_RecepcionCarga.SelectedIndex = 0;
-            tpc_RecepcionCarga.Size = new Size(1684, 834);
+            tpc_RecepcionCarga.Size = new Size(1557, 835);
             tpc_RecepcionCarga.TabIndex = 0;
             // 
             // tpg_Lista
@@ -276,7 +276,7 @@
             tpg_Lista.Location = new Point(4, 29);
             tpg_Lista.Name = "tpg_Lista";
             tpg_Lista.Padding = new Padding(3);
-            tpg_Lista.Size = new Size(1676, 801);
+            tpg_Lista.Size = new Size(1549, 802);
             tpg_Lista.TabIndex = 0;
             tpg_Lista.Text = "Lista";
             tpg_Lista.UseVisualStyleBackColor = true;
@@ -286,11 +286,11 @@
             dgb_Carga.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgb_Carga.ContextMenuStrip = cms_ListaCarga;
             dgb_Carga.Dock = DockStyle.Fill;
-            dgb_Carga.Location = new Point(3, 160);
+            dgb_Carga.Location = new Point(3, 159);
             dgb_Carga.Name = "dgb_Carga";
             dgb_Carga.RowHeadersWidth = 51;
             dgb_Carga.RowTemplate.Height = 29;
-            dgb_Carga.Size = new Size(1670, 638);
+            dgb_Carga.Size = new Size(1543, 640);
             dgb_Carga.TabIndex = 3;
             dgb_Carga.CellClick += dgb_Carga_CellClick;
             // 
@@ -327,7 +327,7 @@
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(3, 128);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1670, 32);
+            panel2.Size = new Size(1543, 31);
             panel2.TabIndex = 2;
             // 
             // btn_Actualizar
@@ -339,7 +339,7 @@
             btn_Actualizar.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Actualizar.Location = new Point(278, 0);
             btn_Actualizar.Name = "btn_Actualizar";
-            btn_Actualizar.Size = new Size(105, 30);
+            btn_Actualizar.Size = new Size(105, 29);
             btn_Actualizar.TabIndex = 3;
             btn_Actualizar.Text = "Actualizar";
             btn_Actualizar.TextAlign = ContentAlignment.MiddleRight;
@@ -354,7 +354,7 @@
             button8.ImageAlign = ContentAlignment.MiddleLeft;
             button8.Location = new Point(189, 0);
             button8.Name = "button8";
-            button8.Size = new Size(89, 30);
+            button8.Size = new Size(89, 29);
             button8.TabIndex = 2;
             button8.Text = "Cerrar";
             button8.TextAlign = ContentAlignment.MiddleRight;
@@ -370,7 +370,7 @@
             button7.ImageAlign = ContentAlignment.MiddleLeft;
             button7.Location = new Point(88, 0);
             button7.Name = "button7";
-            button7.Size = new Size(101, 30);
+            button7.Size = new Size(101, 29);
             button7.TabIndex = 1;
             button7.Text = "Exportar";
             button7.TextAlign = ContentAlignment.MiddleRight;
@@ -385,7 +385,7 @@
             btn_Nuevo.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Nuevo.Location = new Point(0, 0);
             btn_Nuevo.Name = "btn_Nuevo";
-            btn_Nuevo.Size = new Size(88, 30);
+            btn_Nuevo.Size = new Size(88, 29);
             btn_Nuevo.TabIndex = 0;
             btn_Nuevo.Text = "Nuevo";
             btn_Nuevo.TextAlign = ContentAlignment.MiddleRight;
@@ -406,13 +406,13 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1670, 125);
+            panel1.Size = new Size(1543, 125);
             panel1.TabIndex = 0;
             // 
             // chk_Excluir_Asignada
             // 
             chk_Excluir_Asignada.AutoSize = true;
-            chk_Excluir_Asignada.Location = new Point(868, 63);
+            chk_Excluir_Asignada.Location = new Point(869, 63);
             chk_Excluir_Asignada.Name = "chk_Excluir_Asignada";
             chk_Excluir_Asignada.Size = new Size(140, 24);
             chk_Excluir_Asignada.TabIndex = 10;
@@ -422,7 +422,7 @@
             // chk_Tercerizados
             // 
             chk_Tercerizados.AutoSize = true;
-            chk_Tercerizados.Location = new Point(868, 31);
+            chk_Tercerizados.Location = new Point(869, 31);
             chk_Tercerizados.Name = "chk_Tercerizados";
             chk_Tercerizados.Size = new Size(114, 24);
             chk_Tercerizados.TabIndex = 9;
@@ -446,7 +446,7 @@
             panel3.Controls.Add(cbo_Color_Generada);
             panel3.Location = new Point(354, 9);
             panel3.Name = "panel3";
-            panel3.Size = new Size(499, 110);
+            panel3.Size = new Size(499, 109);
             panel3.TabIndex = 8;
             // 
             // label7
@@ -478,7 +478,7 @@
             // cbo_Color_Cancelada
             // 
             cbo_Color_Cancelada.FormattingEnabled = true;
-            cbo_Color_Cancelada.Location = new Point(416, 18);
+            cbo_Color_Cancelada.Location = new Point(416, 19);
             cbo_Color_Cancelada.Name = "cbo_Color_Cancelada";
             cbo_Color_Cancelada.Size = new Size(68, 28);
             cbo_Color_Cancelada.TabIndex = 18;
@@ -503,7 +503,7 @@
             // chk_Asignada
             // 
             chk_Asignada.AutoSize = true;
-            chk_Asignada.Location = new Point(164, 20);
+            chk_Asignada.Location = new Point(165, 20);
             chk_Asignada.Name = "chk_Asignada";
             chk_Asignada.Size = new Size(96, 24);
             chk_Asignada.TabIndex = 15;
@@ -531,7 +531,7 @@
             // cbo_Color_Asignada
             // 
             cbo_Color_Asignada.FormattingEnabled = true;
-            cbo_Color_Asignada.Location = new Point(262, 18);
+            cbo_Color_Asignada.Location = new Point(262, 19);
             cbo_Color_Asignada.Name = "cbo_Color_Asignada";
             cbo_Color_Asignada.Size = new Size(68, 28);
             cbo_Color_Asignada.TabIndex = 12;
@@ -547,7 +547,7 @@
             // cbo_Color_Generada
             // 
             cbo_Color_Generada.FormattingEnabled = true;
-            cbo_Color_Generada.Location = new Point(90, 18);
+            cbo_Color_Generada.Location = new Point(90, 19);
             cbo_Color_Generada.Name = "cbo_Color_Generada";
             cbo_Color_Generada.Size = new Size(68, 28);
             cbo_Color_Generada.TabIndex = 10;
@@ -555,7 +555,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(196, 9);
+            label3.Location = new Point(197, 9);
             label3.Name = "label3";
             label3.Size = new Size(68, 20);
             label3.TabIndex = 7;
@@ -564,7 +564,7 @@
             // cbo_UsuarioFilter
             // 
             cbo_UsuarioFilter.FormattingEnabled = true;
-            cbo_UsuarioFilter.Location = new Point(196, 32);
+            cbo_UsuarioFilter.Location = new Point(197, 32);
             cbo_UsuarioFilter.Name = "cbo_UsuarioFilter";
             cbo_UsuarioFilter.Size = new Size(151, 28);
             cbo_UsuarioFilter.TabIndex = 6;
@@ -572,7 +572,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(5, 70);
+            label2.Location = new Point(5, 69);
             label2.Name = "label2";
             label2.Size = new Size(50, 20);
             label2.TabIndex = 5;
@@ -611,7 +611,7 @@
             tpg_Mantenimiento.Location = new Point(4, 29);
             tpg_Mantenimiento.Name = "tpg_Mantenimiento";
             tpg_Mantenimiento.Padding = new Padding(3);
-            tpg_Mantenimiento.Size = new Size(1676, 801);
+            tpg_Mantenimiento.Size = new Size(1549, 802);
             tpg_Mantenimiento.TabIndex = 1;
             tpg_Mantenimiento.Text = "Mantenimiento";
             tpg_Mantenimiento.UseVisualStyleBackColor = true;
@@ -622,10 +622,10 @@
             tpc_Carga.Controls.Add(tpg_ContratoTercero);
             tpc_Carga.Controls.Add(tpg_DatosEnvio);
             tpc_Carga.Dock = DockStyle.Fill;
-            tpc_Carga.Location = new Point(3, 250);
+            tpc_Carga.Location = new Point(3, 329);
             tpc_Carga.Name = "tpc_Carga";
             tpc_Carga.SelectedIndex = 0;
-            tpc_Carga.Size = new Size(1670, 548);
+            tpc_Carga.Size = new Size(1543, 470);
             tpc_Carga.TabIndex = 19;
             // 
             // tpb_DetalleCarga
@@ -637,44 +637,44 @@
             tpb_DetalleCarga.Location = new Point(4, 29);
             tpb_DetalleCarga.Name = "tpb_DetalleCarga";
             tpb_DetalleCarga.Padding = new Padding(3);
-            tpb_DetalleCarga.Size = new Size(1662, 515);
+            tpb_DetalleCarga.Size = new Size(1535, 437);
             tpb_DetalleCarga.TabIndex = 0;
             tpb_DetalleCarga.Text = "Detalle Carga";
             tpb_DetalleCarga.UseVisualStyleBackColor = true;
             // 
             // dataGridView2
             // 
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Window;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dataGridView2.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridView2.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView2.Dock = DockStyle.Fill;
-            dataGridView2.Location = new Point(3, 361);
+            dataGridView2.Location = new Point(3, 435);
             dataGridView2.Name = "dataGridView2";
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Control;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridView2.RowHeadersWidth = 51;
             dataGridView2.RowTemplate.Height = 29;
-            dataGridView2.Size = new Size(1656, 151);
+            dataGridView2.Size = new Size(1529, 0);
             dataGridView2.TabIndex = 54;
             // 
             // groupBox3
@@ -686,7 +686,7 @@
             groupBox3.Dock = DockStyle.Top;
             groupBox3.Location = new Point(3, 192);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(1656, 169);
+            groupBox3.Size = new Size(1529, 243);
             groupBox3.TabIndex = 53;
             groupBox3.TabStop = false;
             groupBox3.Text = "Flete";
@@ -702,7 +702,7 @@
             panel7.Dock = DockStyle.Left;
             panel7.Location = new Point(908, 23);
             panel7.Name = "panel7";
-            panel7.Size = new Size(319, 143);
+            panel7.Size = new Size(319, 217);
             panel7.TabIndex = 2;
             // 
             // radioButton3
@@ -781,7 +781,7 @@
             panel6.Dock = DockStyle.Left;
             panel6.Location = new Point(499, 23);
             panel6.Name = "panel6";
-            panel6.Size = new Size(409, 143);
+            panel6.Size = new Size(409, 217);
             panel6.TabIndex = 1;
             // 
             // textBox17
@@ -794,7 +794,7 @@
             // checkBox10
             // 
             checkBox10.AutoSize = true;
-            checkBox10.Location = new Point(180, 80);
+            checkBox10.Location = new Point(181, 80);
             checkBox10.Name = "checkBox10";
             checkBox10.Size = new Size(125, 24);
             checkBox10.TabIndex = 46;
@@ -821,7 +821,7 @@
             // checkBox8
             // 
             checkBox8.AutoSize = true;
-            checkBox8.Location = new Point(264, 10);
+            checkBox8.Location = new Point(264, 11);
             checkBox8.Name = "checkBox8";
             checkBox8.Size = new Size(104, 24);
             checkBox8.TabIndex = 43;
@@ -848,27 +848,43 @@
             // panel5
             // 
             panel5.BorderStyle = BorderStyle.FixedSingle;
+            panel5.Controls.Add(txt_IGV);
             panel5.Controls.Add(txt_FleteSinIGV);
             panel5.Controls.Add(checkBox6);
             panel5.Controls.Add(checkBox5);
-            panel5.Controls.Add(checkBox4);
+            panel5.Controls.Add(chk_IncluyeIGVFlete);
             panel5.Controls.Add(textBox14);
             panel5.Controls.Add(label36);
             panel5.Controls.Add(textBox13);
             panel5.Controls.Add(checkBox3);
-            panel5.Controls.Add(textBox12);
+            panel5.Controls.Add(txt_FleteTotal);
             panel5.Controls.Add(label35);
-            panel5.Controls.Add(textBox11);
+            panel5.Controls.Add(txt_Subtotal);
             panel5.Controls.Add(label34);
             panel5.Controls.Add(cbo_MonedaDetalleCarga);
-            panel5.Controls.Add(comboBox18);
             panel5.Controls.Add(label33);
             panel5.Controls.Add(label32);
             panel5.Dock = DockStyle.Left;
             panel5.Location = new Point(3, 23);
             panel5.Name = "panel5";
-            panel5.Size = new Size(496, 143);
+            panel5.Size = new Size(496, 217);
             panel5.TabIndex = 0;
+            // 
+            // txt_IGV
+            // 
+            txt_IGV.Location = new Point(155, 43);
+            txt_IGV.Name = "txt_IGV";
+            txt_IGV.Size = new Size(138, 27);
+            txt_IGV.TabIndex = 46;
+            // 
+            // txt_FleteSinIGV
+            // 
+            txt_FleteSinIGV.Location = new Point(154, 9);
+            txt_FleteSinIGV.Name = "txt_FleteSinIGV";
+            txt_FleteSinIGV.Size = new Size(138, 27);
+            txt_FleteSinIGV.TabIndex = 45;
+            txt_FleteSinIGV.TextChanged += txt_FleteSinIGV_TextChanged;
+            txt_FleteSinIGV.KeyPress += txt_FleteSinIGV_KeyPress;
             // 
             // checkBox6
             // 
@@ -890,15 +906,15 @@
             checkBox5.Text = "Falso Flete";
             checkBox5.UseVisualStyleBackColor = true;
             // 
-            // checkBox4
+            // chk_IncluyeIGVFlete
             // 
-            checkBox4.AutoSize = true;
-            checkBox4.Location = new Point(299, 112);
-            checkBox4.Name = "checkBox4";
-            checkBox4.Size = new Size(65, 24);
-            checkBox4.TabIndex = 42;
-            checkBox4.Text = "I. IGV";
-            checkBox4.UseVisualStyleBackColor = true;
+            chk_IncluyeIGVFlete.AutoSize = true;
+            chk_IncluyeIGVFlete.Location = new Point(299, 112);
+            chk_IncluyeIGVFlete.Name = "chk_IncluyeIGVFlete";
+            chk_IncluyeIGVFlete.Size = new Size(65, 24);
+            chk_IncluyeIGVFlete.TabIndex = 42;
+            chk_IncluyeIGVFlete.Text = "I. IGV";
+            chk_IncluyeIGVFlete.UseVisualStyleBackColor = true;
             // 
             // textBox14
             // 
@@ -934,12 +950,12 @@
             checkBox3.Text = "Adelanto:";
             checkBox3.UseVisualStyleBackColor = true;
             // 
-            // textBox12
+            // txt_FleteTotal
             // 
-            textBox12.Location = new Point(155, 110);
-            textBox12.Name = "textBox12";
-            textBox12.Size = new Size(138, 27);
-            textBox12.TabIndex = 37;
+            txt_FleteTotal.Location = new Point(155, 109);
+            txt_FleteTotal.Name = "txt_FleteTotal";
+            txt_FleteTotal.Size = new Size(138, 27);
+            txt_FleteTotal.TabIndex = 37;
             // 
             // label35
             // 
@@ -951,12 +967,14 @@
             label35.TabIndex = 36;
             label35.Text = "Flete Total:";
             // 
-            // textBox11
+            // txt_Subtotal
             // 
-            textBox11.Location = new Point(155, 77);
-            textBox11.Name = "textBox11";
-            textBox11.Size = new Size(138, 27);
-            textBox11.TabIndex = 35;
+            txt_Subtotal.Location = new Point(155, 77);
+            txt_Subtotal.Name = "txt_Subtotal";
+            txt_Subtotal.Size = new Size(138, 27);
+            txt_Subtotal.TabIndex = 35;
+            txt_Subtotal.KeyPress += txt_Subtotal_KeyPress;
+            txt_Subtotal.KeyUp += txt_Subtotal_KeyUp;
             // 
             // label34
             // 
@@ -975,14 +993,6 @@
             cbo_MonedaDetalleCarga.Name = "cbo_MonedaDetalleCarga";
             cbo_MonedaDetalleCarga.Size = new Size(53, 28);
             cbo_MonedaDetalleCarga.TabIndex = 26;
-            // 
-            // comboBox18
-            // 
-            comboBox18.FormattingEnabled = true;
-            comboBox18.Location = new Point(155, 44);
-            comboBox18.Name = "comboBox18";
-            comboBox18.Size = new Size(138, 28);
-            comboBox18.TabIndex = 25;
             // 
             // label33
             // 
@@ -1010,18 +1020,18 @@
             groupBox1.BackgroundImageLayout = ImageLayout.None;
             groupBox1.Controls.Add(textBox10);
             groupBox1.Controls.Add(label31);
-            groupBox1.Controls.Add(comboBox11);
+            groupBox1.Controls.Add(cbo_OrigenDetalle);
             groupBox1.Controls.Add(label30);
             groupBox1.Controls.Add(label23);
-            groupBox1.Controls.Add(comboBox10);
-            groupBox1.Controls.Add(textBox9);
+            groupBox1.Controls.Add(cbo_DestinoDetalle);
+            groupBox1.Controls.Add(txt_DocClienteFinal);
             groupBox1.Controls.Add(label22);
-            groupBox1.Controls.Add(textBox8);
+            groupBox1.Controls.Add(txt_ClienteComisionista);
             groupBox1.Controls.Add(label24);
-            groupBox1.Controls.Add(textBox7);
+            groupBox1.Controls.Add(txt_DocClienteRecepcion);
             groupBox1.Controls.Add(cbo_TipoCarga);
             groupBox1.Controls.Add(label29);
-            groupBox1.Controls.Add(textBox5);
+            groupBox1.Controls.Add(txt_Cantidad);
             groupBox1.Controls.Add(cbo_ClienteRecepcion);
             groupBox1.Controls.Add(label25);
             groupBox1.Controls.Add(label28);
@@ -1035,7 +1045,7 @@
             groupBox1.FlatStyle = FlatStyle.Popup;
             groupBox1.Location = new Point(3, 3);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1656, 189);
+            groupBox1.Size = new Size(1529, 189);
             groupBox1.TabIndex = 52;
             groupBox1.TabStop = false;
             groupBox1.Text = "Detalle";
@@ -1059,13 +1069,13 @@
             label31.TabIndex = 51;
             label31.Text = "Transportar:";
             // 
-            // comboBox11
+            // cbo_OrigenDetalle
             // 
-            comboBox11.FormattingEnabled = true;
-            comboBox11.Location = new Point(121, 25);
-            comboBox11.Name = "comboBox11";
-            comboBox11.Size = new Size(306, 28);
-            comboBox11.TabIndex = 17;
+            cbo_OrigenDetalle.FormattingEnabled = true;
+            cbo_OrigenDetalle.Location = new Point(121, 25);
+            cbo_OrigenDetalle.Name = "cbo_OrigenDetalle";
+            cbo_OrigenDetalle.Size = new Size(306, 28);
+            cbo_OrigenDetalle.TabIndex = 17;
             // 
             // label30
             // 
@@ -1088,39 +1098,37 @@
             label23.TabIndex = 18;
             label23.Text = "Lugar Orígen:";
             // 
-            // comboBox10
+            // cbo_DestinoDetalle
             // 
-            comboBox10.FormattingEnabled = true;
-            comboBox10.Location = new Point(121, 59);
-            comboBox10.Name = "comboBox10";
-            comboBox10.Size = new Size(306, 28);
-            comboBox10.TabIndex = 19;
+            cbo_DestinoDetalle.FormattingEnabled = true;
+            cbo_DestinoDetalle.Location = new Point(121, 59);
+            cbo_DestinoDetalle.Name = "cbo_DestinoDetalle";
+            cbo_DestinoDetalle.Size = new Size(306, 28);
+            cbo_DestinoDetalle.TabIndex = 19;
             // 
-            // textBox9
+            // txt_DocClienteFinal
             // 
-            textBox9.Enabled = false;
-            textBox9.Location = new Point(574, 60);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(156, 27);
-            textBox9.TabIndex = 36;
+            txt_DocClienteFinal.Location = new Point(574, 60);
+            txt_DocClienteFinal.Name = "txt_DocClienteFinal";
+            txt_DocClienteFinal.Size = new Size(156, 27);
+            txt_DocClienteFinal.TabIndex = 36;
             // 
             // label22
             // 
             label22.AutoSize = true;
             label22.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label22.Location = new Point(9, 62);
+            label22.Location = new Point(9, 61);
             label22.Name = "label22";
             label22.Size = new Size(111, 20);
             label22.TabIndex = 20;
             label22.Text = "Lugar Destino:";
             // 
-            // textBox8
+            // txt_ClienteComisionista
             // 
-            textBox8.Enabled = false;
-            textBox8.Location = new Point(574, 94);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(156, 27);
-            textBox8.TabIndex = 35;
+            txt_ClienteComisionista.Location = new Point(574, 93);
+            txt_ClienteComisionista.Name = "txt_ClienteComisionista";
+            txt_ClienteComisionista.Size = new Size(156, 27);
+            txt_ClienteComisionista.TabIndex = 35;
             // 
             // label24
             // 
@@ -1132,13 +1140,13 @@
             label24.TabIndex = 21;
             label24.Text = "Tipo Carga:";
             // 
-            // textBox7
+            // txt_DocClienteRecepcion
             // 
-            textBox7.Enabled = false;
-            textBox7.Location = new Point(574, 26);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(156, 27);
-            textBox7.TabIndex = 34;
+            txt_DocClienteRecepcion.Location = new Point(574, 27);
+            txt_DocClienteRecepcion.Name = "txt_DocClienteRecepcion";
+            txt_DocClienteRecepcion.Size = new Size(156, 27);
+            txt_DocClienteRecepcion.TabIndex = 34;
+            txt_DocClienteRecepcion.KeyUp += txt_DocClienteRecepcion_KeyUp;
             // 
             // cbo_TipoCarga
             // 
@@ -1146,7 +1154,7 @@
             cbo_TipoCarga.FormattingEnabled = true;
             cbo_TipoCarga.Location = new Point(121, 93);
             cbo_TipoCarga.Name = "cbo_TipoCarga";
-            cbo_TipoCarga.Size = new Size(176, 28);
+            cbo_TipoCarga.Size = new Size(175, 28);
             cbo_TipoCarga.TabIndex = 22;
             // 
             // label29
@@ -1159,13 +1167,13 @@
             label29.TabIndex = 33;
             label29.Text = "Cliente Recep.:";
             // 
-            // textBox5
+            // txt_Cantidad
             // 
-            textBox5.BackColor = Color.Cyan;
-            textBox5.Location = new Point(367, 93);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(60, 27);
-            textBox5.TabIndex = 23;
+            txt_Cantidad.BackColor = Color.Cyan;
+            txt_Cantidad.Location = new Point(367, 93);
+            txt_Cantidad.Name = "txt_Cantidad";
+            txt_Cantidad.Size = new Size(60, 27);
+            txt_Cantidad.TabIndex = 23;
             // 
             // cbo_ClienteRecepcion
             // 
@@ -1174,12 +1182,13 @@
             cbo_ClienteRecepcion.Name = "cbo_ClienteRecepcion";
             cbo_ClienteRecepcion.Size = new Size(461, 28);
             cbo_ClienteRecepcion.TabIndex = 32;
+            cbo_ClienteRecepcion.SelectedIndexChanged += cbo_ClienteRecepcion_SelectedIndexChanged;
             // 
             // label25
             // 
             label25.AutoSize = true;
             label25.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label25.Location = new Point(316, 96);
+            label25.Location = new Point(315, 96);
             label25.Name = "label25";
             label25.Size = new Size(45, 20);
             label25.TabIndex = 24;
@@ -1189,7 +1198,7 @@
             // 
             label28.AutoSize = true;
             label28.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label28.Location = new Point(455, 62);
+            label28.Location = new Point(455, 61);
             label28.Name = "label28";
             label28.Size = new Size(98, 20);
             label28.TabIndex = 31;
@@ -1254,7 +1263,7 @@
             tpg_ContratoTercero.Location = new Point(4, 29);
             tpg_ContratoTercero.Name = "tpg_ContratoTercero";
             tpg_ContratoTercero.Padding = new Padding(3);
-            tpg_ContratoTercero.Size = new Size(1662, 515);
+            tpg_ContratoTercero.Size = new Size(1535, 437);
             tpg_ContratoTercero.TabIndex = 1;
             tpg_ContratoTercero.Text = "Contrato Tercero";
             tpg_ContratoTercero.UseVisualStyleBackColor = true;
@@ -1263,11 +1272,11 @@
             // 
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView3.Dock = DockStyle.Fill;
-            dataGridView3.Location = new Point(3, 197);
+            dataGridView3.Location = new Point(3, 198);
             dataGridView3.Name = "dataGridView3";
             dataGridView3.RowHeadersWidth = 51;
             dataGridView3.RowTemplate.Height = 29;
-            dataGridView3.Size = new Size(1656, 315);
+            dataGridView3.Size = new Size(1529, 236);
             dataGridView3.TabIndex = 54;
             // 
             // groupBox4
@@ -1305,17 +1314,17 @@
             groupBox4.FlatStyle = FlatStyle.Popup;
             groupBox4.Location = new Point(3, 3);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(1656, 194);
+            groupBox4.Size = new Size(1529, 195);
             groupBox4.TabIndex = 53;
             groupBox4.TabStop = false;
             groupBox4.Text = "Detalle";
             // 
             // textBox31
             // 
-            textBox31.Location = new Point(1025, 26);
+            textBox31.Location = new Point(1025, 27);
             textBox31.Multiline = true;
             textBox31.Name = "textBox31";
-            textBox31.Size = new Size(232, 125);
+            textBox31.Size = new Size(233, 125);
             textBox31.TabIndex = 55;
             // 
             // checkBox14
@@ -1331,7 +1340,7 @@
             // 
             // textBox30
             // 
-            textBox30.Location = new Point(908, 25);
+            textBox30.Location = new Point(907, 25);
             textBox30.Name = "textBox30";
             textBox30.Size = new Size(101, 27);
             textBox30.TabIndex = 53;
@@ -1340,7 +1349,7 @@
             // 
             label45.AutoSize = true;
             label45.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label45.Location = new Point(796, 28);
+            label45.Location = new Point(795, 28);
             label45.Name = "label45";
             label45.Size = new Size(108, 20);
             label45.TabIndex = 52;
@@ -1348,7 +1357,7 @@
             // 
             // textBox29
             // 
-            textBox29.Location = new Point(908, 58);
+            textBox29.Location = new Point(907, 59);
             textBox29.Name = "textBox29";
             textBox29.Size = new Size(101, 27);
             textBox29.TabIndex = 51;
@@ -1365,7 +1374,7 @@
             // 
             // textBox28
             // 
-            textBox28.Location = new Point(908, 124);
+            textBox28.Location = new Point(907, 124);
             textBox28.Name = "textBox28";
             textBox28.Size = new Size(101, 27);
             textBox28.TabIndex = 49;
@@ -1382,7 +1391,7 @@
             // 
             // textBox27
             // 
-            textBox27.Location = new Point(908, 91);
+            textBox27.Location = new Point(907, 91);
             textBox27.Name = "textBox27";
             textBox27.Size = new Size(101, 27);
             textBox27.TabIndex = 47;
@@ -1391,7 +1400,7 @@
             // 
             label39.AutoSize = true;
             label39.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label39.Location = new Point(863, 94);
+            label39.Location = new Point(863, 93);
             label39.Name = "label39";
             label39.Size = new Size(39, 20);
             label39.TabIndex = 46;
@@ -1399,7 +1408,7 @@
             // 
             // textBox26
             // 
-            textBox26.Location = new Point(317, 158);
+            textBox26.Location = new Point(317, 157);
             textBox26.Name = "textBox26";
             textBox26.Size = new Size(101, 27);
             textBox26.TabIndex = 45;
@@ -1434,7 +1443,7 @@
             // 
             // textBox23
             // 
-            textBox23.Location = new Point(14, 126);
+            textBox23.Location = new Point(14, 125);
             textBox23.Name = "textBox23";
             textBox23.Size = new Size(766, 27);
             textBox23.TabIndex = 41;
@@ -1448,7 +1457,7 @@
             // 
             // textBox24
             // 
-            textBox24.Location = new Point(300, 93);
+            textBox24.Location = new Point(299, 93);
             textBox24.Name = "textBox24";
             textBox24.Size = new Size(156, 27);
             textBox24.TabIndex = 39;
@@ -1476,7 +1485,7 @@
             // 
             // textBox21
             // 
-            textBox21.Location = new Point(138, 26);
+            textBox21.Location = new Point(138, 27);
             textBox21.Name = "textBox21";
             textBox21.Size = new Size(156, 27);
             textBox21.TabIndex = 34;
@@ -1502,9 +1511,9 @@
             // comboBox23
             // 
             comboBox23.FormattingEnabled = true;
-            comboBox23.Location = new Point(300, 25);
+            comboBox23.Location = new Point(299, 25);
             comboBox23.Name = "comboBox23";
-            comboBox23.Size = new Size(480, 28);
+            comboBox23.Size = new Size(479, 28);
             comboBox23.TabIndex = 32;
             // 
             // label43
@@ -1530,9 +1539,9 @@
             // comboBox25
             // 
             comboBox25.FormattingEnabled = true;
-            comboBox25.Location = new Point(300, 59);
+            comboBox25.Location = new Point(299, 59);
             comboBox25.Name = "comboBox25";
-            comboBox25.Size = new Size(480, 28);
+            comboBox25.Size = new Size(479, 28);
             comboBox25.TabIndex = 30;
             // 
             // tpg_DatosEnvio
@@ -1541,7 +1550,7 @@
             tpg_DatosEnvio.Location = new Point(4, 29);
             tpg_DatosEnvio.Name = "tpg_DatosEnvio";
             tpg_DatosEnvio.Padding = new Padding(3);
-            tpg_DatosEnvio.Size = new Size(1662, 515);
+            tpg_DatosEnvio.Size = new Size(1535, 437);
             tpg_DatosEnvio.TabIndex = 2;
             tpg_DatosEnvio.Text = "Datos Envío";
             tpg_DatosEnvio.UseVisualStyleBackColor = true;
@@ -1581,7 +1590,7 @@
             groupBox5.FlatStyle = FlatStyle.Popup;
             groupBox5.Location = new Point(3, 3);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(1656, 509);
+            groupBox5.Size = new Size(1529, 431);
             groupBox5.TabIndex = 54;
             groupBox5.TabStop = false;
             groupBox5.Text = "Detalle";
@@ -1601,14 +1610,14 @@
             comboBox30.FormattingEnabled = true;
             comboBox30.Location = new Point(776, 248);
             comboBox30.Name = "comboBox30";
-            comboBox30.Size = new Size(480, 28);
+            comboBox30.Size = new Size(479, 28);
             comboBox30.TabIndex = 76;
             // 
             // checkBox19
             // 
             checkBox19.AutoSize = true;
             checkBox19.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            checkBox19.Location = new Point(652, 217);
+            checkBox19.Location = new Point(651, 217);
             checkBox19.Name = "checkBox19";
             checkBox19.Size = new Size(121, 24);
             checkBox19.TabIndex = 75;
@@ -1618,9 +1627,9 @@
             // comboBox29
             // 
             comboBox29.FormattingEnabled = true;
-            comboBox29.Location = new Point(776, 214);
+            comboBox29.Location = new Point(776, 213);
             comboBox29.Name = "comboBox29";
-            comboBox29.Size = new Size(480, 28);
+            comboBox29.Size = new Size(479, 28);
             comboBox29.TabIndex = 74;
             // 
             // radioButton6
@@ -1688,7 +1697,7 @@
             textBox36.Location = new Point(146, 184);
             textBox36.Multiline = true;
             textBox36.Name = "textBox36";
-            textBox36.Size = new Size(480, 58);
+            textBox36.Size = new Size(479, 57);
             textBox36.TabIndex = 67;
             // 
             // checkBox17
@@ -1705,16 +1714,16 @@
             // comboBox21
             // 
             comboBox21.FormattingEnabled = true;
-            comboBox21.Location = new Point(776, 126);
+            comboBox21.Location = new Point(776, 125);
             comboBox21.Name = "comboBox21";
-            comboBox21.Size = new Size(480, 28);
+            comboBox21.Size = new Size(479, 28);
             comboBox21.TabIndex = 65;
             // 
             // checkBox18
             // 
             checkBox18.AutoSize = true;
             checkBox18.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            checkBox18.Location = new Point(12, 130);
+            checkBox18.Location = new Point(11, 131);
             checkBox18.Name = "checkBox18";
             checkBox18.Size = new Size(131, 24);
             checkBox18.TabIndex = 64;
@@ -1726,7 +1735,7 @@
             comboBox28.FormattingEnabled = true;
             comboBox28.Location = new Point(146, 127);
             comboBox28.Name = "comboBox28";
-            comboBox28.Size = new Size(480, 28);
+            comboBox28.Size = new Size(479, 28);
             comboBox28.TabIndex = 63;
             // 
             // textBox34
@@ -1761,7 +1770,7 @@
             // 
             label46.AutoSize = true;
             label46.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label46.Location = new Point(639, 62);
+            label46.Location = new Point(639, 61);
             label46.Name = "label46";
             label46.Size = new Size(134, 20);
             label46.TabIndex = 58;
@@ -1772,14 +1781,14 @@
             comboBox27.FormattingEnabled = true;
             comboBox27.Location = new Point(776, 59);
             comboBox27.Name = "comboBox27";
-            comboBox27.Size = new Size(480, 28);
+            comboBox27.Size = new Size(479, 28);
             comboBox27.TabIndex = 57;
             // 
             // checkBox16
             // 
             checkBox16.AutoSize = true;
             checkBox16.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            checkBox16.Location = new Point(652, 27);
+            checkBox16.Location = new Point(651, 27);
             checkBox16.Name = "checkBox16";
             checkBox16.Size = new Size(121, 24);
             checkBox16.TabIndex = 56;
@@ -1791,7 +1800,7 @@
             comboBox26.FormattingEnabled = true;
             comboBox26.Location = new Point(776, 24);
             comboBox26.Name = "comboBox26";
-            comboBox26.Size = new Size(480, 28);
+            comboBox26.Size = new Size(479, 28);
             comboBox26.TabIndex = 55;
             // 
             // checkBox15
@@ -1810,14 +1819,14 @@
             comboBox22.FormattingEnabled = true;
             comboBox22.Location = new Point(146, 25);
             comboBox22.Name = "comboBox22";
-            comboBox22.Size = new Size(480, 28);
+            comboBox22.Size = new Size(479, 28);
             comboBox22.TabIndex = 32;
             // 
             // label54
             // 
             label54.AutoSize = true;
             label54.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label54.Location = new Point(23, 62);
+            label54.Location = new Point(23, 61);
             label54.Name = "label54";
             label54.Size = new Size(120, 20);
             label54.TabIndex = 31;
@@ -1828,13 +1837,17 @@
             comboBox24.FormattingEnabled = true;
             comboBox24.Location = new Point(146, 59);
             comboBox24.Name = "comboBox24";
-            comboBox24.Size = new Size(480, 28);
+            comboBox24.Size = new Size(479, 28);
             comboBox24.TabIndex = 30;
             // 
             // groupBox2
             // 
             groupBox2.BackColor = Color.Azure;
             groupBox2.BackgroundImageLayout = ImageLayout.None;
+            groupBox2.Controls.Add(cbo_OrigenCabecera);
+            groupBox2.Controls.Add(label14);
+            groupBox2.Controls.Add(cbo_DestinoCabecera);
+            groupBox2.Controls.Add(label15);
             groupBox2.Controls.Add(chk_RecojoDomicilioLugar);
             groupBox2.Controls.Add(cbo_DomicilioLugar);
             groupBox2.Controls.Add(textBox4);
@@ -1852,10 +1865,6 @@
             groupBox2.Controls.Add(cbo_CondicionPago);
             groupBox2.Controls.Add(label16);
             groupBox2.Controls.Add(cbo_TipoServicio);
-            groupBox2.Controls.Add(label15);
-            groupBox2.Controls.Add(comboBox3);
-            groupBox2.Controls.Add(label14);
-            groupBox2.Controls.Add(comboBox2);
             groupBox2.Controls.Add(dateTimePicker7);
             groupBox2.Controls.Add(dateTimePicker8);
             groupBox2.Controls.Add(label13);
@@ -1871,12 +1880,49 @@
             groupBox2.Controls.Add(label9);
             groupBox2.Dock = DockStyle.Top;
             groupBox2.FlatStyle = FlatStyle.Popup;
-            groupBox2.Location = new Point(3, 35);
+            groupBox2.Location = new Point(3, 34);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1670, 215);
+            groupBox2.Size = new Size(1543, 295);
             groupBox2.TabIndex = 18;
             groupBox2.TabStop = false;
             groupBox2.Text = "Datos Generales";
+            // 
+            // cbo_OrigenCabecera
+            // 
+            cbo_OrigenCabecera.FormattingEnabled = true;
+            cbo_OrigenCabecera.Location = new Point(117, 132);
+            cbo_OrigenCabecera.Name = "cbo_OrigenCabecera";
+            cbo_OrigenCabecera.Size = new Size(306, 28);
+            cbo_OrigenCabecera.TabIndex = 51;
+            cbo_OrigenCabecera.SelectedIndexChanged += cbo_OrigenCabecera_SelectedIndexChanged;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label14.Location = new Point(10, 135);
+            label14.Name = "label14";
+            label14.Size = new Size(104, 20);
+            label14.TabIndex = 52;
+            label14.Text = "Lugar Orígen:";
+            // 
+            // cbo_DestinoCabecera
+            // 
+            cbo_DestinoCabecera.FormattingEnabled = true;
+            cbo_DestinoCabecera.Location = new Point(117, 166);
+            cbo_DestinoCabecera.Name = "cbo_DestinoCabecera";
+            cbo_DestinoCabecera.Size = new Size(306, 28);
+            cbo_DestinoCabecera.TabIndex = 53;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label15.Location = new Point(5, 168);
+            label15.Name = "label15";
+            label15.Size = new Size(111, 20);
+            label15.TabIndex = 54;
+            label15.Text = "Lugar Destino:";
             // 
             // chk_RecojoDomicilioLugar
             // 
@@ -1910,7 +1956,7 @@
             // cbo_TipoVehiculo
             // 
             cbo_TipoVehiculo.FormattingEnabled = true;
-            cbo_TipoVehiculo.Location = new Point(1094, 163);
+            cbo_TipoVehiculo.Location = new Point(492, 135);
             cbo_TipoVehiculo.Name = "cbo_TipoVehiculo";
             cbo_TipoVehiculo.Size = new Size(204, 28);
             cbo_TipoVehiculo.TabIndex = 47;
@@ -1919,7 +1965,7 @@
             // 
             label21.AutoSize = true;
             label21.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label21.Location = new Point(1051, 168);
+            label21.Location = new Point(450, 140);
             label21.Name = "label21";
             label21.Size = new Size(37, 20);
             label21.TabIndex = 46;
@@ -1927,17 +1973,17 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(887, 30);
+            textBox2.Location = new Point(887, 29);
             textBox2.Multiline = true;
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(204, 127);
+            textBox2.Size = new Size(204, 95);
             textBox2.TabIndex = 45;
             // 
             // label20
             // 
             label20.AutoSize = true;
             label20.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label20.Location = new Point(601, 168);
+            label20.Location = new Point(697, 138);
             label20.Name = "label20";
             label20.Size = new Size(81, 20);
             label20.TabIndex = 44;
@@ -1946,16 +1992,16 @@
             // comboBox7
             // 
             comboBox7.FormattingEnabled = true;
-            comboBox7.Location = new Point(705, 163);
+            comboBox7.Location = new Point(784, 136);
             comboBox7.Name = "comboBox7";
-            comboBox7.Size = new Size(325, 28);
+            comboBox7.Size = new Size(304, 28);
             comboBox7.TabIndex = 43;
             // 
             // label19
             // 
             label19.AutoSize = true;
             label19.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label19.Location = new Point(687, 134);
+            label19.Location = new Point(1205, 173);
             label19.Name = "label19";
             label19.Size = new Size(93, 20);
             label19.TabIndex = 42;
@@ -1965,7 +2011,7 @@
             // 
             chk_Tercerizado.AutoSize = true;
             chk_Tercerizado.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            chk_Tercerizado.Location = new Point(581, 134);
+            chk_Tercerizado.Location = new Point(1099, 173);
             chk_Tercerizado.Name = "chk_Tercerizado";
             chk_Tercerizado.Size = new Size(79, 24);
             chk_Tercerizado.TabIndex = 23;
@@ -1987,7 +2033,7 @@
             cbo_TipoEntrega.FormattingEnabled = true;
             cbo_TipoEntrega.Location = new Point(705, 96);
             cbo_TipoEntrega.Name = "cbo_TipoEntrega";
-            cbo_TipoEntrega.Size = new Size(176, 28);
+            cbo_TipoEntrega.Size = new Size(175, 28);
             cbo_TipoEntrega.TabIndex = 21;
             // 
             // label17
@@ -2004,7 +2050,7 @@
             cbo_CondicionPago.FormattingEnabled = true;
             cbo_CondicionPago.Location = new Point(705, 64);
             cbo_CondicionPago.Name = "cbo_CondicionPago";
-            cbo_CondicionPago.Size = new Size(176, 28);
+            cbo_CondicionPago.Size = new Size(175, 28);
             cbo_CondicionPago.TabIndex = 19;
             // 
             // label16
@@ -2019,46 +2065,10 @@
             // cbo_TipoServicio
             // 
             cbo_TipoServicio.FormattingEnabled = true;
-            cbo_TipoServicio.Location = new Point(705, 30);
+            cbo_TipoServicio.Location = new Point(705, 29);
             cbo_TipoServicio.Name = "cbo_TipoServicio";
-            cbo_TipoServicio.Size = new Size(176, 28);
+            cbo_TipoServicio.Size = new Size(175, 28);
             cbo_TipoServicio.TabIndex = 17;
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label15.Location = new Point(4, 168);
-            label15.Name = "label15";
-            label15.Size = new Size(111, 20);
-            label15.TabIndex = 16;
-            label15.Text = "Lugar Destino:";
-            // 
-            // comboBox3
-            // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(116, 165);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(456, 28);
-            comboBox3.TabIndex = 15;
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label14.Location = new Point(9, 134);
-            label14.Name = "label14";
-            label14.Size = new Size(104, 20);
-            label14.TabIndex = 14;
-            label14.Text = "Lugar Orígen:";
-            // 
-            // comboBox2
-            // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(116, 131);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(456, 28);
-            comboBox2.TabIndex = 13;
             // 
             // dateTimePicker7
             // 
@@ -2080,7 +2090,7 @@
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label13.Location = new Point(348, 68);
+            label13.Location = new Point(347, 68);
             label13.Name = "label13";
             label13.Size = new Size(99, 20);
             label13.TabIndex = 10;
@@ -2097,7 +2107,7 @@
             // dateTimePicker6
             // 
             dateTimePicker6.Format = DateTimePickerFormat.Short;
-            dateTimePicker6.Location = new Point(116, 96);
+            dateTimePicker6.Location = new Point(117, 96);
             dateTimePicker6.Name = "dateTimePicker6";
             dateTimePicker6.Size = new Size(125, 27);
             dateTimePicker6.TabIndex = 8;
@@ -2122,7 +2132,7 @@
             // dateTimePicker3
             // 
             dateTimePicker3.Format = DateTimePickerFormat.Short;
-            dateTimePicker3.Location = new Point(116, 63);
+            dateTimePicker3.Location = new Point(117, 63);
             dateTimePicker3.Name = "dateTimePicker3";
             dateTimePicker3.Size = new Size(125, 27);
             dateTimePicker3.TabIndex = 5;
@@ -2139,15 +2149,15 @@
             // cbo_EstadoCarga
             // 
             cbo_EstadoCarga.FormattingEnabled = true;
-            cbo_EstadoCarga.Location = new Point(348, 29);
+            cbo_EstadoCarga.Location = new Point(347, 29);
             cbo_EstadoCarga.Name = "cbo_EstadoCarga";
-            cbo_EstadoCarga.Size = new Size(224, 28);
+            cbo_EstadoCarga.Size = new Size(223, 28);
             cbo_EstadoCarga.TabIndex = 3;
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(276, 33);
+            label10.Location = new Point(277, 33);
             label10.Name = "label10";
             label10.Size = new Size(66, 20);
             label10.TabIndex = 2;
@@ -2155,7 +2165,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(116, 30);
+            textBox1.Location = new Point(117, 29);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(156, 27);
             textBox1.TabIndex = 1;
@@ -2178,7 +2188,7 @@
             panel4.Dock = DockStyle.Top;
             panel4.Location = new Point(3, 3);
             panel4.Name = "panel4";
-            panel4.Size = new Size(1670, 32);
+            panel4.Size = new Size(1543, 31);
             panel4.TabIndex = 3;
             // 
             // btn_Cancelar
@@ -2190,7 +2200,7 @@
             btn_Cancelar.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Cancelar.Location = new Point(88, 0);
             btn_Cancelar.Name = "btn_Cancelar";
-            btn_Cancelar.Size = new Size(89, 30);
+            btn_Cancelar.Size = new Size(89, 29);
             btn_Cancelar.TabIndex = 2;
             btn_Cancelar.Text = "Cancelar";
             btn_Cancelar.TextAlign = ContentAlignment.MiddleRight;
@@ -2206,26 +2216,17 @@
             btn_Guardar.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Guardar.Location = new Point(0, 0);
             btn_Guardar.Name = "btn_Guardar";
-            btn_Guardar.Size = new Size(88, 30);
+            btn_Guardar.Size = new Size(88, 29);
             btn_Guardar.TabIndex = 0;
             btn_Guardar.Text = "Nuevo";
             btn_Guardar.TextAlign = ContentAlignment.MiddleRight;
             btn_Guardar.UseVisualStyleBackColor = true;
             // 
-            // txt_FleteSinIGV
-            // 
-            txt_FleteSinIGV.Location = new Point(154, 9);
-            txt_FleteSinIGV.Name = "txt_FleteSinIGV";
-            txt_FleteSinIGV.Size = new Size(138, 27);
-            txt_FleteSinIGV.TabIndex = 45;
-            txt_FleteSinIGV.TextChanged += txt_FleteSinIGV_TextChanged;
-            txt_FleteSinIGV.KeyPress += txt_FleteSinIGV_KeyPress;
-            // 
             // frm_RecepcionCarga
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1684, 834);
+            ClientSize = new Size(1557, 835);
             Controls.Add(tpc_RecepcionCarga);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frm_RecepcionCarga";
@@ -2385,34 +2386,33 @@
         private Panel panel5;
         private CheckBox checkBox6;
         private CheckBox checkBox5;
-        private CheckBox checkBox4;
+        private CheckBox chk_IncluyeIGVFlete;
         private TextBox textBox14;
         private Label label36;
         private TextBox textBox13;
         private CheckBox checkBox3;
-        private TextBox textBox12;
+        private TextBox txt_FleteTotal;
         private Label label35;
-        private TextBox textBox11;
+        private TextBox txt_Subtotal;
         private Label label34;
         private ComboBox cbo_MonedaDetalleCarga;
-        private ComboBox comboBox18;
         private Label label33;
         private Label label32;
         private GroupBox groupBox1;
         private TextBox textBox10;
         private Label label31;
-        private ComboBox comboBox11;
+        private ComboBox cbo_OrigenDetalle;
         private Label label30;
         private Label label23;
-        private ComboBox comboBox10;
-        private TextBox textBox9;
+        private ComboBox cbo_DestinoDetalle;
+        private TextBox txt_DocClienteFinal;
         private Label label22;
-        private TextBox textBox8;
+        private TextBox txt_ClienteComisionista;
         private Label label24;
-        private TextBox textBox7;
+        private TextBox txt_DocClienteRecepcion;
         private ComboBox cbo_TipoCarga;
         private Label label29;
-        private TextBox textBox5;
+        private TextBox txt_Cantidad;
         private ComboBox cbo_ClienteRecepcion;
         private Label label25;
         private Label label28;
@@ -2439,10 +2439,6 @@
         private ComboBox cbo_CondicionPago;
         private Label label16;
         private ComboBox cbo_TipoServicio;
-        private Label label15;
-        private ComboBox comboBox3;
-        private Label label14;
-        private ComboBox comboBox2;
         private DateTimePicker dateTimePicker7;
         private DateTimePicker dateTimePicker8;
         private Label label13;
@@ -2458,5 +2454,10 @@
         private Label label9;
         private ToolStripMenuItem tsm_IngresarGRT;
         private TextBox txt_FleteSinIGV;
+        private TextBox txt_IGV;
+        private ComboBox cbo_OrigenCabecera;
+        private Label label14;
+        private ComboBox cbo_DestinoCabecera;
+        private Label label15;
     }
 }

@@ -242,8 +242,8 @@ namespace Principal.Operaciones
                 ColumnaNombre.HeaderText = "Nombre";
                 dgb_Cliente.Columns.Insert(2, ColumnaNombre);
             }
-            
-            
+
+
 
             dgb_Cliente.CellFormatting += dgb_Cliente_CellFormatting;
             dgb_Cliente.Columns["Nombre"].SortMode = DataGridViewColumnSortMode.Programmatic;

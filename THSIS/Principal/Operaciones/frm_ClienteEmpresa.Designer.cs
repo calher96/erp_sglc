@@ -34,6 +34,7 @@
             tpg_Lista = new TabPage();
             dgb_Cliente = new DataGridView();
             panel2 = new Panel();
+            btn_Editar = new Button();
             btn_Actualizar = new Button();
             btn_Cerrar = new Button();
             button7 = new Button();
@@ -140,7 +141,8 @@
             panel4 = new Panel();
             btn_Cancelar = new Button();
             btn_Guardar = new Button();
-            btn_Editar = new Button();
+            tabPage1 = new TabPage();
+            dgv_Contacto = new DataGridView();
             tbc_EmpresaCliente.SuspendLayout();
             tpg_Lista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgb_Cliente).BeginInit();
@@ -164,6 +166,8 @@
             groupBox7.SuspendLayout();
             groupBox6.SuspendLayout();
             panel4.SuspendLayout();
+            tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgv_Contacto).BeginInit();
             SuspendLayout();
             // 
             // tbc_EmpresaCliente
@@ -230,6 +234,23 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(1320, 24);
             panel2.TabIndex = 2;
+            // 
+            // btn_Editar
+            // 
+            btn_Editar.Dock = DockStyle.Left;
+            btn_Editar.FlatAppearance.MouseDownBackColor = Color.Gray;
+            btn_Editar.FlatAppearance.MouseOverBackColor = Color.Silver;
+            btn_Editar.Image = (Image)resources.GetObject("btn_Editar.Image");
+            btn_Editar.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_Editar.Location = new Point(335, 0);
+            btn_Editar.Margin = new Padding(3, 2, 3, 2);
+            btn_Editar.Name = "btn_Editar";
+            btn_Editar.Size = new Size(77, 22);
+            btn_Editar.TabIndex = 4;
+            btn_Editar.Text = "Editar";
+            btn_Editar.TextAlign = ContentAlignment.MiddleRight;
+            btn_Editar.UseVisualStyleBackColor = true;
+            btn_Editar.Click += btn_Editar_Click;
             // 
             // btn_Actualizar
             // 
@@ -542,6 +563,7 @@
             tpc_DetalleEmpresaCliente.Controls.Add(tpg_DireccionCliente);
             tpc_DetalleEmpresaCliente.Controls.Add(tpg_TipoPago);
             tpc_DetalleEmpresaCliente.Controls.Add(tpg_AdministracionFinanzas);
+            tpc_DetalleEmpresaCliente.Controls.Add(tabPage1);
             tpc_DetalleEmpresaCliente.Dock = DockStyle.Fill;
             tpc_DetalleEmpresaCliente.Location = new Point(3, 158);
             tpc_DetalleEmpresaCliente.Margin = new Padding(3, 2, 3, 2);
@@ -1394,22 +1416,29 @@
             btn_Guardar.UseVisualStyleBackColor = true;
             btn_Guardar.Click += btn_Guardar_Click;
             // 
-            // btn_Editar
+            // tabPage1
             // 
-            btn_Editar.Dock = DockStyle.Left;
-            btn_Editar.FlatAppearance.MouseDownBackColor = Color.Gray;
-            btn_Editar.FlatAppearance.MouseOverBackColor = Color.Silver;
-            btn_Editar.Image = (Image)resources.GetObject("btn_Editar.Image");
-            btn_Editar.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Editar.Location = new Point(335, 0);
-            btn_Editar.Margin = new Padding(3, 2, 3, 2);
-            btn_Editar.Name = "btn_Editar";
-            btn_Editar.Size = new Size(77, 22);
-            btn_Editar.TabIndex = 4;
-            btn_Editar.Text = "Editar";
-            btn_Editar.TextAlign = ContentAlignment.MiddleRight;
-            btn_Editar.UseVisualStyleBackColor = true;
-            btn_Editar.Click += btn_Editar_Click;
+            tabPage1.Controls.Add(dgv_Contacto);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Margin = new Padding(3, 2, 3, 2);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3, 2, 3, 2);
+            tabPage1.Size = new Size(1312, 412);
+            tabPage1.TabIndex = 3;
+            tabPage1.Text = "Contacto";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // dgv_Contacto
+            // 
+            dgv_Contacto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv_Contacto.ContextMenuStrip = cms_TipoPago;
+            dgv_Contacto.Dock = DockStyle.Fill;
+            dgv_Contacto.Location = new Point(3, 2);
+            dgv_Contacto.Name = "dgv_Contacto";
+            dgv_Contacto.RowHeadersWidth = 51;
+            dgv_Contacto.RowTemplate.Height = 25;
+            dgv_Contacto.Size = new Size(1306, 408);
+            dgv_Contacto.TabIndex = 1;
             // 
             // frm_ClienteEmpresa
             // 
@@ -1453,6 +1482,8 @@
             groupBox7.PerformLayout();
             groupBox6.ResumeLayout(false);
             panel4.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgv_Contacto).EndInit();
             ResumeLayout(false);
         }
 
@@ -1569,5 +1600,7 @@
         private Button button1;
         private MaskedTextBox txt_Telefono;
         private Button btn_Editar;
+        private TabPage tabPage1;
+        private DataGridView dgv_Contacto;
     }
 }

@@ -10,7 +10,11 @@ namespace CEN.Helpers
     {
         public static readonly String cadena_conexion  = "Data Source=localhost,1433;Initial Catalog=ERP_SGLC;User ID=sa;Password=carlos561996;";
         public static readonly String nombre_sistema = "ERP_SGLC";
-        public static readonly String webapi = "http://161.132.41.121:8080/";
+
+
+
+        public static readonly String webapi = "http://localhost/";
+        //public static readonly String webapi = "http://192.168.101.14:5093/";
         //public static readonly String webapi = "http://192.168.101.7:5093/";
         public static readonly String HostName = Dns.GetHostName();
         public static readonly String HostUser = WindowsIdentity.GetCurrent().Name;
