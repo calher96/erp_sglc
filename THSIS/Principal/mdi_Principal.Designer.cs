@@ -117,7 +117,7 @@
             tsm_GestionClientes.Image = (Image)resources.GetObject("tsm_GestionClientes.Image");
             tsm_GestionClientes.ImageScaling = ToolStripItemImageScaling.None;
             tsm_GestionClientes.Name = "tsm_GestionClientes";
-            tsm_GestionClientes.Size = new Size(231, 38);
+            tsm_GestionClientes.Size = new Size(236, 38);
             tsm_GestionClientes.Text = "Gestión de Clientes";
             tsm_GestionClientes.Visible = false;
             // 
@@ -136,7 +136,7 @@
             tsm_Carga.Image = (Image)resources.GetObject("tsm_Carga.Image");
             tsm_Carga.ImageScaling = ToolStripItemImageScaling.None;
             tsm_Carga.Name = "tsm_Carga";
-            tsm_Carga.Size = new Size(231, 38);
+            tsm_Carga.Size = new Size(236, 38);
             tsm_Carga.Text = "Carga";
             tsm_Carga.Visible = false;
             tsm_Carga.Click += tsm_Carga_Click;
@@ -247,7 +247,7 @@
             tsm_PermisosPerfiles.Image = (Image)resources.GetObject("tsm_PermisosPerfiles.Image");
             tsm_PermisosPerfiles.ImageScaling = ToolStripItemImageScaling.None;
             tsm_PermisosPerfiles.Name = "tsm_PermisosPerfiles";
-            tsm_PermisosPerfiles.Size = new Size(236, 38);
+            tsm_PermisosPerfiles.Size = new Size(224, 38);
             tsm_PermisosPerfiles.Text = "Permisos y Perfiles";
             tsm_PermisosPerfiles.Visible = false;
             tsm_PermisosPerfiles.Click += permisosYPerfilesToolStripMenuItem_Click;
@@ -257,7 +257,7 @@
             tsm_CerrarSesion.Image = (Image)resources.GetObject("tsm_CerrarSesion.Image");
             tsm_CerrarSesion.ImageScaling = ToolStripItemImageScaling.None;
             tsm_CerrarSesion.Name = "tsm_CerrarSesion";
-            tsm_CerrarSesion.Size = new Size(236, 38);
+            tsm_CerrarSesion.Size = new Size(224, 38);
             tsm_CerrarSesion.Text = "Cerrar Sesión";
             tsm_CerrarSesion.Visible = false;
             tsm_CerrarSesion.Click += tsm_CerrarSesion_Click;
@@ -265,7 +265,7 @@
             // tsm_Empresa
             // 
             tsm_Empresa.Name = "tsm_Empresa";
-            tsm_Empresa.Size = new Size(236, 38);
+            tsm_Empresa.Size = new Size(224, 38);
             tsm_Empresa.Text = "Empresa";
             tsm_Empresa.Click += tsm_Empresa_Click;
             // 

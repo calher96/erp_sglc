@@ -649,10 +649,57 @@ namespace Principal.Operaciones
                 ent_Ruta Ruta = new ent_Ruta();
                 Ruta.DistritoOrigen.Ubigeo = ((ent_Ubigeo)cbo_OrigenCabecera.SelectedItem).Ubigeo;
                 List<ent_Ruta> Lista = cln.ListarRuta(Ruta, "GEN");
+                List<UbigeoResponse> ListaUbigeo = new List<UbigeoResponse>();
+                foreach (ent_Ruta RutaDet in Lista)
+                {
+                    ListaUbigeo.Add(RutaDet.DistritoDestino);
+                }
+                cbo_DestinoCabecera.DataSource = null;
+                cbo_DestinoCabecera.DataSource = ListaUbigeo;
+                if (Lista.Count > 0)
+                {
 
-                cbo_DestinoCabecera.DataSource = Lista;
-                cbo_DestinoCabecera.ValueMember = "DistritoDestino.Ubigeo";
-                cbo_DestinoCabecera.DisplayMember = "DistritoDestino.Descripcion";
+
+                    cbo_DestinoCabecera.ValueMember = "Ubigeo";
+                    cbo_DestinoCabecera.DisplayMember = "Descripcion";
+                }
+                else
+                {
+                    cbo_DestinoCabecera.Refresh();
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void cbo_OrigenDetalle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                cln_Ruta cln = new cln_Ruta();
+                ent_Ruta Ruta = new ent_Ruta();
+                Ruta.DistritoOrigen.Ubigeo = ((ent_Ubigeo)cbo_OrigenDetalle.SelectedItem).Ubigeo;
+                List<ent_Ruta> Lista = cln.ListarRuta(Ruta, "GEN");
+                List<UbigeoResponse> ListaUbigeo = new List<UbigeoResponse>();
+                foreach (ent_Ruta RutaDet in Lista)
+                {
+                    ListaUbigeo.Add(RutaDet.DistritoDestino);
+                }
+                cbo_DestinoDetalle.DataSource = null;
+                cbo_DestinoDetalle.DataSource = ListaUbigeo;
+                if (Lista.Count > 0)
+                {
+                    cbo_DestinoDetalle.ValueMember = "Ubigeo";
+                    cbo_DestinoDetalle.DisplayMember = "Descripcion";
+                }
+                else
+                {
+                    cbo_DestinoDetalle.Refresh();
+                }
+
             }
             catch (Exception ex)
             {

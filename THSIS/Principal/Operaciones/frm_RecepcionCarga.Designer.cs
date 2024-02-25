@@ -1076,6 +1076,7 @@
             cbo_OrigenDetalle.Name = "cbo_OrigenDetalle";
             cbo_OrigenDetalle.Size = new Size(306, 28);
             cbo_OrigenDetalle.TabIndex = 17;
+            cbo_OrigenDetalle.SelectedIndexChanged += cbo_OrigenDetalle_SelectedIndexChanged;
             // 
             // label30
             // 
