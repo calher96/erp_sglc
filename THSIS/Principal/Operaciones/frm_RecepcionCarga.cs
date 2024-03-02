@@ -19,7 +19,10 @@ namespace Principal.Operaciones
 {
     public partial class frm_RecepcionCarga : Form
     {
+        #region "Variables"
         private string currentInput = "";
+        #endregion
+
         #region "Constructor"
         public frm_RecepcionCarga()
         {
@@ -279,6 +282,192 @@ namespace Principal.Operaciones
         #endregion
 
         #region "Eventos"
+        private void txt_Subtotal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verifica si la tecla presionada es la tecla de retroceso
+            if (e.KeyChar == '\b')
+            {
+                // Aquí puedes realizar la lógica deseada al presionar la tecla de retroceso.
+                // Por ejemplo, eliminar el último carácter del texto actual.
+                if (txt_Subtotal.Text.Length > 0)
+                {
+                    currentInput = txt_Subtotal.Text.Substring(0, txt_Subtotal.Text.Length - 1);
+                    // Formatea el texto con los dos últimos dígitos en la parte decimal
+                    if (currentInput.Length >= 2 && !currentInput.Contains("."))
+                    {
+                        int length = currentInput.Length;
+                        txt_Subtotal.Text = currentInput.Substring(0, length - 2) + "." + currentInput.Substring(length - 2);
+                    }
+                    else
+                    {
+                        txt_Subtotal.Text = currentInput;
+                    }
+                }
+            }
+            else
+            {
+                // Verifica si la tecla presionada es un número
+                if (char.IsDigit(e.KeyChar))
+                {
+                    // Agrega el dígito a la cadena de entrada actual
+                    currentInput += e.KeyChar;
+
+                    // Formatea el texto con los dos últimos dígitos en la parte decimal
+                    if (currentInput.Length >= 2 && !currentInput.Contains("."))
+                    {
+                        int length = currentInput.Length;
+                        txt_Subtotal.Text = currentInput.Substring(0, length - 2) + "." + currentInput.Substring(length - 2);
+                    }
+                    else
+                    {
+                        txt_Subtotal.Text = currentInput;
+                    }
+                }
+            }
+
+
+            e.Handled = true; // Evita que el evento KeyPress procese la tecla nuevamente
+        }
+
+        private void txt_Subtotal_KeyUp(object sender, KeyEventArgs e)
+        {
+            Double Subtotal;
+            Double Igv;
+            Double Gravada;
+            Double TotalFlete;
+            Double Cantidad;
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                Subtotal = Convert.ToDouble(txt_Subtotal.Text);
+                Cantidad = Convert.ToDouble(txt_Cantidad.Text);
+                if (chk_IncluyeIGVFlete.Checked)
+                {
+                    Gravada = Subtotal / 1.18;
+                    Igv = Subtotal - Gravada;
+                }
+                else
+                {
+                    Gravada = Subtotal;
+                    Subtotal = Gravada + Subtotal * 0.18;
+                    Igv = Subtotal - Gravada;
+                }
+                TotalFlete = Subtotal * Cantidad;
+
+                Gravada = Math.Round(Gravada, 2);
+                Igv = Math.Round(Igv, 2);
+                Subtotal = Math.Round(Subtotal, 2);
+                TotalFlete = Math.Round(Subtotal, 2);
+
+                txt_FleteSinIGV.Text = Gravada.ToString("0.00");
+                txt_Subtotal.Text = Subtotal.ToString("0.00");
+                txt_IGV.Text = Igv.ToString("0.00");
+                txt_FleteTotal.Text = TotalFlete.ToString("0.00");
+            }
+        }
+
+        private void cbo_ClienteRecepcion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                ent_Cliente Cliente = (ent_Cliente)cbo_ClienteRecepcion.SelectedItem;
+                txt_DocClienteRecepcion.Text = Cliente.Persona.DocIdentidad;
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void txt_DocClienteRecepcion_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    String Documento = txt_DocClienteRecepcion.Text;
+                    List<ent_Cliente> ListaClientes = (List<ent_Cliente>)cbo_ClienteRecepcion.DataSource;
+                    foreach (ent_Cliente Cliente in ListaClientes)
+                    {
+                        if (Cliente.Persona.DocIdentidad == Documento)
+                        {
+                            cbo_ClienteRecepcion.SelectedItem = Cliente;
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void cbo_OrigenCabecera_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                cln_Ruta cln = new cln_Ruta();
+                ent_Ruta Ruta = new ent_Ruta();
+                Ruta.DistritoOrigen.Ubigeo = ((ent_Ubigeo)cbo_OrigenCabecera.SelectedItem).Ubigeo;
+                List<ent_Ruta> Lista = cln.ListarRuta(Ruta, "GEN");
+                List<UbigeoResponse> ListaUbigeo = new List<UbigeoResponse>();
+                foreach (ent_Ruta RutaDet in Lista)
+                {
+                    ListaUbigeo.Add(RutaDet.DistritoDestino);
+                }
+                cbo_DestinoCabecera.DataSource = null;
+                cbo_DestinoCabecera.DataSource = ListaUbigeo;
+                if (Lista.Count > 0)
+                {
+
+
+                    cbo_DestinoCabecera.ValueMember = "Ubigeo";
+                    cbo_DestinoCabecera.DisplayMember = "Descripcion";
+                }
+                else
+                {
+                    cbo_DestinoCabecera.Refresh();
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void cbo_OrigenDetalle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                cln_Ruta cln = new cln_Ruta();
+                ent_Ruta Ruta = new ent_Ruta();
+                Ruta.DistritoOrigen.Ubigeo = ((ent_Ubigeo)cbo_OrigenDetalle.SelectedItem).Ubigeo;
+                List<ent_Ruta> Lista = cln.ListarRuta(Ruta, "GEN");
+                List<UbigeoResponse> ListaUbigeo = new List<UbigeoResponse>();
+                foreach (ent_Ruta RutaDet in Lista)
+                {
+                    ListaUbigeo.Add(RutaDet.DistritoDestino);
+                }
+                cbo_DestinoDetalle.DataSource = null;
+                cbo_DestinoDetalle.DataSource = ListaUbigeo;
+                if (Lista.Count > 0)
+                {
+                    cbo_DestinoDetalle.ValueMember = "Ubigeo";
+                    cbo_DestinoDetalle.DisplayMember = "Descripcion";
+                }
+                else
+                {
+                    cbo_DestinoDetalle.Refresh();
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
         private void cbo_Color_Aprobada_DrawItem(object sender, DrawItemEventArgs e)
         {
             e.DrawBackground();
@@ -518,193 +707,40 @@ namespace Principal.Operaciones
             e.Handled = true; // Evita que el evento KeyPress procese la tecla nuevamente
 
         }
+
+        private void btn_Guardar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
         #endregion
 
-        private void txt_Subtotal_KeyPress(object sender, KeyPressEventArgs e)
+        private ent_Carga llenarCarga()
         {
-            // Verifica si la tecla presionada es la tecla de retroceso
-            if (e.KeyChar == '\b')
-            {
-                // Aquí puedes realizar la lógica deseada al presionar la tecla de retroceso.
-                // Por ejemplo, eliminar el último carácter del texto actual.
-                if (txt_Subtotal.Text.Length > 0)
-                {
-                    currentInput = txt_Subtotal.Text.Substring(0, txt_Subtotal.Text.Length - 1);
-                    // Formatea el texto con los dos últimos dígitos en la parte decimal
-                    if (currentInput.Length >= 2 && !currentInput.Contains("."))
-                    {
-                        int length = currentInput.Length;
-                        txt_Subtotal.Text = currentInput.Substring(0, length - 2) + "." + currentInput.Substring(length - 2);
-                    }
-                    else
-                    {
-                        txt_Subtotal.Text = currentInput;
-                    }
-                }
-            }
-            else
-            {
-                // Verifica si la tecla presionada es un número
-                if (char.IsDigit(e.KeyChar))
-                {
-                    // Agrega el dígito a la cadena de entrada actual
-                    currentInput += e.KeyChar;
+            ent_Carga carga = new ent_Carga();
+            ent_CargaDetalle cargaDet = new ent_CargaDetalle();
+            carga.Codigo = txt_Codigo.Text;
+            carga.Estado = (ent_Concepto)cbo_EstadoCarga.SelectedItem;
+            carga.TipoServicio = (ent_Concepto)cbo_TipoServicio.SelectedItem;
+            carga.FechaSolicita = new DateTime(dtp_FechaSolicita.Value.Year, dtp_FechaSolicita.Value.Month, dtp_FechaSolicita.Value.Day, dtp_HoraSolicita.Value.Hour, dtp_HoraSolicita.Value.Minute, dtp_HoraSolicita.Value.Second);
+            carga.FechaRecepcion = new DateTime(dtp_FechaRecepcion.Value.Year, dtp_FechaRecepcion.Value.Month, dtp_FechaRecepcion.Value.Day, dtp_HoraRecepcion.Value.Hour, dtp_HoraRecepcion.Value.Minute, dtp_HoraRecepcion.Value.Second);
+            carga.FechaAtencion = new DateTime(dtp_FechaAtencion.Value.Year, dtp_FechaAtencion.Value.Month, dtp_FechaAtencion.Value.Day, dtp_HoraAtencion.Value.Hour, dtp_HoraAtencion.Value.Minute, dtp_HoraAtencion.Value.Second);
+            carga.LugarOrigen = (UbigeoResponse)cbo_OrigenCabecera.SelectedItem;
+            carga.LugarDestino = (UbigeoResponse)cbo_DestinoCabecera.SelectedItem;
+            carga.CondicionPago = (ent_Concepto)cbo_CondicionPago.SelectedItem;
+            carga.TipoEntrega = (ent_Concepto)cbo_TipoEntrega.SelectedItem;
+            carga.Tercero = chk_Tercerizado.Checked;
+            carga.FleteTotal = Convert.ToDouble(txt_FleteTotalCab.Text);
 
-                    // Formatea el texto con los dos últimos dígitos en la parte decimal
-                    if (currentInput.Length >= 2 && !currentInput.Contains("."))
-                    {
-                        int length = currentInput.Length;
-                        txt_Subtotal.Text = currentInput.Substring(0, length - 2) + "." + currentInput.Substring(length - 2);
-                    }
-                    else
-                    {
-                        txt_Subtotal.Text = currentInput;
-                    }
-                }
-            }
-
-
-            e.Handled = true; // Evita que el evento KeyPress procese la tecla nuevamente
+            return carga;
         }
 
-        private void txt_Subtotal_KeyUp(object sender, KeyEventArgs e)
-        {
-            Double Subtotal;
-            Double Igv;
-            Double Gravada;
-            Double TotalFlete;
-            Double Cantidad;
 
-            if (e.KeyCode == Keys.Enter)
-            {
-                Subtotal = Convert.ToDouble(txt_Subtotal.Text);
-                Cantidad = Convert.ToDouble(txt_Cantidad.Text);
-                if (chk_IncluyeIGVFlete.Checked)
-                {
-                    Gravada = Subtotal / 1.18;
-                    Igv = Subtotal - Gravada;
-                }
-                else
-                {
-                    Gravada = Subtotal;
-                    Subtotal = Gravada + Subtotal * 0.18;
-                    Igv = Subtotal - Gravada;
-                }
-                TotalFlete = Subtotal * Cantidad;
-
-                Gravada = Math.Round(Gravada, 2);
-                Igv = Math.Round(Igv, 2);
-                Subtotal = Math.Round(Subtotal, 2);
-                TotalFlete = Math.Round(Subtotal, 2);
-
-                txt_FleteSinIGV.Text = Gravada.ToString("0.00");
-                txt_Subtotal.Text = Subtotal.ToString("0.00");
-                txt_IGV.Text = Igv.ToString("0.00");
-                txt_FleteTotal.Text = TotalFlete.ToString("0.00");
-            }
-        }
-
-        private void cbo_ClienteRecepcion_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                ent_Cliente Cliente = (ent_Cliente)cbo_ClienteRecepcion.SelectedItem;
-                txt_DocClienteRecepcion.Text = Cliente.Persona.DocIdentidad;
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
-        private void txt_DocClienteRecepcion_KeyUp(object sender, KeyEventArgs e)
-        {
-            try
-            {
-                if (e.KeyCode == Keys.Enter)
-                {
-                    String Documento = txt_DocClienteRecepcion.Text;
-                    List<ent_Cliente> ListaClientes = (List<ent_Cliente>)cbo_ClienteRecepcion.DataSource;
-                    foreach (ent_Cliente Cliente in ListaClientes)
-                    {
-                        if (Cliente.Persona.DocIdentidad == Documento)
-                        {
-                            cbo_ClienteRecepcion.SelectedItem = Cliente;
-                        }
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
-        private void cbo_OrigenCabecera_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                cln_Ruta cln = new cln_Ruta();
-                ent_Ruta Ruta = new ent_Ruta();
-                Ruta.DistritoOrigen.Ubigeo = ((ent_Ubigeo)cbo_OrigenCabecera.SelectedItem).Ubigeo;
-                List<ent_Ruta> Lista = cln.ListarRuta(Ruta, "GEN");
-                List<UbigeoResponse> ListaUbigeo = new List<UbigeoResponse>();
-                foreach (ent_Ruta RutaDet in Lista)
-                {
-                    ListaUbigeo.Add(RutaDet.DistritoDestino);
-                }
-                cbo_DestinoCabecera.DataSource = null;
-                cbo_DestinoCabecera.DataSource = ListaUbigeo;
-                if (Lista.Count > 0)
-                {
-
-
-                    cbo_DestinoCabecera.ValueMember = "Ubigeo";
-                    cbo_DestinoCabecera.DisplayMember = "Descripcion";
-                }
-                else
-                {
-                    cbo_DestinoCabecera.Refresh();
-                }
-
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
-        private void cbo_OrigenDetalle_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                cln_Ruta cln = new cln_Ruta();
-                ent_Ruta Ruta = new ent_Ruta();
-                Ruta.DistritoOrigen.Ubigeo = ((ent_Ubigeo)cbo_OrigenDetalle.SelectedItem).Ubigeo;
-                List<ent_Ruta> Lista = cln.ListarRuta(Ruta, "GEN");
-                List<UbigeoResponse> ListaUbigeo = new List<UbigeoResponse>();
-                foreach (ent_Ruta RutaDet in Lista)
-                {
-                    ListaUbigeo.Add(RutaDet.DistritoDestino);
-                }
-                cbo_DestinoDetalle.DataSource = null;
-                cbo_DestinoDetalle.DataSource = ListaUbigeo;
-                if (Lista.Count > 0)
-                {
-                    cbo_DestinoDetalle.ValueMember = "Ubigeo";
-                    cbo_DestinoDetalle.DisplayMember = "Descripcion";
-                }
-                else
-                {
-                    cbo_DestinoDetalle.Refresh();
-                }
-
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
     }
 }

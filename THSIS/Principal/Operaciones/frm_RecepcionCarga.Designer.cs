@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            TextBox textBox3;
+            TextBox txt_FleteTotalCab;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_RecepcionCarga));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
@@ -124,7 +124,7 @@
             label28 = new Label();
             comboBox13 = new ComboBox();
             comboBox15 = new ComboBox();
-            textBox6 = new TextBox();
+            txt_Peso = new TextBox();
             label27 = new Label();
             label26 = new Label();
             comboBox14 = new ComboBox();
@@ -208,23 +208,23 @@
             cbo_CondicionPago = new ComboBox();
             label16 = new Label();
             cbo_TipoServicio = new ComboBox();
-            dateTimePicker7 = new DateTimePicker();
-            dateTimePicker8 = new DateTimePicker();
+            dtp_HoraRecepcion = new DateTimePicker();
+            dtp_FechaRecepcion = new DateTimePicker();
             label13 = new Label();
-            dateTimePicker5 = new DateTimePicker();
-            dateTimePicker6 = new DateTimePicker();
+            dtp_HoraAtencion = new DateTimePicker();
+            dtp_FechaAtencion = new DateTimePicker();
             label12 = new Label();
-            dateTimePicker4 = new DateTimePicker();
-            dateTimePicker3 = new DateTimePicker();
+            dtp_HoraSolicita = new DateTimePicker();
+            dtp_FechaSolicita = new DateTimePicker();
             label11 = new Label();
             cbo_EstadoCarga = new ComboBox();
             label10 = new Label();
-            textBox1 = new TextBox();
+            txt_Codigo = new TextBox();
             label9 = new Label();
             panel4 = new Panel();
             btn_Cancelar = new Button();
             btn_Guardar = new Button();
-            textBox3 = new TextBox();
+            txt_FleteTotalCab = new TextBox();
             tpc_RecepcionCarga.SuspendLayout();
             tpg_Lista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgb_Carga).BeginInit();
@@ -250,12 +250,12 @@
             panel4.SuspendLayout();
             SuspendLayout();
             // 
-            // textBox3
+            // txt_FleteTotalCab
             // 
-            textBox3.Location = new Point(1303, 169);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(95, 27);
-            textBox3.TabIndex = 41;
+            txt_FleteTotalCab.Location = new Point(1303, 169);
+            txt_FleteTotalCab.Name = "txt_FleteTotalCab";
+            txt_FleteTotalCab.Size = new Size(95, 27);
+            txt_FleteTotalCab.TabIndex = 41;
             // 
             // tpc_RecepcionCarga
             // 
@@ -1037,7 +1037,7 @@
             groupBox1.Controls.Add(label28);
             groupBox1.Controls.Add(comboBox13);
             groupBox1.Controls.Add(comboBox15);
-            groupBox1.Controls.Add(textBox6);
+            groupBox1.Controls.Add(txt_Peso);
             groupBox1.Controls.Add(label27);
             groupBox1.Controls.Add(label26);
             groupBox1.Controls.Add(comboBox14);
@@ -1221,13 +1221,13 @@
             comboBox15.Size = new Size(461, 28);
             comboBox15.TabIndex = 30;
             // 
-            // textBox6
+            // txt_Peso
             // 
-            textBox6.BackColor = Color.Cyan;
-            textBox6.Location = new Point(367, 128);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(60, 27);
-            textBox6.TabIndex = 26;
+            txt_Peso.BackColor = Color.Cyan;
+            txt_Peso.Location = new Point(367, 128);
+            txt_Peso.Name = "txt_Peso";
+            txt_Peso.Size = new Size(60, 27);
+            txt_Peso.TabIndex = 26;
             // 
             // label27
             // 
@@ -1858,7 +1858,7 @@
             groupBox2.Controls.Add(label20);
             groupBox2.Controls.Add(comboBox7);
             groupBox2.Controls.Add(label19);
-            groupBox2.Controls.Add(textBox3);
+            groupBox2.Controls.Add(txt_FleteTotalCab);
             groupBox2.Controls.Add(chk_Tercerizado);
             groupBox2.Controls.Add(label18);
             groupBox2.Controls.Add(cbo_TipoEntrega);
@@ -1866,18 +1866,18 @@
             groupBox2.Controls.Add(cbo_CondicionPago);
             groupBox2.Controls.Add(label16);
             groupBox2.Controls.Add(cbo_TipoServicio);
-            groupBox2.Controls.Add(dateTimePicker7);
-            groupBox2.Controls.Add(dateTimePicker8);
+            groupBox2.Controls.Add(dtp_HoraRecepcion);
+            groupBox2.Controls.Add(dtp_FechaRecepcion);
             groupBox2.Controls.Add(label13);
-            groupBox2.Controls.Add(dateTimePicker5);
-            groupBox2.Controls.Add(dateTimePicker6);
+            groupBox2.Controls.Add(dtp_HoraAtencion);
+            groupBox2.Controls.Add(dtp_FechaAtencion);
             groupBox2.Controls.Add(label12);
-            groupBox2.Controls.Add(dateTimePicker4);
-            groupBox2.Controls.Add(dateTimePicker3);
+            groupBox2.Controls.Add(dtp_HoraSolicita);
+            groupBox2.Controls.Add(dtp_FechaSolicita);
             groupBox2.Controls.Add(label11);
             groupBox2.Controls.Add(cbo_EstadoCarga);
             groupBox2.Controls.Add(label10);
-            groupBox2.Controls.Add(textBox1);
+            groupBox2.Controls.Add(txt_Codigo);
             groupBox2.Controls.Add(label9);
             groupBox2.Dock = DockStyle.Top;
             groupBox2.FlatStyle = FlatStyle.Popup;
@@ -1890,6 +1890,8 @@
             // 
             // cbo_OrigenCabecera
             // 
+            cbo_OrigenCabecera.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_OrigenCabecera.AutoCompleteSource = AutoCompleteSource.ListItems;
             cbo_OrigenCabecera.FormattingEnabled = true;
             cbo_OrigenCabecera.Location = new Point(117, 132);
             cbo_OrigenCabecera.Name = "cbo_OrigenCabecera";
@@ -1909,8 +1911,10 @@
             // 
             // cbo_DestinoCabecera
             // 
+            cbo_DestinoCabecera.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_DestinoCabecera.AutoCompleteSource = AutoCompleteSource.ListItems;
             cbo_DestinoCabecera.FormattingEnabled = true;
-            cbo_DestinoCabecera.Location = new Point(117, 166);
+            cbo_DestinoCabecera.Location = new Point(117, 165);
             cbo_DestinoCabecera.Name = "cbo_DestinoCabecera";
             cbo_DestinoCabecera.Size = new Size(306, 28);
             cbo_DestinoCabecera.TabIndex = 53;
@@ -1957,7 +1961,7 @@
             // cbo_TipoVehiculo
             // 
             cbo_TipoVehiculo.FormattingEnabled = true;
-            cbo_TipoVehiculo.Location = new Point(492, 135);
+            cbo_TipoVehiculo.Location = new Point(491, 135);
             cbo_TipoVehiculo.Name = "cbo_TipoVehiculo";
             cbo_TipoVehiculo.Size = new Size(204, 28);
             cbo_TipoVehiculo.TabIndex = 47;
@@ -1984,7 +1988,7 @@
             // 
             label20.AutoSize = true;
             label20.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label20.Location = new Point(697, 138);
+            label20.Location = new Point(697, 139);
             label20.Name = "label20";
             label20.Size = new Size(81, 20);
             label20.TabIndex = 44;
@@ -1995,7 +1999,7 @@
             comboBox7.FormattingEnabled = true;
             comboBox7.Location = new Point(784, 136);
             comboBox7.Name = "comboBox7";
-            comboBox7.Size = new Size(304, 28);
+            comboBox7.Size = new Size(303, 28);
             comboBox7.TabIndex = 43;
             // 
             // label19
@@ -2071,21 +2075,21 @@
             cbo_TipoServicio.Size = new Size(175, 28);
             cbo_TipoServicio.TabIndex = 17;
             // 
-            // dateTimePicker7
+            // dtp_HoraRecepcion
             // 
-            dateTimePicker7.Format = DateTimePickerFormat.Time;
-            dateTimePicker7.Location = new Point(470, 96);
-            dateTimePicker7.Name = "dateTimePicker7";
-            dateTimePicker7.Size = new Size(102, 27);
-            dateTimePicker7.TabIndex = 12;
+            dtp_HoraRecepcion.Format = DateTimePickerFormat.Time;
+            dtp_HoraRecepcion.Location = new Point(470, 96);
+            dtp_HoraRecepcion.Name = "dtp_HoraRecepcion";
+            dtp_HoraRecepcion.Size = new Size(102, 27);
+            dtp_HoraRecepcion.TabIndex = 12;
             // 
-            // dateTimePicker8
+            // dtp_FechaRecepcion
             // 
-            dateTimePicker8.Format = DateTimePickerFormat.Short;
-            dateTimePicker8.Location = new Point(346, 96);
-            dateTimePicker8.Name = "dateTimePicker8";
-            dateTimePicker8.Size = new Size(125, 27);
-            dateTimePicker8.TabIndex = 11;
+            dtp_FechaRecepcion.Format = DateTimePickerFormat.Short;
+            dtp_FechaRecepcion.Location = new Point(346, 96);
+            dtp_FechaRecepcion.Name = "dtp_FechaRecepcion";
+            dtp_FechaRecepcion.Size = new Size(125, 27);
+            dtp_FechaRecepcion.TabIndex = 11;
             // 
             // label13
             // 
@@ -2097,21 +2101,21 @@
             label13.TabIndex = 10;
             label13.Text = "F. Recepción:";
             // 
-            // dateTimePicker5
+            // dtp_HoraAtencion
             // 
-            dateTimePicker5.Format = DateTimePickerFormat.Time;
-            dateTimePicker5.Location = new Point(240, 96);
-            dateTimePicker5.Name = "dateTimePicker5";
-            dateTimePicker5.Size = new Size(102, 27);
-            dateTimePicker5.TabIndex = 9;
+            dtp_HoraAtencion.Format = DateTimePickerFormat.Time;
+            dtp_HoraAtencion.Location = new Point(240, 96);
+            dtp_HoraAtencion.Name = "dtp_HoraAtencion";
+            dtp_HoraAtencion.Size = new Size(102, 27);
+            dtp_HoraAtencion.TabIndex = 9;
             // 
-            // dateTimePicker6
+            // dtp_FechaAtencion
             // 
-            dateTimePicker6.Format = DateTimePickerFormat.Short;
-            dateTimePicker6.Location = new Point(117, 96);
-            dateTimePicker6.Name = "dateTimePicker6";
-            dateTimePicker6.Size = new Size(125, 27);
-            dateTimePicker6.TabIndex = 8;
+            dtp_FechaAtencion.Format = DateTimePickerFormat.Short;
+            dtp_FechaAtencion.Location = new Point(117, 96);
+            dtp_FechaAtencion.Name = "dtp_FechaAtencion";
+            dtp_FechaAtencion.Size = new Size(125, 27);
+            dtp_FechaAtencion.TabIndex = 8;
             // 
             // label12
             // 
@@ -2122,21 +2126,21 @@
             label12.TabIndex = 7;
             label12.Text = "F. Atención:";
             // 
-            // dateTimePicker4
+            // dtp_HoraSolicita
             // 
-            dateTimePicker4.Format = DateTimePickerFormat.Time;
-            dateTimePicker4.Location = new Point(240, 63);
-            dateTimePicker4.Name = "dateTimePicker4";
-            dateTimePicker4.Size = new Size(102, 27);
-            dateTimePicker4.TabIndex = 6;
+            dtp_HoraSolicita.Format = DateTimePickerFormat.Time;
+            dtp_HoraSolicita.Location = new Point(240, 63);
+            dtp_HoraSolicita.Name = "dtp_HoraSolicita";
+            dtp_HoraSolicita.Size = new Size(102, 27);
+            dtp_HoraSolicita.TabIndex = 6;
             // 
-            // dateTimePicker3
+            // dtp_FechaSolicita
             // 
-            dateTimePicker3.Format = DateTimePickerFormat.Short;
-            dateTimePicker3.Location = new Point(117, 63);
-            dateTimePicker3.Name = "dateTimePicker3";
-            dateTimePicker3.Size = new Size(125, 27);
-            dateTimePicker3.TabIndex = 5;
+            dtp_FechaSolicita.Format = DateTimePickerFormat.Short;
+            dtp_FechaSolicita.Location = new Point(117, 63);
+            dtp_FechaSolicita.Name = "dtp_FechaSolicita";
+            dtp_FechaSolicita.Size = new Size(125, 27);
+            dtp_FechaSolicita.TabIndex = 5;
             // 
             // label11
             // 
@@ -2164,12 +2168,12 @@
             label10.TabIndex = 2;
             label10.Text = "E. Carga:";
             // 
-            // textBox1
+            // txt_Codigo
             // 
-            textBox1.Location = new Point(117, 29);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(156, 27);
-            textBox1.TabIndex = 1;
+            txt_Codigo.Location = new Point(117, 29);
+            txt_Codigo.Name = "txt_Codigo";
+            txt_Codigo.Size = new Size(156, 27);
+            txt_Codigo.TabIndex = 1;
             // 
             // label9
             // 
@@ -2219,9 +2223,10 @@
             btn_Guardar.Name = "btn_Guardar";
             btn_Guardar.Size = new Size(88, 29);
             btn_Guardar.TabIndex = 0;
-            btn_Guardar.Text = "Nuevo";
+            btn_Guardar.Text = "Guardar";
             btn_Guardar.TextAlign = ContentAlignment.MiddleRight;
             btn_Guardar.UseVisualStyleBackColor = true;
+            btn_Guardar.Click += btn_Guardar_Click;
             // 
             // frm_RecepcionCarga
             // 
@@ -2440,18 +2445,18 @@
         private ComboBox cbo_CondicionPago;
         private Label label16;
         private ComboBox cbo_TipoServicio;
-        private DateTimePicker dateTimePicker7;
-        private DateTimePicker dateTimePicker8;
+        private DateTimePicker dtp_HoraRecepcion;
+        private DateTimePicker dtp_FechaRecepcion;
         private Label label13;
-        private DateTimePicker dateTimePicker5;
-        private DateTimePicker dateTimePicker6;
+        private DateTimePicker dtp_HoraAtencion;
+        private DateTimePicker dtp_FechaAtencion;
         private Label label12;
-        private DateTimePicker dateTimePicker4;
-        private DateTimePicker dateTimePicker3;
+        private DateTimePicker dtp_HoraSolicita;
+        private DateTimePicker dtp_FechaSolicita;
         private Label label11;
         private ComboBox cbo_EstadoCarga;
         private Label label10;
-        private TextBox textBox1;
+        private TextBox txt_Codigo;
         private Label label9;
         private ToolStripMenuItem tsm_IngresarGRT;
         private TextBox txt_FleteSinIGV;
@@ -2460,5 +2465,6 @@
         private Label label14;
         private ComboBox cbo_DestinoCabecera;
         private Label label15;
+        private TextBox txt_Peso;
     }
 }
