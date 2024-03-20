@@ -863,8 +863,21 @@ namespace Principal.Operaciones
         {
             if (dgb_Carga.SelectedRows.Count > 0)
             {
-                frm_GuiaRemisionTransportista form = new frm_GuiaRemisionTransportista();
-                BasicMetod.abrirFormHijo(form, "Guia Remisión");
+                
+                cln_Carga cln_Carga = new cln_Carga();
+                ent_Carga Carga = new ent_Carga();
+                DataGridViewRow selectedRow = dgb_Carga.SelectedRows[0];
+                Carga.Id = Convert.ToInt32(selectedRow.Cells["Id"].Value.ToString());
+                Carga.empr_Id = StaticVariable.obj_Empresa.Id;
+                List<ent_Carga> Lista = cln_Carga.ListarCarga(Carga, "GEN");
+                if (Lista.Count > 0)
+                {
+                    frm_GuiaRemisionTransportista.mode = 2;
+                    frm_GuiaRemisionTransportista.Carga = Lista[0];
+                    frm_GuiaRemisionTransportista form = new frm_GuiaRemisionTransportista();
+                    BasicMetod.abrirFormHijo(form, "Guia Remisión");
+                }
+                
             }
         }
 

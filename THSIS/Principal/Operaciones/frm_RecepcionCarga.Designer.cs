@@ -306,7 +306,7 @@
             // tsm_IngresarGRT
             // 
             tsm_IngresarGRT.Name = "tsm_IngresarGRT";
-            tsm_IngresarGRT.Size = new Size(145, 26);
+            tsm_IngresarGRT.Size = new Size(224, 26);
             tsm_IngresarGRT.Text = "Ingresar";
             tsm_IngresarGRT.Click += inToolStripMenuItem_Click;
             // 

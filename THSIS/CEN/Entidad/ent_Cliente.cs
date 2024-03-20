@@ -50,7 +50,7 @@ namespace CEN
         public ent_Cliente()
         {
             Id = 0;
-            Empresa = new ent_Empresa();
+            Empresa = new ent_Empresa() { Id = StaticVariable.obj_Empresa.Id};
             TipoPersona = new ent_Concepto();
             RazonSocial = String.Empty;
             Persona = new ent_Persona();
