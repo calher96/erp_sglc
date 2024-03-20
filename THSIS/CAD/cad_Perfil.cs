@@ -1,10 +1,15 @@
-﻿using CEN.Entidad;
+﻿using CEN;
+using CEN.Entidad;
 using CEN.Helpers;
+using CEN.Response;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.Http.Headers;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,66 +17,123 @@ namespace CAD
 {
     public class cad_Perfil
     {
-        public ResponseHelper RegistrarPerfil(String tipoConsulta, ent_Perfil perfil, SqlConnection conn, SqlTransaction sqlTransaction)
+        public ResponseHelper RegistrarPerfil(String tipoConsulta, ent_Perfil perfil)
         {
-            ResponseHelper response = new ResponseHelper();
-            SqlCommand cmd = new SqlCommand("DEV.pa_Perfil_IUD", conn);
-            cmd.Transaction = sqlTransaction;
-            cmd.Parameters.Add(new SqlParameter("tipo", tipoConsulta));
-            cmd.Parameters.Add(new SqlParameter("perf_Id", perfil.perf_Id));
-            cmd.Parameters.Add(new SqlParameter("perf_Nombre", perfil.perf_Nombre));
-            cmd.Parameters.Add(new SqlParameter("perf_Estado", perfil.perf_Estado));
-            cmd.Parameters.Add(new SqlParameter("empr_Id", perfil.empr_Id));
-            cmd.Parameters.Add(new SqlParameter("perf_Marcabaja", perfil.perf_Marcabaja));
-            cmd.Parameters.Add(new SqlParameter("usuario", perfil.perf_Usuario));
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            using (var reader = cmd.ExecuteReader())
+            ResponseHelper response1 = null;
+            string apiUrl = BasicVariable.webapi + "Perfil/iud?tipo="+tipoConsulta;
+
+            // Crear una instancia de HttpClient
+            using (HttpClient httpClient = new HttpClient())
             {
-                while (reader.Read())
+                try
                 {
-                    response.codError = (int)reader["codError"];
-                    response.mensajeError = (String)reader["mensajeError"];
-                    if (response.codError != -1)
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", StaticVariable.token);
+
+                    // Crear un objeto JSON con usuario y contraseña
+
+
+                    // Serializar el objeto JSON a una cadena JSON
+                    string jsonRequestBody = Newtonsoft.Json.JsonConvert.SerializeObject(perfil);
+
+                    // Crear el contenido de la solicitud POST
+                    var content = new StringContent(jsonRequestBody, Encoding.UTF8, "application/json");
+
+                    // Realizar una solicitud POST al Web API de forma sincrónica
+                    HttpResponseMessage response = httpClient.PostAsync(apiUrl, content).Result;
+
+                    // Comprobar si la solicitud fue exitosa
+                    if (response.IsSuccessStatusCode)
                     {
-                        perfil.perf_Id = Convert.ToInt32(reader["perf_Id"].ToString());
+                        // Leer y mostrar la respuesta del Web API
+                        string responseBody = response.Content.ReadAsStringAsync().Result;
+                        Console.WriteLine("Respuesta del Web API:");
+                        Console.WriteLine(responseBody);
+                        PrincipalResponse responseFinal = JsonConvert.DeserializeObject<PrincipalResponse>(responseBody);
+                        response1 = new ResponseHelper();
+                        response1.codError = responseFinal.CodError;
+                        response1.mensajeError = responseFinal.MensajeError;
+                        if (response1.codError == 0)
+                        {
+                            //responseFinal.Response = (responseFinal.Response.ToString()).Substring(1, (responseFinal.Response.ToString()).Length - 2);
+                            response1.response = Convert.ToInt32(responseFinal.Response);
+                        }
 
                     }
+                    else if (response.StatusCode == HttpStatusCode.Unauthorized)
+                    {
+                        response1 = new ResponseHelper();
+                        response1.codError = 401;
+                        response1.mensajeError = "Por favor, vuelva a iniciar sesión";
+                    }
                 }
-                response.response = perfil;
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Se produjo un error al invocar el Web API: {ex.Message}");
+                }
             }
-            return response;
+
+
+            return response1;
         }
-        public ResponseHelper ListarPerfil(String tipoConsulta, int perf_Id, SqlConnection conn, SqlTransaction sqlTransaction)
+        public ResponseHelper ListarPerfil(String tipoConsulta, int perf_Id)
         {
-            ResponseHelper response = null;
             List<ent_Perfil> lista = new List<ent_Perfil>();
-            response = new ResponseHelper();
-            SqlCommand cmd = new SqlCommand("DEV.pa_Perfil_LISTAR", conn);
-            cmd.Transaction = sqlTransaction;
-            cmd.Parameters.Add(new SqlParameter("tipo", tipoConsulta));
-            cmd.Parameters.Add(new SqlParameter("perf_Id", perf_Id));
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            using (var reader = cmd.ExecuteReader())
+            ent_Perfil Perfil = new ent_Perfil();
+            Perfil.perf_Id = perf_Id;
+            ResponseHelper response1 = null;
+
+            string apiUrl = BasicVariable.webapi + "Perfil/listar?tipo=" + tipoConsulta;
+
+            // Crear una instancia de HttpClient
+            using (HttpClient httpClient = new HttpClient())
             {
-                while (reader.Read())
+                try
                 {
-                    response.codError = 0;
-                    response.mensajeError = "Proceso Exitoso";
-                    if (response.codError != -1)
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", StaticVariable.token);
+
+                    // Crear un objeto JSON con usuario y contraseña
+
+
+                    // Serializar el objeto JSON a una cadena JSON
+                    string jsonRequestBody = Newtonsoft.Json.JsonConvert.SerializeObject(Perfil);
+
+                    // Crear el contenido de la solicitud POST
+                    var content = new StringContent(jsonRequestBody, Encoding.UTF8, "application/json");
+
+                    // Realizar una solicitud POST al Web API de forma sincrónica
+                    HttpResponseMessage response = httpClient.PostAsync(apiUrl, content).Result;
+
+                    // Comprobar si la solicitud fue exitosa
+                    if (response.IsSuccessStatusCode)
                     {
-                        ent_Perfil perfil = new ent_Perfil();
-                        perfil.perf_Id = (int)reader["perf_Id"];
-                        perfil.perf_Nombre = (String)reader["perf_Nombre"];
-                        perfil.empr_Id = (int)reader["empr_Id"];
-                        perfil.perf_Estado = (int)reader["perf_Estado"];
-                        perfil.perf_EstadoDescripcion = (String)reader["perf_EstadoDescripcion"];
-                        lista.Add(perfil);
+                        // Leer y mostrar la respuesta del Web API
+                        string responseBody = response.Content.ReadAsStringAsync().Result;
+                        Console.WriteLine("Respuesta del Web API:");
+                        Console.WriteLine(responseBody);
+                        PrincipalResponse responseFinal = JsonConvert.DeserializeObject<PrincipalResponse>(responseBody);
+                        response1 = new ResponseHelper();
+                        response1.codError = responseFinal.CodError;
+                        response1.mensajeError = responseFinal.MensajeError;
+                        if (response1.codError == 0)
+                        {
+                            //responseFinal.Response = (responseFinal.Response.ToString()).Substring(1, (responseFinal.Response.ToString()).Length - 2);
+                            response1.response = JsonConvert.DeserializeObject<List<ent_Perfil>>(responseFinal.Response.ToString());
+                        }
 
                     }
+                    else if (response.StatusCode == HttpStatusCode.Unauthorized)
+                    {
+                        response1 = new ResponseHelper();
+                        response1.codError = 401;
+                        response1.mensajeError = "Por favor, vuelva a iniciar sesión";
+                    }
                 }
-                response.response = lista;
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Se produjo un error al invocar el Web API: {ex.Message}");
+                }
             }
-            return response;
+            return response1;
         }
     }
 }

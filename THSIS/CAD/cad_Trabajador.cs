@@ -13,7 +13,6 @@ namespace CAD
     {
         public ResponseHelper guardarTrabajador(ent_Trabajador obj)
         {
-            List<ent_Trabajador> lista = new List<ent_Trabajador>();
             ResponseHelper response1 = null;
             string apiUrl = BasicVariable.webapi + "Trabajador/iud";
 
