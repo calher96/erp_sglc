@@ -21,22 +21,99 @@ namespace Principal.Operaciones
     {
         #region "Variables"
         private string currentInput = "";
+        private string currentInputSubtotal = "";
+        private string currentInputFleteSinIGV = "";
+        private string currentInputAdelanto = "";
+        private string currentInputComision = "";
+        private string currentInputConsolidado = "";
+        private string currentInputConEstiba = "";
+        private string currentInputCEstibaDesc = "";
         #endregion
 
         #region "Constructor"
         public frm_RecepcionCarga()
         {
             InitializeComponent();
-            InicializarForulario();
+            InicializarFormulario();
         }
         #endregion
 
         #region "Métodos"
-        public void InicializarForulario()
+        private ent_Carga llenarCarga()
+        {
+            ent_Carga carga = new ent_Carga();
+            ent_CargaDetalle cargaDet = new ent_CargaDetalle();
+            carga.Codigo = txt_Codigo.Text;
+            carga.Estado = ((ent_Concepto)cbo_EstadoCarga.SelectedItem).Correlativo;
+            carga.TipoServicio = (ent_Concepto)cbo_TipoServicio.SelectedItem;
+            carga.FechaSolicita = new DateTime(dtp_FechaSolicita.Value.Year, dtp_FechaSolicita.Value.Month, dtp_FechaSolicita.Value.Day, dtp_HoraSolicita.Value.Hour, dtp_HoraSolicita.Value.Minute, dtp_HoraSolicita.Value.Second);
+            carga.FechaRecepcion = new DateTime(dtp_FechaRecepcion.Value.Year, dtp_FechaRecepcion.Value.Month, dtp_FechaRecepcion.Value.Day, dtp_HoraRecepcion.Value.Hour, dtp_HoraRecepcion.Value.Minute, dtp_HoraRecepcion.Value.Second);
+            carga.FechaAtencion = new DateTime(dtp_FechaAtencion.Value.Year, dtp_FechaAtencion.Value.Month, dtp_FechaAtencion.Value.Day, dtp_HoraAtencion.Value.Hour, dtp_HoraAtencion.Value.Minute, dtp_HoraAtencion.Value.Second);
+            carga.LugarOrigen = (ent_Ubigeo)cbo_OrigenCabecera.SelectedItem;
+            carga.LugarDestino = (ent_Ubigeo)cbo_DestinoCabecera.SelectedItem;
+            carga.CondicionPago = (ent_Concepto)cbo_CondicionPago.SelectedItem;
+            carga.TipoEntrega = (ent_Concepto)cbo_TipoEntrega.SelectedItem;
+            carga.Tercero = chk_Tercerizado.Checked;
+            carga.FleteTotal = Convert.ToDouble(txt_FleteTotalCab.Text);//Por Revisar
+            carga.Vendedor = StaticVariable.obj_Usuario.Usua_Usuario;
+            carga.Observacion = txt_Observacion.Text;
+            carga.RecojoDomicilio = chk_RecojoDomicilioLugar.Checked;
+            carga.RecojoDomicilioLugar = (ent_Ubigeo)cbo_DomicilioLugar.SelectedItem;
+            carga.DireccionRecojoDomicilio = txt_DireccionRecojoDomicilio.Text;
+            carga.TipoVehiculo = (ent_Concepto)cbo_TipoVehiculo.SelectedItem;
+            carga.ClienteRemitente = (ent_Cliente)cbo_ClienteRemitente.SelectedItem;
+            carga.ClienteDestinatario = (ent_Cliente)cbo_ClienteDestinatario.SelectedItem;
+            carga.PuntoPartida = txt_PuntoPartida.Text;
+            carga.PuntoLlegada = txt_PuntoLlegada.Text;
+            carga.Anexos = txt_Anexos.Text;
+            carga.ClaveSeguridad = txt_ClaveSeguridad.Text;
+            carga.ClientePago = (ent_Cliente)cbo_ClientePaga.SelectedItem;
+            carga.DireccionFacturacion = txt_DireccionFacturacion.Text;
+            carga.Marcabaja = 1;
+
+            //CARGA DETALLE INICIO
+            cargaDet.LugarOrigen = (ent_Ubigeo)cbo_OrigenDetalle.SelectedItem;
+            cargaDet.LugarDestino = (ent_Ubigeo)cbo_DestinoDetalle.SelectedItem;
+            cargaDet.TipoCarga = (ent_Concepto)cbo_TipoCarga.SelectedItem;
+            cargaDet.Cantidad = txt_Cantidad.Text.Length > 0 ? Convert.ToDouble(txt_Cantidad.Text) : 0.0;
+            cargaDet.Peso = txt_Peso.Text.Length > 0 ? Convert.ToDouble(txt_Peso.Text) : 0.0;
+            cargaDet.ClienteRecepcion = (ent_Cliente)cbo_ClienteRecepcion.SelectedItem;
+            cargaDet.ClienteFinal = (ent_Cliente)cbo_ClienteFinal.SelectedItem;
+            cargaDet.Comisionista = (ent_Cliente)cbo_Comisionista.SelectedItem;
+            cargaDet.ProductoTransportar = txt_ProductoTransportar.Text;
+            cargaDet.ValorUnitario = txt_FleteSinIGV.Text.Length > 0 ? Convert.ToDouble(txt_FleteSinIGV.Text) : 0.0;
+            cargaDet.PrecioUnitario = txt_PrecioUnitario.Text.Length > 0 ? Convert.ToDouble(txt_PrecioUnitario.Text) : 0.0;
+            cargaDet.ValorAfecto = txt_Subtotal.Text.Length > 0 ? Convert.ToDouble(txt_Subtotal.Text) : 0.0;
+            cargaDet.IGV = Convert.ToDouble(txt_FleteTotal.Text) - Convert.ToDouble(txt_Subtotal.Text);
+            cargaDet.Total = Convert.ToDouble(txt_FleteTotal.Text);
+            cargaDet.Adelanto = txt_Adelanto.Text.Length > 0 ? Convert.ToDouble(txt_Adelanto.Text) : 0.0;
+            cargaDet.Comision = txt_Comision.Text.Length > 0 ? Convert.ToDouble(txt_Comision.Text) : 0.0;
+            cargaDet.Facturado = chk_Facturado.Checked;
+            cargaDet.FalsoFlete = chk_FalsoFlete.Checked;
+            cargaDet.Consolidado = txt_Consolidado.Text.Length > 0 ? Convert.ToDouble(txt_Consolidado.Text) : 0.0;
+            cargaDet.ConEstiba = txt_ConEstiba.Text.Length > 0 ? Convert.ToDouble(txt_ConEstiba.Text) : 0.0;
+            cargaDet.CEstibaDesc = txt_CEstibaDesc.Text.Length > 0 ? Convert.ToDouble(txt_CEstibaDesc.Text) : 0.0;
+            cargaDet.PagoContraEntrega = chk_PagoContraEntrega.Checked;
+            cargaDet.FormaPago = new ent_Concepto()
+            {
+                Prefijo = 37,
+                Correlativo = (rbt_Efectivo.Checked ? 1 : (rbt_Deposito.Checked ? 2 : 3))
+            };
+            cargaDet.Carga = chk_Carga.Checked;
+            cargaDet.Descarga = chk_Descarga.Checked;
+            cargaDet.Marcabaja = 1;
+            //CARGA DETALLE FIN
+
+            carga.LiscaCarga.Add(cargaDet);
+            return carga;
+        }
+
+        public void InicializarFormulario()
         {
             tpc_RecepcionCarga.TabPages[1].Enabled = false;
             tpc_Carga.TabPages[1].Enabled = false;
             txt_Cantidad.Text = "1.0";
+            dgb_Carga.CellFormatting += dgb_Carga_CellFormatting;
             llenarColoresComboBox();
             cargarComboBox();
         }
@@ -47,6 +124,7 @@ namespace Principal.Operaciones
             try
             {
                 cargarRutaOrigen();
+                cargarRecojoDomicilio();
                 cargarMoneda();
                 cargarTipoServicio();
                 cargarCondicionPago();
@@ -55,7 +133,11 @@ namespace Principal.Operaciones
                 cargarEstadoCarga();
                 cargarUsuarioFilter();
                 cargarTipoCarga();
+                cargarClienteFinal();
                 cargarClienteRecepcion();
+                cargarClientePaga();
+                cargarComisionista();
+                cargarVendedor();
             }
             catch (Exception ex)
             {
@@ -72,21 +154,45 @@ namespace Principal.Operaciones
             }
         }
 
+        public void cargarVendedor()
+        {
+            //try
+            //{
+            //    cln_Trabajador cln = new cln_Trabajador();
+            //    List<ent_Trabajador> lista = cln.ListarTrabajador(new ent_Trabajador());
+            //    cbo_Vendedor.DataSource = lista;
+            //    cbo_OrigenCabecera.ValueMember = "Ubigeo";
+            //    cbo_OrigenCabecera.DisplayMember = "Descripcion";
 
+            //    cbo_OrigenDetalle.DataSource = lista;
+            //    cbo_OrigenDetalle.ValueMember = "Ubigeo";
+            //    cbo_OrigenDetalle.DisplayMember = "Descripcion";
+            //}
+            //catch (Exception ex)
+            //{
+            //    ent_ControlError obj = new ent_ControlError();
+            //    obj.Cerr_MensajeError = ex.Message;
+            //    obj.Cerr_Traza = ex.StackTrace;
+            //    obj.Cerr_Usuario = StaticVariable.obj_Usuario.Usua_Usuario;
+            //    obj.Cerr_Trama = "4";
+            //    obj.Cerr_Formulario = "Login";
+            //    obj.Cerr_FechaError = DateOnly.Parse(DateTime.Now.ToShortDateString());
+            //    cln_ControlError cln = new cln_ControlError();
+            //    cln.registrarError(obj);
+            //    MessageBox.Show("Ocurrió un error interno, por favor vuelve a intentar", BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+        }
 
-        public void cargarRutaOrigen()
+        public void cargarRecojoDomicilio()
         {
             try
             {
                 cln_Ubigeo cln = new cln_Ubigeo();
                 List<ent_Ubigeo> lista = cln.listarUbigeo(3, "", "", "");
-                cbo_OrigenCabecera.DataSource = lista;
-                cbo_OrigenCabecera.ValueMember = "Ubigeo";
-                cbo_OrigenCabecera.DisplayMember = "Descripcion";
+                cbo_DomicilioLugar.DataSource = lista;
+                cbo_DomicilioLugar.ValueMember = "Ubigeo";
+                cbo_DomicilioLugar.DisplayMember = "Descripcion";
 
-                cbo_OrigenDetalle.DataSource = lista;
-                cbo_OrigenDetalle.ValueMember = "Ubigeo";
-                cbo_OrigenDetalle.DisplayMember = "Descripcion";
             }
             catch (Exception ex)
             {
@@ -100,6 +206,98 @@ namespace Principal.Operaciones
                 cln_ControlError cln = new cln_ControlError();
                 cln.registrarError(obj);
                 MessageBox.Show("Ocurrió un error interno, por favor vuelve a intentar", BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void cargarRutaOrigen()
+        {
+            try
+            {
+                cln_Ubigeo cln = new cln_Ubigeo();
+                List<ent_Ubigeo> lista = cln.listarUbigeo(3, "", "", "");
+                cbo_OrigenCabecera.DataSource = lista;
+                cbo_OrigenCabecera.ValueMember = "Ubigeo";
+                cbo_OrigenCabecera.DisplayMember = "Descripcion";
+                cbo_OrigenCabecera.SelectedIndex = -1;
+
+                cbo_OrigenDetalle.DataSource = lista;
+                cbo_OrigenDetalle.ValueMember = "Ubigeo";
+                cbo_OrigenDetalle.DisplayMember = "Descripcion";
+                cbo_OrigenDetalle.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                ent_ControlError obj = new ent_ControlError();
+                obj.Cerr_MensajeError = ex.Message;
+                obj.Cerr_Traza = ex.StackTrace;
+                obj.Cerr_Usuario = StaticVariable.obj_Usuario.Usua_Usuario;
+                obj.Cerr_Trama = "4";
+                obj.Cerr_Formulario = "Login";
+                obj.Cerr_FechaError = DateOnly.Parse(DateTime.Now.ToShortDateString());
+                cln_ControlError cln = new cln_ControlError();
+                cln.registrarError(obj);
+                MessageBox.Show("Ocurrió un error interno, por favor vuelve a intentar", BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void cargarComisionista()
+        {
+            try
+            {
+                cln_Cliente cln_Cliente = new cln_Cliente();
+                ent_Cliente ent_Cliente = new ent_Cliente();
+                ent_Cliente.Empresa = StaticVariable.obj_Empresa;
+                ent_Cliente.Comisionista = true;
+                List<ent_Cliente> ListaCliente = cln_Cliente.ListarCliente(ent_Cliente, "COM");
+                cbo_Comisionista.DataSource = ListaCliente;
+                cbo_Comisionista.DisplayMember = "RazonSocial";
+                cbo_Comisionista.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public void cargarClienteFinal()
+        {
+            try
+            {
+                cln_Cliente cln_Cliente = new cln_Cliente();
+                ent_Cliente ent_Cliente = new ent_Cliente();
+                ent_Cliente.Empresa = StaticVariable.obj_Empresa;
+
+                List<ent_Cliente> ListaCliente = cln_Cliente.ListarCliente(ent_Cliente, "CLI");
+                cbo_ClienteFinal.DataSource = ListaCliente;
+                cbo_ClienteFinal.DisplayMember = "RazonSocial";
+                cbo_ClienteFinal.SelectedIndex = -1;
+
+                cbo_ClienteDestinatario.DataSource = ListaCliente;
+                cbo_ClienteDestinatario.DisplayMember = "RazonSocial";
+                cbo_ClienteDestinatario.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public void cargarClientePaga()
+        {
+            try
+            {
+                cln_Cliente cln_Cliente = new cln_Cliente();
+                ent_Cliente ent_Cliente = new ent_Cliente();
+                ent_Cliente.Empresa = StaticVariable.obj_Empresa;
+
+                List<ent_Cliente> ListaCliente = cln_Cliente.ListarCliente(ent_Cliente, "CLI");
+                cbo_ClientePaga.DataSource = ListaCliente;
+                cbo_ClientePaga.DisplayMember = "RazonSocial";
+                cbo_ClientePaga.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+
             }
         }
 
@@ -114,6 +312,11 @@ namespace Principal.Operaciones
                 List<ent_Cliente> ListaCliente = cln_Cliente.ListarCliente(ent_Cliente, "CLI");
                 cbo_ClienteRecepcion.DataSource = ListaCliente;
                 cbo_ClienteRecepcion.DisplayMember = "RazonSocial";
+                cbo_ClienteRecepcion.SelectedIndex = -1;
+
+                cbo_ClienteRemitente.DataSource = ListaCliente;
+                cbo_ClienteRemitente.DisplayMember = "RazonSocial";
+                cbo_ClienteRemitente.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -284,6 +487,7 @@ namespace Principal.Operaciones
         #region "Eventos"
         private void txt_Subtotal_KeyPress(object sender, KeyPressEventArgs e)
         {
+            //currentInputSubtotal Subtotal  = txt_Subtotal.Text;
             // Verifica si la tecla presionada es la tecla de retroceso
             if (e.KeyChar == '\b')
             {
@@ -291,16 +495,16 @@ namespace Principal.Operaciones
                 // Por ejemplo, eliminar el último carácter del texto actual.
                 if (txt_Subtotal.Text.Length > 0)
                 {
-                    currentInput = txt_Subtotal.Text.Substring(0, txt_Subtotal.Text.Length - 1);
+                    currentInputSubtotal = txt_Subtotal.Text.Substring(0, txt_Subtotal.Text.Length - 1);
                     // Formatea el texto con los dos últimos dígitos en la parte decimal
-                    if (currentInput.Length >= 2 && !currentInput.Contains("."))
+                    if (currentInputSubtotal.Length >= 2 && !currentInputSubtotal.Contains("."))
                     {
-                        int length = currentInput.Length;
-                        txt_Subtotal.Text = currentInput.Substring(0, length - 2) + "." + currentInput.Substring(length - 2);
+                        int length = currentInputSubtotal.Length;
+                        txt_Subtotal.Text = currentInputSubtotal.Substring(0, length - 2) + "." + currentInputSubtotal.Substring(length - 2);
                     }
                     else
                     {
-                        txt_Subtotal.Text = currentInput;
+                        txt_Subtotal.Text = currentInputSubtotal;
                     }
                 }
             }
@@ -310,17 +514,17 @@ namespace Principal.Operaciones
                 if (char.IsDigit(e.KeyChar))
                 {
                     // Agrega el dígito a la cadena de entrada actual
-                    currentInput += e.KeyChar;
+                    currentInputSubtotal += e.KeyChar;
 
                     // Formatea el texto con los dos últimos dígitos en la parte decimal
-                    if (currentInput.Length >= 2 && !currentInput.Contains("."))
+                    if (currentInputSubtotal.Length >= 2 && !currentInputSubtotal.Contains("."))
                     {
-                        int length = currentInput.Length;
-                        txt_Subtotal.Text = currentInput.Substring(0, length - 2) + "." + currentInput.Substring(length - 2);
+                        int length = currentInputSubtotal.Length;
+                        txt_Subtotal.Text = currentInputSubtotal.Substring(0, length - 2) + "." + currentInputSubtotal.Substring(length - 2);
                     }
                     else
                     {
-                        txt_Subtotal.Text = currentInput;
+                        txt_Subtotal.Text = currentInputSubtotal;
                     }
                 }
             }
@@ -361,7 +565,7 @@ namespace Principal.Operaciones
 
                 txt_FleteSinIGV.Text = Gravada.ToString("0.00");
                 txt_Subtotal.Text = Subtotal.ToString("0.00");
-                txt_IGV.Text = Igv.ToString("0.00");
+                txt_PrecioUnitario.Text = Igv.ToString("0.00");
                 txt_FleteTotal.Text = TotalFlete.ToString("0.00");
             }
         }
@@ -370,8 +574,12 @@ namespace Principal.Operaciones
         {
             try
             {
-                ent_Cliente Cliente = (ent_Cliente)cbo_ClienteRecepcion.SelectedItem;
-                txt_DocClienteRecepcion.Text = Cliente.Persona.DocIdentidad;
+                if (cbo_ClienteRecepcion.SelectedIndex > -1)
+                {
+                    ent_Cliente Cliente = (ent_Cliente)cbo_ClienteRecepcion.SelectedItem;
+                    txt_DocClienteRecepcion.Text = Cliente.Persona.DocIdentidad;
+                }
+
             }
             catch (Exception ex)
             {
@@ -407,29 +615,32 @@ namespace Principal.Operaciones
         {
             try
             {
-                cln_Ruta cln = new cln_Ruta();
-                ent_Ruta Ruta = new ent_Ruta();
-                Ruta.DistritoOrigen.Ubigeo = ((ent_Ubigeo)cbo_OrigenCabecera.SelectedItem).Ubigeo;
-                List<ent_Ruta> Lista = cln.ListarRuta(Ruta, "GEN");
-                List<UbigeoResponse> ListaUbigeo = new List<UbigeoResponse>();
-                foreach (ent_Ruta RutaDet in Lista)
+                if (cbo_OrigenCabecera.SelectedIndex > -1)
                 {
-                    ListaUbigeo.Add(RutaDet.DistritoDestino);
-                }
-                cbo_DestinoCabecera.DataSource = null;
-                cbo_DestinoCabecera.DataSource = ListaUbigeo;
-                if (Lista.Count > 0)
-                {
+                    errorProvider1.SetError(cbo_OrigenCabecera, "");
+                    cln_Ruta cln = new cln_Ruta();
+                    ent_Ruta Ruta = new ent_Ruta();
+                    Ruta.DistritoOrigen.Ubigeo = ((ent_Ubigeo)cbo_OrigenCabecera.SelectedItem).Ubigeo;
+                    List<ent_Ruta> Lista = cln.ListarRuta(Ruta, "GEN");
+                    List<ent_Ubigeo> ListaUbigeo = new List<ent_Ubigeo>();
+                    foreach (ent_Ruta RutaDet in Lista)
+                    {
+                        ListaUbigeo.Add(RutaDet.DistritoDestino);
+                    }
+                    cbo_DestinoCabecera.DataSource = null;
+                    cbo_DestinoCabecera.DataSource = ListaUbigeo;
+                    if (Lista.Count > 0)
+                    {
 
 
-                    cbo_DestinoCabecera.ValueMember = "Ubigeo";
-                    cbo_DestinoCabecera.DisplayMember = "Descripcion";
+                        cbo_DestinoCabecera.ValueMember = "Ubigeo";
+                        cbo_DestinoCabecera.DisplayMember = "Descripcion";
+                    }
+                    else
+                    {
+                        cbo_DestinoCabecera.Refresh();
+                    }
                 }
-                else
-                {
-                    cbo_DestinoCabecera.Refresh();
-                }
-
             }
             catch (Exception ex)
             {
@@ -441,27 +652,29 @@ namespace Principal.Operaciones
         {
             try
             {
-                cln_Ruta cln = new cln_Ruta();
-                ent_Ruta Ruta = new ent_Ruta();
-                Ruta.DistritoOrigen.Ubigeo = ((ent_Ubigeo)cbo_OrigenDetalle.SelectedItem).Ubigeo;
-                List<ent_Ruta> Lista = cln.ListarRuta(Ruta, "GEN");
-                List<UbigeoResponse> ListaUbigeo = new List<UbigeoResponse>();
-                foreach (ent_Ruta RutaDet in Lista)
+                if (cbo_OrigenDetalle.SelectedIndex > -1)
                 {
-                    ListaUbigeo.Add(RutaDet.DistritoDestino);
+                    cln_Ruta cln = new cln_Ruta();
+                    ent_Ruta Ruta = new ent_Ruta();
+                    Ruta.DistritoOrigen.Ubigeo = ((ent_Ubigeo)cbo_OrigenDetalle.SelectedItem).Ubigeo;
+                    List<ent_Ruta> Lista = cln.ListarRuta(Ruta, "GEN");
+                    List<ent_Ubigeo> ListaUbigeo = new List<ent_Ubigeo>();
+                    foreach (ent_Ruta RutaDet in Lista)
+                    {
+                        ListaUbigeo.Add(RutaDet.DistritoDestino);
+                    }
+                    cbo_DestinoDetalle.DataSource = null;
+                    cbo_DestinoDetalle.DataSource = ListaUbigeo;
+                    if (Lista.Count > 0)
+                    {
+                        cbo_DestinoDetalle.ValueMember = "Ubigeo";
+                        cbo_DestinoDetalle.DisplayMember = "Descripcion";
+                    }
+                    else
+                    {
+                        cbo_DestinoDetalle.Refresh();
+                    }
                 }
-                cbo_DestinoDetalle.DataSource = null;
-                cbo_DestinoDetalle.DataSource = ListaUbigeo;
-                if (Lista.Count > 0)
-                {
-                    cbo_DestinoDetalle.ValueMember = "Ubigeo";
-                    cbo_DestinoDetalle.DisplayMember = "Descripcion";
-                }
-                else
-                {
-                    cbo_DestinoDetalle.Refresh();
-                }
-
             }
             catch (Exception ex)
             {
@@ -662,6 +875,7 @@ namespace Principal.Operaciones
 
         private void txt_FleteSinIGV_KeyPress(object sender, KeyPressEventArgs e)
         {
+            //currentInput = txt_FleteSinIGV.Text;
             // Verifica si la tecla presionada es la tecla de retroceso
             if (e.KeyChar == '\b')
             {
@@ -669,16 +883,95 @@ namespace Principal.Operaciones
                 // Por ejemplo, eliminar el último carácter del texto actual.
                 if (txt_FleteSinIGV.Text.Length > 0)
                 {
-                    currentInput = txt_FleteSinIGV.Text.Substring(0, txt_FleteSinIGV.Text.Length - 1);
+                    currentInputFleteSinIGV = txt_FleteSinIGV.Text.Substring(0, txt_FleteSinIGV.Text.Length - 1);
+                    // Formatea el texto con los dos últimos dígitos en la parte decimal
+                    if (currentInputFleteSinIGV.Length >= 2 && !currentInputFleteSinIGV.Contains("."))
+                    {
+                        int length = currentInputFleteSinIGV.Length;
+                        txt_FleteSinIGV.Text = currentInputFleteSinIGV.Substring(0, length - 2) + "." + currentInputFleteSinIGV.Substring(length - 2);
+                    }
+                    else
+                    {
+                        txt_FleteSinIGV.Text = currentInputFleteSinIGV;
+                    }
+                }
+            }
+            else
+            {
+                // Verifica si la tecla presionada es un número
+                if (char.IsDigit(e.KeyChar))
+                {
+                    // Agrega el dígito a la cadena de entrada actual
+                    currentInputFleteSinIGV += e.KeyChar;
+
+                    // Formatea el texto con los dos últimos dígitos en la parte decimal
+                    if (currentInputFleteSinIGV.Length >= 2 && !currentInputFleteSinIGV.Contains("."))
+                    {
+                        int length = currentInputFleteSinIGV.Length;
+                        txt_FleteSinIGV.Text = currentInputFleteSinIGV.Substring(0, length - 2) + "." + currentInputFleteSinIGV.Substring(length - 2);
+                    }
+                    else
+                    {
+                        txt_FleteSinIGV.Text = currentInputFleteSinIGV;
+                    }
+                }
+            }
+
+
+            e.Handled = true; // Evita que el evento KeyPress procese la tecla nuevamente
+
+        }
+
+        private void btn_Guardar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!ValidarControles())
+                {
+                    ent_Carga Carga = llenarCarga();
+                    cln_Carga cln_Carga = new cln_Carga();
+                    ResponseHelper response = cln_Carga.registrarCarga(Carga, "I");
+                    if (response != null)
+                    {
+                        if (response.codError == 0)
+                        {
+                            MessageBox.Show(response.mensajeError, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            tpc_RecepcionCarga.SelectedIndex = 0;
+                            tpc_RecepcionCarga.Controls[1].Enabled = false;
+                        }
+                        else
+                        {
+                            MessageBox.Show(response.mensajeError, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void txt_FleteTotal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verifica si la tecla presionada es la tecla de retroceso
+            if (e.KeyChar == '\b')
+            {
+                // Aquí puedes realizar la lógica deseada al presionar la tecla de retroceso.
+                // Por ejemplo, eliminar el último carácter del texto actual.
+                if (txt_FleteTotal.Text.Length > 0)
+                {
+                    currentInput = txt_FleteTotal.Text.Substring(0, txt_FleteTotal.Text.Length - 1);
                     // Formatea el texto con los dos últimos dígitos en la parte decimal
                     if (currentInput.Length >= 2 && !currentInput.Contains("."))
                     {
                         int length = currentInput.Length;
-                        txt_FleteSinIGV.Text = currentInput.Substring(0, length - 2) + "." + currentInput.Substring(length - 2);
+                        txt_FleteTotal.Text = currentInput.Substring(0, length - 2) + "." + currentInput.Substring(length - 2);
                     }
                     else
                     {
-                        txt_FleteSinIGV.Text = currentInput;
+                        txt_FleteTotal.Text = currentInput;
                     }
                 }
             }
@@ -694,24 +987,199 @@ namespace Principal.Operaciones
                     if (currentInput.Length >= 2 && !currentInput.Contains("."))
                     {
                         int length = currentInput.Length;
-                        txt_FleteSinIGV.Text = currentInput.Substring(0, length - 2) + "." + currentInput.Substring(length - 2);
+                        txt_FleteTotal.Text = currentInput.Substring(0, length - 2) + "." + currentInput.Substring(length - 2);
                     }
                     else
                     {
-                        txt_FleteSinIGV.Text = currentInput;
+                        txt_FleteTotal.Text = currentInput;
                     }
+                }
+            }
+
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if (chk_IncluyeIGVFlete.Checked)
+                {
+                    Double PrecioUnitario;
+                    Double ValorUnitario;
+                    Double SubTotal;
+                    Double Cantidad = Convert.ToDouble(txt_Cantidad.Text);
+                    Double Total = Convert.ToDouble(txt_FleteTotal.Text);
+                    SubTotal = Total / 1.18;
+                    PrecioUnitario = Total / Cantidad;
+                    ValorUnitario = SubTotal / Cantidad;
+                    txt_FleteSinIGV.Text = Convert.ToString(Math.Round(ValorUnitario, 10));
+                    txt_PrecioUnitario.Text = Convert.ToString(Math.Round(PrecioUnitario, 10));
+                    txt_Subtotal.Text = Convert.ToString(Math.Round(SubTotal, 10));
+                    txt_FleteTotalCab.Text = Convert.ToString(Total);
+                }
+                else
+                {
+                    Double PrecioUnitario;
+                    Double ValorUnitario;
+                    Double SubTotal;
+                    Double Cantidad = Convert.ToDouble(txt_Cantidad.Text);
+                    Double Total = Convert.ToDouble(txt_FleteTotal.Text) + Convert.ToDouble(txt_FleteTotal.Text) * 0.18;
+                    SubTotal = Total / 1.18;
+                    PrecioUnitario = Total / Cantidad;
+                    ValorUnitario = SubTotal / Cantidad;
+                    txt_FleteSinIGV.Text = Convert.ToString(Math.Round(ValorUnitario, 10));
+                    txt_PrecioUnitario.Text = Convert.ToString(Math.Round(PrecioUnitario, 10));
+                    txt_Subtotal.Text = Convert.ToString(Math.Round(SubTotal, 10));
+                    txt_FleteTotal.Text = Convert.ToString(Math.Round(Total, 10));
+                    txt_FleteTotalCab.Text = Convert.ToString(Math.Round(Total, 10));
                 }
             }
 
 
             e.Handled = true; // Evita que el evento KeyPress procese la tecla nuevamente
-
         }
 
-        private void btn_Guardar_Click(object sender, EventArgs e)
+        private void txt_Adelanto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //currentInput = txt_Adelanto.Text;
+            // Verifica si la tecla presionada es la tecla de retroceso
+            if (e.KeyChar == '\b')
+            {
+                // Aquí puedes realizar la lógica deseada al presionar la tecla de retroceso.
+                // Por ejemplo, eliminar el último carácter del texto actual.
+                if (txt_Adelanto.Text.Length > 0)
+                {
+                    currentInputAdelanto = txt_Adelanto.Text.Substring(0, txt_Adelanto.Text.Length - 1);
+                    // Formatea el texto con los dos últimos dígitos en la parte decimal
+                    if (currentInputAdelanto.Length >= 2 && !currentInputAdelanto.Contains("."))
+                    {
+                        int length = currentInputAdelanto.Length;
+                        txt_Adelanto.Text = currentInputAdelanto.Substring(0, length - 2) + "." + currentInputAdelanto.Substring(length - 2);
+                    }
+                    else
+                    {
+                        txt_Adelanto.Text = currentInputAdelanto;
+                    }
+                }
+            }
+            else
+            {
+                // Verifica si la tecla presionada es un número
+                if (char.IsDigit(e.KeyChar))
+                {
+                    // Agrega el dígito a la cadena de entrada actual
+                    currentInputAdelanto += e.KeyChar;
+
+                    // Formatea el texto con los dos últimos dígitos en la parte decimal
+                    if (currentInputAdelanto.Length >= 2 && !currentInputAdelanto.Contains("."))
+                    {
+                        int length = currentInputAdelanto.Length;
+                        txt_Adelanto.Text = currentInputAdelanto.Substring(0, length - 2) + "." + currentInputAdelanto.Substring(length - 2);
+                    }
+                    else
+                    {
+                        txt_Adelanto.Text = currentInputAdelanto;
+                    }
+                }
+            }
+        }
+
+        private void txt_Comision_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //currentInput = txt_Comision.Text;
+            // Verifica si la tecla presionada es la tecla de retroceso
+            if (e.KeyChar == '\b')
+            {
+                // Aquí puedes realizar la lógica deseada al presionar la tecla de retroceso.
+                // Por ejemplo, eliminar el último carácter del texto actual.
+                if (txt_Comision.Text.Length > 0)
+                {
+                    currentInputComision = txt_Comision.Text.Substring(0, txt_Comision.Text.Length - 1);
+                    // Formatea el texto con los dos últimos dígitos en la parte decimal
+                    if (currentInputComision.Length >= 2 && !currentInputComision.Contains("."))
+                    {
+                        int length = currentInputComision.Length;
+                        txt_Comision.Text = currentInputComision.Substring(0, length - 2) + "." + currentInputComision.Substring(length - 2);
+                    }
+                    else
+                    {
+                        txt_Comision.Text = currentInputComision;
+                    }
+                }
+            }
+            else
+            {
+                // Verifica si la tecla presionada es un número
+                if (char.IsDigit(e.KeyChar))
+                {
+                    // Agrega el dígito a la cadena de entrada actual
+                    currentInputComision += e.KeyChar;
+
+                    // Formatea el texto con los dos últimos dígitos en la parte decimal
+                    if (currentInputComision.Length >= 2 && !currentInputComision.Contains("."))
+                    {
+                        int length = currentInputComision.Length;
+                        txt_Comision.Text = currentInputComision.Substring(0, length - 2) + "." + currentInputComision.Substring(length - 2);
+                    }
+                    else
+                    {
+                        txt_Comision.Text = currentInputComision;
+                    }
+                }
+            }
+        }
+
+        private void txt_Consolidado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //currentInput = txt_Consolidado.Text;
+            // Verifica si la tecla presionada es la tecla de retroceso
+            if (e.KeyChar == '\b')
+            {
+                // Aquí puedes realizar la lógica deseada al presionar la tecla de retroceso.
+                // Por ejemplo, eliminar el último carácter del texto actual.
+                if (txt_Consolidado.Text.Length > 0)
+                {
+                    currentInputConsolidado = txt_Consolidado.Text.Substring(0, txt_Consolidado.Text.Length - 1);
+                    // Formatea el texto con los dos últimos dígitos en la parte decimal
+                    if (currentInputConsolidado.Length >= 2 && !currentInputConsolidado.Contains("."))
+                    {
+                        int length = currentInputConsolidado.Length;
+                        txt_Consolidado.Text = currentInputConsolidado.Substring(0, length - 2) + "." + currentInputConsolidado.Substring(length - 2);
+                    }
+                    else
+                    {
+                        txt_Consolidado.Text = currentInputConsolidado;
+                    }
+                }
+            }
+            else
+            {
+                // Verifica si la tecla presionada es un número
+                if (char.IsDigit(e.KeyChar))
+                {
+                    // Agrega el dígito a la cadena de entrada actual
+                    currentInputConsolidado += e.KeyChar;
+
+                    // Formatea el texto con los dos últimos dígitos en la parte decimal
+                    if (currentInputConsolidado.Length >= 2 && !currentInputConsolidado.Contains("."))
+                    {
+                        int length = currentInputConsolidado.Length;
+                        txt_Consolidado.Text = currentInputConsolidado.Substring(0, length - 2) + "." + currentInputConsolidado.Substring(length - 2);
+                    }
+                    else
+                    {
+                        txt_Consolidado.Text = currentInputConsolidado;
+                    }
+                }
+            }
+        }
+
+
+        private void cbo_ClienteFinal_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
+                if (cbo_ClienteFinal.SelectedIndex > -1)
+                {
+                    ent_Cliente Cliente = (ent_Cliente)cbo_ClienteFinal.SelectedItem;
+                    txt_DocClienteFinal.Text = Cliente.Persona.DocIdentidad;
+                }
 
             }
             catch (Exception ex)
@@ -719,28 +1187,270 @@ namespace Principal.Operaciones
 
             }
         }
-        #endregion
 
-        private ent_Carga llenarCarga()
+        private void txt_DocClienteFinal_KeyUp(object sender, KeyEventArgs e)
         {
-            ent_Carga carga = new ent_Carga();
-            ent_CargaDetalle cargaDet = new ent_CargaDetalle();
-            carga.Codigo = txt_Codigo.Text;
-            carga.Estado = (ent_Concepto)cbo_EstadoCarga.SelectedItem;
-            carga.TipoServicio = (ent_Concepto)cbo_TipoServicio.SelectedItem;
-            carga.FechaSolicita = new DateTime(dtp_FechaSolicita.Value.Year, dtp_FechaSolicita.Value.Month, dtp_FechaSolicita.Value.Day, dtp_HoraSolicita.Value.Hour, dtp_HoraSolicita.Value.Minute, dtp_HoraSolicita.Value.Second);
-            carga.FechaRecepcion = new DateTime(dtp_FechaRecepcion.Value.Year, dtp_FechaRecepcion.Value.Month, dtp_FechaRecepcion.Value.Day, dtp_HoraRecepcion.Value.Hour, dtp_HoraRecepcion.Value.Minute, dtp_HoraRecepcion.Value.Second);
-            carga.FechaAtencion = new DateTime(dtp_FechaAtencion.Value.Year, dtp_FechaAtencion.Value.Month, dtp_FechaAtencion.Value.Day, dtp_HoraAtencion.Value.Hour, dtp_HoraAtencion.Value.Minute, dtp_HoraAtencion.Value.Second);
-            carga.LugarOrigen = (UbigeoResponse)cbo_OrigenCabecera.SelectedItem;
-            carga.LugarDestino = (UbigeoResponse)cbo_DestinoCabecera.SelectedItem;
-            carga.CondicionPago = (ent_Concepto)cbo_CondicionPago.SelectedItem;
-            carga.TipoEntrega = (ent_Concepto)cbo_TipoEntrega.SelectedItem;
-            carga.Tercero = chk_Tercerizado.Checked;
-            carga.FleteTotal = Convert.ToDouble(txt_FleteTotalCab.Text);
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    String Documento = txt_DocClienteFinal.Text;
+                    List<ent_Cliente> ListaClientes = (List<ent_Cliente>)cbo_ClienteFinal.DataSource;
+                    foreach (ent_Cliente Cliente in ListaClientes)
+                    {
+                        if (Cliente.Persona.DocIdentidad == Documento)
+                        {
+                            cbo_ClienteFinal.SelectedItem = Cliente;
+                        }
+                    }
+                }
 
-            return carga;
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
+        private void cbo_Comisionista_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cbo_Comisionista.SelectedIndex > -1)
+                {
+                    ent_Cliente Cliente = (ent_Cliente)cbo_Comisionista.SelectedItem;
+                    txt_DocComisionista.Text = Cliente.Persona.DocIdentidad;
+                }
 
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void txt_DocComisionista_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    String Documento = txt_DocComisionista.Text;
+                    List<ent_Cliente> ListaClientes = (List<ent_Cliente>)cbo_Comisionista.DataSource;
+                    foreach (ent_Cliente Cliente in ListaClientes)
+                    {
+                        if (Cliente.Persona.DocIdentidad == Documento)
+                        {
+                            cbo_Comisionista.SelectedItem = Cliente;
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void txt_ConEstiba_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //currentInput = txt_ConEstiba.Text;
+            // Verifica si la tecla presionada es la tecla de retroceso
+            if (e.KeyChar == '\b')
+            {
+                // Aquí puedes realizar la lógica deseada al presionar la tecla de retroceso.
+                // Por ejemplo, eliminar el último carácter del texto actual.
+                if (txt_ConEstiba.Text.Length > 0)
+                {
+                    currentInputConEstiba = txt_ConEstiba.Text.Substring(0, txt_ConEstiba.Text.Length - 1);
+                    // Formatea el texto con los dos últimos dígitos en la parte decimal
+                    if (currentInputConEstiba.Length >= 2 && !currentInputConEstiba.Contains("."))
+                    {
+                        int length = currentInputConEstiba.Length;
+                        txt_ConEstiba.Text = currentInputConEstiba.Substring(0, length - 2) + "." + currentInputConEstiba.Substring(length - 2);
+                    }
+                    else
+                    {
+                        txt_ConEstiba.Text = currentInputConEstiba;
+                    }
+                }
+            }
+            else
+            {
+                // Verifica si la tecla presionada es un número
+                if (char.IsDigit(e.KeyChar))
+                {
+                    // Agrega el dígito a la cadena de entrada actual
+                    currentInputConEstiba += e.KeyChar;
+
+                    // Formatea el texto con los dos últimos dígitos en la parte decimal
+                    if (currentInputConEstiba.Length >= 2 && !currentInputConEstiba.Contains("."))
+                    {
+                        int length = currentInputConEstiba.Length;
+                        txt_ConEstiba.Text = currentInputConEstiba.Substring(0, length - 2) + "." + currentInputConEstiba.Substring(length - 2);
+                    }
+                    else
+                    {
+                        txt_ConEstiba.Text = currentInputConEstiba;
+                    }
+                }
+            }
+        }
+
+        private void txt_CEstibaDesc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //currentInput = txt_CEstibaDesc.Text;
+            // Verifica si la tecla presionada es la tecla de retroceso
+            if (e.KeyChar == '\b')
+            {
+                // Aquí puedes realizar la lógica deseada al presionar la tecla de retroceso.
+                // Por ejemplo, eliminar el último carácter del texto actual.
+                if (txt_CEstibaDesc.Text.Length > 0)
+                {
+                    currentInputCEstibaDesc = txt_CEstibaDesc.Text.Substring(0, txt_CEstibaDesc.Text.Length - 1);
+                    // Formatea el texto con los dos últimos dígitos en la parte decimal
+                    if (currentInputCEstibaDesc.Length >= 2 && !currentInputCEstibaDesc.Contains("."))
+                    {
+                        int length = currentInputCEstibaDesc.Length;
+                        txt_CEstibaDesc.Text = currentInputCEstibaDesc.Substring(0, length - 2) + "." + currentInputCEstibaDesc.Substring(length - 2);
+                    }
+                    else
+                    {
+                        txt_CEstibaDesc.Text = currentInputCEstibaDesc;
+                    }
+                }
+            }
+            else
+            {
+                // Verifica si la tecla presionada es un número
+                if (char.IsDigit(e.KeyChar))
+                {
+                    // Agrega el dígito a la cadena de entrada actual
+                    currentInputCEstibaDesc += e.KeyChar;
+
+                    // Formatea el texto con los dos últimos dígitos en la parte decimal
+                    if (currentInputCEstibaDesc.Length >= 2 && !currentInputCEstibaDesc.Contains("."))
+                    {
+                        int length = currentInputCEstibaDesc.Length;
+                        txt_CEstibaDesc.Text = currentInputCEstibaDesc.Substring(0, length - 2) + "." + currentInputCEstibaDesc.Substring(length - 2);
+                    }
+                    else
+                    {
+                        txt_CEstibaDesc.Text = currentInputCEstibaDesc;
+                    }
+                }
+            }
+        }
+
+        private void radioButton6_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (rbt_Remitente.Checked)
+                {
+                    ent_Cliente cliente = (ent_Cliente)cbo_ClienteRemitente.SelectedItem;
+                    cbo_ClientePaga.SelectedItem = cliente;
+                    txt_DireccionFacturacion.Text = cliente.DomicilioFiscal;
+                    cbo_ClientePaga.Enabled = false;
+                }
+                else
+                {
+                    cbo_ClientePaga.Enabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void rbt_Destinatario_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (rbt_Destinatario.Checked)
+                {
+                    ent_Cliente cliente = (ent_Cliente)cbo_ClienteDestinatario.SelectedItem;
+                    cbo_ClientePaga.SelectedItem = cliente;
+                    txt_DireccionFacturacion.Text = cliente.DomicilioFiscal;
+                    cbo_ClientePaga.Enabled = false;
+                }
+                else
+                {
+                    cbo_ClientePaga.Enabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void rbt_Seleccionar_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                cbo_ClientePaga.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        #endregion
+        public Boolean ValidarControles()
+        {
+            Boolean result = false;
+            if (cbo_OrigenCabecera.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_OrigenCabecera, "Por favor, seleccione un lugar de origen"); }
+            if (cbo_DestinoCabecera.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_DestinoCabecera, "Por favor, seleccione un lugar de destino"); }
+            if (txt_FleteTotalCab.Text.Length == 0) { result = true; errorProvider1.SetError(txt_FleteTotalCab, "Por favor, ingrese un flete total"); }
+            if (cbo_OrigenDetalle.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_OrigenDetalle, "Por favor, seleccione un lugar de origen"); }
+            if (cbo_DestinoDetalle.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_DestinoDetalle, "Por favor, seleccione un lugar de destino"); }
+            if (!rbt_Efectivo.Checked && !rbt_Deposito.Checked && !rbt_Otros.Checked) { result = true; errorProvider1.SetError(rbt_Efectivo, "Por favor, seleccione una forma de pago"); }
+            if (cbo_ClienteRecepcion.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_ClienteRecepcion, "Por favor, seleccione un cliente"); }
+            if (cbo_ClienteFinal.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_ClienteFinal, "Por favor, seleccione un cliente"); }
+            if (txt_ProductoTransportar.Text.Length == 0) { result = true; errorProvider1.SetError(txt_ProductoTransportar, "Por favor, ingrese material a transportar"); }
+            if (cbo_ClienteRemitente.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_ClienteRemitente, "Por favor, seleccione un cliente"); }
+            if (cbo_ClienteDestinatario.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_ClienteDestinatario, "Por favor, seleccione un cliente"); }
+            if (txt_PuntoPartida.Text.Length == 0) { result = true; errorProvider1.SetError(txt_PuntoPartida, "Por favor, ingrese punto de partida"); }
+            if (txt_PuntoLlegada.Text.Length == 0) { result = true; errorProvider1.SetError(txt_PuntoLlegada, "Por favor, ingrese punto de llegada"); }
+            if (txt_Anexos.Text.Length == 0) { result = true; errorProvider1.SetError(txt_Anexos, "Por favor, ingrese documentos de Anexo"); }
+            if (txt_DireccionFacturacion.Text.Length == 0) { result = true; errorProvider1.SetError(txt_DireccionFacturacion, "Por favor, ingrese una direccion de facturacion"); }
+
+            return result;
+        }
+
+        private void btn_Actualizar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cln_Carga cln_Carga = new cln_Carga();
+                List<ent_Carga> Lista = cln_Carga.ListarCarga(new ent_Carga(), "GEN");
+                dgb_Carga.DataSource = Lista;
+                dgb_Carga.CellFormatting += dgb_Carga_CellFormatting;
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void dgb_Carga_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgb_Carga.Columns[e.ColumnIndex].Name == "TipoServicio")
+            {
+                if (e.RowIndex >= 0 && e.RowIndex < dgb_Carga.Rows.Count)
+                {
+                    var tipoServicio = dgb_Carga.Rows[e.RowIndex].DataBoundItem as ent_Concepto;
+
+                    if (tipoServicio != null)
+                    {
+                        e.Value = tipoServicio.Descripcion;
+                    }
+                }
+            }
+            
+        }
     }
 }

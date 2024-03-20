@@ -11,5 +11,12 @@ namespace CEN.Entidad
         public String? Ubigeo { get; set; }
         public String? Descripcion { get; set; }
         public String? Referencia { get; set; }
+
+        public ent_Ubigeo()
+        {
+            Ubigeo = String.Empty;
+            Descripcion = String.Empty;
+            Referencia = String.Empty;
+        }
     }
 }

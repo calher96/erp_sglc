@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "L6uFcHBnRUCJ2MIRjom56pgv+5Avy5ytez549tdsOjzBsztGS1B8noAsm/o8TyBh5qcwL9ZYrPsawb78EffC5A==",
+  "dgSpecHash": "+cSyQZfBpQ68O1Hstb3r1lmoZrsUtpYmjxJF7vv7wAK3YQcGeUpTwpiXINj9Nv8/MdLdlh+u59xy/YbhVxZs9g==",
   "success": true,
   "projectFilePath": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\CAD\\CAD.csproj",
   "expectedPackageFiles": [
@@ -11,7 +11,7 @@
     "C:\\Users\\usuario\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\usuario\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\usuario\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
-    "C:\\Users\\usuario\\.nuget\\packages\\system.data.sqlclient\\4.8.5\\system.data.sqlclient.4.8.5.nupkg.sha512",
+    "C:\\Users\\usuario\\.nuget\\packages\\system.data.sqlclient\\4.8.6\\system.data.sqlclient.4.8.6.nupkg.sha512",
     "C:\\Users\\usuario\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
     "C:\\Users\\usuario\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"
   ],

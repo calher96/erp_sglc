@@ -1,4 +1,5 @@
-﻿using CEN.Response;
+﻿using CEN.Entidad;
+using CEN.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,8 @@ namespace CEN
     public class ent_Ruta
     {
         public int Id { get; set; }
-        public UbigeoResponse DistritoOrigen { get; set; }
-        public UbigeoResponse DistritoDestino { get; set; }
+        public ent_Ubigeo DistritoOrigen { get; set; }
+        public ent_Ubigeo DistritoDestino { get; set; }
         public int Estado {  get; set; }
         public int Marcabaja { get; set; }
         public String Usuario { get; set; }
@@ -23,8 +24,8 @@ namespace CEN
         public ent_Ruta()
         {
             Id = 0;
-            DistritoOrigen = new UbigeoResponse();
-            DistritoDestino = new UbigeoResponse();
+            DistritoOrigen = new ent_Ubigeo();
+            DistritoDestino = new ent_Ubigeo();
             Estado = 0;
             Marcabaja = 0;
             Usuario = String.Empty;

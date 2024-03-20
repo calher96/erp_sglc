@@ -468,5 +468,13 @@ namespace Principal.Operaciones
                 }
             }
         }
+
+        private void btn_Cancelar_Click(object sender, EventArgs e)
+        {
+            tbc_EmpresaCliente.SelectedIndex = 0;
+            tbc_EmpresaCliente.Controls[1].Enabled = false;
+            EditMode = false;
+            Cliente = new ent_Cliente();
+        }
     }
 }

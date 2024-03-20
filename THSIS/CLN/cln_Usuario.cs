@@ -22,7 +22,7 @@ namespace CLN
                 sqlConnection.Open();
                 sqlTransaction = sqlConnection.BeginTransaction();
                 cad_Usuario cad = new cad_Usuario();
-                response = cad.guardarUsuario(obj, tipoConsulta, sqlConnection, sqlTransaction);
+                response = cad.guardarUsuario(obj, tipoConsulta);
 
                 sqlTransaction.Commit();
                 return response;

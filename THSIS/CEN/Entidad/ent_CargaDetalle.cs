@@ -1,9 +1,11 @@
 ﻿using CEN.Response;
+using CEN.Entidad;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CEN.Helpers;
 
 namespace CEN
 {
@@ -11,8 +13,8 @@ namespace CEN
     {
         public int Id { get; set; }
         public int carg_Id { get; set; }
-        public UbigeoResponse LugarOrigen { get; set; }
-        public UbigeoResponse LugarDestino { get; set; }
+        public ent_Ubigeo LugarOrigen { get; set; }
+        public ent_Ubigeo LugarDestino { get; set; }
         public ent_Concepto TipoCarga { get;set; }
         public Double Cantidad { get; set; }
         public Double Peso { get;set; }
@@ -49,39 +51,39 @@ namespace CEN
         {
             Id = 0;
             carg_Id = 0;
-            LugarOrigen = new UbigeoResponse();
-            LugarDestino = new UbigeoResponse();
+            LugarOrigen = new ent_Ubigeo();
+            LugarDestino = new ent_Ubigeo();
             TipoCarga = new ent_Concepto();
-            Cantidad = Double.NaN;
-            Peso = Double.NaN;
+            Cantidad = Double.NegativeZero;
+            Peso = Double.NegativeZero;
             ClienteRecepcion = new ent_Cliente();
             ClienteFinal = new ent_Cliente();
             Comisionista = new ent_Cliente();
             ProductoTransportar = String.Empty;
-            ValorUnitario = Double.NaN;
-            PrecioUnitario= Double.NaN;
-            ValorAfecto= Double.NaN;
-            ValorInafecto= Double.NaN;
-            ValorExonerado= Double.NaN;
-            IGV= Double.NaN;
-            Total= Double.NaN;
-            Adelanto= Double.NaN;
-            Comision= Double.NaN;
+            ValorUnitario = Double.NegativeZero;
+            PrecioUnitario= Double.NegativeZero;
+            ValorAfecto= Double.NegativeZero;
+            ValorInafecto= Double.NegativeZero;
+            ValorExonerado= Double.NegativeZero;
+            IGV= Double.NegativeZero;
+            Total= Double.NegativeZero;
+            Adelanto= Double.NegativeZero;
+            Comision= Double.NegativeZero;
             Facturado= false;
             FalsoFlete=false;
-            Consolidado= Double.NaN;
-            ConEstiba= Double.NaN;
-            CEstibaDesc = Double.NaN;
+            Consolidado= Double.NegativeZero;
+            ConEstiba= Double.NegativeZero;
+            CEstibaDesc = Double.NegativeZero;
             PagoContraEntrega= false;
             FormaPago = new ent_Concepto();
             Carga = false;
             Descarga = false;
             Marcabaja = 0;
-            Usuario = String.Empty;
-            Ip = String.Empty;
-            Mac = String.Empty;
-            HostName = String.Empty;
-            HostUser = String.Empty;
+            Usuario = StaticVariable.obj_Usuario.Usua_Usuario;
+            Ip = BasicVariable.Ip;
+            Mac = BasicVariable.Mac;
+            HostName = BasicVariable.HostName;
+            HostUser = BasicVariable.HostUser;
         }
     }
 }

@@ -1,0 +1,5 @@
+D:\THSIS\Repositorios\erp_sglc\THSIS\CAD\obj\x64\Debug\net7.0\CAD.csproj.AssemblyReference.cache
+D:\THSIS\Repositorios\erp_sglc\THSIS\CAD\obj\x64\Debug\net7.0\CAD.GeneratedMSBuildEditorConfig.editorconfig
+D:\THSIS\Repositorios\erp_sglc\THSIS\CAD\obj\x64\Debug\net7.0\CAD.AssemblyInfoInputs.cache
+D:\THSIS\Repositorios\erp_sglc\THSIS\CAD\obj\x64\Debug\net7.0\CAD.AssemblyInfo.cs
+D:\THSIS\Repositorios\erp_sglc\THSIS\CAD\obj\x64\Debug\net7.0\CAD.csproj.CoreCompileInputs.cache

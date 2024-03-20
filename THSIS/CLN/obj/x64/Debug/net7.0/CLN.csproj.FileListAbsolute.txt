@@ -1,0 +1,5 @@
+D:\THSIS\Repositorios\erp_sglc\THSIS\CLN\obj\x64\Debug\net7.0\CLN.csproj.AssemblyReference.cache
+D:\THSIS\Repositorios\erp_sglc\THSIS\CLN\obj\x64\Debug\net7.0\CLN.GeneratedMSBuildEditorConfig.editorconfig
+D:\THSIS\Repositorios\erp_sglc\THSIS\CLN\obj\x64\Debug\net7.0\CLN.AssemblyInfoInputs.cache
+D:\THSIS\Repositorios\erp_sglc\THSIS\CLN\obj\x64\Debug\net7.0\CLN.AssemblyInfo.cs
+D:\THSIS\Repositorios\erp_sglc\THSIS\CLN\obj\x64\Debug\net7.0\CLN.csproj.CoreCompileInputs.cache

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            TextBox txt_FleteTotalCab;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_RecepcionCarga));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
@@ -73,29 +72,29 @@
             dataGridView2 = new DataGridView();
             groupBox3 = new GroupBox();
             panel7 = new Panel();
-            radioButton3 = new RadioButton();
-            radioButton2 = new RadioButton();
-            radioButton1 = new RadioButton();
-            checkBox13 = new CheckBox();
-            checkBox12 = new CheckBox();
-            checkBox11 = new CheckBox();
+            rbt_Otros = new RadioButton();
+            rbt_Deposito = new RadioButton();
+            rbt_Efectivo = new RadioButton();
+            chk_Descarga = new CheckBox();
+            chk_Carga = new CheckBox();
+            chk_PagoContraEntrega = new CheckBox();
             panel6 = new Panel();
-            textBox17 = new TextBox();
+            txt_CEstibaDesc = new TextBox();
             checkBox10 = new CheckBox();
-            textBox16 = new TextBox();
+            txt_ConEstiba = new TextBox();
             checkBox9 = new CheckBox();
             checkBox8 = new CheckBox();
-            textBox15 = new TextBox();
+            txt_Consolidado = new TextBox();
             checkBox7 = new CheckBox();
             panel5 = new Panel();
-            txt_IGV = new TextBox();
+            txt_PrecioUnitario = new TextBox();
             txt_FleteSinIGV = new TextBox();
-            checkBox6 = new CheckBox();
-            checkBox5 = new CheckBox();
+            chk_Facturado = new CheckBox();
+            chk_FalsoFlete = new CheckBox();
             chk_IncluyeIGVFlete = new CheckBox();
-            textBox14 = new TextBox();
+            txt_Comision = new TextBox();
             label36 = new Label();
-            textBox13 = new TextBox();
+            txt_Adelanto = new TextBox();
             checkBox3 = new CheckBox();
             txt_FleteTotal = new TextBox();
             label35 = new Label();
@@ -105,7 +104,7 @@
             label33 = new Label();
             label32 = new Label();
             groupBox1 = new GroupBox();
-            textBox10 = new TextBox();
+            txt_ProductoTransportar = new TextBox();
             label31 = new Label();
             cbo_OrigenDetalle = new ComboBox();
             label30 = new Label();
@@ -113,7 +112,7 @@
             cbo_DestinoDetalle = new ComboBox();
             txt_DocClienteFinal = new TextBox();
             label22 = new Label();
-            txt_ClienteComisionista = new TextBox();
+            txt_DocComisionista = new TextBox();
             label24 = new Label();
             txt_DocClienteRecepcion = new TextBox();
             cbo_TipoCarga = new ComboBox();
@@ -123,11 +122,11 @@
             label25 = new Label();
             label28 = new Label();
             comboBox13 = new ComboBox();
-            comboBox15 = new ComboBox();
+            cbo_ClienteFinal = new ComboBox();
             txt_Peso = new TextBox();
             label27 = new Label();
             label26 = new Label();
-            comboBox14 = new ComboBox();
+            cbo_Comisionista = new ComboBox();
             tpg_ContratoTercero = new TabPage();
             dataGridView3 = new DataGridView();
             groupBox4 = new GroupBox();
@@ -160,46 +159,47 @@
             comboBox25 = new ComboBox();
             tpg_DatosEnvio = new TabPage();
             groupBox5 = new GroupBox();
+            txt_DireccionFacturacion = new TextBox();
+            txt_PuntoLlegada = new TextBox();
+            txt_PuntoPartida = new TextBox();
             label49 = new Label();
-            comboBox30 = new ComboBox();
             checkBox19 = new CheckBox();
-            comboBox29 = new ComboBox();
-            radioButton6 = new RadioButton();
-            radioButton5 = new RadioButton();
-            radioButton4 = new RadioButton();
+            cbo_ClientePaga = new ComboBox();
+            rbt_Remitente = new RadioButton();
+            rbt_Destinatario = new RadioButton();
+            rbt_Seleccionar = new RadioButton();
             label48 = new Label();
-            textBox37 = new TextBox();
+            txt_ClaveSeguridad = new TextBox();
             label47 = new Label();
-            textBox36 = new TextBox();
+            txt_Anexos = new TextBox();
             checkBox17 = new CheckBox();
-            comboBox21 = new ComboBox();
             checkBox18 = new CheckBox();
-            comboBox28 = new ComboBox();
             textBox34 = new TextBox();
             textBox35 = new TextBox();
             textBox33 = new TextBox();
             textBox32 = new TextBox();
             label46 = new Label();
-            comboBox27 = new ComboBox();
+            cbo_ContactoEntrega = new ComboBox();
             checkBox16 = new CheckBox();
-            comboBox26 = new ComboBox();
+            cbo_ClienteDestinatario = new ComboBox();
             checkBox15 = new CheckBox();
-            comboBox22 = new ComboBox();
+            cbo_ClienteRemitente = new ComboBox();
             label54 = new Label();
-            comboBox24 = new ComboBox();
+            cbo_ContactoCarga = new ComboBox();
             groupBox2 = new GroupBox();
+            txt_FleteTotalCab = new TextBox();
             cbo_OrigenCabecera = new ComboBox();
             label14 = new Label();
             cbo_DestinoCabecera = new ComboBox();
             label15 = new Label();
             chk_RecojoDomicilioLugar = new CheckBox();
             cbo_DomicilioLugar = new ComboBox();
-            textBox4 = new TextBox();
+            txt_DireccionRecojoDomicilio = new TextBox();
             cbo_TipoVehiculo = new ComboBox();
             label21 = new Label();
-            textBox2 = new TextBox();
+            txt_Observacion = new TextBox();
             label20 = new Label();
-            comboBox7 = new ComboBox();
+            cbo_Vendedor = new ComboBox();
             label19 = new Label();
             chk_Tercerizado = new CheckBox();
             label18 = new Label();
@@ -224,7 +224,7 @@
             panel4 = new Panel();
             btn_Cancelar = new Button();
             btn_Guardar = new Button();
-            txt_FleteTotalCab = new TextBox();
+            errorProvider1 = new ErrorProvider(components);
             tpc_RecepcionCarga.SuspendLayout();
             tpg_Lista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgb_Carga).BeginInit();
@@ -248,14 +248,8 @@
             groupBox5.SuspendLayout();
             groupBox2.SuspendLayout();
             panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
-            // 
-            // txt_FleteTotalCab
-            // 
-            txt_FleteTotalCab.Location = new Point(1303, 169);
-            txt_FleteTotalCab.Name = "txt_FleteTotalCab";
-            txt_FleteTotalCab.Size = new Size(95, 27);
-            txt_FleteTotalCab.TabIndex = 41;
             // 
             // tpc_RecepcionCarga
             // 
@@ -290,6 +284,7 @@
             dgb_Carga.Name = "dgb_Carga";
             dgb_Carga.RowHeadersWidth = 51;
             dgb_Carga.RowTemplate.Height = 29;
+            dgb_Carga.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgb_Carga.Size = new Size(1543, 640);
             dgb_Carga.TabIndex = 3;
             dgb_Carga.CellClick += dgb_Carga_CellClick;
@@ -310,7 +305,6 @@
             // 
             // tsm_IngresarGRT
             // 
-            tsm_IngresarGRT.Enabled = false;
             tsm_IngresarGRT.Name = "tsm_IngresarGRT";
             tsm_IngresarGRT.Size = new Size(145, 26);
             tsm_IngresarGRT.Text = "Ingresar";
@@ -344,6 +338,7 @@
             btn_Actualizar.Text = "Actualizar";
             btn_Actualizar.TextAlign = ContentAlignment.MiddleRight;
             btn_Actualizar.UseVisualStyleBackColor = true;
+            btn_Actualizar.Click += btn_Actualizar_Click;
             // 
             // button8
             // 
@@ -693,90 +688,90 @@
             // 
             // panel7
             // 
-            panel7.Controls.Add(radioButton3);
-            panel7.Controls.Add(radioButton2);
-            panel7.Controls.Add(radioButton1);
-            panel7.Controls.Add(checkBox13);
-            panel7.Controls.Add(checkBox12);
-            panel7.Controls.Add(checkBox11);
+            panel7.Controls.Add(rbt_Otros);
+            panel7.Controls.Add(rbt_Deposito);
+            panel7.Controls.Add(rbt_Efectivo);
+            panel7.Controls.Add(chk_Descarga);
+            panel7.Controls.Add(chk_Carga);
+            panel7.Controls.Add(chk_PagoContraEntrega);
             panel7.Dock = DockStyle.Left;
             panel7.Location = new Point(908, 23);
             panel7.Name = "panel7";
             panel7.Size = new Size(319, 217);
             panel7.TabIndex = 2;
             // 
-            // radioButton3
+            // rbt_Otros
             // 
-            radioButton3.AutoSize = true;
-            radioButton3.Location = new Point(24, 77);
-            radioButton3.Name = "radioButton3";
-            radioButton3.Size = new Size(66, 24);
-            radioButton3.TabIndex = 45;
-            radioButton3.TabStop = true;
-            radioButton3.Text = "Otros";
-            radioButton3.UseVisualStyleBackColor = true;
+            rbt_Otros.AutoSize = true;
+            rbt_Otros.Location = new Point(24, 77);
+            rbt_Otros.Name = "rbt_Otros";
+            rbt_Otros.Size = new Size(66, 24);
+            rbt_Otros.TabIndex = 45;
+            rbt_Otros.TabStop = true;
+            rbt_Otros.Text = "Otros";
+            rbt_Otros.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rbt_Deposito
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(24, 55);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(91, 24);
-            radioButton2.TabIndex = 44;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "Depósito";
-            radioButton2.UseVisualStyleBackColor = true;
+            rbt_Deposito.AutoSize = true;
+            rbt_Deposito.Location = new Point(24, 55);
+            rbt_Deposito.Name = "rbt_Deposito";
+            rbt_Deposito.Size = new Size(91, 24);
+            rbt_Deposito.TabIndex = 44;
+            rbt_Deposito.TabStop = true;
+            rbt_Deposito.Text = "Depósito";
+            rbt_Deposito.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rbt_Efectivo
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(24, 33);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(83, 24);
-            radioButton1.TabIndex = 43;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Efectivo";
-            radioButton1.UseVisualStyleBackColor = true;
+            rbt_Efectivo.AutoSize = true;
+            rbt_Efectivo.Location = new Point(24, 33);
+            rbt_Efectivo.Name = "rbt_Efectivo";
+            rbt_Efectivo.Size = new Size(83, 24);
+            rbt_Efectivo.TabIndex = 43;
+            rbt_Efectivo.TabStop = true;
+            rbt_Efectivo.Text = "Efectivo";
+            rbt_Efectivo.UseVisualStyleBackColor = true;
             // 
-            // checkBox13
+            // chk_Descarga
             // 
-            checkBox13.AutoSize = true;
-            checkBox13.Location = new Point(101, 113);
-            checkBox13.Name = "checkBox13";
-            checkBox13.Size = new Size(93, 24);
-            checkBox13.TabIndex = 42;
-            checkBox13.Text = "Descarga";
-            checkBox13.UseVisualStyleBackColor = true;
+            chk_Descarga.AutoSize = true;
+            chk_Descarga.Location = new Point(101, 113);
+            chk_Descarga.Name = "chk_Descarga";
+            chk_Descarga.Size = new Size(93, 24);
+            chk_Descarga.TabIndex = 42;
+            chk_Descarga.Text = "Descarga";
+            chk_Descarga.UseVisualStyleBackColor = true;
             // 
-            // checkBox12
+            // chk_Carga
             // 
-            checkBox12.AutoSize = true;
-            checkBox12.Location = new Point(6, 113);
-            checkBox12.Name = "checkBox12";
-            checkBox12.Size = new Size(75, 24);
-            checkBox12.TabIndex = 41;
-            checkBox12.Text = "Cargar";
-            checkBox12.UseVisualStyleBackColor = true;
+            chk_Carga.AutoSize = true;
+            chk_Carga.Location = new Point(6, 113);
+            chk_Carga.Name = "chk_Carga";
+            chk_Carga.Size = new Size(70, 24);
+            chk_Carga.TabIndex = 41;
+            chk_Carga.Text = "Carga";
+            chk_Carga.UseVisualStyleBackColor = true;
             // 
-            // checkBox11
+            // chk_PagoContraEntrega
             // 
-            checkBox11.AutoSize = true;
-            checkBox11.Location = new Point(24, 3);
-            checkBox11.Name = "checkBox11";
-            checkBox11.Size = new Size(167, 24);
-            checkBox11.TabIndex = 40;
-            checkBox11.Text = "Pago Contra Entrega";
-            checkBox11.UseVisualStyleBackColor = true;
+            chk_PagoContraEntrega.AutoSize = true;
+            chk_PagoContraEntrega.Location = new Point(24, 3);
+            chk_PagoContraEntrega.Name = "chk_PagoContraEntrega";
+            chk_PagoContraEntrega.Size = new Size(167, 24);
+            chk_PagoContraEntrega.TabIndex = 40;
+            chk_PagoContraEntrega.Text = "Pago Contra Entrega";
+            chk_PagoContraEntrega.UseVisualStyleBackColor = true;
             // 
             // panel6
             // 
             panel6.BorderStyle = BorderStyle.FixedSingle;
-            panel6.Controls.Add(textBox17);
+            panel6.Controls.Add(txt_CEstibaDesc);
             panel6.Controls.Add(checkBox10);
-            panel6.Controls.Add(textBox16);
+            panel6.Controls.Add(txt_ConEstiba);
             panel6.Controls.Add(checkBox9);
             panel6.Controls.Add(checkBox8);
-            panel6.Controls.Add(textBox15);
+            panel6.Controls.Add(txt_Consolidado);
             panel6.Controls.Add(checkBox7);
             panel6.Dock = DockStyle.Left;
             panel6.Location = new Point(499, 23);
@@ -784,12 +779,13 @@
             panel6.Size = new Size(409, 217);
             panel6.TabIndex = 1;
             // 
-            // textBox17
+            // txt_CEstibaDesc
             // 
-            textBox17.Location = new Point(311, 76);
-            textBox17.Name = "textBox17";
-            textBox17.Size = new Size(84, 27);
-            textBox17.TabIndex = 47;
+            txt_CEstibaDesc.Location = new Point(311, 76);
+            txt_CEstibaDesc.Name = "txt_CEstibaDesc";
+            txt_CEstibaDesc.Size = new Size(84, 27);
+            txt_CEstibaDesc.TabIndex = 47;
+            txt_CEstibaDesc.KeyPress += txt_CEstibaDesc_KeyPress;
             // 
             // checkBox10
             // 
@@ -801,12 +797,13 @@
             checkBox10.Text = "C.Estiba Desc.:";
             checkBox10.UseVisualStyleBackColor = true;
             // 
-            // textBox16
+            // txt_ConEstiba
             // 
-            textBox16.Location = new Point(91, 77);
-            textBox16.Name = "textBox16";
-            textBox16.Size = new Size(84, 27);
-            textBox16.TabIndex = 45;
+            txt_ConEstiba.Location = new Point(91, 77);
+            txt_ConEstiba.Name = "txt_ConEstiba";
+            txt_ConEstiba.Size = new Size(84, 27);
+            txt_ConEstiba.TabIndex = 45;
+            txt_ConEstiba.KeyPress += txt_ConEstiba_KeyPress;
             // 
             // checkBox9
             // 
@@ -828,12 +825,13 @@
             checkBox8.Text = "Incluye IGV";
             checkBox8.UseVisualStyleBackColor = true;
             // 
-            // textBox15
+            // txt_Consolidado
             // 
-            textBox15.Location = new Point(129, 9);
-            textBox15.Name = "textBox15";
-            textBox15.Size = new Size(125, 27);
-            textBox15.TabIndex = 40;
+            txt_Consolidado.Location = new Point(129, 9);
+            txt_Consolidado.Name = "txt_Consolidado";
+            txt_Consolidado.Size = new Size(125, 27);
+            txt_Consolidado.TabIndex = 40;
+            txt_Consolidado.KeyPress += txt_Consolidado_KeyPress;
             // 
             // checkBox7
             // 
@@ -848,14 +846,14 @@
             // panel5
             // 
             panel5.BorderStyle = BorderStyle.FixedSingle;
-            panel5.Controls.Add(txt_IGV);
+            panel5.Controls.Add(txt_PrecioUnitario);
             panel5.Controls.Add(txt_FleteSinIGV);
-            panel5.Controls.Add(checkBox6);
-            panel5.Controls.Add(checkBox5);
+            panel5.Controls.Add(chk_Facturado);
+            panel5.Controls.Add(chk_FalsoFlete);
             panel5.Controls.Add(chk_IncluyeIGVFlete);
-            panel5.Controls.Add(textBox14);
+            panel5.Controls.Add(txt_Comision);
             panel5.Controls.Add(label36);
-            panel5.Controls.Add(textBox13);
+            panel5.Controls.Add(txt_Adelanto);
             panel5.Controls.Add(checkBox3);
             panel5.Controls.Add(txt_FleteTotal);
             panel5.Controls.Add(label35);
@@ -870,12 +868,12 @@
             panel5.Size = new Size(496, 217);
             panel5.TabIndex = 0;
             // 
-            // txt_IGV
+            // txt_PrecioUnitario
             // 
-            txt_IGV.Location = new Point(155, 43);
-            txt_IGV.Name = "txt_IGV";
-            txt_IGV.Size = new Size(138, 27);
-            txt_IGV.TabIndex = 46;
+            txt_PrecioUnitario.Location = new Point(155, 43);
+            txt_PrecioUnitario.Name = "txt_PrecioUnitario";
+            txt_PrecioUnitario.Size = new Size(138, 27);
+            txt_PrecioUnitario.TabIndex = 46;
             // 
             // txt_FleteSinIGV
             // 
@@ -886,25 +884,25 @@
             txt_FleteSinIGV.TextChanged += txt_FleteSinIGV_TextChanged;
             txt_FleteSinIGV.KeyPress += txt_FleteSinIGV_KeyPress;
             // 
-            // checkBox6
+            // chk_Facturado
             // 
-            checkBox6.AutoSize = true;
-            checkBox6.Location = new Point(391, 80);
-            checkBox6.Name = "checkBox6";
-            checkBox6.Size = new Size(96, 24);
-            checkBox6.TabIndex = 44;
-            checkBox6.Text = "Facturado";
-            checkBox6.UseVisualStyleBackColor = true;
+            chk_Facturado.AutoSize = true;
+            chk_Facturado.Location = new Point(391, 80);
+            chk_Facturado.Name = "chk_Facturado";
+            chk_Facturado.Size = new Size(96, 24);
+            chk_Facturado.TabIndex = 44;
+            chk_Facturado.Text = "Facturado";
+            chk_Facturado.UseVisualStyleBackColor = true;
             // 
-            // checkBox5
+            // chk_FalsoFlete
             // 
-            checkBox5.AutoSize = true;
-            checkBox5.Location = new Point(391, 112);
-            checkBox5.Name = "checkBox5";
-            checkBox5.Size = new Size(100, 24);
-            checkBox5.TabIndex = 43;
-            checkBox5.Text = "Falso Flete";
-            checkBox5.UseVisualStyleBackColor = true;
+            chk_FalsoFlete.AutoSize = true;
+            chk_FalsoFlete.Location = new Point(391, 112);
+            chk_FalsoFlete.Name = "chk_FalsoFlete";
+            chk_FalsoFlete.Size = new Size(100, 24);
+            chk_FalsoFlete.TabIndex = 43;
+            chk_FalsoFlete.Text = "Falso Flete";
+            chk_FalsoFlete.UseVisualStyleBackColor = true;
             // 
             // chk_IncluyeIGVFlete
             // 
@@ -916,12 +914,13 @@
             chk_IncluyeIGVFlete.Text = "I. IGV";
             chk_IncluyeIGVFlete.UseVisualStyleBackColor = true;
             // 
-            // textBox14
+            // txt_Comision
             // 
-            textBox14.Location = new Point(391, 44);
-            textBox14.Name = "textBox14";
-            textBox14.Size = new Size(97, 27);
-            textBox14.TabIndex = 41;
+            txt_Comision.Location = new Point(391, 44);
+            txt_Comision.Name = "txt_Comision";
+            txt_Comision.Size = new Size(97, 27);
+            txt_Comision.TabIndex = 41;
+            txt_Comision.KeyPress += txt_Comision_KeyPress;
             // 
             // label36
             // 
@@ -933,12 +932,13 @@
             label36.TabIndex = 40;
             label36.Text = "Comisión:";
             // 
-            // textBox13
+            // txt_Adelanto
             // 
-            textBox13.Location = new Point(391, 9);
-            textBox13.Name = "textBox13";
-            textBox13.Size = new Size(97, 27);
-            textBox13.TabIndex = 39;
+            txt_Adelanto.Location = new Point(391, 9);
+            txt_Adelanto.Name = "txt_Adelanto";
+            txt_Adelanto.Size = new Size(97, 27);
+            txt_Adelanto.TabIndex = 39;
+            txt_Adelanto.KeyPress += txt_Adelanto_KeyPress;
             // 
             // checkBox3
             // 
@@ -956,6 +956,7 @@
             txt_FleteTotal.Name = "txt_FleteTotal";
             txt_FleteTotal.Size = new Size(138, 27);
             txt_FleteTotal.TabIndex = 37;
+            txt_FleteTotal.KeyPress += txt_FleteTotal_KeyPress;
             // 
             // label35
             // 
@@ -1018,7 +1019,7 @@
             // 
             groupBox1.BackColor = Color.Azure;
             groupBox1.BackgroundImageLayout = ImageLayout.None;
-            groupBox1.Controls.Add(textBox10);
+            groupBox1.Controls.Add(txt_ProductoTransportar);
             groupBox1.Controls.Add(label31);
             groupBox1.Controls.Add(cbo_OrigenDetalle);
             groupBox1.Controls.Add(label30);
@@ -1026,7 +1027,7 @@
             groupBox1.Controls.Add(cbo_DestinoDetalle);
             groupBox1.Controls.Add(txt_DocClienteFinal);
             groupBox1.Controls.Add(label22);
-            groupBox1.Controls.Add(txt_ClienteComisionista);
+            groupBox1.Controls.Add(txt_DocComisionista);
             groupBox1.Controls.Add(label24);
             groupBox1.Controls.Add(txt_DocClienteRecepcion);
             groupBox1.Controls.Add(cbo_TipoCarga);
@@ -1036,11 +1037,11 @@
             groupBox1.Controls.Add(label25);
             groupBox1.Controls.Add(label28);
             groupBox1.Controls.Add(comboBox13);
-            groupBox1.Controls.Add(comboBox15);
+            groupBox1.Controls.Add(cbo_ClienteFinal);
             groupBox1.Controls.Add(txt_Peso);
             groupBox1.Controls.Add(label27);
             groupBox1.Controls.Add(label26);
-            groupBox1.Controls.Add(comboBox14);
+            groupBox1.Controls.Add(cbo_Comisionista);
             groupBox1.Dock = DockStyle.Top;
             groupBox1.FlatStyle = FlatStyle.Popup;
             groupBox1.Location = new Point(3, 3);
@@ -1050,13 +1051,13 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Detalle";
             // 
-            // textBox10
+            // txt_ProductoTransportar
             // 
-            textBox10.Location = new Point(574, 131);
-            textBox10.Multiline = true;
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(623, 51);
-            textBox10.TabIndex = 49;
+            txt_ProductoTransportar.Location = new Point(574, 131);
+            txt_ProductoTransportar.Multiline = true;
+            txt_ProductoTransportar.Name = "txt_ProductoTransportar";
+            txt_ProductoTransportar.Size = new Size(623, 51);
+            txt_ProductoTransportar.TabIndex = 49;
             // 
             // label31
             // 
@@ -1071,6 +1072,8 @@
             // 
             // cbo_OrigenDetalle
             // 
+            cbo_OrigenDetalle.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_OrigenDetalle.AutoCompleteSource = AutoCompleteSource.ListItems;
             cbo_OrigenDetalle.FormattingEnabled = true;
             cbo_OrigenDetalle.Location = new Point(121, 25);
             cbo_OrigenDetalle.Name = "cbo_OrigenDetalle";
@@ -1101,6 +1104,8 @@
             // 
             // cbo_DestinoDetalle
             // 
+            cbo_DestinoDetalle.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_DestinoDetalle.AutoCompleteSource = AutoCompleteSource.ListItems;
             cbo_DestinoDetalle.FormattingEnabled = true;
             cbo_DestinoDetalle.Location = new Point(121, 59);
             cbo_DestinoDetalle.Name = "cbo_DestinoDetalle";
@@ -1113,6 +1118,7 @@
             txt_DocClienteFinal.Name = "txt_DocClienteFinal";
             txt_DocClienteFinal.Size = new Size(156, 27);
             txt_DocClienteFinal.TabIndex = 36;
+            txt_DocClienteFinal.KeyUp += txt_DocClienteFinal_KeyUp;
             // 
             // label22
             // 
@@ -1124,12 +1130,13 @@
             label22.TabIndex = 20;
             label22.Text = "Lugar Destino:";
             // 
-            // txt_ClienteComisionista
+            // txt_DocComisionista
             // 
-            txt_ClienteComisionista.Location = new Point(574, 93);
-            txt_ClienteComisionista.Name = "txt_ClienteComisionista";
-            txt_ClienteComisionista.Size = new Size(156, 27);
-            txt_ClienteComisionista.TabIndex = 35;
+            txt_DocComisionista.Location = new Point(574, 93);
+            txt_DocComisionista.Name = "txt_DocComisionista";
+            txt_DocComisionista.Size = new Size(156, 27);
+            txt_DocComisionista.TabIndex = 35;
+            txt_DocComisionista.KeyUp += txt_DocComisionista_KeyUp;
             // 
             // label24
             // 
@@ -1178,6 +1185,8 @@
             // 
             // cbo_ClienteRecepcion
             // 
+            cbo_ClienteRecepcion.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_ClienteRecepcion.AutoCompleteSource = AutoCompleteSource.ListItems;
             cbo_ClienteRecepcion.FormattingEnabled = true;
             cbo_ClienteRecepcion.Location = new Point(736, 25);
             cbo_ClienteRecepcion.Name = "cbo_ClienteRecepcion";
@@ -1213,13 +1222,16 @@
             comboBox13.Size = new Size(282, 28);
             comboBox13.TabIndex = 25;
             // 
-            // comboBox15
+            // cbo_ClienteFinal
             // 
-            comboBox15.FormattingEnabled = true;
-            comboBox15.Location = new Point(736, 59);
-            comboBox15.Name = "comboBox15";
-            comboBox15.Size = new Size(461, 28);
-            comboBox15.TabIndex = 30;
+            cbo_ClienteFinal.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_ClienteFinal.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbo_ClienteFinal.FormattingEnabled = true;
+            cbo_ClienteFinal.Location = new Point(736, 59);
+            cbo_ClienteFinal.Name = "cbo_ClienteFinal";
+            cbo_ClienteFinal.Size = new Size(461, 28);
+            cbo_ClienteFinal.TabIndex = 30;
+            cbo_ClienteFinal.SelectedIndexChanged += cbo_ClienteFinal_SelectedIndexChanged;
             // 
             // txt_Peso
             // 
@@ -1249,13 +1261,16 @@
             label26.TabIndex = 27;
             label26.Text = "Peso:";
             // 
-            // comboBox14
+            // cbo_Comisionista
             // 
-            comboBox14.FormattingEnabled = true;
-            comboBox14.Location = new Point(736, 93);
-            comboBox14.Name = "comboBox14";
-            comboBox14.Size = new Size(461, 28);
-            comboBox14.TabIndex = 28;
+            cbo_Comisionista.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_Comisionista.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbo_Comisionista.FormattingEnabled = true;
+            cbo_Comisionista.Location = new Point(736, 93);
+            cbo_Comisionista.Name = "cbo_Comisionista";
+            cbo_Comisionista.Size = new Size(461, 28);
+            cbo_Comisionista.TabIndex = 28;
+            cbo_Comisionista.SelectedIndexChanged += cbo_Comisionista_SelectedIndexChanged;
             // 
             // tpg_ContratoTercero
             // 
@@ -1560,33 +1575,33 @@
             // 
             groupBox5.BackColor = Color.Azure;
             groupBox5.BackgroundImageLayout = ImageLayout.None;
+            groupBox5.Controls.Add(txt_DireccionFacturacion);
+            groupBox5.Controls.Add(txt_PuntoLlegada);
+            groupBox5.Controls.Add(txt_PuntoPartida);
             groupBox5.Controls.Add(label49);
-            groupBox5.Controls.Add(comboBox30);
             groupBox5.Controls.Add(checkBox19);
-            groupBox5.Controls.Add(comboBox29);
-            groupBox5.Controls.Add(radioButton6);
-            groupBox5.Controls.Add(radioButton5);
-            groupBox5.Controls.Add(radioButton4);
+            groupBox5.Controls.Add(cbo_ClientePaga);
+            groupBox5.Controls.Add(rbt_Remitente);
+            groupBox5.Controls.Add(rbt_Destinatario);
+            groupBox5.Controls.Add(rbt_Seleccionar);
             groupBox5.Controls.Add(label48);
-            groupBox5.Controls.Add(textBox37);
+            groupBox5.Controls.Add(txt_ClaveSeguridad);
             groupBox5.Controls.Add(label47);
-            groupBox5.Controls.Add(textBox36);
+            groupBox5.Controls.Add(txt_Anexos);
             groupBox5.Controls.Add(checkBox17);
-            groupBox5.Controls.Add(comboBox21);
             groupBox5.Controls.Add(checkBox18);
-            groupBox5.Controls.Add(comboBox28);
             groupBox5.Controls.Add(textBox34);
             groupBox5.Controls.Add(textBox35);
             groupBox5.Controls.Add(textBox33);
             groupBox5.Controls.Add(textBox32);
             groupBox5.Controls.Add(label46);
-            groupBox5.Controls.Add(comboBox27);
+            groupBox5.Controls.Add(cbo_ContactoEntrega);
             groupBox5.Controls.Add(checkBox16);
-            groupBox5.Controls.Add(comboBox26);
+            groupBox5.Controls.Add(cbo_ClienteDestinatario);
             groupBox5.Controls.Add(checkBox15);
-            groupBox5.Controls.Add(comboBox22);
+            groupBox5.Controls.Add(cbo_ClienteRemitente);
             groupBox5.Controls.Add(label54);
-            groupBox5.Controls.Add(comboBox24);
+            groupBox5.Controls.Add(cbo_ContactoCarga);
             groupBox5.Dock = DockStyle.Fill;
             groupBox5.FlatStyle = FlatStyle.Popup;
             groupBox5.Location = new Point(3, 3);
@@ -1595,6 +1610,27 @@
             groupBox5.TabIndex = 54;
             groupBox5.TabStop = false;
             groupBox5.Text = "Detalle";
+            // 
+            // txt_DireccionFacturacion
+            // 
+            txt_DireccionFacturacion.Location = new Point(776, 247);
+            txt_DireccionFacturacion.Name = "txt_DireccionFacturacion";
+            txt_DireccionFacturacion.Size = new Size(480, 27);
+            txt_DireccionFacturacion.TabIndex = 80;
+            // 
+            // txt_PuntoLlegada
+            // 
+            txt_PuntoLlegada.Location = new Point(776, 127);
+            txt_PuntoLlegada.Name = "txt_PuntoLlegada";
+            txt_PuntoLlegada.Size = new Size(480, 27);
+            txt_PuntoLlegada.TabIndex = 79;
+            // 
+            // txt_PuntoPartida
+            // 
+            txt_PuntoPartida.Location = new Point(148, 131);
+            txt_PuntoPartida.Name = "txt_PuntoPartida";
+            txt_PuntoPartida.Size = new Size(477, 27);
+            txt_PuntoPartida.TabIndex = 78;
             // 
             // label49
             // 
@@ -1605,14 +1641,6 @@
             label49.Size = new Size(78, 20);
             label49.TabIndex = 77;
             label49.Text = "Dirección:";
-            // 
-            // comboBox30
-            // 
-            comboBox30.FormattingEnabled = true;
-            comboBox30.Location = new Point(776, 248);
-            comboBox30.Name = "comboBox30";
-            comboBox30.Size = new Size(479, 28);
-            comboBox30.TabIndex = 76;
             // 
             // checkBox19
             // 
@@ -1625,46 +1653,51 @@
             checkBox19.Text = "Cliente Paga:";
             checkBox19.UseVisualStyleBackColor = true;
             // 
-            // comboBox29
+            // cbo_ClientePaga
             // 
-            comboBox29.FormattingEnabled = true;
-            comboBox29.Location = new Point(776, 213);
-            comboBox29.Name = "comboBox29";
-            comboBox29.Size = new Size(479, 28);
-            comboBox29.TabIndex = 74;
+            cbo_ClientePaga.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_ClientePaga.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbo_ClientePaga.FormattingEnabled = true;
+            cbo_ClientePaga.Location = new Point(776, 213);
+            cbo_ClientePaga.Name = "cbo_ClientePaga";
+            cbo_ClientePaga.Size = new Size(479, 28);
+            cbo_ClientePaga.TabIndex = 74;
             // 
-            // radioButton6
+            // rbt_Remitente
             // 
-            radioButton6.AutoSize = true;
-            radioButton6.Location = new Point(901, 184);
-            radioButton6.Name = "radioButton6";
-            radioButton6.Size = new Size(107, 24);
-            radioButton6.TabIndex = 73;
-            radioButton6.TabStop = true;
-            radioButton6.Text = "REMITENTE";
-            radioButton6.UseVisualStyleBackColor = true;
+            rbt_Remitente.AutoSize = true;
+            rbt_Remitente.Location = new Point(901, 184);
+            rbt_Remitente.Name = "rbt_Remitente";
+            rbt_Remitente.Size = new Size(107, 24);
+            rbt_Remitente.TabIndex = 73;
+            rbt_Remitente.TabStop = true;
+            rbt_Remitente.Text = "REMITENTE";
+            rbt_Remitente.UseVisualStyleBackColor = true;
+            rbt_Remitente.CheckedChanged += radioButton6_CheckedChanged;
             // 
-            // radioButton5
+            // rbt_Destinatario
             // 
-            radioButton5.AutoSize = true;
-            radioButton5.Location = new Point(1014, 183);
-            radioButton5.Name = "radioButton5";
-            radioButton5.Size = new Size(130, 24);
-            radioButton5.TabIndex = 72;
-            radioButton5.TabStop = true;
-            radioButton5.Text = "DESTINATARIO";
-            radioButton5.UseVisualStyleBackColor = true;
+            rbt_Destinatario.AutoSize = true;
+            rbt_Destinatario.Location = new Point(1014, 183);
+            rbt_Destinatario.Name = "rbt_Destinatario";
+            rbt_Destinatario.Size = new Size(130, 24);
+            rbt_Destinatario.TabIndex = 72;
+            rbt_Destinatario.TabStop = true;
+            rbt_Destinatario.Text = "DESTINATARIO";
+            rbt_Destinatario.UseVisualStyleBackColor = true;
+            rbt_Destinatario.CheckedChanged += rbt_Destinatario_CheckedChanged;
             // 
-            // radioButton4
+            // rbt_Seleccionar
             // 
-            radioButton4.AutoSize = true;
-            radioButton4.Location = new Point(776, 185);
-            radioButton4.Name = "radioButton4";
-            radioButton4.Size = new Size(124, 24);
-            radioButton4.TabIndex = 71;
-            radioButton4.TabStop = true;
-            radioButton4.Text = "SELECCIONAR";
-            radioButton4.UseVisualStyleBackColor = true;
+            rbt_Seleccionar.AutoSize = true;
+            rbt_Seleccionar.Location = new Point(776, 185);
+            rbt_Seleccionar.Name = "rbt_Seleccionar";
+            rbt_Seleccionar.Size = new Size(124, 24);
+            rbt_Seleccionar.TabIndex = 71;
+            rbt_Seleccionar.TabStop = true;
+            rbt_Seleccionar.Text = "SELECCIONAR";
+            rbt_Seleccionar.UseVisualStyleBackColor = true;
+            rbt_Seleccionar.CheckedChanged += rbt_Seleccionar_CheckedChanged;
             // 
             // label48
             // 
@@ -1676,12 +1709,12 @@
             label48.TabIndex = 70;
             label48.Text = "CLAVE DE SEGURIDAD:";
             // 
-            // textBox37
+            // txt_ClaveSeguridad
             // 
-            textBox37.Location = new Point(414, 248);
-            textBox37.Name = "textBox37";
-            textBox37.Size = new Size(212, 27);
-            textBox37.TabIndex = 69;
+            txt_ClaveSeguridad.Location = new Point(414, 248);
+            txt_ClaveSeguridad.Name = "txt_ClaveSeguridad";
+            txt_ClaveSeguridad.Size = new Size(212, 27);
+            txt_ClaveSeguridad.TabIndex = 69;
             // 
             // label47
             // 
@@ -1693,13 +1726,13 @@
             label47.TabIndex = 68;
             label47.Text = "Doc. Anexos:";
             // 
-            // textBox36
+            // txt_Anexos
             // 
-            textBox36.Location = new Point(146, 184);
-            textBox36.Multiline = true;
-            textBox36.Name = "textBox36";
-            textBox36.Size = new Size(479, 57);
-            textBox36.TabIndex = 67;
+            txt_Anexos.Location = new Point(146, 184);
+            txt_Anexos.Multiline = true;
+            txt_Anexos.Name = "txt_Anexos";
+            txt_Anexos.Size = new Size(479, 57);
+            txt_Anexos.TabIndex = 67;
             // 
             // checkBox17
             // 
@@ -1712,14 +1745,6 @@
             checkBox17.Text = "Punto Llegada:";
             checkBox17.UseVisualStyleBackColor = true;
             // 
-            // comboBox21
-            // 
-            comboBox21.FormattingEnabled = true;
-            comboBox21.Location = new Point(776, 125);
-            comboBox21.Name = "comboBox21";
-            comboBox21.Size = new Size(479, 28);
-            comboBox21.TabIndex = 65;
-            // 
             // checkBox18
             // 
             checkBox18.AutoSize = true;
@@ -1730,14 +1755,6 @@
             checkBox18.TabIndex = 64;
             checkBox18.Text = "Punto Partida:";
             checkBox18.UseVisualStyleBackColor = true;
-            // 
-            // comboBox28
-            // 
-            comboBox28.FormattingEnabled = true;
-            comboBox28.Location = new Point(146, 127);
-            comboBox28.Name = "comboBox28";
-            comboBox28.Size = new Size(479, 28);
-            comboBox28.TabIndex = 63;
             // 
             // textBox34
             // 
@@ -1777,13 +1794,16 @@
             label46.TabIndex = 58;
             label46.Text = "Contacto Entrega:";
             // 
-            // comboBox27
+            // cbo_ContactoEntrega
             // 
-            comboBox27.FormattingEnabled = true;
-            comboBox27.Location = new Point(776, 59);
-            comboBox27.Name = "comboBox27";
-            comboBox27.Size = new Size(479, 28);
-            comboBox27.TabIndex = 57;
+            cbo_ContactoEntrega.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_ContactoEntrega.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbo_ContactoEntrega.Enabled = false;
+            cbo_ContactoEntrega.FormattingEnabled = true;
+            cbo_ContactoEntrega.Location = new Point(776, 59);
+            cbo_ContactoEntrega.Name = "cbo_ContactoEntrega";
+            cbo_ContactoEntrega.Size = new Size(479, 28);
+            cbo_ContactoEntrega.TabIndex = 57;
             // 
             // checkBox16
             // 
@@ -1796,13 +1816,15 @@
             checkBox16.Text = "Destinatario:";
             checkBox16.UseVisualStyleBackColor = true;
             // 
-            // comboBox26
+            // cbo_ClienteDestinatario
             // 
-            comboBox26.FormattingEnabled = true;
-            comboBox26.Location = new Point(776, 24);
-            comboBox26.Name = "comboBox26";
-            comboBox26.Size = new Size(479, 28);
-            comboBox26.TabIndex = 55;
+            cbo_ClienteDestinatario.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_ClienteDestinatario.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbo_ClienteDestinatario.FormattingEnabled = true;
+            cbo_ClienteDestinatario.Location = new Point(776, 24);
+            cbo_ClienteDestinatario.Name = "cbo_ClienteDestinatario";
+            cbo_ClienteDestinatario.Size = new Size(479, 28);
+            cbo_ClienteDestinatario.TabIndex = 55;
             // 
             // checkBox15
             // 
@@ -1815,13 +1837,15 @@
             checkBox15.Text = "Remitente:";
             checkBox15.UseVisualStyleBackColor = true;
             // 
-            // comboBox22
+            // cbo_ClienteRemitente
             // 
-            comboBox22.FormattingEnabled = true;
-            comboBox22.Location = new Point(146, 25);
-            comboBox22.Name = "comboBox22";
-            comboBox22.Size = new Size(479, 28);
-            comboBox22.TabIndex = 32;
+            cbo_ClienteRemitente.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_ClienteRemitente.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbo_ClienteRemitente.FormattingEnabled = true;
+            cbo_ClienteRemitente.Location = new Point(146, 25);
+            cbo_ClienteRemitente.Name = "cbo_ClienteRemitente";
+            cbo_ClienteRemitente.Size = new Size(479, 28);
+            cbo_ClienteRemitente.TabIndex = 32;
             // 
             // label54
             // 
@@ -1833,32 +1857,35 @@
             label54.TabIndex = 31;
             label54.Text = "Contacto Carga:";
             // 
-            // comboBox24
+            // cbo_ContactoCarga
             // 
-            comboBox24.FormattingEnabled = true;
-            comboBox24.Location = new Point(146, 59);
-            comboBox24.Name = "comboBox24";
-            comboBox24.Size = new Size(479, 28);
-            comboBox24.TabIndex = 30;
+            cbo_ContactoCarga.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_ContactoCarga.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbo_ContactoCarga.Enabled = false;
+            cbo_ContactoCarga.FormattingEnabled = true;
+            cbo_ContactoCarga.Location = new Point(146, 59);
+            cbo_ContactoCarga.Name = "cbo_ContactoCarga";
+            cbo_ContactoCarga.Size = new Size(479, 28);
+            cbo_ContactoCarga.TabIndex = 30;
             // 
             // groupBox2
             // 
             groupBox2.BackColor = Color.Azure;
             groupBox2.BackgroundImageLayout = ImageLayout.None;
+            groupBox2.Controls.Add(txt_FleteTotalCab);
             groupBox2.Controls.Add(cbo_OrigenCabecera);
             groupBox2.Controls.Add(label14);
             groupBox2.Controls.Add(cbo_DestinoCabecera);
             groupBox2.Controls.Add(label15);
             groupBox2.Controls.Add(chk_RecojoDomicilioLugar);
             groupBox2.Controls.Add(cbo_DomicilioLugar);
-            groupBox2.Controls.Add(textBox4);
+            groupBox2.Controls.Add(txt_DireccionRecojoDomicilio);
             groupBox2.Controls.Add(cbo_TipoVehiculo);
             groupBox2.Controls.Add(label21);
-            groupBox2.Controls.Add(textBox2);
+            groupBox2.Controls.Add(txt_Observacion);
             groupBox2.Controls.Add(label20);
-            groupBox2.Controls.Add(comboBox7);
+            groupBox2.Controls.Add(cbo_Vendedor);
             groupBox2.Controls.Add(label19);
-            groupBox2.Controls.Add(txt_FleteTotalCab);
             groupBox2.Controls.Add(chk_Tercerizado);
             groupBox2.Controls.Add(label18);
             groupBox2.Controls.Add(cbo_TipoEntrega);
@@ -1887,6 +1914,13 @@
             groupBox2.TabIndex = 18;
             groupBox2.TabStop = false;
             groupBox2.Text = "Datos Generales";
+            // 
+            // txt_FleteTotalCab
+            // 
+            txt_FleteTotalCab.Location = new Point(986, 170);
+            txt_FleteTotalCab.Name = "txt_FleteTotalCab";
+            txt_FleteTotalCab.Size = new Size(125, 27);
+            txt_FleteTotalCab.TabIndex = 55;
             // 
             // cbo_OrigenCabecera
             // 
@@ -1950,13 +1984,13 @@
             cbo_DomicilioLugar.Size = new Size(204, 28);
             cbo_DomicilioLugar.TabIndex = 49;
             // 
-            // textBox4
+            // txt_DireccionRecojoDomicilio
             // 
-            textBox4.Location = new Point(1094, 96);
-            textBox4.Multiline = true;
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(204, 64);
-            textBox4.TabIndex = 48;
+            txt_DireccionRecojoDomicilio.Location = new Point(1094, 96);
+            txt_DireccionRecojoDomicilio.Multiline = true;
+            txt_DireccionRecojoDomicilio.Name = "txt_DireccionRecojoDomicilio";
+            txt_DireccionRecojoDomicilio.Size = new Size(204, 64);
+            txt_DireccionRecojoDomicilio.TabIndex = 48;
             // 
             // cbo_TipoVehiculo
             // 
@@ -1976,13 +2010,13 @@
             label21.TabIndex = 46;
             label21.Text = "T.V.:";
             // 
-            // textBox2
+            // txt_Observacion
             // 
-            textBox2.Location = new Point(887, 29);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(204, 95);
-            textBox2.TabIndex = 45;
+            txt_Observacion.Location = new Point(887, 29);
+            txt_Observacion.Multiline = true;
+            txt_Observacion.Name = "txt_Observacion";
+            txt_Observacion.Size = new Size(204, 95);
+            txt_Observacion.TabIndex = 45;
             // 
             // label20
             // 
@@ -1994,19 +2028,19 @@
             label20.TabIndex = 44;
             label20.Text = "Vendedor:";
             // 
-            // comboBox7
+            // cbo_Vendedor
             // 
-            comboBox7.FormattingEnabled = true;
-            comboBox7.Location = new Point(784, 136);
-            comboBox7.Name = "comboBox7";
-            comboBox7.Size = new Size(303, 28);
-            comboBox7.TabIndex = 43;
+            cbo_Vendedor.FormattingEnabled = true;
+            cbo_Vendedor.Location = new Point(784, 136);
+            cbo_Vendedor.Name = "cbo_Vendedor";
+            cbo_Vendedor.Size = new Size(303, 28);
+            cbo_Vendedor.TabIndex = 43;
             // 
             // label19
             // 
             label19.AutoSize = true;
             label19.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label19.Location = new Point(1205, 173);
+            label19.Location = new Point(887, 172);
             label19.Name = "label19";
             label19.Size = new Size(93, 20);
             label19.TabIndex = 42;
@@ -2016,7 +2050,7 @@
             // 
             chk_Tercerizado.AutoSize = true;
             chk_Tercerizado.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            chk_Tercerizado.Location = new Point(1099, 173);
+            chk_Tercerizado.Location = new Point(784, 170);
             chk_Tercerizado.Name = "chk_Tercerizado";
             chk_Tercerizado.Size = new Size(79, 24);
             chk_Tercerizado.TabIndex = 23;
@@ -2228,6 +2262,10 @@
             btn_Guardar.UseVisualStyleBackColor = true;
             btn_Guardar.Click += btn_Guardar_Click;
             // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            // 
             // frm_RecepcionCarga
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -2269,6 +2307,7 @@
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
         }
 
@@ -2334,32 +2373,29 @@
         private TextBox textBox31;
         private GroupBox groupBox5;
         private CheckBox checkBox15;
-        private ComboBox comboBox22;
+        private ComboBox cbo_ClienteRemitente;
         private Label label54;
-        private ComboBox comboBox24;
+        private ComboBox cbo_ContactoCarga;
         private CheckBox checkBox17;
-        private ComboBox comboBox21;
         private CheckBox checkBox18;
-        private ComboBox comboBox28;
         private TextBox textBox34;
         private TextBox textBox35;
         private TextBox textBox33;
         private TextBox textBox32;
         private Label label46;
-        private ComboBox comboBox27;
+        private ComboBox cbo_ContactoEntrega;
         private CheckBox checkBox16;
-        private ComboBox comboBox26;
+        private ComboBox cbo_ClienteDestinatario;
         private CheckBox checkBox19;
-        private ComboBox comboBox29;
-        private RadioButton radioButton6;
-        private RadioButton radioButton5;
-        private RadioButton radioButton4;
+        private ComboBox cbo_ClientePaga;
+        private RadioButton rbt_Remitente;
+        private RadioButton rbt_Destinatario;
+        private RadioButton rbt_Seleccionar;
         private Label label48;
-        private TextBox textBox37;
+        private TextBox txt_ClaveSeguridad;
         private Label label47;
-        private TextBox textBox36;
+        private TextBox txt_Anexos;
         private Label label49;
-        private ComboBox comboBox30;
         private ContextMenuStrip cms_ListaCarga;
         private ToolStripMenuItem guíaDeRemisiónTransportistaToolStripMenuItem;
         private CheckBox chk_Excluir_Asignada;
@@ -2375,27 +2411,27 @@
         private DataGridView dataGridView2;
         private GroupBox groupBox3;
         private Panel panel7;
-        private RadioButton radioButton3;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
-        private CheckBox checkBox13;
-        private CheckBox checkBox12;
-        private CheckBox checkBox11;
+        private RadioButton rbt_Otros;
+        private RadioButton rbt_Deposito;
+        private RadioButton rbt_Efectivo;
+        private CheckBox chk_Descarga;
+        private CheckBox chk_Carga;
+        private CheckBox chk_PagoContraEntrega;
         private Panel panel6;
-        private TextBox textBox17;
+        private TextBox txt_CEstibaDesc;
         private CheckBox checkBox10;
-        private TextBox textBox16;
+        private TextBox txt_ConEstiba;
         private CheckBox checkBox9;
         private CheckBox checkBox8;
-        private TextBox textBox15;
+        private TextBox txt_Consolidado;
         private CheckBox checkBox7;
         private Panel panel5;
-        private CheckBox checkBox6;
-        private CheckBox checkBox5;
+        private CheckBox chk_Facturado;
+        private CheckBox chk_FalsoFlete;
         private CheckBox chk_IncluyeIGVFlete;
-        private TextBox textBox14;
+        private TextBox txt_Comision;
         private Label label36;
-        private TextBox textBox13;
+        private TextBox txt_Adelanto;
         private CheckBox checkBox3;
         private TextBox txt_FleteTotal;
         private Label label35;
@@ -2405,7 +2441,7 @@
         private Label label33;
         private Label label32;
         private GroupBox groupBox1;
-        private TextBox textBox10;
+        private TextBox txt_ProductoTransportar;
         private Label label31;
         private ComboBox cbo_OrigenDetalle;
         private Label label30;
@@ -2413,7 +2449,7 @@
         private ComboBox cbo_DestinoDetalle;
         private TextBox txt_DocClienteFinal;
         private Label label22;
-        private TextBox txt_ClienteComisionista;
+        private TextBox txt_DocComisionista;
         private Label label24;
         private TextBox txt_DocClienteRecepcion;
         private ComboBox cbo_TipoCarga;
@@ -2423,20 +2459,20 @@
         private Label label25;
         private Label label28;
         private ComboBox comboBox13;
-        private ComboBox comboBox15;
+        private ComboBox cbo_ClienteFinal;
         private TextBox textBox6;
         private Label label27;
         private Label label26;
-        private ComboBox comboBox14;
+        private ComboBox cbo_Comisionista;
         private GroupBox groupBox2;
         private CheckBox chk_RecojoDomicilioLugar;
         private ComboBox cbo_DomicilioLugar;
-        private TextBox textBox4;
+        private TextBox txt_DireccionRecojoDomicilio;
         private ComboBox cbo_TipoVehiculo;
         private Label label21;
-        private TextBox textBox2;
+        private TextBox txt_Observacion;
         private Label label20;
-        private ComboBox comboBox7;
+        private ComboBox cbo_Vendedor;
         private Label label19;
         private CheckBox chk_Tercerizado;
         private Label label18;
@@ -2460,11 +2496,16 @@
         private Label label9;
         private ToolStripMenuItem tsm_IngresarGRT;
         private TextBox txt_FleteSinIGV;
-        private TextBox txt_IGV;
+        private TextBox txt_PrecioUnitario;
         private ComboBox cbo_OrigenCabecera;
         private Label label14;
         private ComboBox cbo_DestinoCabecera;
         private Label label15;
         private TextBox txt_Peso;
+        private TextBox txt_FleteTotalCab;
+        private TextBox txt_DireccionFacturacion;
+        private TextBox txt_PuntoLlegada;
+        private TextBox txt_PuntoPartida;
+        private ErrorProvider errorProvider1;
     }
 }

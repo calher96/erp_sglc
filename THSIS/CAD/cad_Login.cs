@@ -57,6 +57,9 @@ namespace CAD
                     else
                     {
                         Console.WriteLine($"La solicitud al Web API falló con el código: {response.StatusCode}");
+                        response1 = new ResponseHelper();
+                        response1.codError = -1;
+                        response1.mensajeError = "Ocurrió un error al iniciar sesión";
                     }
                 }
                 catch (Exception ex)

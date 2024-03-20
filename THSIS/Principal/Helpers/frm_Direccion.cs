@@ -28,40 +28,50 @@ namespace Principal.Helpers
 
         private void InicializarTabla()
         {
-            if (ListaDireccionTrabajador.Count > 0)
+            try
             {
-                //ListaDireccionEliminada = ListaDireccionTrabajador.Where(d => d.Marcabaja == 0).ToList();
-                ListaDireccionTrabajador = ListaDireccionTrabajador.Where(d => d.Marcabaja == 1).ToList();
-                //dgb_Direccion.DataSource = null;
-                dgb_Direccion.DataSource = ListaDireccionTrabajador;
-                dgb_Direccion.CellFormatting += dgb_Direccion_CellFormatting;
-                dgb_Direccion.Columns["DireccionCompleta"].Width = 600;
-                dgb_Direccion.Columns["DireccionCompleta"].HeaderText = "Dirección Completa";
-                foreach (DataGridViewColumn column in dgb_Direccion.Columns)
+                if (ListaDireccionTrabajador.Count > 0)
                 {
-                    if (column.Name != "DireccionCompleta")
+                    //ListaDireccionEliminada = ListaDireccionTrabajador.Where(d => d.Marcabaja == 0).ToList();
+                    ListaDireccionTrabajador = ListaDireccionTrabajador.Where(d => d.Marcabaja == 1).ToList();
+                    //dgb_Direccion.DataSource = null;
+                    dgb_Direccion.DataSource = ListaDireccionTrabajador;
+                    dgb_Direccion.CellFormatting += dgb_Direccion_CellFormatting;
+                    dgb_Direccion.Columns["DireccionCompleta"].Width = 600;
+                    dgb_Direccion.Columns["DireccionCompleta"].HeaderText = "Dirección Completa";
+                    foreach (DataGridViewColumn column in dgb_Direccion.Columns)
                     {
-                        column.Visible = false;
+                        if (column.Name != "DireccionCompleta")
+                        {
+                            column.Visible = false;
+                        }
                     }
                 }
-            }
-            else if(ListaDireccionTrabajador.Count > 0)
-            {
-                //ListaDireccionEliminada = ListaDireccionCliente.Where(d => d.Marcabaja == 0).ToList();
-                ListaDireccionCliente = ListaDireccionCliente.Where(d => d.Marcabaja == 1).ToList();
-                //dgb_Direccion.DataSource = null;
-                dgb_Direccion.DataSource = ListaDireccionCliente;
-                dgb_Direccion.CellFormatting += dgb_Direccion_CellFormatting;
-                dgb_Direccion.Columns["DireccionCompleta"].Width = 600;
-                dgb_Direccion.Columns["DireccionCompleta"].HeaderText = "Dirección Completa";
-                foreach (DataGridViewColumn column in dgb_Direccion.Columns)
+                else if (ListaDireccionCliente.Count > 0)
                 {
-                    if (column.Name != "DireccionCompleta")
+                    //ListaDireccionEliminada = ListaDireccionCliente.Where(d => d.Marcabaja == 0).ToList();
+                    ListaDireccionCliente = ListaDireccionCliente.Where(d => d.Marcabaja == 1).ToList();
+                    //dgb_Direccion.DataSource = null;
+                    dgb_Direccion.DataSource = ListaDireccionCliente;
+                    dgb_Direccion.CellFormatting += dgb_Direccion_CellFormatting;
+                    dgb_Direccion.Columns["DireccionCompleta"].Width = 600;
+                    dgb_Direccion.Columns["DireccionCompleta"].HeaderText = "Dirección Completa";
+                    foreach (DataGridViewColumn column in dgb_Direccion.Columns)
                     {
-                        column.Visible = false;
+                        if (column.Name != "DireccionCompleta")
+                        {
+                            column.Visible = false;
+                        }
                     }
                 }
+
+                dgb_Direccion.Refresh();    
             }
+            catch (Exception ex)
+            {
+
+            }
+            
 
         }
 

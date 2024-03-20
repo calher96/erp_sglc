@@ -32,6 +32,10 @@ namespace CEN.Entidad
         public String Mac { get; set; }
         public String HostUser { get; set; }
         public String HostName { get; set; }
+        public String NombresCompletos {
+            get { return Persona.Nombres + " " + Persona.ApellidoPaterno + " " + Persona.ApellidoMaterno;  } 
+        }
+
         public ent_Trabajador()
         {
             Id = 0;

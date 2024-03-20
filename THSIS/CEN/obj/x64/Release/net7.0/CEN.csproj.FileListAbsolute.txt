@@ -1,0 +1,13 @@
+D:\THSIS\Repositorios\erp_sglc\THSIS\CEN\bin\x64\Release\net7.0\CEN.deps.json
+D:\THSIS\Repositorios\erp_sglc\THSIS\CEN\bin\x64\Release\net7.0\CEN.dll
+D:\THSIS\Repositorios\erp_sglc\THSIS\CEN\bin\x64\Release\net7.0\CEN.pdb
+D:\THSIS\Repositorios\erp_sglc\THSIS\CEN\obj\x64\Release\net7.0\CEN.csproj.AssemblyReference.cache
+D:\THSIS\Repositorios\erp_sglc\THSIS\CEN\obj\x64\Release\net7.0\CEN.GeneratedMSBuildEditorConfig.editorconfig
+D:\THSIS\Repositorios\erp_sglc\THSIS\CEN\obj\x64\Release\net7.0\CEN.AssemblyInfoInputs.cache
+D:\THSIS\Repositorios\erp_sglc\THSIS\CEN\obj\x64\Release\net7.0\CEN.AssemblyInfo.cs
+D:\THSIS\Repositorios\erp_sglc\THSIS\CEN\obj\x64\Release\net7.0\CEN.csproj.CoreCompileInputs.cache
+D:\THSIS\Repositorios\erp_sglc\THSIS\CEN\obj\x64\Release\net7.0\CEN.sourcelink.json
+D:\THSIS\Repositorios\erp_sglc\THSIS\CEN\obj\x64\Release\net7.0\CEN.dll
+D:\THSIS\Repositorios\erp_sglc\THSIS\CEN\obj\x64\Release\net7.0\refint\CEN.dll
+D:\THSIS\Repositorios\erp_sglc\THSIS\CEN\obj\x64\Release\net7.0\CEN.pdb
+D:\THSIS\Repositorios\erp_sglc\THSIS\CEN\obj\x64\Release\net7.0\ref\CEN.dll

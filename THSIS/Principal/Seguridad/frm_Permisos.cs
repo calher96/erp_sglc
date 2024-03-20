@@ -24,13 +24,13 @@ namespace Principal.Seguridad
         private void construirUsuario()
         {
             usuario.Usua_Estado = 1;
-            usuario.Usua_Marcabaja = 0;
+            usuario.Usua_Marcabaja = 1;
             usuario.Usua_Password = txt_Password.Text;
             usuario.Usua_Usuario = txt_Usuario.Text;
             usuario.Trab_Id = ((ent_Trabajador)cbo_Trabajador.SelectedItem).Id;
             usuario.Perf_Id = ((ent_Perfil)cbo_Perfil.SelectedItem).perf_Id;
             usuario.Usua_UsuarioRegistro = StaticVariable.obj_Usuario.Usua_Usuario;
-            usuario.Sucu_Id = 2;
+            usuario.Sucu_Id = StaticVariable.obj_Trabajador.Sucursal.Id;
         }
         private Boolean validarUsuario()
         {
@@ -165,12 +165,13 @@ namespace Principal.Seguridad
             {
                 cln_Trabajador cln = new cln_Trabajador();
                 ent_Trabajador trabajador = new ent_Trabajador();
+                trabajador.Empresa = StaticVariable.obj_Empresa;
                 //trabajador.empr_Id = 2;
                 //trabajador.Trab_Estado = 0;
                 //trabajador.Trab_Categoria = 0;
                 cbo_Trabajador.DataSource = cln.ListarTrabajador(trabajador);
-                cbo_Trabajador.ValueMember = "Trab_Id";
-                cbo_Trabajador.DisplayMember = "Trab_NombresCompletos";
+                cbo_Trabajador.ValueMember = "Id";
+                cbo_Trabajador.DisplayMember = "NombresCompletos";
             }
             catch (Exception ex)
             {
@@ -299,10 +300,10 @@ namespace Principal.Seguridad
         }
         public void construirPerfil()
         {
-            perfil.empr_Id = 2;
-            perfil.perf_Marcabaja = 0;
+            perfil.empr_Id = StaticVariable.obj_Empresa.Id;
+            perfil.perf_Marcabaja = 1;
             perfil.perf_Nombre = txt_Nombre.Text;
-            perfil.perf_Usuario = "CHERNANDEZ";
+            perfil.perf_Usuario = StaticVariable.obj_Usuario.Usua_Usuario;
             perfil.perf_Estado = ((ent_Concepto)cbo_Estado.SelectedItem).Correlativo;
         }
 
@@ -538,7 +539,8 @@ namespace Principal.Seguridad
                         cln_Perfil cln = new cln_Perfil();
                         perfil.perf_Nombre = txt_Nombre.Text;
                         perfil.perf_Estado = ((ent_Concepto)cbo_Estado.SelectedItem).Correlativo;
-                        perfil.perf_Usuario = "CHERNANDEZ";
+                        perfil.perf_Usuario = StaticVariable.obj_Usuario.Usua_Usuario;
+                        perfil.perf_Marcabaja = 1;
                         response = cln.RegistrarPerfil("U", perfil);
                         if (response.codError == 0)
                         {
