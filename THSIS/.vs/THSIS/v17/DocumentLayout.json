@@ -1,0 +1,162 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B06E47F1-F083-4FC8-B5B7-7E4D17371A67}|CAD\\CAD.csproj|d:\\thsis\\repositorios\\erp_sglc\\thsis\\cad\\cad_trabajador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B06E47F1-F083-4FC8-B5B7-7E4D17371A67}|CAD\\CAD.csproj|solutionrelative:cad\\cad_trabajador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70616FFE-7BFA-44B1-9CEE-84644DD2BFDE}|Principal\\Principal.csproj|D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\principal\\helpers\\frm_direccion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70616FFE-7BFA-44B1-9CEE-84644DD2BFDE}|Principal\\Principal.csproj|solutionrelative:principal\\helpers\\frm_direccion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70616FFE-7BFA-44B1-9CEE-84644DD2BFDE}|Principal\\Principal.csproj|D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\principal\\recursos humanos\\frm_trabajador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70616FFE-7BFA-44B1-9CEE-84644DD2BFDE}|Principal\\Principal.csproj|solutionrelative:principal\\recursos humanos\\frm_trabajador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B06E47F1-F083-4FC8-B5B7-7E4D17371A67}|CAD\\CAD.csproj|D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\cad\\cad_cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B06E47F1-F083-4FC8-B5B7-7E4D17371A67}|CAD\\CAD.csproj|solutionrelative:cad\\cad_cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70616FFE-7BFA-44B1-9CEE-84644DD2BFDE}|Principal\\Principal.csproj|D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\principal\\operaciones\\frm_clienteempresa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70616FFE-7BFA-44B1-9CEE-84644DD2BFDE}|Principal\\Principal.csproj|solutionrelative:principal\\operaciones\\frm_clienteempresa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70616FFE-7BFA-44B1-9CEE-84644DD2BFDE}|Principal\\Principal.csproj|D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\principal\\operaciones\\frm_recepcioncarga.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{70616FFE-7BFA-44B1-9CEE-84644DD2BFDE}|Principal\\Principal.csproj|solutionrelative:principal\\operaciones\\frm_recepcioncarga.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70616FFE-7BFA-44B1-9CEE-84644DD2BFDE}|Principal\\Principal.csproj|D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\principal\\operaciones\\frm_recepcioncarga.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70616FFE-7BFA-44B1-9CEE-84644DD2BFDE}|Principal\\Principal.csproj|solutionrelative:principal\\operaciones\\frm_recepcioncarga.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B06E47F1-F083-4FC8-B5B7-7E4D17371A67}|CAD\\CAD.csproj|D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\cad\\cad_concepto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B06E47F1-F083-4FC8-B5B7-7E4D17371A67}|CAD\\CAD.csproj|solutionrelative:cad\\cad_concepto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "cad_Trabajador.cs",
+              "DocumentMoniker": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\CAD\\cad_Trabajador.cs",
+              "RelativeDocumentMoniker": "CAD\\cad_Trabajador.cs",
+              "ToolTip": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\CAD\\cad_Trabajador.cs",
+              "RelativeToolTip": "CAD\\cad_Trabajador.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAA8AAABAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-16T22:48:36.859Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frm_Trabajador.cs",
+              "DocumentMoniker": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\Principal\\Recursos Humanos\\frm_Trabajador.cs",
+              "RelativeDocumentMoniker": "Principal\\Recursos Humanos\\frm_Trabajador.cs",
+              "ToolTip": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\Principal\\Recursos Humanos\\frm_Trabajador.cs",
+              "RelativeToolTip": "Principal\\Recursos Humanos\\frm_Trabajador.cs",
+              "ViewState": "AQIAAEYDAAAAAAAAAAAuwF0DAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-06T22:21:26.863Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "frm_ClienteEmpresa.cs",
+              "DocumentMoniker": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\Principal\\Operaciones\\frm_ClienteEmpresa.cs",
+              "RelativeDocumentMoniker": "Principal\\Operaciones\\frm_ClienteEmpresa.cs",
+              "ToolTip": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\Principal\\Operaciones\\frm_ClienteEmpresa.cs",
+              "RelativeToolTip": "Principal\\Operaciones\\frm_ClienteEmpresa.cs",
+              "ViewState": "AQIAAFcBAAAAAAAAAAAuwGkBAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-06T22:21:26.91Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "cad_Cliente.cs",
+              "DocumentMoniker": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\CAD\\cad_Cliente.cs",
+              "RelativeDocumentMoniker": "CAD\\cad_Cliente.cs",
+              "ToolTip": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\CAD\\cad_Cliente.cs",
+              "RelativeToolTip": "CAD\\cad_Cliente.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAuwCUAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-06T22:21:26.926Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frm_Direccion.cs",
+              "DocumentMoniker": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\Principal\\Helpers\\frm_Direccion.cs",
+              "RelativeDocumentMoniker": "Principal\\Helpers\\frm_Direccion.cs",
+              "ToolTip": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\Principal\\Helpers\\frm_Direccion.cs",
+              "RelativeToolTip": "Principal\\Helpers\\frm_Direccion.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAuwDsAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-06T22:21:26.926Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "frm_RecepcionCarga.cs",
+              "DocumentMoniker": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\Principal\\Operaciones\\frm_RecepcionCarga.cs",
+              "RelativeDocumentMoniker": "Principal\\Operaciones\\frm_RecepcionCarga.cs",
+              "ToolTip": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\Principal\\Operaciones\\frm_RecepcionCarga.cs",
+              "RelativeToolTip": "Principal\\Operaciones\\frm_RecepcionCarga.cs",
+              "ViewState": "AQIAAIUBAAAAAAAAAAAAAJoBAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-06T22:20:42.025Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "frm_RecepcionCarga.cs [Dise\u00F1o]",
+              "DocumentMoniker": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\Principal\\Operaciones\\frm_RecepcionCarga.cs",
+              "RelativeDocumentMoniker": "Principal\\Operaciones\\frm_RecepcionCarga.cs",
+              "ToolTip": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\Principal\\Operaciones\\frm_RecepcionCarga.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Principal\\Operaciones\\frm_RecepcionCarga.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-06T22:19:51.886Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "cad_Concepto.cs",
+              "DocumentMoniker": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\CAD\\cad_Concepto.cs",
+              "RelativeDocumentMoniker": "CAD\\cad_Concepto.cs",
+              "ToolTip": "D:\\THSIS\\Repositorios\\erp_sglc\\THSIS\\CAD\\cad_Concepto.cs",
+              "RelativeToolTip": "CAD\\cad_Concepto.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAABEAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-06T22:17:47.386Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
