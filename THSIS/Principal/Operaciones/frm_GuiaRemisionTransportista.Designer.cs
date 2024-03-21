@@ -31,14 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_GuiaRemisionTransportista));
             tpc_GuiaRemisionTransportista = new TabControl();
             tpg_Lista = new TabPage();
-            dataGridView1 = new DataGridView();
+            dgv_GRT = new DataGridView();
             panel2 = new Panel();
             button3 = new Button();
             button2 = new Button();
             button1 = new Button();
             btn_Actualizar = new Button();
             btn_Cerrar = new Button();
-            button7 = new Button();
+            btn_Exportar = new Button();
             btn_Nuevo = new Button();
             panel1 = new Panel();
             chk_Excluir_Asignada = new CheckBox();
@@ -65,29 +65,34 @@
             tpg_Mantenimiento = new TabPage();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
-            dataGridView2 = new DataGridView();
+            dgv_DetalleGRT = new DataGridView();
+            Id = new DataGridViewTextBoxColumn();
+            Descripcion = new DataGridViewTextBoxColumn();
+            Cantidad = new DataGridViewTextBoxColumn();
+            Peso = new DataGridViewTextBoxColumn();
+            PesoTotal = new DataGridViewTextBoxColumn();
             tabPage2 = new TabPage();
             panel6 = new Panel();
-            textBox9 = new TextBox();
+            txt_Llegada = new TextBox();
             label26 = new Label();
-            textBox8 = new TextBox();
+            txt_Partida = new TextBox();
             label25 = new Label();
             panel5 = new Panel();
-            textBox7 = new TextBox();
+            txt_Peso = new TextBox();
             label24 = new Label();
             label23 = new Label();
             cbo_Carreta = new ComboBox();
-            textBox6 = new TextBox();
-            textBox5 = new TextBox();
+            txt_NumeroDoc = new TextBox();
+            txt_NumeroLicencia = new TextBox();
             label22 = new Label();
             label21 = new Label();
             label20 = new Label();
             cbo_MotivoTraslado = new ComboBox();
-            textBox4 = new TextBox();
+            txt_Marca = new TextBox();
             label19 = new Label();
             label18 = new Label();
             cbo_Conductor = new ComboBox();
-            textBox3 = new TextBox();
+            txt_NMtc = new TextBox();
             label17 = new Label();
             label16 = new Label();
             cbo_Vehiculo = new ComboBox();
@@ -96,15 +101,15 @@
             cbo_Transportista = new ComboBox();
             label13 = new Label();
             cbo_Cliente = new ComboBox();
-            dateTimePicker4 = new DateTimePicker();
+            dtp_FechaTraslado = new DateTimePicker();
             label29 = new Label();
             label12 = new Label();
             cbo_ClienteRemitente = new ComboBox();
-            dateTimePicker3 = new DateTimePicker();
+            dtp_Fecha = new DateTimePicker();
             label9 = new Label();
-            textBox2 = new TextBox();
+            txt_Correlativo = new TextBox();
             cbo_ClienteDestinatario = new ComboBox();
-            textBox1 = new TextBox();
+            txt_Serie = new TextBox();
             label10 = new Label();
             label11 = new Label();
             panel4 = new Panel();
@@ -112,14 +117,14 @@
             btn_Guardar = new Button();
             tpc_GuiaRemisionTransportista.SuspendLayout();
             tpg_Lista.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgv_GRT).BeginInit();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             tpg_Mantenimiento.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgv_DetalleGRT).BeginInit();
             panel6.SuspendLayout();
             panel5.SuspendLayout();
             panel4.SuspendLayout();
@@ -138,7 +143,7 @@
             // 
             // tpg_Lista
             // 
-            tpg_Lista.Controls.Add(dataGridView1);
+            tpg_Lista.Controls.Add(dgv_GRT);
             tpg_Lista.Controls.Add(panel2);
             tpg_Lista.Controls.Add(panel1);
             tpg_Lista.Location = new Point(4, 29);
@@ -149,16 +154,17 @@
             tpg_Lista.Text = "Lista";
             tpg_Lista.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgv_GRT
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 160);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(1536, 433);
-            dataGridView1.TabIndex = 3;
+            dgv_GRT.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgv_GRT.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv_GRT.Dock = DockStyle.Fill;
+            dgv_GRT.Location = new Point(3, 160);
+            dgv_GRT.Name = "dgv_GRT";
+            dgv_GRT.RowHeadersWidth = 51;
+            dgv_GRT.RowTemplate.Height = 29;
+            dgv_GRT.Size = new Size(1536, 433);
+            dgv_GRT.TabIndex = 3;
             // 
             // panel2
             // 
@@ -169,7 +175,7 @@
             panel2.Controls.Add(button1);
             panel2.Controls.Add(btn_Actualizar);
             panel2.Controls.Add(btn_Cerrar);
-            panel2.Controls.Add(button7);
+            panel2.Controls.Add(btn_Exportar);
             panel2.Controls.Add(btn_Nuevo);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(3, 128);
@@ -236,6 +242,7 @@
             btn_Actualizar.Text = "Actualizar";
             btn_Actualizar.TextAlign = ContentAlignment.MiddleRight;
             btn_Actualizar.UseVisualStyleBackColor = true;
+            btn_Actualizar.Click += btn_Actualizar_Click;
             // 
             // btn_Cerrar
             // 
@@ -253,20 +260,21 @@
             btn_Cerrar.UseVisualStyleBackColor = true;
             btn_Cerrar.Click += btn_Cerrar_Click;
             // 
-            // button7
+            // btn_Exportar
             // 
-            button7.Dock = DockStyle.Left;
-            button7.FlatAppearance.MouseDownBackColor = Color.Gray;
-            button7.FlatAppearance.MouseOverBackColor = Color.Silver;
-            button7.Image = (Image)resources.GetObject("button7.Image");
-            button7.ImageAlign = ContentAlignment.MiddleLeft;
-            button7.Location = new Point(88, 0);
-            button7.Name = "button7";
-            button7.Size = new Size(101, 30);
-            button7.TabIndex = 1;
-            button7.Text = "Exportar";
-            button7.TextAlign = ContentAlignment.MiddleRight;
-            button7.UseVisualStyleBackColor = true;
+            btn_Exportar.Dock = DockStyle.Left;
+            btn_Exportar.FlatAppearance.MouseDownBackColor = Color.Gray;
+            btn_Exportar.FlatAppearance.MouseOverBackColor = Color.Silver;
+            btn_Exportar.Image = (Image)resources.GetObject("btn_Exportar.Image");
+            btn_Exportar.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_Exportar.Location = new Point(88, 0);
+            btn_Exportar.Name = "btn_Exportar";
+            btn_Exportar.Size = new Size(101, 30);
+            btn_Exportar.TabIndex = 1;
+            btn_Exportar.Text = "Exportar";
+            btn_Exportar.TextAlign = ContentAlignment.MiddleRight;
+            btn_Exportar.UseVisualStyleBackColor = true;
+            btn_Exportar.Click += btn_Exportar_Click;
             // 
             // btn_Nuevo
             // 
@@ -520,7 +528,7 @@
             // 
             // tabPage1
             // 
-            tabPage1.Controls.Add(dataGridView2);
+            tabPage1.Controls.Add(dgv_DetalleGRT);
             tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
@@ -529,16 +537,66 @@
             tabPage1.Text = "Detalle";
             tabPage1.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // dgv_DetalleGRT
             // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Dock = DockStyle.Fill;
-            dataGridView2.Location = new Point(3, 3);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowHeadersWidth = 51;
-            dataGridView2.RowTemplate.Height = 29;
-            dataGridView2.Size = new Size(1522, 221);
-            dataGridView2.TabIndex = 0;
+            dgv_DetalleGRT.AllowUserToAddRows = false;
+            dgv_DetalleGRT.AllowUserToDeleteRows = false;
+            dgv_DetalleGRT.AllowUserToResizeRows = false;
+            dgv_DetalleGRT.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgv_DetalleGRT.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            dgv_DetalleGRT.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv_DetalleGRT.Columns.AddRange(new DataGridViewColumn[] { Id, Descripcion, Cantidad, Peso, PesoTotal });
+            dgv_DetalleGRT.Dock = DockStyle.Fill;
+            dgv_DetalleGRT.EditMode = DataGridViewEditMode.EditProgrammatically;
+            dgv_DetalleGRT.Location = new Point(3, 3);
+            dgv_DetalleGRT.Name = "dgv_DetalleGRT";
+            dgv_DetalleGRT.ReadOnly = true;
+            dgv_DetalleGRT.RowHeadersWidth = 51;
+            dgv_DetalleGRT.RowTemplate.Height = 29;
+            dgv_DetalleGRT.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgv_DetalleGRT.Size = new Size(1522, 221);
+            dgv_DetalleGRT.TabIndex = 0;
+            // 
+            // Id
+            // 
+            Id.HeaderText = "Id";
+            Id.MinimumWidth = 6;
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            Id.Visible = false;
+            Id.Width = 125;
+            // 
+            // Descripcion
+            // 
+            Descripcion.HeaderText = "Descripcion";
+            Descripcion.MinimumWidth = 6;
+            Descripcion.Name = "Descripcion";
+            Descripcion.ReadOnly = true;
+            Descripcion.Width = 116;
+            // 
+            // Cantidad
+            // 
+            Cantidad.HeaderText = "Cantidad";
+            Cantidad.MinimumWidth = 6;
+            Cantidad.Name = "Cantidad";
+            Cantidad.ReadOnly = true;
+            Cantidad.Width = 98;
+            // 
+            // Peso
+            // 
+            Peso.HeaderText = "Peso";
+            Peso.MinimumWidth = 6;
+            Peso.Name = "Peso";
+            Peso.ReadOnly = true;
+            Peso.Width = 68;
+            // 
+            // PesoTotal
+            // 
+            PesoTotal.HeaderText = "Peso Total";
+            PesoTotal.MinimumWidth = 6;
+            PesoTotal.Name = "PesoTotal";
+            PesoTotal.ReadOnly = true;
+            PesoTotal.Width = 105;
             // 
             // tabPage2
             // 
@@ -552,22 +610,22 @@
             // 
             // panel6
             // 
-            panel6.Controls.Add(textBox9);
+            panel6.Controls.Add(txt_Llegada);
             panel6.Controls.Add(label26);
-            panel6.Controls.Add(textBox8);
+            panel6.Controls.Add(txt_Partida);
             panel6.Controls.Add(label25);
             panel6.Controls.Add(panel5);
             panel6.Controls.Add(label13);
             panel6.Controls.Add(cbo_Cliente);
-            panel6.Controls.Add(dateTimePicker4);
+            panel6.Controls.Add(dtp_FechaTraslado);
             panel6.Controls.Add(label29);
             panel6.Controls.Add(label12);
             panel6.Controls.Add(cbo_ClienteRemitente);
-            panel6.Controls.Add(dateTimePicker3);
+            panel6.Controls.Add(dtp_Fecha);
             panel6.Controls.Add(label9);
-            panel6.Controls.Add(textBox2);
+            panel6.Controls.Add(txt_Correlativo);
             panel6.Controls.Add(cbo_ClienteDestinatario);
-            panel6.Controls.Add(textBox1);
+            panel6.Controls.Add(txt_Serie);
             panel6.Controls.Add(label10);
             panel6.Controls.Add(label11);
             panel6.Dock = DockStyle.Top;
@@ -576,12 +634,12 @@
             panel6.Size = new Size(1536, 298);
             panel6.TabIndex = 49;
             // 
-            // textBox9
+            // txt_Llegada
             // 
-            textBox9.Location = new Point(743, 257);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(565, 27);
-            textBox9.TabIndex = 70;
+            txt_Llegada.Location = new Point(743, 257);
+            txt_Llegada.Name = "txt_Llegada";
+            txt_Llegada.Size = new Size(565, 27);
+            txt_Llegada.TabIndex = 70;
             // 
             // label26
             // 
@@ -593,12 +651,12 @@
             label26.TabIndex = 69;
             label26.Text = "Llegada :";
             // 
-            // textBox8
+            // txt_Partida
             // 
-            textBox8.Location = new Point(89, 257);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(565, 27);
-            textBox8.TabIndex = 68;
+            txt_Partida.Location = new Point(89, 257);
+            txt_Partida.Name = "txt_Partida";
+            txt_Partida.Size = new Size(565, 27);
+            txt_Partida.TabIndex = 68;
             // 
             // label25
             // 
@@ -613,21 +671,21 @@
             // panel5
             // 
             panel5.BorderStyle = BorderStyle.FixedSingle;
-            panel5.Controls.Add(textBox7);
+            panel5.Controls.Add(txt_Peso);
             panel5.Controls.Add(label24);
             panel5.Controls.Add(label23);
             panel5.Controls.Add(cbo_Carreta);
-            panel5.Controls.Add(textBox6);
-            panel5.Controls.Add(textBox5);
+            panel5.Controls.Add(txt_NumeroDoc);
+            panel5.Controls.Add(txt_NumeroLicencia);
             panel5.Controls.Add(label22);
             panel5.Controls.Add(label21);
             panel5.Controls.Add(label20);
             panel5.Controls.Add(cbo_MotivoTraslado);
-            panel5.Controls.Add(textBox4);
+            panel5.Controls.Add(txt_Marca);
             panel5.Controls.Add(label19);
             panel5.Controls.Add(label18);
             panel5.Controls.Add(cbo_Conductor);
-            panel5.Controls.Add(textBox3);
+            panel5.Controls.Add(txt_NMtc);
             panel5.Controls.Add(label17);
             panel5.Controls.Add(label16);
             panel5.Controls.Add(cbo_Vehiculo);
@@ -639,12 +697,12 @@
             panel5.Size = new Size(1331, 153);
             panel5.TabIndex = 48;
             // 
-            // textBox7
+            // txt_Peso
             // 
-            textBox7.Location = new Point(1118, 100);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(183, 27);
-            textBox7.TabIndex = 66;
+            txt_Peso.Location = new Point(1118, 100);
+            txt_Peso.Name = "txt_Peso";
+            txt_Peso.Size = new Size(183, 27);
+            txt_Peso.TabIndex = 66;
             // 
             // label24
             // 
@@ -676,19 +734,19 @@
             cbo_Carreta.Size = new Size(183, 28);
             cbo_Carreta.TabIndex = 63;
             // 
-            // textBox6
+            // txt_NumeroDoc
             // 
-            textBox6.Location = new Point(1118, 32);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(183, 27);
-            textBox6.TabIndex = 62;
+            txt_NumeroDoc.Location = new Point(1118, 32);
+            txt_NumeroDoc.Name = "txt_NumeroDoc";
+            txt_NumeroDoc.Size = new Size(183, 27);
+            txt_NumeroDoc.TabIndex = 62;
             // 
-            // textBox5
+            // txt_NumeroLicencia
             // 
-            textBox5.Location = new Point(769, 99);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(217, 27);
-            textBox5.TabIndex = 60;
+            txt_NumeroLicencia.Location = new Point(769, 99);
+            txt_NumeroLicencia.Name = "txt_NumeroLicencia";
+            txt_NumeroLicencia.Size = new Size(217, 27);
+            txt_NumeroLicencia.TabIndex = 60;
             // 
             // label22
             // 
@@ -730,12 +788,12 @@
             cbo_MotivoTraslado.Size = new Size(217, 28);
             cbo_MotivoTraslado.TabIndex = 57;
             // 
-            // textBox4
+            // txt_Marca
             // 
-            textBox4.Location = new Point(769, 66);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(217, 27);
-            textBox4.TabIndex = 56;
+            txt_Marca.Location = new Point(769, 66);
+            txt_Marca.Name = "txt_Marca";
+            txt_Marca.Size = new Size(217, 27);
+            txt_Marca.TabIndex = 56;
             // 
             // label19
             // 
@@ -767,12 +825,12 @@
             cbo_Conductor.Size = new Size(494, 28);
             cbo_Conductor.TabIndex = 53;
             // 
-            // textBox3
+            // txt_NMtc
             // 
-            textBox3.Location = new Point(396, 67);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(217, 27);
-            textBox3.TabIndex = 50;
+            txt_NMtc.Location = new Point(396, 67);
+            txt_NMtc.Name = "txt_NMtc";
+            txt_NMtc.Size = new Size(217, 27);
+            txt_NMtc.TabIndex = 50;
             // 
             // label17
             // 
@@ -803,6 +861,7 @@
             cbo_Vehiculo.Name = "cbo_Vehiculo";
             cbo_Vehiculo.Size = new Size(175, 28);
             cbo_Vehiculo.TabIndex = 51;
+            cbo_Vehiculo.SelectedIndexChanged += cbo_Vehiculo_SelectedIndexChanged;
             // 
             // label15
             // 
@@ -854,13 +913,13 @@
             cbo_Cliente.Size = new Size(390, 28);
             cbo_Cliente.TabIndex = 35;
             // 
-            // dateTimePicker4
+            // dtp_FechaTraslado
             // 
-            dateTimePicker4.Format = DateTimePickerFormat.Short;
-            dateTimePicker4.Location = new Point(1154, 16);
-            dateTimePicker4.Name = "dateTimePicker4";
-            dateTimePicker4.Size = new Size(105, 27);
-            dateTimePicker4.TabIndex = 46;
+            dtp_FechaTraslado.Format = DateTimePickerFormat.Short;
+            dtp_FechaTraslado.Location = new Point(1154, 16);
+            dtp_FechaTraslado.Name = "dtp_FechaTraslado";
+            dtp_FechaTraslado.Size = new Size(105, 27);
+            dtp_FechaTraslado.TabIndex = 46;
             // 
             // label29
             // 
@@ -892,13 +951,13 @@
             cbo_ClienteRemitente.Size = new Size(390, 28);
             cbo_ClienteRemitente.TabIndex = 37;
             // 
-            // dateTimePicker3
+            // dtp_Fecha
             // 
-            dateTimePicker3.Format = DateTimePickerFormat.Short;
-            dateTimePicker3.Location = new Point(907, 17);
-            dateTimePicker3.Name = "dateTimePicker3";
-            dateTimePicker3.Size = new Size(105, 27);
-            dateTimePicker3.TabIndex = 44;
+            dtp_Fecha.Format = DateTimePickerFormat.Short;
+            dtp_Fecha.Location = new Point(907, 17);
+            dtp_Fecha.Name = "dtp_Fecha";
+            dtp_Fecha.Size = new Size(105, 27);
+            dtp_Fecha.TabIndex = 44;
             // 
             // label9
             // 
@@ -910,12 +969,12 @@
             label9.TabIndex = 38;
             label9.Text = "Remitente :";
             // 
-            // textBox2
+            // txt_Correlativo
             // 
-            textBox2.Location = new Point(696, 19);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(130, 27);
-            textBox2.TabIndex = 43;
+            txt_Correlativo.Location = new Point(696, 19);
+            txt_Correlativo.Name = "txt_Correlativo";
+            txt_Correlativo.Size = new Size(130, 27);
+            txt_Correlativo.TabIndex = 43;
             // 
             // cbo_ClienteDestinatario
             // 
@@ -927,12 +986,12 @@
             cbo_ClienteDestinatario.Size = new Size(390, 28);
             cbo_ClienteDestinatario.TabIndex = 39;
             // 
-            // textBox1
+            // txt_Serie
             // 
-            textBox1.Location = new Point(622, 19);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(68, 27);
-            textBox1.TabIndex = 42;
+            txt_Serie.Location = new Point(622, 19);
+            txt_Serie.Name = "txt_Serie";
+            txt_Serie.Size = new Size(68, 27);
+            txt_Serie.TabIndex = 42;
             // 
             // label10
             // 
@@ -980,6 +1039,7 @@
             btn_Cancelar.Text = "Cancelar";
             btn_Cancelar.TextAlign = ContentAlignment.MiddleRight;
             btn_Cancelar.UseVisualStyleBackColor = true;
+            btn_Cancelar.Click += btn_Cancelar_Click;
             // 
             // btn_Guardar
             // 
@@ -995,6 +1055,7 @@
             btn_Guardar.Text = "Guardar";
             btn_Guardar.TextAlign = ContentAlignment.MiddleRight;
             btn_Guardar.UseVisualStyleBackColor = true;
+            btn_Guardar.Click += btn_Guardar_Click;
             // 
             // frm_GuiaRemisionTransportista
             // 
@@ -1007,7 +1068,7 @@
             Text = "frm_GuiaRemisionTransportista";
             tpc_GuiaRemisionTransportista.ResumeLayout(false);
             tpg_Lista.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgv_GRT).EndInit();
             panel2.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -1016,7 +1077,7 @@
             tpg_Mantenimiento.ResumeLayout(false);
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgv_DetalleGRT).EndInit();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             panel5.ResumeLayout(false);
@@ -1029,11 +1090,11 @@
 
         private TabControl tpc_GuiaRemisionTransportista;
         private TabPage tpg_Lista;
-        private DataGridView dataGridView1;
+        private DataGridView dgv_GRT;
         private Panel panel2;
         private Button btn_Actualizar;
         private Button btn_Cerrar;
-        private Button button7;
+        private Button btn_Exportar;
         private Button btn_Nuevo;
         private Panel panel1;
         private CheckBox chk_Excluir_Asignada;
@@ -1076,37 +1137,42 @@
         private Label label14;
         private ComboBox cbo_Transportista;
         private Label label13;
-        private DateTimePicker dateTimePicker4;
+        private DateTimePicker dtp_FechaTraslado;
         private Label label12;
-        private DateTimePicker dateTimePicker3;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private DateTimePicker dtp_Fecha;
+        private TextBox txt_Correlativo;
+        private TextBox txt_Serie;
         private Label label18;
         private ComboBox cbo_Conductor;
-        private TextBox textBox3;
+        private TextBox txt_NMtc;
         private Label label17;
         private Label label16;
         private ComboBox cbo_Vehiculo;
         private Label label20;
         private ComboBox cbo_MotivoTraslado;
-        private TextBox textBox4;
+        private TextBox txt_Marca;
         private Label label19;
         private Panel panel6;
-        private TextBox textBox8;
+        private TextBox txt_Partida;
         private Label label25;
-        private TextBox textBox7;
+        private TextBox txt_Peso;
         private Label label24;
         private Label label23;
         private ComboBox cbo_Carreta;
-        private TextBox textBox6;
-        private TextBox textBox5;
+        private TextBox txt_NumeroDoc;
+        private TextBox txt_NumeroLicencia;
         private Label label22;
         private Label label21;
         private TabControl tabControl1;
         private TabPage tabPage1;
-        private DataGridView dataGridView2;
+        private DataGridView dgv_DetalleGRT;
         private TabPage tabPage2;
-        private TextBox textBox9;
+        private TextBox txt_Llegada;
         private Label label26;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn Descripcion;
+        private DataGridViewTextBoxColumn Cantidad;
+        private DataGridViewTextBoxColumn Peso;
+        private DataGridViewTextBoxColumn PesoTotal;
     }
 }

@@ -15,7 +15,7 @@ namespace CEN
         public List<ent_CargaDetalle> LiscaCarga { get; set; }
         public int empr_Id { get; set; }
         public String Codigo { get; set; }
-        public int Estado { get; set; }
+        public ent_Concepto Estado { get; set; }
         public ent_Concepto TipoServicio { get; set; }
         public DateTime FechaSolicita { get; set; }
         public DateTime FechaRecepcion { get; set; }
@@ -53,7 +53,7 @@ namespace CEN
             LiscaCarga = new List<ent_CargaDetalle>();
             empr_Id = StaticVariable.obj_Empresa.Id;
             Codigo = String.Empty;
-            Estado = 0;
+            Estado = new ent_Concepto();
             TipoServicio = new ent_Concepto();
             FechaSolicita = new DateTime(1900,1,1);
             FechaRecepcion = new DateTime(1900, 1, 1);

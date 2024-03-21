@@ -160,7 +160,11 @@ namespace Principal.Helpers
                 // Exportar los encabezados de las columnas
                 for (int i = 0; i < dataGridView.Columns.Count; i++)
                 {
-                    worksheet.Cells[1, i + 1] = dataGridView.Columns[i].HeaderText;
+                    if (dataGridView.Columns[i].Visible)
+                    {
+                        worksheet.Cells[1, i + 1] = dataGridView.Columns[i].HeaderText;
+                    }
+                    
                 }
 
                 // Exportar los datos del DataGridView
@@ -168,7 +172,18 @@ namespace Principal.Helpers
                 {
                     for (int j = 0; j < dataGridView.Columns.Count; j++)
                     {
-                        worksheet.Cells[i + 2, j + 1] = dataGridView[j, i].Value;
+                        if (dataGridView.Columns[j].Visible)
+                        {
+                            if (dataGridView.Columns[i].Name == "MotivoTraslado")
+                            {
+                                worksheet.Cells[i + 2, j + 1] = ((ent_Concepto)dataGridView[j, i].Value).Descripcion;
+                            }
+                            else
+                            {
+                                worksheet.Cells[i + 2, j + 1] = Convert.ToString(dataGridView[j, i].Value);
+                            }
+                            
+                        }
                     }
                 }
 

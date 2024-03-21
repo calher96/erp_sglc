@@ -39,7 +39,7 @@ namespace CEN.Entidad
         public ent_Trabajador()
         {
             Id = 0;
-            Empresa = new ent_Empresa();
+            Empresa = new ent_Empresa() { Id = StaticVariable.obj_Empresa.Id };
             Sucursal = new ent_Sucursal();
             Persona = new ent_Persona();
             Codigo = String.Empty;

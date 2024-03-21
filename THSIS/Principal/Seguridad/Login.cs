@@ -50,6 +50,7 @@ namespace Principal.Seguridad
                     StaticVariable.token = ((LoginResponse)response.response).Token;
                     StaticVariable.obj_Usuario.Usua_Usuario = ((LoginResponse)response.response).Usuario;
                     StaticVariable.obj_Trabajador = ((LoginResponse)response.response).Trabajador;
+                    StaticVariable.obj_Sucursal = ((LoginResponse)response.response).Trabajador.Sucursal;
                     mdi_Principal.status_login = 1;
                     BasicMetod.OcultarCarga(ptb_Carga);
                     this.Dispose();

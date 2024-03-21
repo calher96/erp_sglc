@@ -64,8 +64,8 @@
             cbo_UsuarioFilter = new ComboBox();
             label2 = new Label();
             label1 = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            dateTimePicker2 = new DateTimePicker();
+            dtp_FechaInicio = new DateTimePicker();
+            dtp_FechaFin = new DateTimePicker();
             tpg_Mantenimiento = new TabPage();
             tpc_Carga = new TabControl();
             tpb_DetalleCarga = new TabPage();
@@ -277,6 +277,7 @@
             // 
             // dgb_Carga
             // 
+            dgb_Carga.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgb_Carga.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgb_Carga.ContextMenuStrip = cms_ListaCarga;
             dgb_Carga.Dock = DockStyle.Fill;
@@ -306,7 +307,7 @@
             // tsm_IngresarGRT
             // 
             tsm_IngresarGRT.Name = "tsm_IngresarGRT";
-            tsm_IngresarGRT.Size = new Size(224, 26);
+            tsm_IngresarGRT.Size = new Size(145, 26);
             tsm_IngresarGRT.Text = "Ingresar";
             tsm_IngresarGRT.Click += inToolStripMenuItem_Click;
             // 
@@ -396,8 +397,8 @@
             panel1.Controls.Add(cbo_UsuarioFilter);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
-            panel1.Controls.Add(dateTimePicker1);
-            panel1.Controls.Add(dateTimePicker2);
+            panel1.Controls.Add(dtp_FechaInicio);
+            panel1.Controls.Add(dtp_FechaFin);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
@@ -582,21 +583,21 @@
             label1.TabIndex = 4;
             label1.Text = "Desde:";
             // 
-            // dateTimePicker1
+            // dtp_FechaInicio
             // 
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(63, 32);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(127, 27);
-            dateTimePicker1.TabIndex = 3;
+            dtp_FechaInicio.Format = DateTimePickerFormat.Short;
+            dtp_FechaInicio.Location = new Point(63, 32);
+            dtp_FechaInicio.Name = "dtp_FechaInicio";
+            dtp_FechaInicio.Size = new Size(127, 27);
+            dtp_FechaInicio.TabIndex = 3;
             // 
-            // dateTimePicker2
+            // dtp_FechaFin
             // 
-            dateTimePicker2.Format = DateTimePickerFormat.Short;
-            dateTimePicker2.Location = new Point(63, 65);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(127, 27);
-            dateTimePicker2.TabIndex = 0;
+            dtp_FechaFin.Format = DateTimePickerFormat.Short;
+            dtp_FechaFin.Location = new Point(63, 65);
+            dtp_FechaFin.Name = "dtp_FechaFin";
+            dtp_FechaFin.Size = new Size(127, 27);
+            dtp_FechaFin.TabIndex = 0;
             // 
             // tpg_Mantenimiento
             // 
@@ -2507,5 +2508,7 @@
         private TextBox txt_PuntoLlegada;
         private TextBox txt_PuntoPartida;
         private ErrorProvider errorProvider1;
+        private DateTimePicker dtp_FechaInicio;
+        private DateTimePicker dtp_FechaFin;
     }
 }

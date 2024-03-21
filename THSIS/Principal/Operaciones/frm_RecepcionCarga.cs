@@ -39,12 +39,24 @@ namespace Principal.Operaciones
         #endregion
 
         #region "Métodos"
+        private void ocultarColumnas()
+        {
+            dgb_Carga.Columns["Id"].Visible = false;
+            dgb_Carga.Columns["empr_Id"].Visible = false;
+            dgb_Carga.Columns["Id"].Visible = false;
+            dgb_Carga.Columns["Marcabaja"].Visible = false;
+            dgb_Carga.Columns["Usuario"].Visible = false;
+            dgb_Carga.Columns["Ip"].Visible = false;
+            dgb_Carga.Columns["Mac"].Visible = false;
+            dgb_Carga.Columns["HostName"].Visible = false;
+            dgb_Carga.Columns["HostUser"].Visible = false;
+        }
         private ent_Carga llenarCarga()
         {
             ent_Carga carga = new ent_Carga();
             ent_CargaDetalle cargaDet = new ent_CargaDetalle();
             carga.Codigo = txt_Codigo.Text;
-            carga.Estado = ((ent_Concepto)cbo_EstadoCarga.SelectedItem).Correlativo;
+            carga.Estado = ((ent_Concepto)cbo_EstadoCarga.SelectedItem);
             carga.TipoServicio = (ent_Concepto)cbo_TipoServicio.SelectedItem;
             carga.FechaSolicita = new DateTime(dtp_FechaSolicita.Value.Year, dtp_FechaSolicita.Value.Month, dtp_FechaSolicita.Value.Day, dtp_HoraSolicita.Value.Hour, dtp_HoraSolicita.Value.Minute, dtp_HoraSolicita.Value.Second);
             carga.FechaRecepcion = new DateTime(dtp_FechaRecepcion.Value.Year, dtp_FechaRecepcion.Value.Month, dtp_FechaRecepcion.Value.Day, dtp_HoraRecepcion.Value.Hour, dtp_HoraRecepcion.Value.Minute, dtp_HoraRecepcion.Value.Second);
@@ -110,10 +122,10 @@ namespace Principal.Operaciones
 
         public void InicializarFormulario()
         {
+            dgb_Carga.CellFormatting += dgb_Carga_CellFormatting;
             tpc_RecepcionCarga.TabPages[1].Enabled = false;
             tpc_Carga.TabPages[1].Enabled = false;
             txt_Cantidad.Text = "1.0";
-            dgb_Carga.CellFormatting += dgb_Carga_CellFormatting;
             llenarColoresComboBox();
             cargarComboBox();
         }
@@ -411,7 +423,27 @@ namespace Principal.Operaciones
             cbo_TipoServicio.ValueMember = "Descripcion";
             cbo_TipoServicio.DisplayMember = "Descripcion";
         }
+        public Boolean ValidarControles()
+        {
+            Boolean result = false;
+            if (cbo_OrigenCabecera.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_OrigenCabecera, "Por favor, seleccione un lugar de origen"); }
+            if (cbo_DestinoCabecera.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_DestinoCabecera, "Por favor, seleccione un lugar de destino"); }
+            if (txt_FleteTotalCab.Text.Length == 0) { result = true; errorProvider1.SetError(txt_FleteTotalCab, "Por favor, ingrese un flete total"); }
+            if (cbo_OrigenDetalle.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_OrigenDetalle, "Por favor, seleccione un lugar de origen"); }
+            if (cbo_DestinoDetalle.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_DestinoDetalle, "Por favor, seleccione un lugar de destino"); }
+            if (!rbt_Efectivo.Checked && !rbt_Deposito.Checked && !rbt_Otros.Checked) { result = true; errorProvider1.SetError(rbt_Efectivo, "Por favor, seleccione una forma de pago"); }
+            if (cbo_ClienteRecepcion.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_ClienteRecepcion, "Por favor, seleccione un cliente"); }
+            if (cbo_ClienteFinal.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_ClienteFinal, "Por favor, seleccione un cliente"); }
+            if (txt_ProductoTransportar.Text.Length == 0) { result = true; errorProvider1.SetError(txt_ProductoTransportar, "Por favor, ingrese material a transportar"); }
+            if (cbo_ClienteRemitente.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_ClienteRemitente, "Por favor, seleccione un cliente"); }
+            if (cbo_ClienteDestinatario.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_ClienteDestinatario, "Por favor, seleccione un cliente"); }
+            if (txt_PuntoPartida.Text.Length == 0) { result = true; errorProvider1.SetError(txt_PuntoPartida, "Por favor, ingrese punto de partida"); }
+            if (txt_PuntoLlegada.Text.Length == 0) { result = true; errorProvider1.SetError(txt_PuntoLlegada, "Por favor, ingrese punto de llegada"); }
+            if (txt_Anexos.Text.Length == 0) { result = true; errorProvider1.SetError(txt_Anexos, "Por favor, ingrese documentos de Anexo"); }
+            if (txt_DireccionFacturacion.Text.Length == 0) { result = true; errorProvider1.SetError(txt_DireccionFacturacion, "Por favor, ingrese una direccion de facturacion"); }
 
+            return result;
+        }
         public void llenarColoresComboBox()
         {
             //CBO_COLOR_GENERADA
@@ -1411,59 +1443,160 @@ namespace Principal.Operaciones
 
             }
         }
-        #endregion
-        public Boolean ValidarControles()
-        {
-            Boolean result = false;
-            if (cbo_OrigenCabecera.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_OrigenCabecera, "Por favor, seleccione un lugar de origen"); }
-            if (cbo_DestinoCabecera.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_DestinoCabecera, "Por favor, seleccione un lugar de destino"); }
-            if (txt_FleteTotalCab.Text.Length == 0) { result = true; errorProvider1.SetError(txt_FleteTotalCab, "Por favor, ingrese un flete total"); }
-            if (cbo_OrigenDetalle.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_OrigenDetalle, "Por favor, seleccione un lugar de origen"); }
-            if (cbo_DestinoDetalle.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_DestinoDetalle, "Por favor, seleccione un lugar de destino"); }
-            if (!rbt_Efectivo.Checked && !rbt_Deposito.Checked && !rbt_Otros.Checked) { result = true; errorProvider1.SetError(rbt_Efectivo, "Por favor, seleccione una forma de pago"); }
-            if (cbo_ClienteRecepcion.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_ClienteRecepcion, "Por favor, seleccione un cliente"); }
-            if (cbo_ClienteFinal.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_ClienteFinal, "Por favor, seleccione un cliente"); }
-            if (txt_ProductoTransportar.Text.Length == 0) { result = true; errorProvider1.SetError(txt_ProductoTransportar, "Por favor, ingrese material a transportar"); }
-            if (cbo_ClienteRemitente.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_ClienteRemitente, "Por favor, seleccione un cliente"); }
-            if (cbo_ClienteDestinatario.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_ClienteDestinatario, "Por favor, seleccione un cliente"); }
-            if (txt_PuntoPartida.Text.Length == 0) { result = true; errorProvider1.SetError(txt_PuntoPartida, "Por favor, ingrese punto de partida"); }
-            if (txt_PuntoLlegada.Text.Length == 0) { result = true; errorProvider1.SetError(txt_PuntoLlegada, "Por favor, ingrese punto de llegada"); }
-            if (txt_Anexos.Text.Length == 0) { result = true; errorProvider1.SetError(txt_Anexos, "Por favor, ingrese documentos de Anexo"); }
-            if (txt_DireccionFacturacion.Text.Length == 0) { result = true; errorProvider1.SetError(txt_DireccionFacturacion, "Por favor, ingrese una direccion de facturacion"); }
-
-            return result;
-        }
-
         private void btn_Actualizar_Click(object sender, EventArgs e)
         {
             try
             {
                 cln_Carga cln_Carga = new cln_Carga();
+                ent_Carga Carga = new ent_Carga();
+                
                 List<ent_Carga> Lista = cln_Carga.ListarCarga(new ent_Carga(), "GEN");
+                //Lista = Lista.Where(x => x.FechaRecepcion >= dtp_FechaInicio.Value && x.FechaRecepcion<= dtp_FechaFin.Value).ToList();
                 dgb_Carga.DataSource = Lista;
-                dgb_Carga.CellFormatting += dgb_Carga_CellFormatting;
+                ocultarColumnas();
+                dgb_Carga.Refresh();
             }
             catch (Exception ex)
             {
 
             }
         }
-
         private void dgb_Carga_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (dgb_Carga.Columns[e.ColumnIndex].Name == "TipoServicio")
             {
-                if (e.RowIndex >= 0 && e.RowIndex < dgb_Carga.Rows.Count)
-                {
-                    var tipoServicio = dgb_Carga.Rows[e.RowIndex].DataBoundItem as ent_Concepto;
+                // Obtiene el valor actual de la celda
+                var value = e.Value as ent_Concepto;
 
-                    if (tipoServicio != null)
-                    {
-                        e.Value = tipoServicio.Descripcion;
-                    }
+                // Verifica que el valor no sea nulo
+                if (value != null)
+                {
+                    // Asigna el valor de la propiedad Descripcion al valor que se muestra en la celda
+                    e.Value = value.Descripcion;
                 }
             }
-            
+            if (dgb_Carga.Columns[e.ColumnIndex].Name == "LugarOrigen")
+            {
+                // Obtiene el valor actual de la celda
+                var value = e.Value as ent_Ubigeo;
+
+                // Verifica que el valor no sea nulo
+                if (value != null)
+                {
+                    // Asigna el valor de la propiedad Descripcion al valor que se muestra en la celda
+                    e.Value = value.Descripcion;
+                }
+            }
+            if (dgb_Carga.Columns[e.ColumnIndex].Name == "LugarDestino")
+            {
+                // Obtiene el valor actual de la celda
+                var value = e.Value as ent_Ubigeo;
+
+                // Verifica que el valor no sea nulo
+                if (value != null)
+                {
+                    // Asigna el valor de la propiedad Descripcion al valor que se muestra en la celda
+                    e.Value = value.Descripcion;
+                }
+            }
+            if (dgb_Carga.Columns[e.ColumnIndex].Name == "CondicionPago")
+            {
+                // Obtiene el valor actual de la celda
+                var value = e.Value as ent_Concepto;
+
+                // Verifica que el valor no sea nulo
+                if (value != null)
+                {
+                    // Asigna el valor de la propiedad Descripcion al valor que se muestra en la celda
+                    e.Value = value.Descripcion;
+                }
+            }
+            if (dgb_Carga.Columns[e.ColumnIndex].Name == "TipoEntrega")
+            {
+                // Obtiene el valor actual de la celda
+                var value = e.Value as ent_Concepto;
+
+                // Verifica que el valor no sea nulo
+                if (value != null)
+                {
+                    // Asigna el valor de la propiedad Descripcion al valor que se muestra en la celda
+                    e.Value = value.Descripcion;
+                }
+            }
+            if (dgb_Carga.Columns[e.ColumnIndex].Name == "RecojoDomicilioLugar")
+            {
+                // Obtiene el valor actual de la celda
+                var value = e.Value as ent_Ubigeo;
+
+                // Verifica que el valor no sea nulo
+                if (value != null)
+                {
+                    // Asigna el valor de la propiedad Descripcion al valor que se muestra en la celda
+                    e.Value = value.Descripcion;
+                }
+            }
+            if (dgb_Carga.Columns[e.ColumnIndex].Name == "TipoVehiculo")
+            {
+                // Obtiene el valor actual de la celda
+                var value = e.Value as ent_Concepto;
+
+                // Verifica que el valor no sea nulo
+                if (value != null)
+                {
+                    // Asigna el valor de la propiedad Descripcion al valor que se muestra en la celda
+                    e.Value = value.Descripcion;
+                }
+            }
+            if (dgb_Carga.Columns[e.ColumnIndex].Name == "ClienteDestinatario")
+            {
+                // Obtiene el valor actual de la celda
+                var value = e.Value as ent_Cliente;
+
+                // Verifica que el valor no sea nulo
+                if (value != null)
+                {
+                    // Asigna el valor de la propiedad Descripcion al valor que se muestra en la celda
+                    e.Value = value.RazonSocial;
+                }
+            }
+            if (dgb_Carga.Columns[e.ColumnIndex].Name == "ClienteRemitente")
+            {
+                // Obtiene el valor actual de la celda
+                var value = e.Value as ent_Cliente;
+
+                // Verifica que el valor no sea nulo
+                if (value != null)
+                {
+                    // Asigna el valor de la propiedad Descripcion al valor que se muestra en la celda
+                    e.Value = value.RazonSocial;
+                }
+            }
+            if (dgb_Carga.Columns[e.ColumnIndex].Name == "ClientePago")
+            {
+                // Obtiene el valor actual de la celda
+                var value = e.Value as ent_Cliente;
+
+                // Verifica que el valor no sea nulo
+                if (value != null)
+                {
+                    // Asigna el valor de la propiedad Descripcion al valor que se muestra en la celda
+                    e.Value = value.RazonSocial;
+                }
+            }
+            if (dgb_Carga.Columns[e.ColumnIndex].Name == "Estado")
+            {
+                // Obtiene el valor actual de la celda
+                var value = e.Value as ent_Concepto;
+
+                // Verifica que el valor no sea nulo
+                if (value != null)
+                {
+                    // Asigna el valor de la propiedad Descripcion al valor que se muestra en la celda
+                    e.Value = value.Descripcion;
+                }
+            }
         }
+
+        #endregion
     }
 }
