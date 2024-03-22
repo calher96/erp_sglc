@@ -8,6 +8,8 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Principal.Helpers
 {
@@ -90,8 +92,9 @@ namespace Principal.Helpers
 
         }
 
-        public static void MostrarCarga(PictureBox pictureBoxCarga)
+        public static void MostrarCarga(PictureBox pictureBoxCarga, Panel panel)
         {
+            panel.Visible = true;
             pictureBoxCarga.Visible = true;
         }
 
@@ -200,6 +203,46 @@ namespace Principal.Helpers
 
                 
             }
+        }
+        private Form loadingForm;
+
+        public void ShowLoadingForm()
+        {
+            // Crea una instancia del formulario de carga
+            loadingForm = new Form();
+            loadingForm.Size = new Size(200, 100); // Tamaño del formulario de carga
+            loadingForm.StartPosition = FormStartPosition.CenterScreen;
+            loadingForm.FormBorderStyle = FormBorderStyle.None;
+
+            // Establece el color de fondo del formulario en transparente
+            loadingForm.TransparencyKey = Color.Magenta; // Puedes elegir cualquier color no utilizado en tu formulario
+
+            // Establece el color de fondo del formulario
+            //loadingForm.BackColor = Color.FromArgb(100, Color.Black);
+
+            // Añade un PictureBox para la animación de carga (opcional)
+            PictureBox pictureBox = new PictureBox();
+            pictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox.Image = Image.FromFile("loading256x256.png"); // Aquí puedes asignar una imagen de animación de carga
+            pictureBox.Dock = DockStyle.Fill; // Ajusta el PictureBox al tamaño del formulario
+            loadingForm.Controls.Add(pictureBox);
+
+            // Añade una etiqueta para mostrar un mensaje de carga (opcional)
+            Label label = new Label();
+            label.Text = "Cargando..."; // Mensaje de carga
+            label.ForeColor = Color.White;
+            label.Dock = DockStyle.Bottom; // Ajusta la etiqueta en la parte inferior del formulario
+            label.TextAlign = ContentAlignment.MiddleCenter; // Centra el texto horizontalmente
+            loadingForm.Controls.Add(label);
+
+            // Muestra el formulario de carga
+            loadingForm.Show();
+        }
+
+        public void HideLoadingForm()
+        {
+            // Cierra el formulario de carga si existe
+            loadingForm?.Close();
         }
     }
 }

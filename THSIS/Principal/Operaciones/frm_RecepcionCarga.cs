@@ -44,6 +44,7 @@ namespace Principal.Operaciones
             dgb_Carga.Columns["Id"].Visible = false;
             dgb_Carga.Columns["empr_Id"].Visible = false;
             dgb_Carga.Columns["Id"].Visible = false;
+            dgb_Carga.Columns["ClaveSeguridad"].Visible = false;
             dgb_Carga.Columns["Marcabaja"].Visible = false;
             dgb_Carga.Columns["Usuario"].Visible = false;
             dgb_Carga.Columns["Ip"].Visible = false;
@@ -56,7 +57,7 @@ namespace Principal.Operaciones
             ent_Carga carga = new ent_Carga();
             ent_CargaDetalle cargaDet = new ent_CargaDetalle();
             carga.Codigo = txt_Codigo.Text;
-            carga.Estado = ((ent_Concepto)cbo_EstadoCarga.SelectedItem);
+            carga.Estado = new ent_Concepto() { Correlativo = 2 };
             carga.TipoServicio = (ent_Concepto)cbo_TipoServicio.SelectedItem;
             carga.FechaSolicita = new DateTime(dtp_FechaSolicita.Value.Year, dtp_FechaSolicita.Value.Month, dtp_FechaSolicita.Value.Day, dtp_HoraSolicita.Value.Hour, dtp_HoraSolicita.Value.Minute, dtp_HoraSolicita.Value.Second);
             carga.FechaRecepcion = new DateTime(dtp_FechaRecepcion.Value.Year, dtp_FechaRecepcion.Value.Month, dtp_FechaRecepcion.Value.Day, dtp_HoraRecepcion.Value.Hour, dtp_HoraRecepcion.Value.Minute, dtp_HoraRecepcion.Value.Second);
@@ -91,7 +92,10 @@ namespace Principal.Operaciones
             cargaDet.Peso = txt_Peso.Text.Length > 0 ? Convert.ToDouble(txt_Peso.Text) : 0.0;
             cargaDet.ClienteRecepcion = (ent_Cliente)cbo_ClienteRecepcion.SelectedItem;
             cargaDet.ClienteFinal = (ent_Cliente)cbo_ClienteFinal.SelectedItem;
-            cargaDet.Comisionista = (ent_Cliente)cbo_Comisionista.SelectedItem;
+            if (cbo_Comisionista.SelectedIndex > -1)
+            {
+                cargaDet.Comisionista = (ent_Cliente)cbo_Comisionista.SelectedItem;
+            }
             cargaDet.ProductoTransportar = txt_ProductoTransportar.Text;
             cargaDet.ValorUnitario = txt_FleteSinIGV.Text.Length > 0 ? Convert.ToDouble(txt_FleteSinIGV.Text) : 0.0;
             cargaDet.PrecioUnitario = txt_PrecioUnitario.Text.Length > 0 ? Convert.ToDouble(txt_PrecioUnitario.Text) : 0.0;
@@ -904,10 +908,18 @@ namespace Principal.Operaciones
                 List<ent_Carga> Lista = cln_Carga.ListarCarga(Carga, "GEN");
                 if (Lista.Count > 0)
                 {
-                    frm_GuiaRemisionTransportista.mode = 2;
-                    frm_GuiaRemisionTransportista.Carga = Lista[0];
-                    frm_GuiaRemisionTransportista form = new frm_GuiaRemisionTransportista();
-                    BasicMetod.abrirFormHijo(form, "Guia Remisión");
+                    if (Lista[0].Estado.Correlativo == 2)
+                    {
+                        frm_GuiaRemisionTransportista.mode = 2;
+                        frm_GuiaRemisionTransportista.Carga = Lista[0];
+                        frm_GuiaRemisionTransportista form = new frm_GuiaRemisionTransportista();
+                        BasicMetod.abrirFormHijo(form, "Guia Remisión");
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se puede ingresar otra GRT para este registro", BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                 }
                 
             }

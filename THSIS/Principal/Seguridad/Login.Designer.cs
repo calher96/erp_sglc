@@ -34,14 +34,16 @@
             button1 = new Button();
             panel1 = new Panel();
             ptb_Carga = new PictureBox();
+            panel2 = new Panel();
             ((System.ComponentModel.ISupportInitialize)ptb_Carga).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // txtUser
             // 
             txtUser.BackColor = Color.FromArgb(15, 15, 15);
             txtUser.CharacterCasing = CharacterCasing.Upper;
-            txtUser.ForeColor = Color.DimGray;
+            txtUser.ForeColor = Color.White;
             txtUser.Location = new Point(348, 71);
             txtUser.Name = "txtUser";
             txtUser.PlaceholderText = "USUARIO";
@@ -53,7 +55,7 @@
             // 
             txtPassword.BackColor = Color.FromArgb(15, 15, 15);
             txtPassword.CharacterCasing = CharacterCasing.Upper;
-            txtPassword.ForeColor = Color.DimGray;
+            txtPassword.ForeColor = Color.White;
             txtPassword.Location = new Point(348, 144);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
@@ -90,14 +92,25 @@
             // ptb_Carga
             // 
             ptb_Carga.BackColor = Color.Transparent;
+            ptb_Carga.Dock = DockStyle.Fill;
             ptb_Carga.Image = (Image)resources.GetObject("ptb_Carga.Image");
-            ptb_Carga.Location = new Point(292, 30);
+            ptb_Carga.Location = new Point(0, 0);
             ptb_Carga.Name = "ptb_Carga";
-            ptb_Carga.Size = new Size(256, 256);
-            ptb_Carga.SizeMode = PictureBoxSizeMode.AutoSize;
+            ptb_Carga.Size = new Size(260, 263);
             ptb_Carga.TabIndex = 6;
             ptb_Carga.TabStop = false;
+            ptb_Carga.UseWaitCursor = true;
             ptb_Carga.Visible = false;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.Transparent;
+            panel2.Controls.Add(ptb_Carga);
+            panel2.Location = new Point(294, 35);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(260, 263);
+            panel2.TabIndex = 0;
+            panel2.Visible = false;
             // 
             // Login
             // 
@@ -106,7 +119,7 @@
             AutoSize = true;
             BackColor = Color.FromArgb(15, 15, 15);
             ClientSize = new Size(780, 330);
-            Controls.Add(ptb_Carga);
+            Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(txtUser);
             Controls.Add(button1);
@@ -117,6 +130,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
             ((System.ComponentModel.ISupportInitialize)ptb_Carga).EndInit();
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -128,5 +142,6 @@
         private Button button1;
         private Panel panel1;
         private PictureBox ptb_Carga;
+        private Panel panel2;
     }
 }

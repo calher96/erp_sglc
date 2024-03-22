@@ -1,20 +1,8 @@
 ﻿using CEN.Entidad;
 using CLN;
-using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using CEN.Helpers;
-using System.Text.Json.Serialization;
 using System.Text.Json;
 using CEN.Response;
-using Principal.Helpers;
 
 namespace Principal.Seguridad
 {
@@ -30,12 +18,15 @@ namespace Principal.Seguridad
             txtPassword.Text = String.Empty;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
             ent_Usuario User = null;
             try
             {
-                BasicMetod.MostrarCarga(ptb_Carga);
+                //BasicMetod.MostrarCarga(ptb_Carga, panel2);
+                //FormLoading
+                //BasicMetod Metod = new BasicMetod();
+                //Metod.ShowLoadingForm();
                 User = new ent_Usuario();
                 User.Usua_Usuario = txtUser.Text;
                 User.Usua_Password = txtPassword.Text;
@@ -52,12 +43,14 @@ namespace Principal.Seguridad
                     StaticVariable.obj_Trabajador = ((LoginResponse)response.response).Trabajador;
                     StaticVariable.obj_Sucursal = ((LoginResponse)response.response).Trabajador.Sucursal;
                     mdi_Principal.status_login = 1;
-                    BasicMetod.OcultarCarga(ptb_Carga);
+                    //BasicMetod.OcultarCarga(ptb_Carga);
+                    //Metod.HideLoadingForm();
                     this.Dispose();
                 }
                 else
                 {
-                    BasicMetod.OcultarCarga(ptb_Carga);
+                    //BasicMetod.OcultarCarga(ptb_Carga);
+                    //Metod.HideLoadingForm();
                     limpiarCampos();
                     MessageBox.Show(response.mensajeError, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

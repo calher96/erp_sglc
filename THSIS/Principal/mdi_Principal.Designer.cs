@@ -38,6 +38,7 @@
             tsm_GestionClientes = new ToolStripMenuItem();
             tsm_Clientes = new ToolStripMenuItem();
             tsm_Carga = new ToolStripMenuItem();
+            tsm_GRT = new ToolStripMenuItem();
             tsm_Planeamiento = new ToolStripMenuItem();
             tsm_Administracion = new ToolStripMenuItem();
             tsm_Finanzas = new ToolStripMenuItem();
@@ -103,7 +104,7 @@
             // 
             // tsm_Operaciones
             // 
-            tsm_Operaciones.DropDownItems.AddRange(new ToolStripItem[] { tsm_GestionClientes, tsm_Carga });
+            tsm_Operaciones.DropDownItems.AddRange(new ToolStripItem[] { tsm_GestionClientes, tsm_Carga, tsm_GRT });
             tsm_Operaciones.Image = (Image)resources.GetObject("tsm_Operaciones.Image");
             tsm_Operaciones.ImageScaling = ToolStripItemImageScaling.None;
             tsm_Operaciones.Name = "tsm_Operaciones";
@@ -140,6 +141,14 @@
             tsm_Carga.Text = "Carga";
             tsm_Carga.Visible = false;
             tsm_Carga.Click += tsm_Carga_Click;
+            // 
+            // tsm_GRT
+            // 
+            tsm_GRT.Name = "tsm_GRT";
+            tsm_GRT.Size = new Size(236, 38);
+            tsm_GRT.Text = "GRT";
+            tsm_GRT.Visible = false;
+            tsm_GRT.Click += tsm_GRT_Click;
             // 
             // tsm_Planeamiento
             // 
@@ -459,6 +468,7 @@
         private ToolStripMenuItem tsm_Carga;
         private Label lbl_Desde;
         private ToolStripMenuItem tsm_Empresa;
+        private ToolStripMenuItem tsm_GRT;
         public static TabControl tbc_Principal;
     }
 }

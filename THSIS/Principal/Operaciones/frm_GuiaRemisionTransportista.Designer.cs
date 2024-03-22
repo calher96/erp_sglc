@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_GuiaRemisionTransportista));
             tpc_GuiaRemisionTransportista = new TabControl();
             tpg_Lista = new TabPage();
@@ -115,6 +116,7 @@
             panel4 = new Panel();
             btn_Cancelar = new Button();
             btn_Guardar = new Button();
+            errorProvider1 = new ErrorProvider(components);
             tpc_GuiaRemisionTransportista.SuspendLayout();
             tpg_Lista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_GRT).BeginInit();
@@ -128,6 +130,7 @@
             panel6.SuspendLayout();
             panel5.SuspendLayout();
             panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // tpc_GuiaRemisionTransportista
@@ -1057,6 +1060,10 @@
             btn_Guardar.UseVisualStyleBackColor = true;
             btn_Guardar.Click += btn_Guardar_Click;
             // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            // 
             // frm_GuiaRemisionTransportista
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -1083,6 +1090,7 @@
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
         }
 
@@ -1174,5 +1182,6 @@
         private DataGridViewTextBoxColumn Cantidad;
         private DataGridViewTextBoxColumn Peso;
         private DataGridViewTextBoxColumn PesoTotal;
+        private ErrorProvider errorProvider1;
     }
 }

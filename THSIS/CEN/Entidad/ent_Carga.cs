@@ -15,6 +15,10 @@ namespace CEN
         public List<ent_CargaDetalle> LiscaCarga { get; set; }
         public int empr_Id { get; set; }
         public String Codigo { get; set; }
+        public ent_Cliente ClienteRemitente { get; set; }
+        public ent_Cliente ClienteDestinatario { get; set; }
+        public String PuntoPartida { get; set; }
+        public String PuntoLlegada { get; set; }
         public ent_Concepto Estado { get; set; }
         public ent_Concepto TipoServicio { get; set; }
         public DateTime FechaSolicita { get; set; }
@@ -32,10 +36,8 @@ namespace CEN
         public ent_Ubigeo RecojoDomicilioLugar { get; set; }
         public String DireccionRecojoDomicilio { get; set; }
         public ent_Concepto TipoVehiculo { get; set; }
-        public ent_Cliente ClienteRemitente { get; set; }
-        public ent_Cliente ClienteDestinatario { get; set; }
-        public String PuntoPartida { get; set; }
-        public String PuntoLlegada { get; set; }
+        
+        
         public String Anexos { get; set; }
         public String ClaveSeguridad { get; set; }
         public ent_Cliente ClientePago { get; set; }
