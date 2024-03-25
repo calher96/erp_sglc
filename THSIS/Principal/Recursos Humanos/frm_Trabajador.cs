@@ -440,6 +440,12 @@ namespace Principal.Recursos_Humanos
                         Trabajador.Persona.Marcabaja = 1;
                         Trabajador.Persona.UbigeoNacimiento = ((ent_Ubigeo)cbo_Distrito.SelectedItem).Ubigeo;
                         Trabajador.FotoPerfil = convertirImagenBase64();
+                        ent_DocumentoTrabajador Doc = new ent_DocumentoTrabajador();
+                        Doc.TipoDocumento.Correlativo = 3;
+                        Doc.TipoDocumento.Prefijo = 1;
+                        Doc.NumeroDocumento = txt_NroLicencia.Text;
+                       
+                        Trabajador.ListaDocumento.Add(Doc);
                         response = cln.guardarTrabajador(Trabajador);
                         if (response.codError == -1)
                         {
@@ -854,6 +860,7 @@ namespace Principal.Recursos_Humanos
 
         private void button5_Click(object sender, EventArgs e)
         {
+            frm_Direccion.mode = 2;
             frm_Direccion.ListaDireccionCliente.Clear();
             //frm_Direccion.ListaDireccionTrabajador.Clear();
             frm_Direccion.ListaDireccionTrabajador = lista_Direccion;
@@ -886,5 +893,6 @@ namespace Principal.Recursos_Humanos
                 }
             }
         }
+
     }
 }

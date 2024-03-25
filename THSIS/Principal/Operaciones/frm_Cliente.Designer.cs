@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Cliente));
             tbc_Principal = new TabControl();
             tp_Lista = new TabPage();
             dgb_Lista = new DataGridView();
             panel2 = new Panel();
-            btn_Actualizar = new Button();
-            button8 = new Button();
-            button7 = new Button();
-            btn_Nuevo = new Button();
+            btn_Cerrar = new Button();
+            button3 = new Button();
+            button2 = new Button();
+            button1 = new Button();
             panel1 = new Panel();
             cbo_Color_Comisionista = new ComboBox();
             label3 = new Label();
@@ -90,7 +91,7 @@
             tbc_Principal.Controls.Add(tp_Lista);
             tbc_Principal.Controls.Add(tp_Mantenimiento);
             tbc_Principal.Dock = DockStyle.Fill;
-            tbc_Principal.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            tbc_Principal.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             tbc_Principal.Location = new Point(0, 0);
             tbc_Principal.Margin = new Padding(3, 4, 3, 4);
             tbc_Principal.Name = "tbc_Principal";
@@ -104,6 +105,7 @@
             tp_Lista.Controls.Add(dgb_Lista);
             tp_Lista.Controls.Add(panel2);
             tp_Lista.Controls.Add(panel1);
+            tp_Lista.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             tp_Lista.ImageIndex = 0;
             tp_Lista.Location = new Point(4, 29);
             tp_Lista.Margin = new Padding(3, 4, 3, 4);
@@ -116,92 +118,95 @@
             // 
             // dgb_Lista
             // 
+            dgb_Lista.AllowUserToAddRows = false;
+            dgb_Lista.AllowUserToDeleteRows = false;
             dgb_Lista.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgb_Lista.Dock = DockStyle.Fill;
-            dgb_Lista.Location = new Point(3, 121);
+            dgb_Lista.Location = new Point(3, 106);
             dgb_Lista.Name = "dgb_Lista";
             dgb_Lista.RowHeadersWidth = 51;
             dgb_Lista.RowTemplate.Height = 29;
-            dgb_Lista.Size = new Size(1393, 423);
+            dgb_Lista.Size = new Size(1393, 438);
             dgb_Lista.TabIndex = 2;
             // 
             // panel2
             // 
             panel2.BackColor = Color.DarkGray;
             panel2.BorderStyle = BorderStyle.Fixed3D;
-            panel2.Controls.Add(btn_Actualizar);
-            panel2.Controls.Add(button8);
-            panel2.Controls.Add(button7);
-            panel2.Controls.Add(btn_Nuevo);
+            panel2.Controls.Add(btn_Cerrar);
+            panel2.Controls.Add(button3);
+            panel2.Controls.Add(button2);
+            panel2.Controls.Add(button1);
             panel2.Dock = DockStyle.Top;
+            panel2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             panel2.Location = new Point(3, 74);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1393, 47);
+            panel2.Size = new Size(1393, 32);
             panel2.TabIndex = 1;
             // 
-            // btn_Actualizar
+            // btn_Cerrar
             // 
-            btn_Actualizar.Dock = DockStyle.Left;
-            btn_Actualizar.FlatAppearance.MouseDownBackColor = Color.Gray;
-            btn_Actualizar.FlatAppearance.MouseOverBackColor = Color.Silver;
-            btn_Actualizar.Image = Properties.Resources.new_file;
-            btn_Actualizar.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Actualizar.Location = new Point(297, 0);
-            btn_Actualizar.Name = "btn_Actualizar";
-            btn_Actualizar.Size = new Size(118, 43);
-            btn_Actualizar.TabIndex = 3;
-            btn_Actualizar.Text = "Actualizar";
-            btn_Actualizar.TextAlign = ContentAlignment.MiddleRight;
-            btn_Actualizar.UseVisualStyleBackColor = true;
-            btn_Actualizar.Click += btn_Actualizar_Click;
+            btn_Cerrar.Dock = DockStyle.Left;
+            btn_Cerrar.FlatAppearance.MouseDownBackColor = Color.Gray;
+            btn_Cerrar.FlatAppearance.MouseOverBackColor = Color.Silver;
+            btn_Cerrar.Image = (Image)resources.GetObject("btn_Cerrar.Image");
+            btn_Cerrar.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_Cerrar.Location = new Point(294, 0);
+            btn_Cerrar.Name = "btn_Cerrar";
+            btn_Cerrar.Size = new Size(89, 28);
+            btn_Cerrar.TabIndex = 7;
+            btn_Cerrar.Text = "Cerrar";
+            btn_Cerrar.TextAlign = ContentAlignment.MiddleRight;
+            btn_Cerrar.UseVisualStyleBackColor = true;
+            btn_Cerrar.Click += btn_Cerrar_Click;
             // 
-            // button8
+            // button3
             // 
-            button8.Dock = DockStyle.Left;
-            button8.FlatAppearance.MouseDownBackColor = Color.Gray;
-            button8.FlatAppearance.MouseOverBackColor = Color.Silver;
-            button8.Image = Properties.Resources.cerrar2;
-            button8.ImageAlign = ContentAlignment.MiddleLeft;
-            button8.Location = new Point(202, 0);
-            button8.Name = "button8";
-            button8.Size = new Size(95, 43);
-            button8.TabIndex = 2;
-            button8.Text = "Cerrar";
-            button8.TextAlign = ContentAlignment.MiddleRight;
-            button8.UseVisualStyleBackColor = true;
-            button8.Click += button8_Click;
+            button3.Dock = DockStyle.Left;
+            button3.FlatAppearance.MouseDownBackColor = Color.Gray;
+            button3.FlatAppearance.MouseOverBackColor = Color.Silver;
+            button3.Image = (Image)resources.GetObject("button3.Image");
+            button3.ImageAlign = ContentAlignment.MiddleLeft;
+            button3.Location = new Point(189, 0);
+            button3.Name = "button3";
+            button3.Size = new Size(105, 28);
+            button3.TabIndex = 6;
+            button3.Text = "Actualizar";
+            button3.TextAlign = ContentAlignment.MiddleRight;
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
-            // button7
+            // button2
             // 
-            button7.Dock = DockStyle.Left;
-            button7.FlatAppearance.MouseDownBackColor = Color.Gray;
-            button7.FlatAppearance.MouseOverBackColor = Color.Silver;
-            button7.Image = Properties.Resources.excel;
-            button7.ImageAlign = ContentAlignment.MiddleLeft;
-            button7.Location = new Point(94, 0);
-            button7.Name = "button7";
-            button7.Size = new Size(108, 43);
-            button7.TabIndex = 1;
-            button7.Text = "Exportar";
-            button7.TextAlign = ContentAlignment.MiddleRight;
-            button7.UseVisualStyleBackColor = true;
-            button7.Click += button7_Click;
+            button2.Dock = DockStyle.Left;
+            button2.FlatAppearance.MouseDownBackColor = Color.Gray;
+            button2.FlatAppearance.MouseOverBackColor = Color.Silver;
+            button2.Image = (Image)resources.GetObject("button2.Image");
+            button2.ImageAlign = ContentAlignment.MiddleLeft;
+            button2.Location = new Point(88, 0);
+            button2.Name = "button2";
+            button2.Size = new Size(101, 28);
+            button2.TabIndex = 5;
+            button2.Text = "Exportar";
+            button2.TextAlign = ContentAlignment.MiddleRight;
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
-            // btn_Nuevo
+            // button1
             // 
-            btn_Nuevo.Dock = DockStyle.Left;
-            btn_Nuevo.FlatAppearance.MouseDownBackColor = Color.Gray;
-            btn_Nuevo.FlatAppearance.MouseOverBackColor = Color.Silver;
-            btn_Nuevo.Image = Properties.Resources.new_file;
-            btn_Nuevo.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_Nuevo.Location = new Point(0, 0);
-            btn_Nuevo.Name = "btn_Nuevo";
-            btn_Nuevo.Size = new Size(94, 43);
-            btn_Nuevo.TabIndex = 0;
-            btn_Nuevo.Text = "Nuevo";
-            btn_Nuevo.TextAlign = ContentAlignment.MiddleRight;
-            btn_Nuevo.UseVisualStyleBackColor = true;
-            btn_Nuevo.Click += btn_Nuevo_Click;
+            button1.Dock = DockStyle.Left;
+            button1.FlatAppearance.MouseDownBackColor = Color.Gray;
+            button1.FlatAppearance.MouseOverBackColor = Color.Silver;
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(0, 0);
+            button1.Name = "button1";
+            button1.Size = new Size(88, 28);
+            button1.TabIndex = 4;
+            button1.Text = "Nuevo";
+            button1.TextAlign = ContentAlignment.MiddleRight;
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // panel1
             // 
@@ -229,7 +234,7 @@
             label3.AutoSize = true;
             label3.Location = new Point(23, 23);
             label3.Name = "label3";
-            label3.Size = new Size(99, 20);
+            label3.Size = new Size(94, 20);
             label3.TabIndex = 7;
             label3.Text = "Comisionista";
             // 
@@ -313,7 +318,7 @@
             label13.AutoSize = true;
             label13.Location = new Point(9, 80);
             label13.Name = "label13";
-            label13.Size = new Size(100, 20);
+            label13.Size = new Size(94, 20);
             label13.TabIndex = 21;
             label13.Text = "Tipo Persona";
             // 
@@ -338,7 +343,7 @@
             label1.AutoSize = true;
             label1.Location = new Point(9, 29);
             label1.Name = "label1";
-            label1.Size = new Size(126, 20);
+            label1.Size = new Size(121, 20);
             label1.TabIndex = 0;
             label1.Text = "Tipo Documento";
             // 
@@ -371,7 +376,7 @@
             label2.AutoSize = true;
             label2.Location = new Point(380, 29);
             label2.Name = "label2";
-            label2.Size = new Size(91, 20);
+            label2.Size = new Size(87, 20);
             label2.TabIndex = 2;
             label2.Text = "Documento";
             // 
@@ -403,7 +408,7 @@
             label12.AutoSize = true;
             label12.Location = new Point(10, 72);
             label12.Name = "label12";
-            label12.Size = new Size(116, 20);
+            label12.Size = new Size(112, 20);
             label12.TabIndex = 25;
             label12.Text = "Dirección Fiscal";
             // 
@@ -419,7 +424,7 @@
             label9.AutoSize = true;
             label9.Location = new Point(678, 29);
             label9.Name = "label9";
-            label9.Size = new Size(92, 20);
+            label9.Size = new Size(86, 20);
             label9.TabIndex = 23;
             label9.Text = "Abreviatura";
             // 
@@ -435,7 +440,7 @@
             label4.AutoSize = true;
             label4.Location = new Point(30, 29);
             label4.Name = "label4";
-            label4.Size = new Size(96, 20);
+            label4.Size = new Size(94, 20);
             label4.TabIndex = 4;
             label4.Text = "Razon Social";
             // 
@@ -466,7 +471,7 @@
             chk_Comisionista.AutoSize = true;
             chk_Comisionista.Location = new Point(555, 88);
             chk_Comisionista.Name = "chk_Comisionista";
-            chk_Comisionista.Size = new Size(121, 24);
+            chk_Comisionista.Size = new Size(116, 24);
             chk_Comisionista.TabIndex = 19;
             chk_Comisionista.Text = "Comisionista";
             chk_Comisionista.UseVisualStyleBackColor = true;
@@ -483,7 +488,7 @@
             label5.AutoSize = true;
             label5.Location = new Point(28, 41);
             label5.Name = "label5";
-            label5.Size = new Size(74, 20);
+            label5.Size = new Size(70, 20);
             label5.TabIndex = 6;
             label5.Text = "Nombres";
             // 
@@ -499,7 +504,7 @@
             label6.AutoSize = true;
             label6.Location = new Point(347, 41);
             label6.Name = "label6";
-            label6.Size = new Size(92, 20);
+            label6.Size = new Size(85, 20);
             label6.TabIndex = 8;
             label6.Text = "Ap. Paterno";
             // 
@@ -518,7 +523,7 @@
             label10.AutoSize = true;
             label10.Location = new Point(314, 92);
             label10.Name = "label10";
-            label10.Size = new Size(84, 20);
+            label10.Size = new Size(80, 20);
             label10.TabIndex = 17;
             label10.Text = "Fecha Nac.";
             // 
@@ -534,7 +539,7 @@
             label7.AutoSize = true;
             label7.Location = new Point(678, 41);
             label7.Name = "label7";
-            label7.Size = new Size(97, 20);
+            label7.Size = new Size(91, 20);
             label7.TabIndex = 10;
             label7.Text = "Ap. Materno";
             // 
@@ -545,7 +550,7 @@
             rbt_Femenino.FlatAppearance.CheckedBackColor = Color.FromArgb(128, 255, 128);
             rbt_Femenino.Location = new Point(186, 86);
             rbt_Femenino.Name = "rbt_Femenino";
-            rbt_Femenino.Size = new Size(98, 26);
+            rbt_Femenino.Size = new Size(94, 26);
             rbt_Femenino.TabIndex = 16;
             rbt_Femenino.Text = "Femenino";
             rbt_Femenino.UseCompatibleTextRendering = true;
@@ -556,7 +561,7 @@
             label11.AutoSize = true;
             label11.Location = new Point(31, 87);
             label11.Name = "label11";
-            label11.Size = new Size(42, 20);
+            label11.Size = new Size(41, 20);
             label11.TabIndex = 15;
             label11.Text = "Sexo";
             // 
@@ -568,7 +573,7 @@
             rbt_Masculino.FlatAppearance.CheckedBackColor = Color.FromArgb(128, 255, 128);
             rbt_Masculino.Location = new Point(79, 85);
             rbt_Masculino.Name = "rbt_Masculino";
-            rbt_Masculino.Size = new Size(101, 24);
+            rbt_Masculino.Size = new Size(97, 24);
             rbt_Masculino.TabIndex = 14;
             rbt_Masculino.TabStop = true;
             rbt_Masculino.Text = "Masculino";
@@ -606,10 +611,6 @@
         private TabPage tp_Lista;
         private DataGridView dgb_Lista;
         private Panel panel2;
-        private Button btn_Actualizar;
-        private Button button8;
-        private Button button7;
-        private Button btn_Nuevo;
         private Panel panel1;
         private ComboBox cbo_Color_Comisionista;
         private Label label3;
@@ -646,5 +647,9 @@
         private Label label10;
         private Button btn_Guardar;
         private Button btn_Cancelar;
+        private Button button1;
+        private Button button2;
+        private Button button3;
+        private Button btn_Cerrar;
     }
 }

@@ -80,12 +80,11 @@
             tpg_AdministracionFinanzas = new TabPage();
             panel5 = new Panel();
             panel6 = new Panel();
+            txt_Morosidad = new TextBox();
             label24 = new Label();
             cbo_clasificacionCliente = new ComboBox();
             label21 = new Label();
             cbo_TipoNivelComercial = new ComboBox();
-            txt_LineaCredito = new MaskedTextBox();
-            txt_Morosidad = new MaskedTextBox();
             label22 = new Label();
             label23 = new Label();
             chk_Cheque = new CheckBox();
@@ -144,6 +143,7 @@
             panel4 = new Panel();
             btn_Cancelar = new Button();
             btn_Guardar = new Button();
+            txt_LineaCredito = new TextBox();
             tbc_EmpresaCliente.SuspendLayout();
             tpg_Lista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgb_Cliente).BeginInit();
@@ -731,12 +731,12 @@
             // 
             // panel6
             // 
+            panel6.Controls.Add(txt_LineaCredito);
+            panel6.Controls.Add(txt_Morosidad);
             panel6.Controls.Add(label24);
             panel6.Controls.Add(cbo_clasificacionCliente);
             panel6.Controls.Add(label21);
             panel6.Controls.Add(cbo_TipoNivelComercial);
-            panel6.Controls.Add(txt_LineaCredito);
-            panel6.Controls.Add(txt_Morosidad);
             panel6.Controls.Add(label22);
             panel6.Controls.Add(label23);
             panel6.Controls.Add(chk_Cheque);
@@ -751,6 +751,13 @@
             panel6.Name = "panel6";
             panel6.Size = new Size(383, 552);
             panel6.TabIndex = 13;
+            // 
+            // txt_Morosidad
+            // 
+            txt_Morosidad.Location = new Point(165, 142);
+            txt_Morosidad.Name = "txt_Morosidad";
+            txt_Morosidad.Size = new Size(139, 27);
+            txt_Morosidad.TabIndex = 15;
             // 
             // label24
             // 
@@ -785,24 +792,6 @@
             cbo_TipoNivelComercial.Name = "cbo_TipoNivelComercial";
             cbo_TipoNivelComercial.Size = new Size(139, 28);
             cbo_TipoNivelComercial.TabIndex = 11;
-            // 
-            // txt_LineaCredito
-            // 
-            txt_LineaCredito.Location = new Point(165, 176);
-            txt_LineaCredito.Margin = new Padding(3, 4, 3, 4);
-            txt_LineaCredito.Mask = "999999.99";
-            txt_LineaCredito.Name = "txt_LineaCredito";
-            txt_LineaCredito.Size = new Size(139, 27);
-            txt_LineaCredito.TabIndex = 9;
-            // 
-            // txt_Morosidad
-            // 
-            txt_Morosidad.Location = new Point(165, 137);
-            txt_Morosidad.Margin = new Padding(3, 4, 3, 4);
-            txt_Morosidad.Mask = "999999.99";
-            txt_Morosidad.Name = "txt_Morosidad";
-            txt_Morosidad.Size = new Size(139, 27);
-            txt_Morosidad.TabIndex = 8;
             // 
             // label22
             // 
@@ -1415,6 +1404,13 @@
             btn_Guardar.UseVisualStyleBackColor = true;
             btn_Guardar.Click += btn_Guardar_Click;
             // 
+            // txt_LineaCredito
+            // 
+            txt_LineaCredito.Location = new Point(165, 176);
+            txt_LineaCredito.Name = "txt_LineaCredito";
+            txt_LineaCredito.Size = new Size(139, 27);
+            txt_LineaCredito.TabIndex = 16;
+            // 
             // frm_ClienteEmpresa
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -1549,8 +1545,6 @@
         private ComboBox cbo_clasificacionCliente;
         private Label label21;
         private ComboBox cbo_TipoNivelComercial;
-        private MaskedTextBox txt_LineaCredito;
-        private MaskedTextBox txt_Morosidad;
         private Label label22;
         private Label label23;
         private CheckBox chk_Cheque;
@@ -1577,5 +1571,7 @@
         private TabPage tabPage1;
         private DataGridView dgv_Contacto;
         private TextBox txt_IdCliente;
+        private TextBox txt_Morosidad;
+        private TextBox txt_LineaCredito;
     }
 }

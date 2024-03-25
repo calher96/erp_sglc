@@ -167,6 +167,8 @@
             quitarOcupaciónToolStripMenuItem = new ToolStripMenuItem();
             cms_Secundario = new ContextMenuStrip(components);
             errorProvider1 = new ErrorProvider(components);
+            txt_NroLicencia = new TextBox();
+            label17 = new Label();
             textBox2 = new TextBox();
             textBox3 = new TextBox();
             tabControl1.SuspendLayout();
@@ -213,7 +215,6 @@
             // tabControl1
             // 
             tabControl1.AllowDrop = true;
-            tabControl1.Appearance = TabAppearance.Buttons;
             tabControl1.Controls.Add(tp_Lista);
             tabControl1.Controls.Add(tp_Mantenimiento);
             tabControl1.Dock = DockStyle.Fill;
@@ -233,11 +234,11 @@
             tp_Lista.Controls.Add(panel2);
             tp_Lista.Controls.Add(panel1);
             tp_Lista.ImageIndex = 0;
-            tp_Lista.Location = new Point(4, 32);
+            tp_Lista.Location = new Point(4, 29);
             tp_Lista.Margin = new Padding(3, 4, 3, 4);
             tp_Lista.Name = "tp_Lista";
             tp_Lista.Padding = new Padding(3, 4, 3, 4);
-            tp_Lista.Size = new Size(1549, 848);
+            tp_Lista.Size = new Size(1549, 851);
             tp_Lista.TabIndex = 0;
             tp_Lista.Text = "Lista";
             tp_Lista.UseVisualStyleBackColor = true;
@@ -251,7 +252,7 @@
             dgb_Lista.RowHeadersWidth = 51;
             dgb_Lista.RowTemplate.Height = 29;
             dgb_Lista.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgb_Lista.Size = new Size(1543, 722);
+            dgb_Lista.Size = new Size(1543, 725);
             dgb_Lista.StandardTab = true;
             dgb_Lista.TabIndex = 2;
             dgb_Lista.CellDoubleClick += dgb_Lista_CellDoubleClick;
@@ -275,7 +276,7 @@
             // 
             // txt_Filtro
             // 
-            txt_Filtro.Location = new Point(489, 11);
+            txt_Filtro.Location = new Point(708, 4);
             txt_Filtro.Name = "txt_Filtro";
             txt_Filtro.Size = new Size(295, 27);
             txt_Filtro.TabIndex = 4;
@@ -334,7 +335,6 @@
             btn_Nuevo.Dock = DockStyle.Left;
             btn_Nuevo.FlatAppearance.MouseDownBackColor = Color.Gray;
             btn_Nuevo.FlatAppearance.MouseOverBackColor = Color.Silver;
-            btn_Nuevo.Image = Properties.Resources.new_file;
             btn_Nuevo.ImageAlign = ContentAlignment.MiddleLeft;
             btn_Nuevo.Location = new Point(0, 0);
             btn_Nuevo.Name = "btn_Nuevo";
@@ -480,11 +480,11 @@
             // 
             tp_Mantenimiento.Controls.Add(tabControl2);
             tp_Mantenimiento.ImageIndex = 1;
-            tp_Mantenimiento.Location = new Point(4, 32);
+            tp_Mantenimiento.Location = new Point(4, 29);
             tp_Mantenimiento.Margin = new Padding(3, 4, 3, 4);
             tp_Mantenimiento.Name = "tp_Mantenimiento";
             tp_Mantenimiento.Padding = new Padding(3, 4, 3, 4);
-            tp_Mantenimiento.Size = new Size(1549, 848);
+            tp_Mantenimiento.Size = new Size(1549, 851);
             tp_Mantenimiento.TabIndex = 1;
             tp_Mantenimiento.Text = "Mantenimiento";
             tp_Mantenimiento.UseVisualStyleBackColor = true;
@@ -501,7 +501,7 @@
             tabControl2.Name = "tabControl2";
             tabControl2.SelectedIndex = 0;
             tabControl2.ShowToolTips = true;
-            tabControl2.Size = new Size(1543, 840);
+            tabControl2.Size = new Size(1543, 843);
             tabControl2.TabIndex = 0;
             // 
             // tabPage1
@@ -513,7 +513,7 @@
             tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1535, 807);
+            tabPage1.Size = new Size(1535, 810);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Datos Personales";
             tabPage1.UseVisualStyleBackColor = true;
@@ -971,6 +971,8 @@
             // groupBox4
             // 
             groupBox4.BackColor = Color.Azure;
+            groupBox4.Controls.Add(label17);
+            groupBox4.Controls.Add(txt_NroLicencia);
             groupBox4.Controls.Add(cbo_PuestoPiloto);
             groupBox4.Controls.Add(label22);
             groupBox4.Controls.Add(cbo_GradoInstruccion);
@@ -1618,7 +1620,7 @@
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1535, 807);
+            tabPage2.Size = new Size(1535, 810);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Datos Complementarios";
             tabPage2.UseVisualStyleBackColor = true;
@@ -1666,6 +1668,23 @@
             // errorProvider1
             // 
             errorProvider1.ContainerControl = this;
+            // 
+            // txt_NroLicencia
+            // 
+            txt_NroLicencia.CharacterCasing = CharacterCasing.Upper;
+            txt_NroLicencia.Location = new Point(1243, 73);
+            txt_NroLicencia.Name = "txt_NroLicencia";
+            txt_NroLicencia.Size = new Size(130, 27);
+            txt_NroLicencia.TabIndex = 28;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(1146, 76);
+            label17.Name = "label17";
+            label17.Size = new Size(90, 20);
+            label17.TabIndex = 37;
+            label17.Text = "N° Licencia:";
             // 
             // frm_Trabajador
             // 
@@ -1856,5 +1875,7 @@
         private ComboBox cbo_Cargo;
         private ComboBox cbo_Unidad;
         private ComboBox cbo_Centro;
+        private Label label17;
+        private TextBox txt_NroLicencia;
     }
 }

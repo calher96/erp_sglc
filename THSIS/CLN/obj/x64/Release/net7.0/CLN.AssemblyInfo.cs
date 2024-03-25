@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CLN")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fa58032a68a6a92c4206fdd236ef6c4da9d993da")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8ebe977da0eead6dbc19dfb5d5439c8552f1a561")]
 [assembly: System.Reflection.AssemblyProductAttribute("CLN")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CLN")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

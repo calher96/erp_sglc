@@ -14,6 +14,8 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using DataGridViewAutoFilter;
 using CEN;
+using Microsoft.VisualBasic.ApplicationServices;
+using System.Text.Json;
 
 namespace Principal.Operaciones
 {
@@ -169,7 +171,16 @@ namespace Principal.Operaciones
             }
             catch (Exception ex)
             {
-
+                ent_ControlError obj = new ent_ControlError();
+                obj.Cerr_MensajeError = ex.Message;
+                obj.Cerr_Traza = ex.StackTrace;
+                obj.Cerr_Usuario = StaticVariable.obj_Usuario.Usua_Usuario;
+                obj.Cerr_Trama = "";
+                obj.Cerr_Formulario = this.Name;
+                obj.Cerr_FechaError = DateOnly.Parse(DateTime.Now.ToShortDateString());
+                cln_ControlError cln = new cln_ControlError();
+                cln.registrarError(obj);
+                MessageBox.Show("Ocurrió un error interno, por favor vuelve a intentar", BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void construirDataGridView()
@@ -319,6 +330,8 @@ namespace Principal.Operaciones
                 else
                 {
                     MessageBox.Show(response.mensajeError, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    tbc_Principal.Controls[1].Enabled = false;
+                    tbc_Principal.SelectedIndex = 0;
                 }
             }
             else
@@ -348,5 +361,26 @@ namespace Principal.Operaciones
         }
         #endregion
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            tbc_Principal.Controls[1].Enabled = true;
+            tbc_Principal.SelectedIndex = 1;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            BasicMetod.ExportToExcel(dgb_Lista, "Clientes" + DateTime.Now.ToString("dd-mm-yyyy HHmmss"));
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            listarCliente();
+        }
+
+        private void btn_Cerrar_Click(object sender, EventArgs e)
+        {
+            TabPage tp = mdi_Principal.tbc_Principal.TabPages["Cliente"];
+            mdi_Principal.tbc_Principal.TabPages.Remove(tp);
+        }
     }
 }

@@ -156,7 +156,15 @@ namespace Principal.Operaciones
             {
                 ent_Vehiculo Vehiculo = (ent_Vehiculo)cbo_Vehiculo.SelectedItem;
                 txt_Marca.Text = Vehiculo.Marca.Descripcion;
-
+                txt_NMtc.Text = Vehiculo.NumeroMTC;
+                if (Vehiculo.TipoVehiculo.Correlativo != 1)
+                {
+                    cbo_Carreta.Enabled = false;
+                }
+                else
+                {
+                    cbo_Carreta.Enabled = true;
+                }
             }
         }
 
@@ -215,7 +223,7 @@ namespace Principal.Operaciones
                         }
                     }
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -234,7 +242,7 @@ namespace Principal.Operaciones
         private Boolean validarFormulario()
         {
             Boolean validar = false;
-            if (txt_Serie.Text.Length != 4 ) { errorProvider1.SetError(txt_Serie,"Por favor ingrese una serie valida"); validar = true; } else { errorProvider1.SetError(txt_Serie, ""); }
+            if (txt_Serie.Text.Length != 4) { errorProvider1.SetError(txt_Serie, "Por favor ingrese una serie valida"); validar = true; } else { errorProvider1.SetError(txt_Serie, ""); }
             if (txt_Correlativo.Text.Length == 0) { errorProvider1.SetError(txt_Correlativo, "Por favor ingrese un correlativo para la GRT"); validar = true; } else { errorProvider1.SetError(txt_Correlativo, ""); }
             if (cbo_Vehiculo.SelectedIndex == -1) { errorProvider1.SetError(cbo_Vehiculo, "Por favor seleccione un vehiculo"); validar = true; } else { errorProvider1.SetError(cbo_Vehiculo, ""); }
             if (cbo_Conductor.SelectedIndex == -1) { errorProvider1.SetError(cbo_Conductor, "Por favor seleccione un conductor"); validar = true; } else { errorProvider1.SetError(cbo_Conductor, ""); }
@@ -242,8 +250,9 @@ namespace Principal.Operaciones
             if (txt_Llegada.Text.Length == 4) { errorProvider1.SetError(txt_Llegada, "Por favor ingrese una direccion de llegada"); validar = true; } else { errorProvider1.SetError(txt_Llegada, ""); }
             if (txt_NMtc.Text.Length == 0) { errorProvider1.SetError(txt_NMtc, "Por favor ingrese N° MTC"); validar = true; } else { errorProvider1.SetError(txt_NMtc, ""); }
             if (txt_NumeroLicencia.Text.Length == 0) { errorProvider1.SetError(txt_NumeroLicencia, "Por favor ingrese un numero de licencia de conductor"); validar = true; } else { errorProvider1.SetError(txt_NumeroLicencia, ""); }
-            if (txt_NumeroDoc.Text.Length ==0 ) { errorProvider1.SetError(txt_NumeroDoc, "Por favor ingrese un numero de documento"); validar = true; } else { errorProvider1.SetError(txt_NumeroDoc, ""); }
+            if (txt_NumeroDoc.Text.Length == 0) { errorProvider1.SetError(txt_NumeroDoc, "Por favor ingrese un numero de documento"); validar = true; } else { errorProvider1.SetError(txt_NumeroDoc, ""); }
             if (txt_Peso.Text.Length == 0) { errorProvider1.SetError(txt_Peso, "Por favor ingrese un Peso"); validar = true; } else { errorProvider1.SetError(txt_Peso, ""); }
+            if (((ent_Vehiculo)cbo_Vehiculo.SelectedItem).TipoVehiculo.Correlativo == 1 && cbo_Carreta.SelectedIndex == -1) { errorProvider1.SetError(cbo_Carreta, "Por favor seleccione una Carreta"); validar = true; } else { errorProvider1.SetError(cbo_Carreta, ""); }
             return validar;
         }
         private void construirFormulario()
@@ -281,7 +290,7 @@ namespace Principal.Operaciones
         {
             cln_Vehiculo cln_Vehiculo = new cln_Vehiculo();
             ent_Vehiculo Vehiculo = new ent_Vehiculo();
-            Vehiculo.TipoVehiculo.Correlativo = 6;
+            Vehiculo.TipoVehiculo.Correlativo = 2;
             List<ent_Vehiculo> Lista = cln_Vehiculo.listarVehiculo(Vehiculo, "GEN");
             cbo_Carreta.DataSource = Lista;
             cbo_Carreta.ValueMember = "Id";
@@ -334,8 +343,8 @@ namespace Principal.Operaciones
                 }
             }
             txt_Peso.Text = Convert.ToString(Carga.LiscaCarga[0].Peso);
-            txt_Partida.Text = Carga.PuntoPartida;
-            txt_Llegada.Text = Carga.PuntoLlegada;
+            txt_Partida.Text = Carga.PuntoPartida.DireccionCompleta;
+            txt_Llegada.Text = Carga.PuntoLlegada.DireccionCompleta;
             ent_CargaDetalle CD = Carga.LiscaCarga[0];
             dgv_DetalleGRT.Rows.Add(0, CD.ProductoTransportar, CD.Cantidad, CD.Peso, CD.Cantidad * CD.Peso);
         }
@@ -402,6 +411,18 @@ namespace Principal.Operaciones
             dgv_GRT.Columns["HostUser"].Visible = false;
         }
         #endregion
-        
+
+        private void cbo_Conductor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbo_Conductor.SelectedIndex > -1)
+            {
+                ent_Trabajador Trabajador = (ent_Trabajador)cbo_Conductor.SelectedItem;
+                cln_Trabajador cln_Trabajador = new cln_Trabajador();
+                Trabajador = cln_Trabajador.ListarTrabajador(Trabajador)[0];
+                List<ent_DocumentoTrabajador> ListaDoc = Trabajador.ListaDocumento;
+                ListaDoc = ListaDoc.Where(x => x.TipoDocumento.Correlativo == 3).ToList();
+                txt_NumeroLicencia.Text = ListaDoc[0].NumeroDocumento;
+            }
+        }
     }
 }

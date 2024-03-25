@@ -14,6 +14,7 @@ namespace CEN
         public String PlacaActual { get; set; }
         public ent_Concepto Marca { get; set; }
         public ent_Concepto TipoVehiculo { get; set; }
+        public String NumeroMTC { get; set; }
         public int Marcabaja { get; set; } 
 
         public ent_Vehiculo()
@@ -23,6 +24,7 @@ namespace CEN
             PlacaActual = String.Empty;
             Marca = new ent_Concepto() { Prefijo = 36 };
             TipoVehiculo = new ent_Concepto() { Prefijo = 22 };
+            NumeroMTC = String.Empty;
             Marcabaja = 0;
         }
     }

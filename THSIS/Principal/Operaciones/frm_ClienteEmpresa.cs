@@ -17,6 +17,7 @@ namespace Principal.Operaciones
 {
     public partial class frm_ClienteEmpresa : Form
     {
+        private frm_Direccion frm;
         private Boolean EditMode = false;
         ent_Cliente Cliente;
         List<ent_TipoPago> ListaTipoPago;
@@ -33,7 +34,7 @@ namespace Principal.Operaciones
         {
             try
             {
-                InicializarDireccion();
+                //InicializarDireccion();
                 InicializarComboBox();
             }
             catch (Exception ex)
@@ -144,15 +145,17 @@ namespace Principal.Operaciones
         }
         private void InicializarDireccion()
         {
+            frm_Direccion.mode = 1;
             frm_Direccion.ListaDireccionCliente.Clear();
             frm_Direccion.ListaDireccionTrabajador.Clear();
             frm_Direccion.ListaDireccionCliente = Cliente.Lista_Direccion;
-            frm_Direccion frm = new frm_Direccion();
+            frm = new frm_Direccion();
             frm.TopLevel = false;
             frm.FormBorderStyle = FormBorderStyle.None;
             tpg_DireccionCliente.Controls.Add(frm);
             frm.Dock = DockStyle.Fill;
             frm.Show();
+            tpg_DireccionCliente.Refresh();
             //Cliente.Lista_Direccion = frm_Direccion.ListaDireccionCliente;
         }
 
@@ -310,6 +313,8 @@ namespace Principal.Operaciones
             tbc_EmpresaCliente.Controls[1].Enabled = true;
             EditMode = false;
             Cliente = new ent_Cliente();
+            frm_Direccion.ListaDireccionCliente.Clear();
+            InicializarDireccion();
         }
 
         private void btn_Guardar_Click(object sender, EventArgs e)
@@ -318,6 +323,7 @@ namespace Principal.Operaciones
             {
                 cln_Cliente cln_Cliente = new cln_Cliente();
                 Cliente.Lista_Direccion = frm_Direccion.ListaDireccionCliente;
+
                 Cliente.Lista_TipoPago = (List<ent_TipoPago>)dgb_TipoPago.DataSource;
                 foreach (ent_TipoPago TipoPago in Cliente.Lista_TipoPago)
                 {
@@ -348,8 +354,8 @@ namespace Principal.Operaciones
                 Cliente.CanjeDocumento = chk_CanjeDocumento.Checked;
                 Cliente.Letras = chk_Letras.Checked;
                 Cliente.Cheque = chk_Cheque.Checked;
-                Cliente.Morosidad = Convert.ToDouble(txt_Morosidad.Text);
-                Cliente.LineaCredito = Convert.ToDouble(txt_LineaCredito.Text);
+                Cliente.Morosidad = Convert.ToDouble(txt_Morosidad.Text.Length > 0 ? txt_Morosidad.Text : "0.0");
+                Cliente.LineaCredito = Convert.ToDouble(txt_LineaCredito.Text.Length > 0 ? txt_LineaCredito.Text : "0.0");
                 Cliente.TipoNivelComercial = (ent_Concepto)cbo_TipoNivelComercial.SelectedItem;
                 Cliente.ClasificacionTipo = (ent_Concepto)cbo_clasificacionCliente.SelectedItem;
                 Cliente.Empresa.Id = StaticVariable.obj_Empresa.Id;
@@ -363,6 +369,7 @@ namespace Principal.Operaciones
                 if (response.codError == -1)
                 {
                     MessageBox.Show(response.mensajeError, BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    frm.Dispose();
                 }
                 else
                 {
@@ -377,6 +384,7 @@ namespace Principal.Operaciones
 
         private void dgb_Cliente_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            //InicializarDireccion();
             if (e.RowIndex >= 0)
             {
                 // Obtiene la fila seleccionada.
@@ -475,6 +483,9 @@ namespace Principal.Operaciones
             tbc_EmpresaCliente.Controls[1].Enabled = false;
             EditMode = false;
             Cliente = new ent_Cliente();
+            frm.Dispose();
         }
+
+        
     }
 }

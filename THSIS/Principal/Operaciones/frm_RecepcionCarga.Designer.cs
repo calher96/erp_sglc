@@ -159,9 +159,9 @@
             comboBox25 = new ComboBox();
             tpg_DatosEnvio = new TabPage();
             groupBox5 = new GroupBox();
+            cbo_DireccionLlegada = new ComboBox();
+            cbo_DireccionPartida = new ComboBox();
             txt_DireccionFacturacion = new TextBox();
-            txt_PuntoLlegada = new TextBox();
-            txt_PuntoPartida = new TextBox();
             label49 = new Label();
             checkBox19 = new CheckBox();
             cbo_ClientePaga = new ComboBox();
@@ -1576,9 +1576,9 @@
             // 
             groupBox5.BackColor = Color.Azure;
             groupBox5.BackgroundImageLayout = ImageLayout.None;
+            groupBox5.Controls.Add(cbo_DireccionLlegada);
+            groupBox5.Controls.Add(cbo_DireccionPartida);
             groupBox5.Controls.Add(txt_DireccionFacturacion);
-            groupBox5.Controls.Add(txt_PuntoLlegada);
-            groupBox5.Controls.Add(txt_PuntoPartida);
             groupBox5.Controls.Add(label49);
             groupBox5.Controls.Add(checkBox19);
             groupBox5.Controls.Add(cbo_ClientePaga);
@@ -1612,26 +1612,32 @@
             groupBox5.TabStop = false;
             groupBox5.Text = "Detalle";
             // 
+            // cbo_DireccionLlegada
+            // 
+            cbo_DireccionLlegada.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_DireccionLlegada.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbo_DireccionLlegada.FormattingEnabled = true;
+            cbo_DireccionLlegada.Location = new Point(776, 127);
+            cbo_DireccionLlegada.Name = "cbo_DireccionLlegada";
+            cbo_DireccionLlegada.Size = new Size(479, 28);
+            cbo_DireccionLlegada.TabIndex = 82;
+            // 
+            // cbo_DireccionPartida
+            // 
+            cbo_DireccionPartida.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbo_DireccionPartida.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbo_DireccionPartida.FormattingEnabled = true;
+            cbo_DireccionPartida.Location = new Point(146, 129);
+            cbo_DireccionPartida.Name = "cbo_DireccionPartida";
+            cbo_DireccionPartida.Size = new Size(479, 28);
+            cbo_DireccionPartida.TabIndex = 81;
+            // 
             // txt_DireccionFacturacion
             // 
             txt_DireccionFacturacion.Location = new Point(776, 247);
             txt_DireccionFacturacion.Name = "txt_DireccionFacturacion";
             txt_DireccionFacturacion.Size = new Size(480, 27);
             txt_DireccionFacturacion.TabIndex = 80;
-            // 
-            // txt_PuntoLlegada
-            // 
-            txt_PuntoLlegada.Location = new Point(776, 127);
-            txt_PuntoLlegada.Name = "txt_PuntoLlegada";
-            txt_PuntoLlegada.Size = new Size(480, 27);
-            txt_PuntoLlegada.TabIndex = 79;
-            // 
-            // txt_PuntoPartida
-            // 
-            txt_PuntoPartida.Location = new Point(148, 131);
-            txt_PuntoPartida.Name = "txt_PuntoPartida";
-            txt_PuntoPartida.Size = new Size(477, 27);
-            txt_PuntoPartida.TabIndex = 78;
             // 
             // label49
             // 
@@ -1663,6 +1669,7 @@
             cbo_ClientePaga.Name = "cbo_ClientePaga";
             cbo_ClientePaga.Size = new Size(479, 28);
             cbo_ClientePaga.TabIndex = 74;
+            cbo_ClientePaga.SelectedIndexChanged += cbo_ClientePaga_SelectedIndexChanged;
             // 
             // rbt_Remitente
             // 
@@ -1826,6 +1833,7 @@
             cbo_ClienteDestinatario.Name = "cbo_ClienteDestinatario";
             cbo_ClienteDestinatario.Size = new Size(479, 28);
             cbo_ClienteDestinatario.TabIndex = 55;
+            cbo_ClienteDestinatario.SelectedIndexChanged += cbo_ClienteDestinatario_SelectedIndexChanged;
             // 
             // checkBox15
             // 
@@ -1847,6 +1855,7 @@
             cbo_ClienteRemitente.Name = "cbo_ClienteRemitente";
             cbo_ClienteRemitente.Size = new Size(479, 28);
             cbo_ClienteRemitente.TabIndex = 32;
+            cbo_ClienteRemitente.SelectedIndexChanged += cbo_ClienteRemitente_SelectedIndexChanged;
             // 
             // label54
             // 
@@ -2505,10 +2514,10 @@
         private TextBox txt_Peso;
         private TextBox txt_FleteTotalCab;
         private TextBox txt_DireccionFacturacion;
-        private TextBox txt_PuntoLlegada;
-        private TextBox txt_PuntoPartida;
         private ErrorProvider errorProvider1;
         private DateTimePicker dtp_FechaInicio;
         private DateTimePicker dtp_FechaFin;
+        private ComboBox cbo_DireccionLlegada;
+        private ComboBox cbo_DireccionPartida;
     }
 }

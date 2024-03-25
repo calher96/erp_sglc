@@ -26,6 +26,7 @@ namespace CEN.Entidad
         public List<ent_Correo> Lista_Correo { get; set; }
         public List<ent_Direccion> Lista_Direccion { get; set; }
         public List<ent_Ocupacion> ListaOcupacion { get; set; }
+        public List<ent_DocumentoTrabajador> ListaDocumento { get; set; }
         public String FotoPerfil { get; set; }
         public String Usuario { get; set; }
         public String Ip { get; set; }
@@ -56,6 +57,7 @@ namespace CEN.Entidad
             Lista_Direccion = new List<ent_Direccion>();
             ListaOcupacion = new List<ent_Ocupacion>();
             FotoPerfil = String.Empty;
+            ListaDocumento = new List<ent_DocumentoTrabajador>();
             Usuario = StaticVariable.obj_Usuario.Usua_Usuario;
             Ip = BasicVariable.Ip;
             Mac = BasicVariable.Mac;

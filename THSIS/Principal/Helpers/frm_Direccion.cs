@@ -19,24 +19,26 @@ namespace Principal.Helpers
         public static List<ent_Direccion> ListaDireccionTrabajador = new List<ent_Direccion>();
         public List<ent_Direccion> ListaDireccionEliminada = new List<ent_Direccion>();
         public static List<ent_Direccion> ListaDireccionCliente = new List<ent_Direccion>();
+        public static int mode = 0;//1 = Cliente, 2 = Trabajador
         public frm_Direccion()
         {
             InitializeComponent();
             InicializarComboBox();
             InicializarTabla();
+            dgb_Direccion.CellFormatting += dgb_Direccion_CellFormatting;
         }
 
         private void InicializarTabla()
         {
             try
             {
-                if (ListaDireccionTrabajador.Count > 0)
+                if (mode == 2)
                 {
                     //ListaDireccionEliminada = ListaDireccionTrabajador.Where(d => d.Marcabaja == 0).ToList();
                     ListaDireccionTrabajador = ListaDireccionTrabajador.Where(d => d.Marcabaja == 1).ToList();
                     //dgb_Direccion.DataSource = null;
                     dgb_Direccion.DataSource = ListaDireccionTrabajador;
-                    dgb_Direccion.CellFormatting += dgb_Direccion_CellFormatting;
+                    //dgb_Direccion.CellFormatting += dgb_Direccion_CellFormatting;
                     dgb_Direccion.Columns["DireccionCompleta"].Width = 600;
                     dgb_Direccion.Columns["DireccionCompleta"].HeaderText = "Dirección Completa";
                     foreach (DataGridViewColumn column in dgb_Direccion.Columns)
@@ -46,14 +48,15 @@ namespace Principal.Helpers
                             column.Visible = false;
                         }
                     }
+                    //dgb_Direccion.Refresh();
                 }
-                else if (ListaDireccionCliente.Count > 0)
+                else if (mode == 1)
                 {
                     //ListaDireccionEliminada = ListaDireccionCliente.Where(d => d.Marcabaja == 0).ToList();
                     ListaDireccionCliente = ListaDireccionCliente.Where(d => d.Marcabaja == 1).ToList();
                     //dgb_Direccion.DataSource = null;
                     dgb_Direccion.DataSource = ListaDireccionCliente;
-                    dgb_Direccion.CellFormatting += dgb_Direccion_CellFormatting;
+                    //dgb_Direccion.CellFormatting += dgb_Direccion_CellFormatting;
                     dgb_Direccion.Columns["DireccionCompleta"].Width = 600;
                     dgb_Direccion.Columns["DireccionCompleta"].HeaderText = "Dirección Completa";
                     foreach (DataGridViewColumn column in dgb_Direccion.Columns)
@@ -63,15 +66,15 @@ namespace Principal.Helpers
                             column.Visible = false;
                         }
                     }
+                    //dgb_Direccion.Refresh();
                 }
 
-                dgb_Direccion.Refresh();    
             }
             catch (Exception ex)
             {
 
             }
-            
+
 
         }
 
@@ -84,7 +87,11 @@ namespace Principal.Helpers
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            if (mode == 2)
+            {
+                this.Dispose();
+            }
+            
         }
 
         private void tabPage2_Click(object sender, EventArgs e)
@@ -120,7 +127,7 @@ namespace Principal.Helpers
                 ent_Direccion.Referencia = txt_Referencia.Text;
                 ent_Direccion.Ubigeo = ((ent_Ubigeo)cbo_Distrito.SelectedItem).Ubigeo;
                 ent_Direccion.Marcabaja = 1;
-                if (ListaDireccionCliente.Count > 0)
+                if (mode == 1)
                 {
                     ListaDireccionCliente.Add(ent_Direccion);
                 }
@@ -128,7 +135,7 @@ namespace Principal.Helpers
                 {
                     ListaDireccionTrabajador.Add(ent_Direccion);
                 }
-                
+
                 InicializarTabla();
                 tbc_Direccion.SelectedIndex = 0;
                 btn_Agregar.Enabled = true;
@@ -197,7 +204,7 @@ namespace Principal.Helpers
             {
                 this.Dispose();
             }
-            
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -207,7 +214,7 @@ namespace Principal.Helpers
             {
                 // Obtén el objeto ent_Direccion de la fila seleccionada
                 ent_Direccion direccionSeleccionada = (ent_Direccion)dgb_Direccion.SelectedRows[0].DataBoundItem;
-                
+
                 // Cambia el valor de la propiedad "Marcabaja" a 0
                 direccionSeleccionada.Marcabaja = 0;
                 ListaDireccionEliminada.Add(direccionSeleccionada);
@@ -244,6 +251,11 @@ namespace Principal.Helpers
             {
                 btn_Quitar.Enabled = false; // Deshabilita el botón si no se selecciona ninguna fila
             }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            dgb_Direccion.Refresh();
         }
     }
 }

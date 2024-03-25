@@ -17,14 +17,14 @@ namespace CEN
         public String Codigo { get; set; }
         public ent_Cliente ClienteRemitente { get; set; }
         public ent_Cliente ClienteDestinatario { get; set; }
-        public String PuntoPartida { get; set; }
-        public String PuntoLlegada { get; set; }
+        public DateTime FechaAtencion { get; set; }
+        public ent_Ubigeo LugarOrigen { get; set; }
         public ent_Concepto Estado { get; set; }
         public ent_Concepto TipoServicio { get; set; }
         public DateTime FechaSolicita { get; set; }
         public DateTime FechaRecepcion { get; set; }
-        public DateTime FechaAtencion { get; set; }
-        public ent_Ubigeo LugarOrigen { get; set; }
+        public ent_Direccion PuntoPartida { get; set; }
+        public ent_Direccion PuntoLlegada { get; set; }
         public ent_Ubigeo LugarDestino { get; set; }
         public ent_Concepto CondicionPago { get; set; }
         public ent_Concepto TipoEntrega { get; set; }
@@ -74,8 +74,8 @@ namespace CEN
             TipoVehiculo = new ent_Concepto();
             ClienteRemitente = new ent_Cliente();
             ClienteDestinatario = new ent_Cliente();
-            PuntoPartida = String.Empty;
-            PuntoLlegada = String.Empty;
+            PuntoPartida = new ent_Direccion();
+            PuntoLlegada = new ent_Direccion();
             Anexos = String.Empty;
             ClaveSeguridad = String.Empty;
             ClientePago = new ent_Cliente();

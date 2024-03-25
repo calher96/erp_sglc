@@ -76,8 +76,8 @@ namespace Principal.Operaciones
             carga.TipoVehiculo = (ent_Concepto)cbo_TipoVehiculo.SelectedItem;
             carga.ClienteRemitente = (ent_Cliente)cbo_ClienteRemitente.SelectedItem;
             carga.ClienteDestinatario = (ent_Cliente)cbo_ClienteDestinatario.SelectedItem;
-            carga.PuntoPartida = txt_PuntoPartida.Text;
-            carga.PuntoLlegada = txt_PuntoLlegada.Text;
+            carga.PuntoPartida = ((ent_Direccion)cbo_DireccionPartida.SelectedItem);
+            carga.PuntoLlegada = ((ent_Direccion)cbo_DireccionLlegada.SelectedItem);
             carga.Anexos = txt_Anexos.Text;
             carga.ClaveSeguridad = txt_ClaveSeguridad.Text;
             carga.ClientePago = (ent_Cliente)cbo_ClientePaga.SelectedItem;
@@ -154,6 +154,8 @@ namespace Principal.Operaciones
                 cargarClientePaga();
                 cargarComisionista();
                 cargarVendedor();
+                cbo_DireccionPartida.SelectedIndex = -1;
+                cbo_DireccionLlegada.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
@@ -441,8 +443,8 @@ namespace Principal.Operaciones
             if (txt_ProductoTransportar.Text.Length == 0) { result = true; errorProvider1.SetError(txt_ProductoTransportar, "Por favor, ingrese material a transportar"); }
             if (cbo_ClienteRemitente.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_ClienteRemitente, "Por favor, seleccione un cliente"); }
             if (cbo_ClienteDestinatario.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_ClienteDestinatario, "Por favor, seleccione un cliente"); }
-            if (txt_PuntoPartida.Text.Length == 0) { result = true; errorProvider1.SetError(txt_PuntoPartida, "Por favor, ingrese punto de partida"); }
-            if (txt_PuntoLlegada.Text.Length == 0) { result = true; errorProvider1.SetError(txt_PuntoLlegada, "Por favor, ingrese punto de llegada"); }
+            if (cbo_DireccionPartida.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_DireccionPartida, "Por favor, ingrese punto de partida"); }
+            if (cbo_DireccionLlegada.SelectedIndex == -1) { result = true; errorProvider1.SetError(cbo_DireccionLlegada, "Por favor, ingrese punto de llegada"); }
             if (txt_Anexos.Text.Length == 0) { result = true; errorProvider1.SetError(txt_Anexos, "Por favor, ingrese documentos de Anexo"); }
             if (txt_DireccionFacturacion.Text.Length == 0) { result = true; errorProvider1.SetError(txt_DireccionFacturacion, "Por favor, ingrese una direccion de facturacion"); }
 
@@ -614,6 +616,10 @@ namespace Principal.Operaciones
                 {
                     ent_Cliente Cliente = (ent_Cliente)cbo_ClienteRecepcion.SelectedItem;
                     txt_DocClienteRecepcion.Text = Cliente.Persona.DocIdentidad;
+                }
+                else
+                {
+                    txt_DocClienteRecepcion.Text = "";
                 }
 
             }
@@ -899,7 +905,7 @@ namespace Principal.Operaciones
         {
             if (dgb_Carga.SelectedRows.Count > 0)
             {
-                
+
                 cln_Carga cln_Carga = new cln_Carga();
                 ent_Carga Carga = new ent_Carga();
                 DataGridViewRow selectedRow = dgb_Carga.SelectedRows[0];
@@ -913,7 +919,7 @@ namespace Principal.Operaciones
                         frm_GuiaRemisionTransportista.mode = 2;
                         frm_GuiaRemisionTransportista.Carga = Lista[0];
                         frm_GuiaRemisionTransportista form = new frm_GuiaRemisionTransportista();
-                        BasicMetod.abrirFormHijo(form, "Guia Remisión");
+                        BasicMetod.abrirFormHijo(form, "GRT");
                     }
                     else
                     {
@@ -921,7 +927,7 @@ namespace Principal.Operaciones
                     }
 
                 }
-                
+
             }
         }
 
@@ -1237,7 +1243,10 @@ namespace Principal.Operaciones
                     ent_Cliente Cliente = (ent_Cliente)cbo_ClienteFinal.SelectedItem;
                     txt_DocClienteFinal.Text = Cliente.Persona.DocIdentidad;
                 }
-
+                else
+                {
+                    txt_DocClienteFinal.Text = "";
+                }
             }
             catch (Exception ex)
             {
@@ -1278,7 +1287,10 @@ namespace Principal.Operaciones
                     ent_Cliente Cliente = (ent_Cliente)cbo_Comisionista.SelectedItem;
                     txt_DocComisionista.Text = Cliente.Persona.DocIdentidad;
                 }
-
+                else
+                {
+                    txt_DocComisionista.Text = "";
+                }
             }
             catch (Exception ex)
             {
@@ -1461,7 +1473,7 @@ namespace Principal.Operaciones
             {
                 cln_Carga cln_Carga = new cln_Carga();
                 ent_Carga Carga = new ent_Carga();
-                
+
                 List<ent_Carga> Lista = cln_Carga.ListarCarga(new ent_Carga(), "GEN");
                 //Lista = Lista.Where(x => x.FechaRecepcion >= dtp_FechaInicio.Value && x.FechaRecepcion<= dtp_FechaFin.Value).ToList();
                 dgb_Carga.DataSource = Lista;
@@ -1607,8 +1619,148 @@ namespace Principal.Operaciones
                     e.Value = value.Descripcion;
                 }
             }
+            if (dgb_Carga.Columns[e.ColumnIndex].Name == "PuntoPartida")
+            {
+                // Obtiene el valor actual de la celda
+                var value = e.Value as ent_Direccion;
+
+                // Verifica que el valor no sea nulo
+                if (value != null)
+                {
+                    // Asigna el valor de la propiedad Descripcion al valor que se muestra en la celda
+                    e.Value = value.DireccionCompleta;
+                }
+            }
+            if (dgb_Carga.Columns[e.ColumnIndex].Name == "PuntoLlegada")
+            {
+                // Obtiene el valor actual de la celda
+                var value = e.Value as ent_Direccion;
+
+                // Verifica que el valor no sea nulo
+                if (value != null)
+                {
+                    // Asigna el valor de la propiedad Descripcion al valor que se muestra en la celda
+                    e.Value = value.DireccionCompleta;
+                }
+            }
+        }
+        private void cbo_ClienteRemitente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbo_ClienteRemitente.SelectedIndex > -1)
+            {
+
+                if (cbo_ClienteRemitente.SelectedIndex > -1 && cbo_OrigenCabecera.SelectedIndex > -1)
+                {
+                    ent_Cliente Cliente = (ent_Cliente)cbo_ClienteRemitente.SelectedItem;
+                    cln_Cliente cln_Cliente = new cln_Cliente();
+                    List<ent_Cliente> ListaCliente = cln_Cliente.ListarCliente(Cliente, "CLI");
+                    Cliente = ListaCliente.Count > 0 ? ListaCliente[0] : null;
+                    ent_Ubigeo Ubigeo = cbo_OrigenCabecera.SelectedItem as ent_Ubigeo;
+                    if (Cliente != null)
+                    {
+                        List<ent_Direccion> ListaDireccion = Cliente.Lista_Direccion.Where(x => x.Ubigeo == Ubigeo.Ubigeo).ToList();
+                        if (ListaDireccion.Count > 0)
+                        {
+                            cbo_DireccionPartida.DataSource = ListaDireccion;
+                            cbo_DireccionPartida.ValueMember = "Id";
+                            cbo_DireccionPartida.DisplayMember = "DireccionCompleta";
+                        }
+                        else
+                        {
+                            ListaDireccion = Cliente.Lista_Direccion;
+                            cbo_DireccionPartida.DataSource = ListaDireccion;
+                            cbo_DireccionPartida.ValueMember = "Id";
+                            cbo_DireccionPartida.DisplayMember = "DireccionCompleta";
+                        }
+                    }
+
+                }
+                else
+                {
+                    ent_Cliente Cliente = (ent_Cliente)cbo_ClienteRemitente.SelectedItem;
+                    cln_Cliente cln_Cliente = new cln_Cliente();
+                    List<ent_Cliente> ListaCliente = cln_Cliente.ListarCliente(Cliente, "CLI");
+                    Cliente = ListaCliente.Count > 0 ? ListaCliente[0] : null;
+                    List<ent_Direccion> ListaDireccion;
+                    ListaDireccion = Cliente.Lista_Direccion;
+                    cbo_DireccionPartida.DataSource = ListaDireccion;
+                    cbo_DireccionPartida.ValueMember = "Id";
+                    cbo_DireccionPartida.DisplayMember = "DireccionCompleta";
+                }
+
+            }
+            else
+            {
+                cbo_DireccionPartida.Items.Clear();
+            }
+        }
+        #endregion
+
+
+        private void cbo_ClienteDestinatario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbo_ClienteDestinatario.SelectedIndex > -1)
+            {
+
+                if (cbo_ClienteDestinatario.SelectedIndex > -1 && cbo_DestinoCabecera.SelectedIndex > -1)
+                {
+                    ent_Cliente Cliente = (ent_Cliente)cbo_ClienteDestinatario.SelectedItem;
+                    cln_Cliente cln_Cliente = new cln_Cliente();
+                    List<ent_Cliente> ListaCliente = cln_Cliente.ListarCliente(Cliente, "CLI");
+                    Cliente = ListaCliente.Count > 0 ? ListaCliente[0] : null;
+                    ent_Ubigeo Ubigeo = cbo_DestinoCabecera.SelectedItem as ent_Ubigeo;
+                    if (Cliente != null)
+                    {
+                        List<ent_Direccion> ListaDireccion = Cliente.Lista_Direccion.Where(x => x.Ubigeo == Ubigeo.Ubigeo).ToList();
+                        if (ListaDireccion.Count > 0)
+                        {
+                            cbo_DireccionLlegada.DataSource = ListaDireccion;
+                            cbo_DireccionLlegada.ValueMember = "Id";
+                            cbo_DireccionLlegada.DisplayMember = "DireccionCompleta";
+                        }
+                        else
+                        {
+                            ListaDireccion = Cliente.Lista_Direccion;
+                            cbo_DireccionLlegada.DataSource = ListaDireccion;
+                            cbo_DireccionLlegada.ValueMember = "Id";
+                            cbo_DireccionLlegada.DisplayMember = "DireccionCompleta";
+                        }
+                    }
+
+                }
+                else
+                {
+                    ent_Cliente Cliente = (ent_Cliente)cbo_ClienteDestinatario.SelectedItem;
+                    cln_Cliente cln_Cliente = new cln_Cliente();
+                    List<ent_Cliente> ListaCliente = cln_Cliente.ListarCliente(Cliente, "CLI");
+                    Cliente = ListaCliente.Count > 0 ? ListaCliente[0] : null;
+                    List<ent_Direccion> ListaDireccion;
+                    ListaDireccion = Cliente.Lista_Direccion;
+                    cbo_DireccionLlegada.DataSource = ListaDireccion;
+                    cbo_DireccionLlegada.ValueMember = "Id";
+                    cbo_DireccionLlegada.DisplayMember = "DireccionCompleta";
+                }
+
+            }
+            else
+            {
+                cbo_DireccionPartida.Items.Clear();
+            }
         }
 
-        #endregion
+        private void cbo_ClientePaga_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbo_ClientePaga.SelectedIndex > -1)
+            {
+                ent_Cliente Cliente = (ent_Cliente)cbo_ClientePaga.SelectedItem;
+                cln_Cliente cln_Cliente = new cln_Cliente();
+                Cliente = cln_Cliente.ListarCliente(Cliente, "CLI")[0];
+                txt_DireccionFacturacion.Text = Cliente.DomicilioFiscal;
+            }
+            else
+            {
+                txt_DireccionFacturacion.Text = "";
+            }
+        }
     }
 }

@@ -827,6 +827,7 @@
             cbo_Conductor.Name = "cbo_Conductor";
             cbo_Conductor.Size = new Size(494, 28);
             cbo_Conductor.TabIndex = 53;
+            cbo_Conductor.SelectedIndexChanged += cbo_Conductor_SelectedIndexChanged;
             // 
             // txt_NMtc
             // 
