@@ -28,6 +28,7 @@ namespace Principal.Operaciones
         private string currentInputConsolidado = "";
         private string currentInputConEstiba = "";
         private string currentInputCEstibaDesc = "";
+        private string currentInputPrecioUnitConIGV = "";
         #endregion
 
         #region "Constructor"
@@ -82,6 +83,7 @@ namespace Principal.Operaciones
             carga.ClaveSeguridad = txt_ClaveSeguridad.Text;
             carga.ClientePago = (ent_Cliente)cbo_ClientePaga.SelectedItem;
             carga.DireccionFacturacion = txt_DireccionFacturacion.Text;
+            carga.sucu_Id = StaticVariable.obj_Sucursal.Id;
             carga.Marcabaja = 1;
 
             //CARGA DETALLE INICIO
@@ -919,7 +921,7 @@ namespace Principal.Operaciones
                         frm_GuiaRemisionTransportista.mode = 2;
                         frm_GuiaRemisionTransportista.Carga = Lista[0];
                         frm_GuiaRemisionTransportista form = new frm_GuiaRemisionTransportista();
-                        BasicMetod.abrirFormHijo(form, "GRT");
+                        BasicMetod.abrirFormHijo(form, "Guia Remisión");
                     }
                     else
                     {
@@ -1066,7 +1068,7 @@ namespace Principal.Operaciones
                     Double PrecioUnitario;
                     Double ValorUnitario;
                     Double SubTotal;
-                    Double Cantidad = Convert.ToDouble(txt_Cantidad.Text);
+                    Double Cantidad = Convert.ToDouble(txt_Peso.Text);
                     Double Total = Convert.ToDouble(txt_FleteTotal.Text);
                     SubTotal = Total / 1.18;
                     PrecioUnitario = Total / Cantidad;
@@ -1081,7 +1083,7 @@ namespace Principal.Operaciones
                     Double PrecioUnitario;
                     Double ValorUnitario;
                     Double SubTotal;
-                    Double Cantidad = Convert.ToDouble(txt_Cantidad.Text);
+                    Double Cantidad = Convert.ToDouble(txt_Peso.Text);
                     Double Total = Convert.ToDouble(txt_FleteTotal.Text) + Convert.ToDouble(txt_FleteTotal.Text) * 0.18;
                     SubTotal = Total / 1.18;
                     PrecioUnitario = Total / Cantidad;
@@ -1760,6 +1762,89 @@ namespace Principal.Operaciones
             else
             {
                 txt_DireccionFacturacion.Text = "";
+            }
+        }
+
+        private void txt_PrecioUnitario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verifica si la tecla presionada es la tecla de retroceso
+            if (e.KeyChar == '\b')
+            {
+                // Aquí puedes realizar la lógica deseada al presionar la tecla de retroceso.
+                // Por ejemplo, eliminar el último carácter del texto actual.
+                if (txt_PrecioUnitario.Text.Length > 0)
+                {
+                    currentInputPrecioUnitConIGV = txt_PrecioUnitario.Text.Substring(0, txt_PrecioUnitario.Text.Length - 1);
+                    // Formatea el texto con los dos últimos dígitos en la parte decimal
+                    if (currentInput.Length >= 2 && !currentInputPrecioUnitConIGV.Contains("."))
+                    {
+                        int length = currentInputPrecioUnitConIGV.Length;
+                        txt_PrecioUnitario.Text = currentInputPrecioUnitConIGV.Substring(0, length - 2) + "." + currentInputPrecioUnitConIGV.Substring(length - 2);
+                    }
+                    else
+                    {
+                        txt_PrecioUnitario.Text = currentInputPrecioUnitConIGV;
+                    }
+                }
+            }
+            else
+            {
+                // Verifica si la tecla presionada es un número
+                if (char.IsDigit(e.KeyChar))
+                {
+                    // Agrega el dígito a la cadena de entrada actual
+                    currentInputPrecioUnitConIGV += e.KeyChar;
+
+                    // Formatea el texto con los dos últimos dígitos en la parte decimal
+                    if (currentInputPrecioUnitConIGV.Length >= 2 && !currentInputPrecioUnitConIGV.Contains("."))
+                    {
+                        int length = currentInputPrecioUnitConIGV.Length;
+                        txt_PrecioUnitario.Text = currentInputPrecioUnitConIGV.Substring(0, length - 2) + "." + currentInputPrecioUnitConIGV.Substring(length - 2);
+                    }
+                    else
+                    {
+                        txt_PrecioUnitario.Text = currentInputPrecioUnitConIGV;
+                    }
+                }
+            }
+
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if (chk_IncluyeIGVFlete.Checked)
+                {
+                    Double PrecioUnitario = Convert.ToDouble(txt_PrecioUnitario.Text);
+                    Double Cantidad = Convert.ToDouble(txt_Peso.Text);
+                    Double ValorUnitario = PrecioUnitario /1.18;
+                    Double Total = PrecioUnitario * Cantidad;
+                    Double SubTotal;
+
+                    SubTotal = Total / 1.18;
+                    PrecioUnitario = Total / Cantidad;
+                    ValorUnitario = SubTotal / Cantidad;
+                    txt_FleteSinIGV.Text = Convert.ToString(Math.Round(ValorUnitario, 10));
+                    txt_PrecioUnitario.Text = Convert.ToString(Math.Round(PrecioUnitario, 10));
+                    txt_Subtotal.Text = Convert.ToString(Math.Round(SubTotal, 10));
+                    txt_FleteTotalCab.Text = Convert.ToString(Total);
+                    txt_FleteTotal.Text = Convert.ToString(Math.Round(Total, 10));
+                }
+                else
+                {
+                    Double PrecioUnitario = Convert.ToDouble(txt_PrecioUnitario.Text);
+                    PrecioUnitario = PrecioUnitario + PrecioUnitario * 0.18;
+                    Double Cantidad = Convert.ToDouble(txt_Peso.Text);
+                    Double ValorUnitario = PrecioUnitario / 1.18;
+                    Double Total = PrecioUnitario * Cantidad;
+                    Double SubTotal;
+
+                    SubTotal = Total / 1.18;
+                    PrecioUnitario = Total / Cantidad;
+                    ValorUnitario = SubTotal / Cantidad;
+                    txt_FleteSinIGV.Text = Convert.ToString(Math.Round(ValorUnitario, 10));
+                    txt_PrecioUnitario.Text = Convert.ToString(Math.Round(PrecioUnitario, 10));
+                    txt_Subtotal.Text = Convert.ToString(Math.Round(SubTotal, 10));
+                    txt_FleteTotalCab.Text = Convert.ToString(Total);
+                    txt_FleteTotal.Text = Convert.ToString(Math.Round(Total, 10));
+                }
             }
         }
     }

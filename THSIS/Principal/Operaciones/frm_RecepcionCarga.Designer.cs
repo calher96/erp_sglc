@@ -875,6 +875,7 @@
             txt_PrecioUnitario.Name = "txt_PrecioUnitario";
             txt_PrecioUnitario.Size = new Size(138, 27);
             txt_PrecioUnitario.TabIndex = 46;
+            txt_PrecioUnitario.KeyPress += txt_PrecioUnitario_KeyPress;
             // 
             // txt_FleteSinIGV
             // 
@@ -888,6 +889,8 @@
             // chk_Facturado
             // 
             chk_Facturado.AutoSize = true;
+            chk_Facturado.Checked = true;
+            chk_Facturado.CheckState = CheckState.Checked;
             chk_Facturado.Location = new Point(391, 80);
             chk_Facturado.Name = "chk_Facturado";
             chk_Facturado.Size = new Size(96, 24);
@@ -908,6 +911,8 @@
             // chk_IncluyeIGVFlete
             // 
             chk_IncluyeIGVFlete.AutoSize = true;
+            chk_IncluyeIGVFlete.Checked = true;
+            chk_IncluyeIGVFlete.CheckState = CheckState.Checked;
             chk_IncluyeIGVFlete.Location = new Point(299, 112);
             chk_IncluyeIGVFlete.Name = "chk_IncluyeIGVFlete";
             chk_IncluyeIGVFlete.Size = new Size(65, 24);
@@ -1241,6 +1246,7 @@
             txt_Peso.Name = "txt_Peso";
             txt_Peso.Size = new Size(60, 27);
             txt_Peso.TabIndex = 26;
+            txt_Peso.Text = "1.0";
             // 
             // label27
             // 
@@ -2059,6 +2065,7 @@
             // chk_Tercerizado
             // 
             chk_Tercerizado.AutoSize = true;
+            chk_Tercerizado.Enabled = false;
             chk_Tercerizado.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             chk_Tercerizado.Location = new Point(784, 170);
             chk_Tercerizado.Name = "chk_Tercerizado";

@@ -83,10 +83,12 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(0, 122, 204);
+            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(250, 330);
+            panel1.Size = new Size(288, 330);
             panel1.TabIndex = 5;
             // 
             // ptb_Carga

@@ -130,9 +130,17 @@ namespace CAD
                     }
                     else if (response.StatusCode == HttpStatusCode.Unauthorized)
                     {
+                        string responseBody = response.Content.ReadAsStringAsync().Result;
                         response1 = new ResponseHelper();
                         response1.codError = 401;
                         response1.mensajeError = "Por favor, vuelva a iniciar sesión";
+                    }
+                    else if (response.StatusCode ==  HttpStatusCode.BadRequest)
+                    {
+                        string responseBody = response.Content.ReadAsStringAsync().Result;
+                        response1 = new ResponseHelper();
+                        response1.codError = 400;
+                        response1.mensajeError = "Ocurrio un error";
                     }
                 }
                 catch (Exception ex)

@@ -185,7 +185,7 @@ namespace Principal
         private void tsm_GRT_Click(object sender, EventArgs e)
         {
             frm_GuiaRemisionTransportista frm = new frm_GuiaRemisionTransportista();
-            BasicMetod.abrirFormHijo(frm, "GRT");
+            BasicMetod.abrirFormHijo(frm, "Guia Remisión");
         }
     }
 }

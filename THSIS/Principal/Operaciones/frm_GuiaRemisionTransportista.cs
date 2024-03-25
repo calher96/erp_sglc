@@ -421,7 +421,15 @@ namespace Principal.Operaciones
                 Trabajador = cln_Trabajador.ListarTrabajador(Trabajador)[0];
                 List<ent_DocumentoTrabajador> ListaDoc = Trabajador.ListaDocumento;
                 ListaDoc = ListaDoc.Where(x => x.TipoDocumento.Correlativo == 3).ToList();
-                txt_NumeroLicencia.Text = ListaDoc[0].NumeroDocumento;
+                if (ListaDoc.Count > 0)
+                {
+                    txt_NumeroLicencia.Text = ListaDoc[0].NumeroDocumento;
+                }
+                //else
+                //{
+                //    MessageBox.Show("El conductor no tiene licencia de conducir", BasicVariable.nombre_sistema, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //}
+                
             }
         }
     }

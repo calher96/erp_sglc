@@ -35,13 +35,12 @@ namespace CEN
         public Boolean RecojoDomicilio { get; set; }
         public ent_Ubigeo RecojoDomicilioLugar { get; set; }
         public String DireccionRecojoDomicilio { get; set; }
-        public ent_Concepto TipoVehiculo { get; set; }
-        
-        
+        public ent_Concepto TipoVehiculo { get; set; }        
         public String Anexos { get; set; }
         public String ClaveSeguridad { get; set; }
         public ent_Cliente ClientePago { get; set; }
         public String DireccionFacturacion { get; set; }
+        public int sucu_Id { get; set; }
         public int Marcabaja { get; set; }
         public String Usuario { get; set; }
         public String Ip { get; set; }
@@ -80,6 +79,7 @@ namespace CEN
             ClaveSeguridad = String.Empty;
             ClientePago = new ent_Cliente();
             DireccionFacturacion = String.Empty;
+            sucu_Id = StaticVariable.obj_Sucursal.Id;
             Marcabaja = 0;
             Usuario = StaticVariable.obj_Usuario.Usua_Usuario;
             Ip = BasicVariable.Ip;

@@ -495,6 +495,20 @@ namespace Principal.Recursos_Humanos
                         Trabajador.Persona.Marcabaja = 1;
                         Trabajador.Persona.UbigeoNacimiento = ((ent_Ubigeo)cbo_Distrito.SelectedItem).Ubigeo;
                         Trabajador.FotoPerfil = convertirImagenBase64();
+                        ent_DocumentoTrabajador Doc = new ent_DocumentoTrabajador();
+                        Doc.TipoDocumento.Correlativo = 3;
+                        Doc.TipoDocumento.Prefijo = 1;
+                        Doc.NumeroDocumento = txt_NroLicencia.Text;
+                        if (Trabajador.ListaDocumento.Count > 0)
+                        {
+                            Trabajador.ListaDocumento[0].NumeroDocumento = Doc.NumeroDocumento;
+                        }
+                        else if (txt_NroLicencia.Text.Length > 0)
+                        {
+                            Trabajador.ListaDocumento.Add(Doc); 
+                        }
+                        
+                        //Trabajador.ListaDocumento.Add(Doc);
                         response = cln.guardarTrabajador(Trabajador);
                         if (response.codError == -1)
                         {
